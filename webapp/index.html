@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guitar Builder 666 — The Mechanic's Bench</title>
+<style>
+  :root {
+    --bg: #16130f;
+    --panel: #211c16;
+    --panel-edge: #382f22;
+    --ink: #ede5d8;
+    --muted: #a89b87;
+    --accent: #d98e32;
+    --danger: #c25444;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 16px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--panel-edge);
+  }
+  header h1 { font-size: 16px; margin: 0; letter-spacing: .02em; }
+  header .spacer { flex: 1; }
+  button, label.btn {
+    background: #2a241c; color: var(--ink);
+    border: 1px solid var(--panel-edge); border-radius: 7px;
+    padding: 7px 14px; font-size: 13px; cursor: pointer;
+  }
+  button:hover, label.btn:hover { border-color: var(--accent); }
+  button.primary, label.btn.primary {
+    background: var(--accent); border-color: var(--accent); color: #1d1508;
+    font-weight: 600;
+  }
+  #status { font-size: 12px; color: var(--muted); min-width: 200px; }
+  #layout { flex: 1; display: flex; min-height: 0; }
+
+  /* ---- parts shelf ---- */
+  aside {
+    width: 300px; min-width: 240px;
+    background: var(--panel); border-right: 1px solid var(--panel-edge);
+    overflow-y: auto; padding: 12px;
+  }
+  aside .hint { font-size: 12px; color: var(--muted); line-height: 1.6; padding: 4px; }
+  .slot-group h2 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--accent); margin: 14px 4px 6px;
+  }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .part {
+    background: #2a241c; border: 1px solid #3a3225; border-radius: 8px;
+    padding: 6px; cursor: pointer; text-align: center; position: relative;
+    transition: border-color .15s;
+  }
+  .part:hover { border-color: var(--accent); }
+  .part.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .part img { width: 100%; height: 60px; object-fit: contain; pointer-events: none; }
+  .part span {
+    display: block; font-size: 10px; color: var(--muted);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  /* ---- bench ---- */
+  main { flex: 1; position: relative; overflow: hidden; }
+  #bench {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 42%, #201a12 0%, var(--bg) 78%);
+  }
+  #world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .inst { position: absolute; user-select: none; -webkit-user-drag: none; }
+  .inst.draggable { cursor: grab; }
+  .inst.draggable:active { cursor: grabbing; }
+  .inst.selected { outline: 2px dashed var(--accent); outline-offset: 3px; }
+  #empty-hint {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    color: var(--muted); font-size: 14px; text-align: center; line-height: 1.9;
+    pointer-events: none;
+  }
+  #dropzone {
+    position: absolute; inset: 0; display: none;
+    align-items: center; justify-content: center;
+    background: #d98e3222; border: 3px dashed var(--accent);
+    font-size: 20px; color: var(--accent); z-index: 50; pointer-events: none;
+  }
+  body.dragging #dropzone { display: flex; }
+
+  /* selection toolbar */
+  #sel-tools {
+    position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+    display: none; gap: 8px; background: var(--panel);
+    border: 1px solid var(--panel-edge); border-radius: 10px; padding: 8px;
+    z-index: 40;
+  }
+  #sel-tools.visible { display: flex; }
+  #sel-tools .label {
+    align-self: center; font-size: 12px; color: var(--muted);
+    padding: 0 6px; max-width: 220px; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+  #sel-tools button.danger { color: var(--danger); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔧 Guitar Builder <span style="color:var(--accent)">666</span></h1>
+  <label class="btn primary">
+    ⬆ Upload guitar pictures
+    <input id="file-input" type="file" accept="image/*" multiple hidden>
+  </label>
+  <span id="status">Drop photos anywhere — the mechanic does the rest.</span>
+  <div class="spacer"></div>
+  <button id="clear">Clear bench</button>
+  <button id="export" class="primary">⬇ Export my guitar</button>
+</header>
+
+<div id="layout">
+  <aside>
+    <div class="hint">
+      Upload a photo of a <b>whole guitar</b> and the mechanic discerns its
+      anatomy — headstock, neck, body — cuts each part out, and lays it where
+      it belongs. Upload <b>individual parts</b> (name the file, e.g.
+      <i>humbucker.jpg</i>) to grow the catalogue. Click any part below to put
+      it on the bench; click a placed part to swap or remove it.
+    </div>
+    <div id="shelf"></div>
+  </aside>
+  <main>
+    <div id="bench"><div id="world"></div></div>
+    <div id="empty-hint">
+      The bench is empty.<br>
+      Upload a guitar picture to get started 🎸
+    </div>
+    <div id="sel-tools">
+      <span class="label" id="sel-label"></span>
+      <button id="swap-prev" title="previous alternative">◀ swap</button>
+      <button id="swap-next" title="next alternative">swap ▶</button>
+      <button id="remove" class="danger">remove</button>
+    </div>
+    <div id="dropzone">Drop the pictures — the mechanic will take it from here</div>
+  </main>
+</div>
+
+<script>
+"use strict";
+
+/* ------------------------------------------------------------------ state */
+const CORE_SLOTS = ["body", "neck", "headstock"];
+const Z_ORDER = {
+  body: 1, pickguard: 2, neck: 3, headstock: 4, pickup: 5,
+  bridge: 6, knob: 7, switch: 7, tuner: 8, other: 9,
+};
+// Default overlay position as a fraction of the placed body's bounding box.
+const OVERLAY_SPOTS = {
+  pickguard:  [0.50, 0.42],
+  pickup:     [0.50, 0.52],
+  bridge:     [0.50, 0.68],
+  knob:       [0.72, 0.74],
+  switch:     [0.32, 0.72],
+  tuner:      [0.50, 0.20],
+  other:      [0.85, 0.30],
+};
+
+let manifest = { ppi: 48, components: [] };
+let instances = [];        // {uid, part, x, y, dx, dy}  world px, top-left
+let selectedUid = null;
+let nextUid = 1;
+let viewScale = 0.35;
+
+const $ = id => document.getElementById(id);
+const world = $("world");
+const bench = $("bench");
+const shelf = $("shelf");
+const statusEl = $("status");
+
+const partById = id => manifest.components.find(c => c.id === id);
+const partsInSlot = slot =>
+  manifest.components.filter(c => (c.slot || "other") === slot);
+const slotOf = part => part.slot || "other";
+const isCore = part => CORE_SLOTS.includes(slotOf(part));
+
+/* ------------------------------------------------------------- anchors */
+// Parts cut from a whole guitar carry measured anchors; single-component
+// uploads get sensible fallbacks so they can still join the chain.
+function anchor(part, name) {
+  const a = part.anchors || {};
+  if (a[name]) return a[name];
+  const w = part.width_px, h = part.height_px;
+  switch (name) {
+    case "pocket": return [w / 2, h * 0.06];
+    case "top":    return [w / 2, 0];
+    case "bottom": return [w / 2, h];
+    default:       return [w / 2, h / 2];
+  }
+}
+
+/* --------------------------------------------------------------- layout */
+function pocketWorld() {
+  const ppi = manifest.ppi || 48;
+  return { x: 12 * ppi, y: 21 * ppi };  // neck pocket, world coords
+}
+
+function solveCoreLayout() {
+  const P = pocketWorld();
+  const body = instances.find(i => slotOf(i.part) === "body");
+  const neck = instances.find(i => slotOf(i.part) === "neck");
+  const head = instances.find(i => slotOf(i.part) === "headstock");
+  if (body) {
+    const [ax, ay] = anchor(body.part, "pocket");
+    body.x = P.x - ax + body.dx; body.y = P.y - ay + body.dy;
+  }
+  if (neck) {
+    const [bx, by] = anchor(neck.part, "bottom");
+    neck.x = P.x - bx + neck.dx; neck.y = P.y - by + neck.dy;
+    if (head) {
+      const [tx, ty] = anchor(neck.part, "top");
+      const [hx, hy] = anchor(head.part, "bottom");
+      head.x = (neck.x + tx) - hx + head.dx;
+      head.y = (neck.y + ty) - hy + head.dy;
+    }
+  } else if (head) {
+    const [hx, hy] = anchor(head.part, "bottom");
+    head.x = P.x - hx + head.dx;
+    head.y = P.y - 13 * (manifest.ppi || 48) - hy + head.dy;
+  }
+}
+
+function overlayDefault(part) {
+  const body = instances.find(i => slotOf(i.part) === "body");
+  const [fx, fy] = OVERLAY_SPOTS[slotOf(part)] || OVERLAY_SPOTS.other;
+  let cx, cy;
+  if (body) {
+    cx = body.x + body.part.width_px * fx;
+    cy = body.y + body.part.height_px * fy;
+  } else {
+    const P = pocketWorld();
+    cx = P.x; cy = P.y + 6 * (manifest.ppi || 48);
+  }
+  return { x: cx - part.width_px / 2, y: cy - part.height_px / 2 };
+}
+
+/* ------------------------------------------------------------ placement */
+function placePart(part) {
+  if (isCore(part)) {
+    const existing = instances.find(i => slotOf(i.part) === slotOf(part));
+    if (existing) { existing.part = part; }
+    else instances.push({ uid: nextUid++, part, x: 0, y: 0, dx: 0, dy: 0 });
+    solveCoreLayout();
+  } else {
+    const { x, y } = overlayDefault(part);
+    instances.push({ uid: nextUid++, part, x, y, dx: 0, dy: 0 });
+  }
+  render();
+}
+
+function swapInstance(inst, direction) {
+  const options = partsInSlot(slotOf(inst.part));
+  if (options.length < 2) return;
+  const idx = options.findIndex(p => p.id === inst.part.id);
+  const next = options[(idx + direction + options.length) % options.length];
+  if (isCore(inst.part)) {
+    inst.part = next;
+    solveCoreLayout();
+  } else {
+    const cx = inst.x + inst.part.width_px / 2;
+    const cy = inst.y + inst.part.height_px / 2;
+    inst.part = next;
+    inst.x = cx - next.width_px / 2;
+    inst.y = cy - next.height_px / 2;
+  }
+  render();
+}
+
+function removeInstance(uid) {
+  instances = instances.filter(i => i.uid !== uid);
+  if (selectedUid === uid) selectedUid = null;
+  render();
+}
+
+function autoFill(newParts) {
+  for (const part of newParts) {
+    const slot = slotOf(part);
+    const occupied = instances.some(i => slotOf(i.part) === slot);
+    if (!occupied) placePart(part);
+  }
+}
+
+/* -------------------------------------------------------------- render */
+function fitView() {
+  const ppi = manifest.ppi || 48;
+  const guitarH = 41 * ppi;
+  viewScale = Math.min(
+    bench.clientHeight * 0.94 / guitarH,
+    bench.clientWidth * 0.9 / (24 * ppi),
+  );
+  const offsetX = (bench.clientWidth - 24 * ppi * viewScale) / 2;
+  world.style.transform =
+    `translate(${offsetX}px, ${bench.clientHeight * 0.03}px) scale(${viewScale})`;
+}
+
+function render() {
+  world.innerHTML = "";
+  const sorted = [...instances].sort(
+    (a, b) => (Z_ORDER[slotOf(a.part)] || 9) - (Z_ORDER[slotOf(b.part)] || 9)
+  );
+  for (const inst of sorted) {
+    const img = document.createElement("img");
+    img.src = "/library/" + inst.part.file;
+    img.className = "inst draggable" + (inst.uid === selectedUid ? " selected" : "");
+    img.style.left = inst.x + "px";
+    img.style.top = inst.y + "px";
+    img.style.width = inst.part.width_px + "px";
+    img.draggable = false;
+    img.dataset.uid = inst.uid;
+    img.addEventListener("pointerdown", e => startDrag(inst, e));
+    world.appendChild(img);
+  }
+  $("empty-hint").style.display = instances.length ? "none" : "";
+  renderSelTools();
+  renderShelf();
+}
+
+function renderSelTools() {
+  const tools = $("sel-tools");
+  const inst = instances.find(i => i.uid === selectedUid);
+  tools.classList.toggle("visible", !!inst);
+  if (inst) {
+    const options = partsInSlot(slotOf(inst.part)).length;
+    $("sel-label").textContent =
+      `${inst.part.id} (${options} option${options === 1 ? "" : "s"})`;
+    $("swap-prev").disabled = $("swap-next").disabled = options < 2;
+  }
+}
+
+function renderShelf() {
+  shelf.innerHTML = "";
+  const bySlot = {};
+  for (const c of manifest.components) (bySlot[slotOf(c)] ||= []).push(c);
+  const order = ["body", "neck", "headstock", "pickguard", "pickup",
+                 "bridge", "knob", "switch", "tuner", "other"];
+  const slots = Object.keys(bySlot).sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
+  });
+  const placedIds = new Set(instances.map(i => i.part.id));
+  for (const slot of slots) {
+    const group = document.createElement("div");
+    group.className = "slot-group";
+    group.innerHTML = `<h2>${slot.replaceAll("_", " ")}</h2>`;
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    for (const part of bySlot[slot]) {
+      const card = document.createElement("div");
+      card.className = "part" + (placedIds.has(part.id) ? " active" : "");
+      card.title = `${part.id} — ${part.width_px}×${part.height_px}px`
+        + (part.longest_in ? ` (${part.longest_in}″)` : "");
+      card.innerHTML =
+        `<img src="/library/${part.thumbnail}" alt="${part.id}">` +
+        `<span>${part.id.split("/")[1]}</span>`;
+      card.addEventListener("click", () => placePart(part));
+      grid.appendChild(card);
+    }
+    group.appendChild(grid);
+    shelf.appendChild(group);
+  }
+  if (!manifest.components.length) {
+    shelf.innerHTML =
+      '<div class="hint">No parts in the catalogue yet.</div>';
+  }
+}
+
+/* ---------------------------------------------------------------- drag */
+function startDrag(inst, e) {
+  selectedUid = inst.uid;
+  render();
+  const startX = e.clientX, startY = e.clientY;
+  const origX = inst.x, origY = inst.y;
+  let moved = false;
+  const move = ev => {
+    const wx = (ev.clientX - startX) / viewScale;
+    const wy = (ev.clientY - startY) / viewScale;
+    if (Math.abs(wx) + Math.abs(wy) > 2) moved = true;
+    inst.x = origX + wx; inst.y = origY + wy;
+    if (isCore(inst.part)) { inst.dx += 0; }  // nudge tracked below on drop
+    const el = world.querySelector(`[data-uid="${inst.uid}"]`);
+    if (el) { el.style.left = inst.x + "px"; el.style.top = inst.y + "px"; }
+  };
+  const up = ev => {
+    window.removeEventListener("pointermove", move);
+    window.removeEventListener("pointerup", up);
+    if (moved && isCore(inst.part)) {
+      inst.dx += inst.x - origX;
+      inst.dy += inst.y - origY;
+    }
+  };
+  window.addEventListener("pointermove", move);
+  window.addEventListener("pointerup", up);
+  e.preventDefault();
+  e.stopPropagation();
+}
+
+bench.addEventListener("pointerdown", e => {
+  if (e.target === bench || e.target === world) {
+    selectedUid = null;
+    render();
+  }
+});
+
+window.addEventListener("keydown", e => {
+  if (!selectedUid) return;
+  const inst = instances.find(i => i.uid === selectedUid);
+  if (!inst) return;
+  if (e.key === "Delete" || e.key === "Backspace") removeInstance(selectedUid);
+  if (e.key === "[") swapInstance(inst, -1);
+  if (e.key === "]") swapInstance(inst, +1);
+});
+
+$("swap-prev").addEventListener("click", () => {
+  const inst = instances.find(i => i.uid === selectedUid);
+  if (inst) swapInstance(inst, -1);
+});
+$("swap-next").addEventListener("click", () => {
+  const inst = instances.find(i => i.uid === selectedUid);
+  if (inst) swapInstance(inst, +1);
+});
+$("remove").addEventListener("click", () => removeInstance(selectedUid));
+$("clear").addEventListener("click", () => {
+  instances = []; selectedUid = null; render();
+});
+
+/* -------------------------------------------------------------- upload */
+async function uploadFiles(files) {
+  for (const file of files) {
+    setStatus(`🔧 mechanic is working on ${file.name} …`);
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "X-Filename": file.name },
+        body: file,
+      });
+      const out = await res.json();
+      if (out.status === "added") {
+        await refreshManifest();
+        const newParts = out.parts.map(p => partById(p.id)).filter(Boolean);
+        autoFill(newParts);
+        const slots = out.parts.map(p => p.slot).join(", ");
+        setStatus(`✅ ${file.name}: ${out.parts.length} part(s) — ${slots}`);
+      } else if (out.status === "duplicate") {
+        setStatus(`↩ ${file.name} was already in the catalogue`);
+      } else {
+        setStatus(`⚠ ${file.name} failed: ${out.error || "unknown error"}`);
+      }
+    } catch (err) {
+      setStatus(`⚠ upload failed: ${err.message}`);
+    }
+  }
+}
+
+function setStatus(text) { statusEl.textContent = text; }
+
+$("file-input").addEventListener("change", e => {
+  uploadFiles([...e.target.files]);
+  e.target.value = "";
+});
+
+let dragDepth = 0;
+window.addEventListener("dragenter", e => {
+  e.preventDefault(); dragDepth++;
+  document.body.classList.add("dragging");
+});
+window.addEventListener("dragleave", () => {
+  if (--dragDepth <= 0) { dragDepth = 0; document.body.classList.remove("dragging"); }
+});
+window.addEventListener("dragover", e => e.preventDefault());
+window.addEventListener("drop", e => {
+  e.preventDefault();
+  dragDepth = 0;
+  document.body.classList.remove("dragging");
+  const files = [...e.dataTransfer.files].filter(f => f.type.startsWith("image/"));
+  if (files.length) uploadFiles(files);
+});
+
+/* -------------------------------------------------------------- export */
+$("export").addEventListener("click", async () => {
+  if (!instances.length) { setStatus("nothing on the bench to export"); return; }
+  setStatus("rendering your guitar …");
+  const pad = 40;
+  const xs = instances.map(i => i.x), ys = instances.map(i => i.y);
+  const xe = instances.map(i => i.x + i.part.width_px);
+  const ye = instances.map(i => i.y + i.part.height_px);
+  const minX = Math.min(...xs) - pad, minY = Math.min(...ys) - pad;
+  const w = Math.max(...xe) - minX + pad, h = Math.max(...ye) - minY + pad;
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(w); canvas.height = Math.round(h);
+  const ctx = canvas.getContext("2d");
+  const sorted = [...instances].sort(
+    (a, b) => (Z_ORDER[slotOf(a.part)] || 9) - (Z_ORDER[slotOf(b.part)] || 9)
+  );
+  for (const inst of sorted) {
+    const img = new Image();
+    img.src = "/library/" + inst.part.file;
+    await img.decode();
+    ctx.drawImage(img, inst.x - minX, inst.y - minY,
+                  inst.part.width_px, inst.part.height_px);
+  }
+  canvas.toBlob(blob => {
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "my-guitar.png";
+    a.click();
+    URL.revokeObjectURL(a.href);
+    setStatus("🎸 exported my-guitar.png");
+  }, "image/png");
+});
+
+/* ---------------------------------------------------------------- init */
+async function refreshManifest() {
+  const res = await fetch("/api/manifest");
+  manifest = await res.json();
+  // Re-bind placed instances to fresh manifest objects.
+  instances = instances.filter(i => partById(i.part.id));
+  for (const inst of instances) inst.part = partById(inst.part.id);
+  render();
+}
+
+window.addEventListener("resize", fitView);
+refreshManifest().then(() => {
+  fitView();
+  // Put whatever the catalogue already holds straight on the bench.
+  autoFill(manifest.components);
+});
+</script>
+</body>
+</html>
