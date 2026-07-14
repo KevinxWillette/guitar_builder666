@@ -107,6 +107,13 @@ class Mechanic:
                     manifest, sliced, path.name, sha1,
                     self.settings.category_override,
                 )]
+            elif (named := classify.classify_filename(path.name)) is not None:
+                # The filename says what this is — trust it and skip the
+                # whole-guitar splitter (close-ups of a labeled part can
+                # otherwise fool the silhouette check).
+                entries = [self._file_component(
+                    manifest, sliced, path.name, sha1, named
+                )]
             else:
                 parts = anatomy.split_guitar(sliced, self.settings.ppi)
                 if parts:

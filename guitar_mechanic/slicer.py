@@ -33,8 +33,76 @@ def slice_component(image: Image.Image) -> Image.Image:
     """Return the component cut out of *image* as a cropped RGBA image."""
     rgba = _rembg_cutout(image)
     if rgba is None:
-        rgba = _border_flood_cutout(image)
+        rgba = _best_cutout(image)
     return _crop_to_alpha(rgba)
+
+
+def _best_cutout(image: Image.Image) -> Image.Image:
+    """Run both classical engines and keep the tighter believable mask.
+
+    GrabCut wins on gradient studio backdrops; border flood wins on flat
+    bright ones. Over-inclusion (keeping backdrop) is the common failure
+    for both, so among valid candidates the smaller foreground is the
+    better cut.
+    """
+    candidates = []
+    for cutout in (_grabcut_cutout, _border_flood_cutout):
+        rgba = cutout(image)
+        if rgba is None:
+            continue
+        fill = (np.asarray(rgba.split()[3]) > 16).mean()
+        if 0.01 <= fill <= 0.98:
+            candidates.append((fill, rgba))
+    if not candidates:
+        return _border_flood_cutout(image)
+    return min(candidates, key=lambda c: c[0])[1]
+
+
+def _grabcut_cutout(image: Image.Image) -> Image.Image | None:
+    """GrabCut with a border-is-background prior.
+
+    Models foreground/background colour distributions, so it handles the
+    gradient studio backdrops product photos love — and classifies enclosed
+    background holes (between strings, headstock scoops) correctly, which
+    border flood fill fundamentally can't.
+    """
+    try:
+        import cv2
+    except ImportError:
+        return None
+    img = image.convert("RGB")
+    small = img.copy()
+    small.thumbnail((MASK_SIDE, MASK_SIDE), Image.BILINEAR)
+    bgr = np.asarray(small)[:, :, ::-1].copy()
+    h, w = bgr.shape[:2]
+    border = max(min(h, w) // 40, 4)
+
+    mask = np.full((h, w), cv2.GC_PR_FGD, dtype=np.uint8)
+    mask[:border, :] = cv2.GC_BGD
+    mask[-border:, :] = cv2.GC_BGD
+    mask[:, :border] = cv2.GC_BGD
+    mask[:, -border:] = cv2.GC_BGD
+
+    bg_model = np.zeros((1, 65), np.float64)
+    fg_model = np.zeros((1, 65), np.float64)
+    try:
+        cv2.grabCut(bgr, mask, None, bg_model, fg_model, 5, cv2.GC_INIT_WITH_MASK)
+    except cv2.error:
+        return None
+    fg = np.isin(mask, (cv2.GC_FGD, cv2.GC_PR_FGD))
+    # Sanity: a believable subject fills some of the frame but not all of it.
+    fill = fg.mean()
+    if not 0.02 <= fill <= 0.98:
+        return None
+
+    fg = _binary_open(fg, iterations=1)
+    fg = _binary_close(fg, iterations=2)
+    mask_small = Image.fromarray((fg * 255).astype(np.uint8), mode="L")
+    mask_full = mask_small.resize(img.size, Image.BILINEAR)
+    mask_full = mask_full.filter(ImageFilter.GaussianBlur(radius=1.2))
+    rgba = img.convert("RGBA")
+    rgba.putalpha(mask_full)
+    return rgba
 
 
 def _rembg_cutout(image: Image.Image) -> Image.Image | None:
@@ -68,6 +136,7 @@ def _border_flood_cutout(image: Image.Image) -> Image.Image:
         seeds[sl] |= edge
 
     background = _flood(seeds, dist < GROW_TOLERANCE)
+    background |= _enclosed_backdrop(background, dist < GROW_TOLERANCE)
     foreground = ~background
     foreground = _binary_open(foreground, iterations=2)
     foreground = _binary_close(foreground, iterations=3)
@@ -85,6 +154,30 @@ def _border_flood_cutout(image: Image.Image) -> Image.Image:
     rgba = img.convert("RGBA")
     rgba.putalpha(mask)
     return rgba
+
+
+def _enclosed_backdrop(background: np.ndarray, backdrop_like: np.ndarray) -> np.ndarray:
+    """Backdrop showing through enclosed holes (headstock scoops, gaps).
+
+    Flood fill can't reach regions the part fully surrounds; any blob of
+    strongly backdrop-coloured pixels that isn't already background is one
+    of those windows.
+    """
+    try:
+        from scipy import ndimage
+    except ImportError:
+        return np.zeros_like(background)
+    candidates = backdrop_like & ~background
+    labels, count = ndimage.label(candidates)
+    if not count:
+        return candidates & False
+    keep = np.zeros_like(background)
+    min_area = max(int(background.size * 0.0005), 8)
+    sizes = ndimage.sum_labels(np.ones_like(labels), labels, range(1, count + 1))
+    for i, size in enumerate(sizes, start=1):
+        if size >= min_area:
+            keep |= labels == i
+    return keep
 
 
 def _flood(seeds: np.ndarray, allowed: np.ndarray) -> np.ndarray:
