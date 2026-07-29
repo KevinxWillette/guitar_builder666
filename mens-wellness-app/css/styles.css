@@ -1,25 +1,27 @@
 /* Root Variables */
 :root {
-  --primary: #1a3a52;
-  --primary-light: #2a5a7a;
-  --secondary: #d97706;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --muted: #6b7280;
-  --light: #f3f4f6;
-  --dark: #1f2937;
-  --border: #e5e7eb;
+  --primary: #2d5a6c;
+  --primary-light: #3d7a8c;
+  --secondary: #e8824c;
+  --success: #52b788;
+  --danger: #d62828;
+  --warning: #f77f00;
+  --muted: #757575;
+  --light: #faf8f3;
+  --dark: #2b2d31;
+  --border: #d9d0c4;
+  --accent-warm: #d97706;
+  --accent-teal: #4a9fb5;
 
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
+  --text-primary: #2b2d31;
+  --text-secondary: #636363;
+  --bg-primary: #fdfaf5;
+  --bg-secondary: #f5f0e8;
 
   --transition: all 0.3s ease;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.15);
 
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
@@ -99,7 +101,7 @@ a:hover {
 
 /* Navigation Bar */
 .navbar {
-  background-color: var(--primary);
+  background: linear-gradient(90deg, #2d5a6c 0%, #4a9fb5 100%);
   color: white;
   padding: 1rem 0;
   box-shadow: var(--shadow-md);
@@ -260,9 +262,9 @@ a:hover {
 .hero {
   text-align: center;
   padding: 3rem 2rem;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #2d5a6c 0%, #4a9fb5 100%);
+  color: #fdfaf5;
+  border-radius: 12px;
   margin-bottom: 3rem;
   box-shadow: var(--shadow-lg);
 }
@@ -416,24 +418,25 @@ a:hover {
 
 /* Warning Cards */
 .warning-card {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(239, 68, 68, 0.1));
-  border: 2px solid var(--warning);
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(232, 130, 76, 0.08), rgba(214, 40, 40, 0.08));
+  border: 2px solid #d97706;
+  border-radius: 12px;
   padding: 2rem;
 }
 
 .warning-card h3 {
-  color: var(--danger);
+  color: #d62828;
 }
 
 /* Emergency Card */
 .emergency-card {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
-  border: 2px solid var(--danger);
+  background: linear-gradient(135deg, rgba(214, 40, 40, 0.08), rgba(232, 130, 76, 0.08));
+  border: 2px solid #d62828;
+  border-radius: 12px;
 }
 
 .emergency-card h3 {
-  color: var(--danger);
+  color: #d62828;
 }
 
 /* Crisis Resources */
@@ -774,6 +777,25 @@ a:hover {
   transform: translateY(-2px);
 }
 
+/* Pro Bono Cards */
+.pro-bono-card {
+  background: linear-gradient(135deg, #f5f0e8 0%, #faf8f3 100%);
+  border: 2px solid #d97706;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.pro-bono-card h3 {
+  color: #d62828;
+  margin-bottom: 1rem;
+}
+
+.pro-bono-card:hover {
+  border-color: #e8824c;
+  box-shadow: var(--shadow-md), 0 0 15px rgba(232, 130, 76, 0.2);
+  transform: translateY(-2px);
+}
+
 .resource-card h3 {
   color: var(--primary);
   margin-bottom: 1rem;
@@ -1034,11 +1056,11 @@ a:hover {
 
 /* Footer */
 .footer {
-  background-color: var(--primary);
+  background: linear-gradient(90deg, #2d5a6c 0%, #3d7a8c 100%);
   color: white;
   padding: 2rem 1rem;
   margin-top: 3rem;
-  border-top: 1px solid var(--border);
+  border-top: 3px solid #d97706;
 }
 
 .footer-content {
