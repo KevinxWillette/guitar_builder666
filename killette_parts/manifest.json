@@ -479,22 +479,6 @@
       "added_at": "2026-07-15T03:38:45+00:00"
     },
     {
-      "id": "body/body-metal-ornate-shield",
-      "category": "body",
-      "file": "body/body-metal-ornate-shield.png",
-      "thumbnail": "body/body-metal-ornate-shield.thumb.png",
-      "width_px": 855,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_metal_ornate_shield.jpg",
-      "source_sha1": "2be5fbb7569c0478f63b01cecc453ee00f31a5d3",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-15T03:38:46+00:00"
-    },
-    {
       "id": "body/body-metal-routed",
       "category": "body",
       "file": "body/body-metal-routed.png",
@@ -511,22 +495,6 @@
       "added_at": "2026-07-15T03:38:47+00:00"
     },
     {
-      "id": "body/body-metal-shield",
-      "category": "body",
-      "file": "body/body-metal-shield.png",
-      "thumbnail": "body/body-metal-shield.thumb.png",
-      "width_px": 490,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_metal_shield.jpg",
-      "source_sha1": "1999671414dea4e27360d40d6612f0dec0baf830",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-15T03:38:48+00:00"
-    },
-    {
       "id": "body/body-shield-amber-routed",
       "category": "body",
       "file": "body/body-shield-amber-routed.png",
@@ -540,7 +508,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:31+00:00"
+      "added_at": "2026-07-29T15:49:51+00:00"
     },
     {
       "id": "body/body-shield-black-routed",
@@ -556,7 +524,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:32+00:00"
+      "added_at": "2026-07-29T15:49:52+00:00"
     },
     {
       "id": "body/body-shield-black",
@@ -572,7 +540,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:34+00:00"
+      "added_at": "2026-07-29T15:49:53+00:00"
     },
     {
       "id": "body/body-shield-crimson-routed",
@@ -588,7 +556,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:36+00:00"
+      "added_at": "2026-07-29T15:49:55+00:00"
     },
     {
       "id": "body/body-shield-crimson-xl",
@@ -604,7 +572,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:39+00:00"
+      "added_at": "2026-07-29T15:49:56+00:00"
     },
     {
       "id": "body/body-shield-darkwalnut",
@@ -620,7 +588,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:40+00:00"
+      "added_at": "2026-07-29T15:49:57+00:00"
     },
     {
       "id": "body/body-shield-navy-routed",
@@ -636,14 +604,14 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:42+00:00"
+      "added_at": "2026-07-29T15:49:59+00:00"
     },
     {
       "id": "body/body-shield-navy",
       "category": "body",
       "file": "body/body-shield-navy.png",
       "thumbnail": "body/body-shield-navy.thumb.png",
-      "width_px": 649,
+      "width_px": 650,
       "height_px": 864,
       "longest_in": 18.0,
       "ppi": 48,
@@ -652,7 +620,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:44+00:00"
+      "added_at": "2026-07-29T15:50:00+00:00"
     },
     {
       "id": "body/body-shield-sage-routed",
@@ -668,7 +636,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:45+00:00"
+      "added_at": "2026-07-29T15:50:01+00:00"
     },
     {
       "id": "body/body-shield-sage",
@@ -684,7 +652,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:47+00:00"
+      "added_at": "2026-07-29T15:50:03+00:00"
     },
     {
       "id": "body/body-shield-slate-xl",
@@ -700,14 +668,14 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:48+00:00"
+      "added_at": "2026-07-29T15:50:04+00:00"
     },
     {
       "id": "body/body-shield-slate",
       "category": "body",
       "file": "body/body-shield-slate.png",
       "thumbnail": "body/body-shield-slate.thumb.png",
-      "width_px": 677,
+      "width_px": 634,
       "height_px": 864,
       "longest_in": 18.0,
       "ppi": 48,
@@ -716,7 +684,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:50+00:00"
+      "added_at": "2026-07-29T15:50:05+00:00"
     },
     {
       "id": "body/body-shield-tan",
@@ -732,7 +700,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:51+00:00"
+      "added_at": "2026-07-29T15:50:06+00:00"
     },
     {
       "id": "body/body-shield-walnut-routed",
@@ -748,14 +716,14 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:53+00:00"
+      "added_at": "2026-07-29T15:50:08+00:00"
     },
     {
       "id": "body/body-shield-walnut-xl",
       "category": "body",
       "file": "body/body-shield-walnut-xl.png",
       "thumbnail": "body/body-shield-walnut-xl.thumb.png",
-      "width_px": 700,
+      "width_px": 701,
       "height_px": 864,
       "longest_in": 18.0,
       "ppi": 48,
@@ -764,7 +732,7 @@
       "slot": "body",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-29T15:46:54+00:00"
+      "added_at": "2026-07-29T15:50:09+00:00"
     }
   ]
 }

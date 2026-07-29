@@ -32,6 +32,12 @@ CROP_MARGIN = 0.02
 def slice_component(image: Image.Image) -> Image.Image:
     """Return the component cut out of *image* as a cropped RGBA image."""
     rgba = _rembg_cutout(image)
+    if rgba is not None:
+        # rembg finding almost nothing means there was no clear subject —
+        # fall back to the classical engines rather than return emptiness.
+        fill = (np.asarray(rgba.split()[3]) > 16).mean()
+        if fill < 0.01:
+            rgba = None
     if rgba is None:
         rgba = _best_cutout(image)
     return _crop_to_alpha(rgba)

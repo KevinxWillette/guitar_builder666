@@ -43,6 +43,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_process = sub.add_parser("process", help="process everything in uploads/ once")
     p_process.add_argument(
+        "--no-enhance", action="store_true",
+        help="skip tonal enhancement (clean renders / colour-accurate shots)",
+    )
+    p_process.add_argument(
         "--category",
         help="force every processed image into this category "
         "(otherwise detected from the filename)",
@@ -67,6 +71,8 @@ def make_settings(args: argparse.Namespace) -> Settings:
         settings.ppi = args.ppi
     if getattr(args, "category", None):
         settings.category_override = args.category
+    if getattr(args, "no_enhance", False):
+        settings.enhance = False
     return settings
 
 

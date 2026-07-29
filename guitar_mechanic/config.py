@@ -105,6 +105,7 @@ class Settings:
     root: Path = field(default_factory=Path.cwd)
     ppi: int = DEFAULT_PPI
     category_override: str | None = None
+    enhance: bool = True
 
     @property
     def uploads_dir(self) -> Path:

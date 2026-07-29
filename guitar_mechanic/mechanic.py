@@ -98,7 +98,10 @@ class Mechanic:
                 return Result(path, "duplicate")
 
             with Image.open(path) as raw:
-                enhanced = enhancer.enhance(raw)
+                if self.settings.enhance:
+                    enhanced = enhancer.enhance(raw)
+                else:
+                    enhanced = enhancer.prepare(raw)
             sliced = slicer.slice_component(enhanced)
 
             entries: list[dict]

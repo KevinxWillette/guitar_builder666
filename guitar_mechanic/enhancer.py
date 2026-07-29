@@ -15,6 +15,24 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 MAX_SIDE = 2400
 
 
+def prepare(image: Image.Image) -> Image.Image:
+    """Orientation + transparency flattening only — no tonal changes.
+
+    For clean renders and catalogue shots where colour accuracy matters
+    more than correction.
+    """
+    img = ImageOps.exif_transpose(image)
+    if img.mode not in ("RGB", "RGBA"):
+        img = img.convert("RGB")
+    if img.mode == "RGBA":
+        background = Image.new("RGB", img.size, (255, 255, 255))
+        background.paste(img, mask=img.split()[3])
+        img = background
+    if max(img.size) > MAX_SIDE:
+        img.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
+    return img
+
+
 def enhance(image: Image.Image) -> Image.Image:
     """Return an enhanced RGB copy of *image*."""
     img = ImageOps.exif_transpose(image)
