@@ -733,6 +733,38 @@
       "anchors": {},
       "group": null,
       "added_at": "2026-07-29T15:50:09+00:00"
+    },
+    {
+      "id": "body/body-metal-ornate-shield",
+      "category": "body",
+      "file": "body/body-metal-ornate-shield.png",
+      "thumbnail": "body/body-metal-ornate-shield.thumb.png",
+      "width_px": 855,
+      "height_px": 864,
+      "longest_in": 18.0,
+      "ppi": 48,
+      "source": "body_metal_ornate_shield.jpg",
+      "source_sha1": "2be5fbb7569c0478f63b01cecc453ee00f31a5d3",
+      "slot": "body",
+      "anchors": {},
+      "group": null,
+      "added_at": "2026-07-15T03:38:46+00:00"
+    },
+    {
+      "id": "body/body-metal-shield",
+      "category": "body",
+      "file": "body/body-metal-shield.png",
+      "thumbnail": "body/body-metal-shield.thumb.png",
+      "width_px": 490,
+      "height_px": 864,
+      "longest_in": 18.0,
+      "ppi": 48,
+      "source": "body_metal_shield.jpg",
+      "source_sha1": "1999671414dea4e27360d40d6612f0dec0baf830",
+      "slot": "body",
+      "anchors": {},
+      "group": null,
+      "added_at": "2026-07-15T03:38:48+00:00"
     }
   ]
 }
