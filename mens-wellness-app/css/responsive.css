@@ -1,0 +1,732 @@
+/* Responsive Design */
+
+/* Tablet & Medium Screens (768px and below) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .navbar-container {
+    flex-wrap: wrap;
+  }
+
+  .navbar-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary);
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom-width: 2px;
+  }
+
+  .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .logo-text {
+    font-size: 1rem;
+  }
+
+  .main-container {
+    padding: 1rem;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .resources-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .presentation-guide {
+    gap: 1rem;
+  }
+
+  .guide-item {
+    padding: 1rem;
+  }
+
+  .tactics-list {
+    gap: 1rem;
+  }
+
+  .tactic-item {
+    padding: 1rem;
+  }
+
+  .comparison {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .tax-info {
+    gap: 0.75rem;
+  }
+
+  .tax-item {
+    padding: 0.75rem;
+  }
+
+  .habit-examples {
+    gap: 0.75rem;
+  }
+
+  .habit-item {
+    padding: 0.75rem;
+  }
+
+  .technique-list {
+    gap: 1rem;
+  }
+
+  .technique-item {
+    padding: 1rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .input-group input,
+  .input-group .btn {
+    width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+
+  .sos-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.25rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-content p {
+    font-size: 0.9rem;
+  }
+
+  .disclaimer {
+    font-size: 0.8rem;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-links a {
+    display: inline-block;
+    margin: 0.5rem 0.5rem;
+  }
+}
+
+/* Mobile Screens (480px and below) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .navbar-logo {
+    gap: 0.5rem;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+
+  .main-container {
+    padding: 0.75rem;
+  }
+
+  .hero {
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-buttons {
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+
+  .info-card,
+  .resource-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .info-card h3,
+  .resource-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .resource-list,
+  .instruction-list,
+  .abuse-signs {
+    padding-left: 1.25rem;
+  }
+
+  .resource-list li,
+  .instruction-list li,
+  .abuse-signs li {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .guide-item {
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  .guide-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .guide-item li {
+    padding-left: 1.25rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .tactic-item {
+    padding: 1rem;
+  }
+
+  .tactic-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tactic-item p {
+    font-size: 0.9rem;
+  }
+
+  .tabs {
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .dashboard-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .crisis-resources {
+    gap: 1rem;
+  }
+
+  .resource-item {
+    padding: 1rem;
+  }
+
+  .resource-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .resource-item p {
+    font-size: 0.9rem;
+  }
+
+  .technique-list {
+    gap: 1rem;
+  }
+
+  .technique-item {
+    padding: 1rem;
+  }
+
+  .technique-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .technique-item p {
+    font-size: 0.9rem;
+  }
+
+  .habit-examples {
+    gap: 0.75rem;
+  }
+
+  .habit-item {
+    padding: 0.75rem;
+  }
+
+  .habit-item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .habit-item p {
+    font-size: 0.85rem;
+  }
+
+  .comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-item {
+    padding: 1rem;
+  }
+
+  .compare-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .tax-info {
+    gap: 0.6rem;
+  }
+
+  .tax-item {
+    padding: 0.75rem;
+  }
+
+  .tax-item h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .tax-item p {
+    font-size: 0.85rem;
+  }
+
+  .input-group input,
+  .input-group select {
+    min-width: 100%;
+  }
+
+  .search-box {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-box h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .laws-result {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.25rem;
+    border-radius: 6px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .form-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    gap: 0.75rem;
+  }
+
+  .checkbox-item {
+    gap: 0.5rem;
+    padding: 0.4rem;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+
+  .close-button {
+    font-size: 1.75rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .sos-button {
+    width: 55px;
+    height: 55px;
+    font-size: 1.1rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .sos-icon {
+    font-size: 1.5rem;
+  }
+
+  .sos-text {
+    font-size: 0.65rem;
+  }
+
+  .sos-info {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-box {
+    padding: 1rem;
+  }
+
+  .info-box h3 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sos-data {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .sos-location {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .footer-content p {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .disclaimer {
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+  }
+
+  .footer-links {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a {
+    margin: 0.35rem 0.4rem;
+  }
+
+  .note {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+    font-size: 0.9rem;
+  }
+
+  .text-muted {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .sos-button,
+  .navbar,
+  .footer,
+  .modal {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .main-container {
+    max-width: 100%;
+  }
+
+  .btn {
+    border: 2px solid black;
+    background: white;
+    color: black;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  .section {
+    page-break-inside: avoid;
+  }
+
+  .feature-card,
+  .info-card,
+  .resource-card {
+    border: 1px solid black;
+    page-break-inside: avoid;
+  }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .feature-card,
+  .info-card,
+  .resource-card {
+    border-color: #374151;
+  }
+
+  .tabs {
+    border-bottom-color: #374151;
+  }
+
+  .guide-item,
+  .tactic-item,
+  .technique-item,
+  .resource-item,
+  .compare-item,
+  .tax-item,
+  .habit-item {
+    background-color: #111827;
+    border-color: #374151;
+  }
+
+  .input-group input,
+  .input-group select {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+
+  .search-box {
+    background-color: #111827;
+    border-color: #374151;
+  }
+
+  .note {
+    background-color: rgba(245, 158, 11, 0.05);
+  }
+
+  .sos-data,
+  .sos-location,
+  .contact-info {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+}
+
+/* High Resolution Displays */
+@media (min-width: 1440px) {
+  .main-container {
+    max-width: 1320px;
+  }
+
+  .hero {
+    padding: 4rem 2rem;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .features-grid,
+  .card-container,
+  .resources-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Accessibility - High Contrast */
+@media (prefers-contrast: more) {
+  :root {
+    --primary: #0a1f2e;
+    --primary-light: #1a3f5e;
+    --secondary: #b85c00;
+    --border: #4b5563;
+  }
+
+  .btn,
+  a {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Men's Protection & Wellness - Legal education, financial literacy, mental health support, and emergency resources for men facing abuse and manipulation.">
+  <meta name="theme-color" content="#1a3a52">
+  <title>Men's Protection & Wellness - Legal & Financial Education</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Emergency SOS Button - Always Visible -->
+  <button id="sos-button" class="sos-button" aria-label="Emergency SOS - Silent 911">
+    <span class="sos-icon">🚨</span>
+    <span class="sos-text">SOS</span>
+  </button>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <span class="logo-icon">🛡️</span>
+        <span class="logo-text">Men's Protection & Wellness</span>
+      </div>
+      <button class="navbar-toggle" id="navbar-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+        <li><a href="#dashboard" class="nav-link" data-section="dashboard">Dashboard</a></li>
+        <li><a href="#legal" class="nav-link" data-section="legal">Legal Education</a></li>
+        <li><a href="#financial" class="nav-link" data-section="financial">Financial</a></li>
+        <li><a href="#wellness" class="nav-link" data-section="wellness">Wellness</a></li>
+        <li><a href="#resources" class="nav-link" data-section="resources">Resources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-container">
+
+    <!-- HOME SECTION -->
+    <section id="home-section" class="section home-section active">
+      <div class="hero">
+        <h1>Men's Protection & Wellness</h1>
+        <p class="subtitle">Legal education, financial literacy, and mental health support for men facing abuse, manipulation, and family conflict.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" data-action="start-assessment">Assess My Situation</button>
+          <button class="btn btn-secondary" data-action="emergency-resources">Find Help Now</button>
+        </div>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3>Legal Education</h3>
+          <p>Learn your rights, understand local laws, know how to communicate with judges and legal professionals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Financial Literacy</h3>
+          <p>Understand separation finances, tax implications, child support, and protect yourself from financial manipulation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Mental Health</h3>
+          <p>Resources, coping strategies, and wellness guidance. Free mental health hotlines available 24/7.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚔️</div>
+          <h3>Abuse Recognition</h3>
+          <p>Understand emotional, financial, physical, and legal abuse. Learn to identify manipulation tactics.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎖️</div>
+          <h3>Veterans Benefits</h3>
+          <p>Understand apportionment, disability benefits, what can and cannot be taken in separation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏥</div>
+          <h3>Wellness & Recovery</h3>
+          <p>Holistic therapies, positive habit formation, and recovery resources for abuse survivors.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard-section" class="section dashboard-section">
+      <div class="section-header">
+        <h2>Your Dashboard</h2>
+        <p>Track your progress and get personalized recommendations</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card status-card">
+          <h3>Your Risk Assessment</h3>
+          <div id="risk-status" class="risk-status">Not started</div>
+          <button class="btn btn-primary" data-action="start-assessment">Take Assessment</button>
+        </div>
+
+        <div class="dashboard-card stats-card">
+          <h3>Quick Stats</h3>
+          <ul class="stats-list">
+            <li><span class="stat-label">Resources Saved:</span> <span id="saved-count">0</span></li>
+            <li><span class="stat-label">Guides Read:</span> <span id="read-count">0</span></li>
+            <li><span class="stat-label">Last Updated:</span> <span id="last-update">Never</span></li>
+          </ul>
+        </div>
+
+        <div class="dashboard-card recommendations-card">
+          <h3>Recommended for You</h3>
+          <div id="recommendations" class="recommendations-list">
+            <p class="text-muted">Complete your risk assessment to get personalized recommendations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGAL EDUCATION SECTION -->
+    <section id="legal-section" class="section legal-section">
+      <div class="section-header">
+        <h2>Legal Education & Protection</h2>
+        <p>Learn your rights and understand the laws in your area</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="legal-basics">Legal Basics</button>
+        <button class="tab-button" data-tab="local-laws">Find Local Laws</button>
+        <button class="tab-button" data-tab="court-prep">Court Preparation</button>
+        <button class="tab-button" data-tab="manipulation">Legal Manipulation Tactics</button>
+      </div>
+
+      <!-- Legal Basics Tab -->
+      <div id="legal-basics" class="tab-content active">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Understanding Your Rights</h3>
+            <ul class="resource-list">
+              <li><strong>Custody Rights:</strong> You have equal parental rights unless proven otherwise</li>
+              <li><strong>Spousal Support:</strong> Can flow in either direction; often temporary</li>
+              <li><strong>Child Support:</strong> Based on income and custody calculations</li>
+              <li><strong>Property Division:</strong> Typically 50/50 in most states (community property)</li>
+              <li><strong>Protection Orders:</strong> False allegations are serious crimes</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>How to Communicate with Legal Professionals</h3>
+            <ol class="instruction-list">
+              <li><strong>Be Prepared:</strong> Bring documents, dates, and evidence</li>
+              <li><strong>Be Honest:</strong> Never lie to your attorney</li>
+              <li><strong>Be Concise:</strong> Explain clearly without unnecessary emotion</li>
+              <li><strong>Ask Questions:</strong> Understand the process and options</li>
+              <li><strong>Follow Advice:</strong> If you don't agree, discuss before acting</li>
+              <li><strong>Document Everything:</strong> Keep records of communications</li>
+            </ol>
+          </div>
+
+          <div class="info-card">
+            <h3>How to Present Yourself to a Judge</h3>
+            <div class="presentation-guide">
+              <div class="guide-item">
+                <h4>Appearance</h4>
+                <ul>
+                  <li>Wear clean, professional clothing (suit, dress shirt, slacks)</li>
+                  <li>Avoid logos, graphics, or casual wear</li>
+                  <li>Neat hair, trimmed facial hair</li>
+                  <li>Minimal jewelry and accessories</li>
+                </ul>
+              </div>
+              <div class="guide-item">
+                <h4>Demeanor</h4>
+                <ul>
+                  <li>Make eye contact with the judge when speaking</li>
+                  <li>Speak clearly and at moderate pace</li>
+                  <li>Never interrupt or speak out of turn</li>
+                  <li>Show respect to the court and opposing counsel</li>
+                  <li>Control emotions—stay calm and professional</li>
+                </ul>
+              </div>
+              <div class="guide-item">
+                <h4>Language</h4>
+                <ul>
+                  <li>Address the judge as "Your Honor"</li>
+                  <li>Use complete sentences</li>
+                  <li>Avoid slang, profanity, or aggressive language</li>
+                  <li>Stick to facts—avoid personal attacks</li>
+                  <li>Answer questions directly</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Find Local Laws Tab -->
+      <div id="local-laws" class="tab-content">
+        <div class="search-box">
+          <h3>Search Laws by Location</h3>
+          <div class="input-group">
+            <input type="text" id="zip-code-input" placeholder="Enter your ZIP code" maxlength="5">
+            <button class="btn btn-primary" id="search-laws-btn">Search Laws</button>
+          </div>
+          <div id="laws-result" class="laws-result hidden">
+            <div class="loading">Loading laws for your area...</div>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Key Legal Topics to Research</h3>
+            <ul class="resource-list">
+              <li>Child Custody Laws (automatic custody, shared custody)</li>
+              <li>Child Support Guidelines (income calculations, modifications)</li>
+              <li>Spousal Support/Alimony Rules (duration, amount)</li>
+              <li>Property Division Laws (community property vs. equitable distribution)</li>
+              <li>Parental Rights (legal, physical, sole, joint)</li>
+              <li>Grandparents' Rights (if applicable)</li>
+              <li>Protection Orders and False Allegations (penalties)</li>
+              <li>Custody Interference (parental alienation)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Court Preparation Tab -->
+      <div id="court-prep" class="tab-content">
+        <div class="card-container">
+          <div class="info-card checklist-card">
+            <h3>Court Preparation Checklist</h3>
+            <div class="checklist">
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Gather all relevant documents (birth certificates, financial records)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Organize evidence chronologically (emails, texts, photos)</span>
+              </label>
+              <label class="checkbox-item">
+                <span>Create a timeline of key events</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Prepare your statement (practice with a friend or counselor)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Identify witnesses who can support your case</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Know your financial situation completely</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Understand the judge's background and tendencies (if possible)</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Plan your route and arrive 30 minutes early</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span>Get a good night's sleep before court</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Testifying in Court</h3>
+            <ol class="instruction-list">
+              <li>Listen carefully to each question before answering</li>
+              <li>Answer only what was asked—don't over-explain</li>
+              <li>Tell the truth, even if it hurts your case</li>
+              <li>Don't guess or assume—say "I don't know" if you don't</li>
+              <li>Speak to the judge, not the attorney asking the question</li>
+              <li>Take your time—don't rush your answers</li>
+              <li>If you don't understand a question, ask for clarification</li>
+              <li>Stay calm even if opposing counsel is aggressive</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal Manipulation Tactics Tab -->
+      <div id="manipulation" class="tab-content">
+        <div class="card-container">
+          <div class="warning-card">
+            <h3>⚠️ Common Legal Manipulation Tactics</h3>
+            <div class="tactics-list">
+              <div class="tactic-item">
+                <h4>False Allegations</h4>
+                <p>Accusing you of abuse, endangerment, or neglect without evidence. <strong>Counter:</strong> Document everything, keep communications in writing, never be alone with unmonitored accusations.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Custody Interference</h4>
+                <p>Violating custody orders, denying visitation, parental alienation. <strong>Counter:</strong> Document every missed visit, keep records of communication attempts, file contempt motions.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Financial Deception</h4>
+                <p>Hiding assets, underreporting income, running up joint debt before separation. <strong>Counter:</strong> Get credit reports, request full financial disclosures, forensic accounting if needed.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Delay Tactics</h4>
+                <p>Filing motion after motion to delay proceedings and drain your resources. <strong>Counter:</strong> Stay organized, file counter-motions, consider mediation, push for trial dates.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Leverage Through Children</h4>
+                <p>Using kids as bargaining chips or withholding visitation for financial gain. <strong>Counter:</strong> Focus on children's best interest, follow court orders exactly, document violations.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Reputation Attacks</h4>
+                <p>Public accusations, social media campaigns, involving children in disputes. <strong>Counter:</strong> Don't engage online, keep communications professional, document harassment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINANCIAL SECTION -->
+    <section id="financial-section" class="section financial-section">
+      <div class="section-header">
+        <h2>Financial Education & Management</h2>
+        <p>Protect yourself and build financial literacy</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="financial-basics">Financial Basics</button>
+        <button class="tab-button" data-tab="separation-finance">Separation Finances</button>
+        <button class="tab-button" data-tab="tools">Financial Tools</button>
+        <button class="tab-button" data-tab="manipulation-finance">Financial Manipulation</button>
+      </div>
+
+      <!-- Financial Basics Tab -->
+      <div id="financial-basics" class="tab-content active">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Essential Financial Knowledge</h3>
+            <ul class="resource-list">
+              <li><strong>Credit Score:</strong> Ranges 300-850; above 700 is good; impacts loans and rates</li>
+              <li><strong>Income Types:</strong> W-2 wages, 1099 self-employment, passive income, investments</li>
+              <li><strong>Tax Filing Status:</strong> Single, Married Filing Jointly, Married Filing Separately, Head of Household</li>
+              <li><strong>Deductions:</strong> Personal, dependent, standard vs. itemized</li>
+              <li><strong>Debt-to-Income Ratio:</strong> Below 43% is ideal for lending</li>
+              <li><strong>Emergency Fund:</strong> 3-6 months of expenses in accessible savings</li>
+              <li><strong>Retirement Accounts:</strong> 401k, IRA, Roth IRA (different tax implications)</li>
+              <li><strong>Asset Types:</strong> Liquid, fixed, real property, investments</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Post-Relationship Financial Awareness</h3>
+            <ul class="resource-list">
+              <li><strong>Change Beneficiaries:</strong> Update life insurance, retirement accounts, wills</li>
+              <li><strong>Check Credit Reports:</strong> Monitor for fraud or unauthorized accounts</li>
+              <li><strong>Close Joint Accounts:</strong> Or pay down to prevent future liability</li>
+              <li><strong>Update Tax Info:</strong> Dependents, filing status, withholdings</li>
+              <li><strong>Separate Financial Accounts:</strong> Establish your own credit history</li>
+              <li><strong>Review Insurance:</strong> Health, auto, homeowners, disability, life</li>
+              <li><strong>Update Legal Documents:</strong> Will, power of attorney, healthcare proxy</li>
+              <li><strong>Social Security Records:</strong> Verify your name and earnings history</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Tax Implications of Separation</h3>
+            <div class="tax-info">
+              <div class="tax-item">
+                <h4>Child Support</h4>
+                <p>NOT tax deductible for the payer. NOT taxable income for the recipient.</p>
+              </div>
+              <div class="tax-item">
+                <h4>Spousal Support/Alimony</h4>
+                <p>TAXABLE income for recipient (before 2019 for pre-existing agreements). Check current rules.</p>
+              </div>
+              <div class="tax-item">
+                <h4>Dependency Exemptions</h4>
+                <p>Usually goes to primary custodian but can be negotiated in separation agreement.</p>
+              </div>
+              <div class="tax-item">
+                <h4>Child Tax Credit</h4>
+                <p>$2,000 per qualifying child (2024). Usually for primary custodian.</p>
+              </div>
+              <div class="tax-item">
+                <h4>Head of Household Filing</h4>
+                <p>Can be used if you pay more than half household expenses and have dependent.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Separation Finances Tab -->
+      <div id="separation-finance" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Understanding Child Support</h3>
+            <ul class="resource-list">
+              <li><strong>Calculation:</strong> Based on state guidelines, usually 15-20% of income per child</li>
+              <li><strong>Income Definition:</strong> Includes wages, commission, bonuses, overtime, benefits</li>
+              <li><strong>Modification:</strong> Changed jobs, income loss, custody changes allow adjustments</li>
+              <li><strong>Enforcement:</strong> Wage garnishment, tax intercept, license suspension possible</li>
+              <li><strong>Termination:</strong> Usually ends at 18, or 19-21 if in high school</li>
+              <li><strong>College Support:</strong> Not automatic; must be addressed in agreement</li>
+              <li><strong>Health Insurance:</strong> Usually ordered to be maintained</li>
+              <li><strong>Daycare/Health:</strong> Often shared as add-ons to base child support</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Property Division Basics</h3>
+            <ul class="resource-list">
+              <li><strong>Marital vs. Separate:</strong> Usually only marital property is divided</li>
+              <li><strong>Community Property States:</strong> 50/50 split (CA, TX, WA, etc.)</li>
+              <li><strong>Equitable Distribution States:</strong> Fair (not always equal) split</li>
+              <li><strong>Hidden Assets:</strong> Get professional discovery if needed</li>
+              <li><strong>Retirement Accounts:</strong> Need QDRO for 401k/pension transfers</li>
+              <li><strong>Home Equity:</strong> Usually split or one buys out the other</li>
+              <li><strong>Debts:</strong> Also divided; don't assume ex will pay "their" portion</li>
+              <li><strong>Appraisals:</strong> Get professional valuations for major assets</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Understanding Spousal Support/Alimony</h3>
+            <ul class="resource-list">
+              <li><strong>Temporary Support:</strong> Paid during separation, often ends at divorce</li>
+              <li><strong>Permanent Support:</strong> Long marriages, significant income gap (getting rarer)</li>
+              <li><strong>Calculation:</strong> Varies widely; 25-30% of income difference (varies by state)</li>
+              <li><strong>Duration:</strong> Often tied to length of marriage (e.g., 50% of marriage length)</li>
+              <li><strong>Modification:</strong> Can be modified if circumstances change significantly</li>
+              <li><strong>Termination:</strong> Usually ends if recipient remarries or cohabits</li>
+              <li><strong>Tax Status:</strong> Changed in 2019 for post-2018 divorces</li>
+              <li><strong>Vocational Evaluation:</strong> Can show earning potential, reducing award</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Tools Tab -->
+      <div id="tools" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Household Budget Tracker</h3>
+            <p>Download our budget template to track expenses and create a financial plan.</p>
+            <button class="btn btn-primary" data-action="download-budget">Download Budget Template (Excel)</button>
+          </div>
+
+          <div class="info-card">
+            <h3>Child Support Calculator</h3>
+            <p>Quick reference calculator based on your state's guidelines.</p>
+            <button class="btn btn-primary" data-action="open-calculator">Open Calculator</button>
+          </div>
+
+          <div class="info-card">
+            <h3>Asset Inventory Sheet</h3>
+            <p>Document all marital assets for accurate division planning.</p>
+            <button class="btn btn-primary" data-action="download-asset-inventory">Download Asset Inventory</button>
+          </div>
+
+          <div class="info-card">
+            <h3>Tax Planning Worksheet</h3>
+            <p>Plan for post-divorce taxes and changes to filing status.</p>
+            <button class="btn btn-primary" data-action="download-tax-worksheet">Download Tax Worksheet</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Financial Manipulation Tab -->
+      <div id="manipulation-finance" class="tab-content">
+        <div class="card-container">
+          <div class="warning-card">
+            <h3>⚠️ Common Financial Manipulation Tactics</h3>
+            <div class="tactics-list">
+              <div class="tactic-item">
+                <h4>Hidden Assets</h4>
+                <p>Secretly moving money, investments, or valuables before separation. <strong>Counter:</strong> Get joint bank statements, tax returns, credit reports; request forensic accounting.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Income Underreporting</h4>
+                <p>Claiming lower income to reduce child support or spousal support. <strong>Counter:</strong> Request last 3 years tax returns, employment verification, benefits statements.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Sudden Expenses/Gifts</h4>
+                <p>Giving away money or property before separation to hide assets. <strong>Counter:</strong> Document timeline, request explanations, valuate gifts.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Joint Account Depletion</h4>
+                <p>Draining shared accounts without permission before separation. <strong>Counter:</strong> Freeze accounts immediately, get bank records, document withdrawals.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Debt Accumulation</h4>
+                <p>Running up joint debt in your name to burden you in division. <strong>Counter:</strong> Monitor credit regularly, stop accessing joint cards, dispute unauthorized debt.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Employment Sabotage</h4>
+                <p>Getting you fired or reducing income to lower your support obligations. <strong>Counter:</strong> Document employment history, keep paycheck records, prove sustainable income.</p>
+              </div>
+              <div class="tactic-item">
+                <h4>Child Support Evasion</h4>
+                <p>Avoiding payments through underground work or hiding income. <strong>Counter:</strong> Enforce through wage garnishment, tax intercept, or contempt proceedings.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WELLNESS SECTION -->
+    <section id="wellness-section" class="section wellness-section">
+      <div class="section-header">
+        <h2>Mental Health & Wellness</h2>
+        <p>Resources, strategies, and support for recovery and wellbeing</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="mental-health">Mental Health Resources</button>
+        <button class="tab-button" data-tab="abuse-types">Types of Abuse</button>
+        <button class="tab-button" data-tab="coping">Coping Strategies</button>
+        <button class="tab-button" data-tab="holistic">Holistic Wellness</button>
+      </div>
+
+      <!-- Mental Health Resources Tab -->
+      <div id="mental-health" class="tab-content active">
+        <div class="card-container">
+          <div class="info-card emergency-card">
+            <h3>🚨 Immediate Crisis Support</h3>
+            <div class="crisis-resources">
+              <div class="resource-item">
+                <h4>National Suicide Prevention Lifeline</h4>
+                <p><strong>Phone:</strong> 988 (available 24/7)</p>
+                <p><strong>Text:</strong> Text HOME to 741741</p>
+              </div>
+              <div class="resource-item">
+                <h4>Crisis Text Line</h4>
+                <p><strong>Text:</strong> HOME to 741741</p>
+              </div>
+              <div class="resource-item">
+                <h4>National Domestic Violence Hotline</h4>
+                <p><strong>Phone:</strong> 1-800-799-7233</p>
+                <p><strong>Text:</strong> START to 88788</p>
+              </div>
+              <div class="resource-item">
+                <h4>SAMHSA National Helpline</h4>
+                <p><strong>Phone:</strong> 1-800-662-4357</p>
+                <p>Substance abuse & mental health (24/7, free, confidential)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Finding Mental Health Support</h3>
+            <ul class="resource-list">
+              <li><strong>Therapy Types:</strong> Individual therapy, group therapy, family therapy, couples therapy (if appropriate)</li>
+              <li><strong>Therapist Specialties:</strong> Look for trauma, abuse, divorce, family law experience</li>
+              <li><strong>Online Therapy:</strong> BetterHelp, Talkspace, MDLive (often more affordable)</li>
+              <li><strong>Support Groups:</strong> Men's groups, abuse survivor groups, divorce recovery groups</li>
+              <li><strong>Insurance Coverage:</strong> Check your plan; many offer mental health benefits</li>
+              <li><strong>Sliding Scale:</strong> Many therapists offer reduced rates for lower income</li>
+              <li><strong>Community Mental Health:</strong> Often free or low-cost through county/city programs</li>
+              <li><strong>Clergy/Chaplains:</strong> Religious communities often provide counseling</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Processing Trauma & Abuse</h3>
+            <ul class="resource-list">
+              <li>It takes time—healing is not linear; setbacks are normal</li>
+              <li>Shame and guilt are common but NOT your fault</li>
+              <li>Men's emotional responses are valid; suppression causes problems</li>
+              <li>Professional help is strength, not weakness</li>
+              <li>Join support groups—shared experiences reduce isolation</li>
+              <li>Exercise helps process trauma physiologically</li>
+              <li>Meditation and breathing exercises calm the nervous system</li>
+              <li>Creative outlets (art, music, writing) aid processing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Types of Abuse Tab -->
+      <div id="abuse-types" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Emotional & Psychological Abuse</h3>
+            <ul class="abuse-signs">
+              <li>Constant criticism, belittling, or name-calling</li>
+              <li>Isolating you from friends and family</li>
+              <li>Gaslighting (making you question your reality)</li>
+              <li>Controlling behavior (finances, decisions, movement)</li>
+              <li>Threatening harm to self, you, or children</li>
+              <li>Using children as bargaining chips</li>
+              <li>Blaming you for their behavior</li>
+              <li>Constant mood swings or unpredictability</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Financial Abuse</h3>
+            <ul class="abuse-signs">
+              <li>Controlling all money and finances</li>
+              <li>Preventing you from working or sabotaging employment</li>
+              <li>Running up debt in your name</li>
+              <li>Hiding income or assets</li>
+              <li>Refusing to contribute to household expenses</li>
+              <li>Stealing money or identity</li>
+              <li>Preventing access to bank accounts or financial information</li>
+              <li>Using money/support as leverage or control</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Physical Abuse</h3>
+            <ul class="abuse-signs">
+              <li>Hitting, pushing, slapping, or striking</li>
+              <li>Throwing objects at you</li>
+              <li>Restraining or blocking you</li>
+              <li>Threatening with weapons</li>
+              <li>Damaging your property</li>
+              <li>Hurting pets to control you</li>
+              <li>Any unwanted physical contact</li>
+            </ul>
+            <p class="note"><strong>Note:</strong> Even "small" physical incidents escalate. Document everything. Get medical attention and file reports.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Legal Abuse & False Allegations</h3>
+            <ul class="abuse-signs">
+              <li>Filing false protective orders</li>
+              <li>Making false abuse or neglect allegations</li>
+              <li>Violating custody orders repeatedly</li>
+              <li>Using the legal system to harass and control</li>
+              <li>Threatening to take children away</li>
+              <li>Filing frivolous lawsuits</li>
+              <li>Misrepresenting facts to authorities</li>
+              <li>Using children as leverage in legal proceedings</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Sexual Abuse</h3>
+            <ul class="abuse-signs">
+              <li>Forcing sexual acts or unwanted touching</li>
+              <li>Withholding sex as punishment</li>
+              <li>Spreading sexual rumors or sharing intimate images</li>
+              <li>Coerced sexual activities</li>
+              <li>Sexual comments or criticism of your body</li>
+            </ul>
+            <p class="note"><strong>Note:</strong> Sexual abuse in relationships IS real. Resources available 24/7.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coping Strategies Tab -->
+      <div id="coping" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Immediate Coping Techniques</h3>
+            <div class="technique-list">
+              <div class="technique-item">
+                <h4>Box Breathing (4-4-4-4)</h4>
+                <p>Breathe in for 4 counts, hold 4, out 4, hold 4. Repeat 5-10 times. Calms nervous system immediately.</p>
+              </div>
+              <div class="technique-item">
+                <h4>Grounding (5 Senses)</h4>
+                <p>Name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. Brings you back to present.</p>
+              </div>
+              <div class="technique-item">
+                <h4>Physical Movement</h4>
+                <p>Walk, run, dance, or shake your body. Releases stress hormones and resets your nervous system.</p>
+              </div>
+              <div class="technique-item">
+                <h4>Cold Water</h4>
+                <p>Splash cold water on face or hold ice. Activates diving response, slows heart rate.</p>
+              </div>
+              <div class="technique-item">
+                <h4>Progressive Muscle Relaxation</h4>
+                <p>Tense each muscle group for 5 seconds, then release. Works through your whole body.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Building Long-Term Resilience</h3>
+            <ul class="resource-list">
+              <li><strong>Exercise:</strong> 30 min daily improves mood and reduces anxiety</li>
+              <li><strong>Sleep:</strong> 7-9 hours nightly; critical for mental health</li>
+              <li><strong>Nutrition:</strong> Balanced diet; avoid excessive alcohol/caffeine</li>
+              <li><strong>Social Connection:</strong> Maintain friendships; join groups</li>
+              <li><strong>Boundaries:</strong> Learn to say no; limit contact with toxic people</li>
+              <li><strong>Journaling:</strong> Write down thoughts and feelings daily</li>
+              <li><strong>Meditation:</strong> Even 5 minutes daily reduces stress</li>
+              <li><strong>Gratitude Practice:</strong> Name 3 things daily you're grateful for</li>
+              <li><strong>Purpose/Meaning:</strong> Volunteer, create, help others</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Recognizing Progress</h3>
+            <ul class="resource-list">
+              <li>You're thinking more clearly about your situation</li>
+              <li>Your emotional reactions are becoming less intense</li>
+              <li>You can laugh or feel joy again (even briefly)</li>
+              <li>You're making better decisions for yourself</li>
+              <li>You're rebuilding relationships with friends/family</li>
+              <li>You're caring for your physical health</li>
+              <li>You're feeling less shame or self-blame</li>
+              <li>You're setting and maintaining healthy boundaries</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Holistic Wellness Tab -->
+      <div id="holistic" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Non-Clinical Wellness Approaches</h3>
+            <ul class="resource-list">
+              <li><strong>Yoga:</strong> Combines movement, breathing, and mindfulness; many free YouTube videos</li>
+              <li><strong>Tai Chi:</strong> Slow, meditative martial art; improves balance and focus</li>
+              <li><strong>Qigong:</strong> Ancient Chinese practice; reduces stress and anxiety</li>
+              <li><strong>Meditation Apps:</strong> Headspace, Calm, Insight Timer (many free versions)</li>
+              <li><strong>Nature Time:</strong> Walking, hiking, gardening reduces cortisol levels</li>
+              <li><strong>Nutrition/Supplements:</strong> Omega-3s, Vitamin D, B vitamins support mental health</li>
+              <li><strong>Acupuncture:</strong> May help with stress, pain, and emotional processing</li>
+              <li><strong>Massage/Bodywork:</strong> Releases tension and promotes relaxation</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Positive Habit Formation</h3>
+            <p>Use the "habit stack" method: attach new habits to existing ones.</p>
+            <div class="habit-examples">
+              <div class="habit-item">
+                <h4>Morning Routine</h4>
+                <p><strong>After coffee:</strong> 5-minute meditation</p>
+                <p><strong>After shower:</strong> Gratitude writing (3 things)</p>
+              </div>
+              <div class="habit-item">
+                <h4>Work Day</h4>
+                <p><strong>Before lunch:</strong> 10-minute walk</p>
+                <p><strong>After work:</strong> Journal about your day</p>
+              </div>
+              <div class="habit-item">
+                <h4>Evening</h4>
+                <p><strong>Before bed:</strong> No screens (30 min)</p>
+                <p><strong>In bed:</strong> Box breathing or body scan meditation</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Creative & Purpose-Driven Activities</h3>
+            <ul class="resource-list">
+              <li><strong>Writing:</strong> Journaling, poetry, storytelling (therapeutic)</li>
+              <li><strong>Visual Arts:</strong> Painting, drawing, photography</li>
+              <li><strong>Music:</strong> Playing instruments, singing, listening</li>
+              <li><strong>Craft Projects:</strong> Woodworking, model building, DIY repairs</li>
+              <li><strong>Cooking:</strong> Experimenting with recipes, meal prep</li>
+              <li><strong>Volunteering:</strong> Helping others provides purpose and connection</li>
+              <li><strong>Learning:</strong> Online courses, books, skill-building</li>
+              <li><strong>Mentoring:</strong> Share your experience and help others</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES SECTION -->
+    <section id="resources-section" class="section resources-section">
+      <div class="section-header">
+        <h2>Resources & Support</h2>
+        <p>Find help, organizations, and support networks</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-button active" data-tab="hotlines">Crisis Hotlines</button>
+        <button class="tab-button" data-tab="organizations">Organizations</button>
+        <button class="tab-button" data-tab="veterans">Veterans Benefits</button>
+        <button class="tab-button" data-tab="local-help">Local Help</button>
+      </div>
+
+      <!-- Crisis Hotlines Tab -->
+      <div id="hotlines" class="tab-content active">
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h3>National Suicide Prevention Lifeline</h3>
+            <div class="contact-info">
+              <p><strong>Phone:</strong> 988</p>
+              <p><strong>Text:</strong> HOME to 741741</p>
+              <p class="time">24/7 • Free • Confidential</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Crisis Text Line</h3>
+            <div class="contact-info">
+              <p><strong>Text:</strong> HOME to 741741</p>
+              <p class="time">24/7 • Free • Confidential</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>SAMHSA National Helpline</h3>
+            <div class="contact-info">
+              <p><strong>Phone:</strong> 1-800-662-4357</p>
+              <p>Substance abuse & mental health support</p>
+              <p class="time">24/7 • Free • Confidential</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>National Domestic Violence Hotline</h3>
+            <div class="contact-info">
+              <p><strong>Phone:</strong> 1-800-799-7233</p>
+              <p><strong>Text:</strong> START to 88788</p>
+              <p class="time">24/7 • Free • Confidential</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Veterans Crisis Line</h3>
+            <div class="contact-info">
+              <p><strong>Phone:</strong> 988 then press 1</p>
+              <p><strong>Text:</strong> 838255</p>
+              <p class="time">24/7 • Free • Confidential</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Men's Mental Health Support</h3>
+            <div class="contact-info">
+              <p><strong>ManKind Initiative:</strong> UK support for male victims</p>
+              <p><strong>National Coalition for Men:</strong> US advocacy and support</p>
+              <p class="time">Check website for local resources</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Organizations Tab -->
+      <div id="organizations" class="tab-content">
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h3>Family Law Help Organizations</h3>
+            <div class="org-info">
+              <p><strong>Legal Aid Services:</strong> Free legal help for low-income individuals</p>
+              <p><strong>State Bar Associations:</strong> Referrals and lawyer finder tools</p>
+              <p><strong>Law School Clinics:</strong> Free or reduced-cost legal services</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Men's Support Organizations</h3>
+            <div class="org-info">
+              <p><strong>National Fathers Organization:</strong> Custody and parenting support</p>
+              <p><strong>Men's Resource Center:</strong> Counseling and education</p>
+              <p><strong>Mankind Initiative:</strong> Support for male abuse survivors</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Domestic Abuse Resources</h3>
+            <div class="org-info">
+              <p><strong>The National DV Hotline:</strong> 1-800-799-7233</p>
+              <p><strong>Local Shelters/Refuges:</strong> Emergency housing and support</p>
+              <p><strong>Victim Services Programs:</strong> Counseling, legal advocacy, case management</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Mental Health Organizations</h3>
+            <div class="org-info">
+              <p><strong>NAMI (National Alliance on Mental Illness):</strong> Support and advocacy</p>
+              <p><strong>Depression & Bipolar Support Alliance:</strong> Peer support groups</p>
+              <p><strong>Psychology Today Therapist Finder:</strong> Search licensed therapists</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Parenting Support</h3>
+            <div class="org-info">
+              <p><strong>Co-Parenting Organizations:</strong> Communication and parenting resources</p>
+              <p><strong>Dads' Groups:</strong> Local father support and networking</p>
+              <p><strong>Parenting Classes:</strong> Many offered free by schools/courts</p>
+            </div>
+          </div>
+
+          <div class="resource-card">
+            <h3>Financial Counseling</h3>
+            <div class="org-info">
+              <p><strong>Non-Profit Credit Counseling:</strong> NFCC members</p>
+              <p><strong>Financial Therapy Association:</strong> Combined financial & mental health</p>
+              <p><strong>Government Resources:</strong> FDIC and FTC offer free guides</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Veterans Benefits Tab -->
+      <div id="veterans" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Veterans Disability Benefits</h3>
+            <ul class="resource-list">
+              <li><strong>What IS Divided:</strong> VA disability rating increases (only future increases, not the base amount)</li>
+              <li><strong>What ISN'T Divided:</strong> The base VA disability payment itself (protected by law)</li>
+              <li><strong>Apportionment:</strong> Some pay can be sent directly to ex-spouse for alimony/support (only with veteran's consent)</li>
+              <li><strong>SBP (Survivor Benefit Plan):</strong> Can be divided in divorce</li>
+              <li><strong>Documentation:</strong> Get your VA rating letter and disability decision</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Understanding Apportionment</h3>
+            <p><strong>Apportionment</strong> allows the VA to pay a portion of your disability benefits directly to a spouse or ex-spouse for:</p>
+            <ul class="resource-list">
+              <li>Alimony/spousal support payments</li>
+              <li>Child support payments</li>
+              <li>Ex-spouse's portion of disability award (only with your consent)</li>
+            </ul>
+            <p>However, VA disability is generally NOT divisible like military retirement. The base amount stays with you.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Military Retirement vs. VA Disability</h3>
+            <div class="comparison">
+              <div class="compare-item">
+                <h4>Military Retirement</h4>
+                <p>Money earned for service. CAN be divided in divorce. Use "20-year" formula to calculate.</p>
+              </div>
+              <div class="compare-item">
+                <h4>VA Disability</h4>
+                <p>Compensation for service-connected injury. Generally NOT divided. Protected by law (Mansell v. Mansell).</p>
+              </div>
+              <div class="compare-item">
+                <h4>BVA (Benefits for Veterans & Dependents)</h4>
+                <p>Includes pension, aid & attendance. Can be apportioned for support payments.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Other Veterans Benefits to Protect</h3>
+            <ul class="resource-list">
+              <li><strong>Healthcare:</strong> VA healthcare is for you; keep your DEERS info current</li>
+              <li><strong>Life Insurance:</strong> VGLI is separate from survivor benefits; update beneficiaries</li>
+              <li><strong>Housing Loan:</strong> VA loan eligibility remains yours (with exceptions)</li>
+              <li><strong>Education Benefits:</strong> GI Bill can be transferred to dependents; address in agreement</li>
+              <li><strong>BDD Program:</strong> File disability claim BEFORE discharge</li>
+              <li><strong>State Veterans Benefits:</strong> Many states offer additional support, burial, etc.</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>VA Resources</h3>
+            <ul class="resource-list">
+              <li><strong>VA.gov:</strong> Official website; check ratings, filing status, pay</li>
+              <li><strong>Veterans Service Organizations:</strong> VFW, American Legion (free guidance)</li>
+              <li><strong>VA Regional Offices:</strong> In-person help with claims</li>
+              <li><strong>Veterans Law Attorneys:</strong> Specialize in VA benefits in divorce</li>
+              <li><strong>VA Buddy Letter Program:</strong> Help documenting service-related conditions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Local Help Tab -->
+      <div id="local-help" class="tab-content">
+        <div class="card-container">
+          <div class="info-card">
+            <h3>Find Local Resources</h3>
+            <p>Enter your location to find nearby support services.</p>
+            <div class="input-group">
+              <input type="text" id="location-input" placeholder="Enter city, state or ZIP code">
+              <button class="btn btn-primary" id="search-local-btn">Search</button>
+            </div>
+            <div id="local-results" class="hidden">
+              <h4>Resources near you:</h4>
+              <div class="results-list"></div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>What to Look For</h3>
+            <ul class="resource-list">
+              <li><strong>Family Court Self-Help Centers:</strong> Most courts have free resources</li>
+              <li><strong>Mediation Services:</strong> Often court-connected, low-cost</li>
+              <li><strong>Therapists/Counselors:</strong> Look for abuse/trauma specialists</li>
+              <li><strong>Men's Groups:</strong> Support and networking</li>
+              <li><strong>Local Bar Association:</strong> Lawyer referrals, fee schedules</li>
+              <li><strong>Community Legal Clinics:</strong> Free consultations</li>
+              <li><strong>Child Support Enforcement Agency:</strong> Can help enforce agreements</li>
+              <li><strong>Parenting Classes:</strong> Many courts require these</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SOS Modal -->
+  <div id="sos-modal" class="modal hidden">
+    <div class="modal-content sos-modal">
+      <h2>Emergency SOS Activated</h2>
+      <div class="sos-info">
+        <div class="info-box">
+          <h3>Your Emergency Information</h3>
+          <div id="sos-data" class="sos-data">
+            <p>Loading your information...</p>
+          </div>
+        </div>
+        <div class="info-box">
+          <h3>This Audio Will Play:</h3>
+          <button class="btn btn-danger" id="play-sos-audio">▶ Play Audio</button>
+          <p class="small-text">For Silent 911 when you cannot call</p>
+        </div>
+        <div class="info-box">
+          <h3>Your Location</h3>
+          <p id="sos-location">Getting location...</p>
+          <button class="btn btn-secondary" id="copy-location">Copy Location</button>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="call-911">Call 911</button>
+        <button class="btn btn-secondary" id="send-alert">Send Alert to Contacts</button>
+        <button class="btn btn-muted" data-action="close-modal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assessment Modal -->
+  <div id="assessment-modal" class="modal hidden">
+    <div class="modal-content assessment-modal">
+      <button class="close-button" data-action="close-modal">&times;</button>
+      <h2>Risk Assessment Questionnaire</h2>
+      <p class="modal-subtitle">This helps identify your situation and provide relevant resources.</p>
+      <form id="assessment-form">
+        <div class="form-section">
+          <h3>Current Situation</h3>
+          <div class="form-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="legal-dispute">
+              <span>Involved in custody or family law dispute</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="false-allegations">
+              <span>Facing false allegations or accusations</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="manipulation">
+              <span>Experiencing manipulation or control</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="financial">
+              <span>Financial abuse or exploitation</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="physical">
+              <span>Physical abuse or threats</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="emotional">
+              <span>Emotional or psychological abuse</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="visitation">
+              <span>Custody or visitation interference</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="situation" value="mental-health">
+              <span>Mental health or substance abuse concerns</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Immediate Safety</h3>
+          <div class="form-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="safety" value="in-danger">
+              <span>I am currently in immediate danger</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="safety" value="children-danger">
+              <span>My children may be in danger</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="safety" value="self-harm">
+              <span>I am having thoughts of harming myself</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="safety" value="substance">
+              <span>Substance abuse is a factor</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Resources Needed</h3>
+          <div class="form-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="resources" value="legal-help">
+              <span>Legal advice or representation</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="resources" value="financial-help">
+              <span>Financial planning or education</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="resources" value="therapy">
+              <span>Mental health support or counseling</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="resources" value="housing">
+              <span>Safe housing or shelter</span>
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="resources" value="emergency">
+              <span>Emergency services or crisis support</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Get My Recommendations</button>
+          <button type="button" class="btn btn-secondary" data-action="close-modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2024 Men's Protection & Wellness. All rights reserved.</p>
+      <p class="disclaimer">This app provides educational information only. It is not a substitute for professional legal, financial, or medical advice. Always consult qualified professionals.</p>
+      <div class="footer-links">
+        <a href="#" data-action="privacy">Privacy</a> |
+        <a href="#" data-action="terms">Terms of Service</a> |
+        <a href="#" data-action="contact">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/assessment.js"></script>
+  <script src="js/sos.js"></script>
+</body>
+</html>
