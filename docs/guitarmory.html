@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Guitarmory — Killette Guitars</title>
+<style>
+  :root {
+    --bg: #0a0908; --panel: #12100e; --edge: #2e2418;
+    --ink: #f5f0e8; --muted: #9a8f82; --accent: #c9a227;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg); color: var(--ink); min-height: 100vh;
+  }
+  header {
+    display: flex; align-items: center; gap: 14px; padding: 10px 16px;
+    background: var(--panel); border-bottom: 2px solid var(--accent);
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 { font-size: 15px; margin: 0; letter-spacing: .14em; text-transform: uppercase; }
+  header h1 span { color: var(--accent); }
+  header a { color: var(--accent); font-size: 13px; text-decoration: none; font-weight: 700; }
+  .spacer { flex: 1; }
+  #champion {
+    margin: 20px auto 0; max-width: 900px; padding: 18px;
+    border: 1px solid var(--edge); border-radius: 14px;
+    background: linear-gradient(160deg, #1a1510, #0c0b0a);
+    display: none; gap: 20px; align-items: center;
+  }
+  #champion img.build { height: 190px; }
+  #champion img.logo { width: 200px; max-width: 36vw; }
+  #champion .crown { font-size: 11px; letter-spacing: .2em; color: var(--accent);
+    text-transform: uppercase; font-weight: 800; margin-bottom: 6px; }
+  #champion .name { font-size: 20px; font-weight: 800; }
+  #champion .votes { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  main { max-width: 1100px; margin: 0 auto; padding: 20px 16px 60px; }
+  .bar { display: flex; align-items: baseline; gap: 12px; margin: 22px 4px 12px; }
+  .bar h2 { font-size: 13px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent); margin: 0; }
+  .bar .sub { color: var(--muted); font-size: 12px; }
+  #grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--edge); border-radius: 12px;
+    padding: 12px; text-align: center;
+  }
+  .card img { width: 100%; height: 210px; object-fit: contain; }
+  .card .name { font-weight: 700; font-size: 14px; margin: 8px 0 2px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .card .meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+  .card button {
+    background: var(--accent); border: none; color: #1d1508; font-weight: 800;
+    letter-spacing: .08em; text-transform: uppercase; font-size: 12px;
+    padding: 8px 18px; border-radius: 999px; cursor: pointer;
+  }
+  .card button:disabled { background: #3a3225; color: var(--muted); cursor: default; }
+  #empty { color: var(--muted); text-align: center; padding: 60px 20px; line-height: 1.8; }
+  #empty a { color: var(--accent); }
+  #demo-note {
+    max-width: 900px; margin: 14px auto 0; padding: 8px 14px; font-size: 12px;
+    color: var(--muted); border: 1px dashed #3a3225; border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>The <span>Guitarmory</span></h1>
+  <span style="font-size:11px;color:var(--muted)">vote for the build of the week</span>
+  <div class="spacer"></div>
+  <a href="index.html">← Build your own</a>
+</header>
+
+<div id="champion">
+  <img class="logo" src="killette_logo.png" alt="Killette Guitars">
+  <img class="build" id="champ-img" alt="champion build">
+  <div>
+    <div class="crown">🏆 Build of the Week</div>
+    <div class="name" id="champ-name"></div>
+    <div class="votes" id="champ-votes"></div>
+  </div>
+</div>
+<div id="demo-note" hidden>
+  Demo mode: votes are stored on this device only. Hook up the free database
+  (see armory-store.js) to make voting global.
+</div>
+
+<main>
+  <div class="bar">
+    <h2>This Week's Contenders</h2>
+    <span class="sub" id="week-label"></span>
+  </div>
+  <div id="grid"></div>
+  <div id="empty" hidden>
+    Nothing in the armory yet.<br>
+    <a href="index.html">Build a Killette</a> and hit
+    <b>Submit to the Guitarmory</b> to enter it.
+  </div>
+</main>
+
+<script src="armory-store.js"></script>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+$("week-label").textContent = "voting week " + armoryWeek();
+if (ArmoryStore.mode === "demo") $("demo-note").hidden = false;
+
+async function refresh() {
+  const champ = await ArmoryStore.champion();
+  if (champ) {
+    $("champion").style.display = "flex";
+    $("champ-img").src = champ.image;
+    $("champ-name").textContent = champ.name;
+    $("champ-votes").textContent = `${champ.votes} vote${champ.votes === 1 ? "" : "s"}`;
+  }
+  const builds = await ArmoryStore.list(armoryWeek());
+  const grid = $("grid");
+  grid.innerHTML = "";
+  $("empty").hidden = builds.length > 0;
+  const voted = JSON.parse(localStorage.getItem("guitarmory_voted") || "[]");
+  for (const b of builds) {
+    const card = document.createElement("div");
+    card.className = "card";
+    const img = document.createElement("img");
+    img.src = b.image; img.alt = b.name;
+    const name = document.createElement("div");
+    name.className = "name"; name.textContent = b.name;
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.textContent = `${b.votes} vote${b.votes === 1 ? "" : "s"}`;
+    const btn = document.createElement("button");
+    btn.textContent = voted.includes(b.id) ? "Voted 🤘" : "Vote";
+    btn.disabled = voted.includes(b.id);
+    btn.addEventListener("click", async () => {
+      if (await ArmoryStore.vote(b.id)) refresh();
+    });
+    card.append(img, name, meta, btn);
+    grid.appendChild(card);
+  }
+}
+refresh();
+</script>
+</body>
+</html>
