@@ -36,9 +36,6 @@ Working branch: `claude/guitar-component-automation-w2xwfs`  (everything lives h
 - 10 generated hardware parts (pickups gold/chrome/black/green, bridges
   chrome/gold/black, knobs black/chrome/gold) — NOTE: currently 8-string;
   6-string versions are the next task.
-- 6 NEW generated 6-string metal headstock candidates (spear/fang/hatchet
-  shapes × gloss-black/blood-red/bone-white) in `generated_candidates/` —
-  AWAITING OWNER QC, not yet in inventory.
 
 ## Publishing status
 
@@ -58,8 +55,11 @@ Working branch: `claude/guitar-component-automation-w2xwfs`  (everything lives h
 ## Next tasks (in priority order, per owner)
 
 1. 6-string components only, metal styles only (BC Rich / ESP / Legator /
-   Kiesel / Solar vibes; NO Fender/Strat shapes). Headstocks first —
-   candidates ready for QC in `generated_candidates/`.
+   Kiesel / Solar vibes; NO Fender/Strat shapes). NOTE: procedurally
+   GENERATED headstocks were attempted and REJECTED by the owner — they
+   don't read as real headstocks. Headstock inventory must come from real
+   photos/renders (the owner's uploads). Generated hardware (pickups/
+   bridges/knobs) was accepted; generated headstocks are off the table.
 2. Regenerate pickups/bridges as 6-string (currently 8-string).
 3. Owner's 100+ parts folder: zip → attach in chat, or GitHub web upload
    to the working branch → run through pipeline → QC sheet → approve.
