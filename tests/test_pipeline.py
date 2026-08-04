@@ -175,3 +175,37 @@ def test_slicer_keeps_everything_when_no_backdrop_found():
     out = slicer.slice_component(Image.fromarray(noise, "RGB"))
     alpha = np.asarray(out.split()[3])
     assert (alpha > 200).mean() > 0.9
+
+
+def test_multi_part_upload_is_split(shop):
+    settings, mech = shop
+    # one image containing two separate knobs on a plain backdrop
+    img = Image.new("RGB", (900, 500), (242, 240, 236))
+    draw = ImageDraw.Draw(img)
+    draw.ellipse([60, 140, 320, 400], fill=(30, 30, 32))
+    draw.ellipse([560, 140, 820, 400], fill=(60, 40, 30))
+    img.save(settings.uploads_dir / "two_knobs.png")
+    results = mech.process_all(log=lambda *_: None)
+    assert results[0].status == "added"
+    assert len(results[0].entries) == 2
+
+
+def test_sideways_part_is_uprighted():
+    from guitar_mechanic import qc
+    wide = Image.new("RGBA", (600, 150), (0, 0, 0, 0))
+    d = ImageDraw.Draw(wide)
+    d.rectangle([10, 30, 590, 120], fill=(90, 60, 30, 255))
+    out = qc.normalize_orientation(wide, "neck")
+    assert out.height > out.width
+
+
+def test_debris_is_removed():
+    from guitar_mechanic import qc
+    img = Image.new("RGBA", (500, 500), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.ellipse([100, 100, 400, 400], fill=(140, 60, 20, 255))
+    d.rectangle([470, 470, 490, 490], fill=(140, 60, 20, 255))  # stray sliver
+    parts = qc.split_islands(img)
+    assert len(parts) == 1
+    alpha = np.asarray(parts[0].split()[3])
+    assert (alpha > 16).mean() > 0.3  # cropped tight to the real part

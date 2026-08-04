@@ -18,7 +18,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from . import anatomy, classify, enhancer, populator, scaler, slicer
+from . import anatomy, classify, enhancer, populator, qc, scaler, slicer
 from .config import CATEGORY_SLOTS, DEFAULT_SLOT, SUPPORTED_EXTENSIONS, Settings
 
 
@@ -106,17 +106,17 @@ class Mechanic:
 
             entries: list[dict]
             if self.settings.category_override:
-                entries = [self._file_component(
+                entries = self._file_component(
                     manifest, sliced, path.name, sha1,
                     self.settings.category_override,
-                )]
+                )
             elif (named := classify.classify_filename(path.name)) is not None:
                 # The filename says what this is — trust it and skip the
                 # whole-guitar splitter (close-ups of a labeled part can
                 # otherwise fool the silhouette check).
-                entries = [self._file_component(
+                entries = self._file_component(
                     manifest, sliced, path.name, sha1, named
-                )]
+                )
             else:
                 parts = anatomy.split_guitar(sliced, self.settings.ppi)
                 if parts:
@@ -132,9 +132,9 @@ class Mechanic:
                     category = classify.classify(
                         path.name, sliced.width, sliced.height
                     )
-                    entries = [self._file_component(
+                    entries = self._file_component(
                         manifest, sliced, path.name, sha1, category
-                    )]
+                    )
 
             seen.add(sha1)
             for entry in entries:
@@ -170,20 +170,33 @@ class Mechanic:
     def _file_component(
         self, manifest: dict, sliced: Image.Image, source: str,
         sha1: str, category: str,
-    ) -> dict:
-        scaled, inches = scaler.scale_component(
-            sliced, category, self.settings.ppi
-        )
-        return populator.populate(
-            self.settings,
-            manifest,
-            scaled,
-            source_name=source,
-            source_sha1=sha1,
-            category=category,
-            inches=inches,
-            slot=CATEGORY_SLOTS.get(category, DEFAULT_SLOT),
-        )
+    ) -> list[dict]:
+        """File a sliced upload, splitting multi-part images and cleaning
+        debris; each real part is oriented, scaled, flagged, and filed."""
+        pieces = qc.split_islands(sliced)
+        entries = []
+        stem = Path(source).stem
+        for i, piece in enumerate(pieces):
+            piece = qc.normalize_orientation(piece, category)
+            scaled, inches = scaler.scale_component(
+                piece, category, self.settings.ppi
+            )
+            name = source if len(pieces) == 1 else f"{stem}-{i + 1}{Path(source).suffix}"
+            entry = populator.populate(
+                self.settings,
+                manifest,
+                scaled,
+                source_name=name,
+                source_sha1=sha1 if i == 0 else None,
+                category=category,
+                inches=inches,
+                slot=CATEGORY_SLOTS.get(category, DEFAULT_SLOT),
+            )
+            warnings = qc.flags(scaled)
+            if warnings:
+                entry["qc_flags"] = warnings
+            entries.append(entry)
+        return entries
 
     @staticmethod
     def _move(path: Path, dest_dir: Path) -> None:

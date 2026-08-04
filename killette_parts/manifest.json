@@ -3,22 +3,6 @@
   "ppi": 48,
   "components": [
     {
-      "id": "body/body-white-closeup",
-      "category": "body",
-      "file": "body/body-white-closeup.png",
-      "thumbnail": "body/body-white-closeup.thumb.png",
-      "width_px": 496,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_white_closeup.jpg",
-      "source_sha1": "389be037b2b1d96d70b7f540ca6f5d7ae1ea6280",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-14T22:37:30+00:00"
-    },
-    {
       "id": "headstock/headstock-guitar-olive",
       "category": "headstock",
       "file": "headstock/headstock-guitar-olive.png",
@@ -84,73 +68,6 @@
       },
       "group": "c5ca23d925",
       "added_at": "2026-07-14T22:37:34+00:00"
-    },
-    {
-      "id": "headstock/headstock-guitar-olive-2",
-      "category": "headstock",
-      "file": "headstock/headstock-guitar-olive-2.png",
-      "thumbnail": "headstock/headstock-guitar-olive-2.thumb.png",
-      "width_px": 227,
-      "height_px": 380,
-      "longest_in": 7.92,
-      "ppi": 48,
-      "source": "headstock_guitar_olive_2.jpg",
-      "source_sha1": "94e07956917dce24b2eacad5218b6f3e870271ba",
-      "slot": "headstock",
-      "anchors": {
-        "bottom": [
-          128,
-          379
-        ]
-      },
-      "group": "94e0795691",
-      "added_at": "2026-07-14T22:37:36+00:00"
-    },
-    {
-      "id": "neck/neck-guitar-olive-2",
-      "category": "neck",
-      "file": "neck/neck-guitar-olive-2.png",
-      "thumbnail": "neck/neck-guitar-olive-2.thumb.png",
-      "width_px": 366,
-      "height_px": 948,
-      "longest_in": 19.75,
-      "ppi": 48,
-      "source": "neck_guitar_olive_2.jpg",
-      "source_sha1": "94e07956917dce24b2eacad5218b6f3e870271ba",
-      "slot": "neck",
-      "anchors": {
-        "top": [
-          276,
-          28
-        ],
-        "bottom": [
-          173,
-          920
-        ]
-      },
-      "group": "94e0795691",
-      "added_at": "2026-07-14T22:37:36+00:00"
-    },
-    {
-      "id": "body/body-guitar-olive-2",
-      "category": "body",
-      "file": "body/body-guitar-olive-2.png",
-      "thumbnail": "body/body-guitar-olive-2.thumb.png",
-      "width_px": 648,
-      "height_px": 950,
-      "longest_in": 19.79,
-      "ppi": 48,
-      "source": "body_guitar_olive_2.jpg",
-      "source_sha1": "94e07956917dce24b2eacad5218b6f3e870271ba",
-      "slot": "body",
-      "anchors": {
-        "pocket": [
-          253,
-          321
-        ]
-      },
-      "group": "94e0795691",
-      "added_at": "2026-07-14T22:37:37+00:00"
     },
     {
       "id": "headstock/headstock-guitar-white-angled",
@@ -447,54 +364,6 @@
       "added_at": "2026-07-14T22:39:01+00:00"
     },
     {
-      "id": "body/body-metal-engraved",
-      "category": "body",
-      "file": "body/body-metal-engraved.png",
-      "thumbnail": "body/body-metal-engraved.thumb.png",
-      "width_px": 864,
-      "height_px": 305,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_metal_engraved.jpg",
-      "source_sha1": "b6309280167f77daf2e484eb713e5b3d6adc96a4",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-15T03:38:43+00:00"
-    },
-    {
-      "id": "body/body-metal-forged",
-      "category": "body",
-      "file": "body/body-metal-forged.png",
-      "thumbnail": "body/body-metal-forged.thumb.png",
-      "width_px": 864,
-      "height_px": 469,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_metal_forged.jpg",
-      "source_sha1": "9aec5c9e2d44c9dae9777b404bc1794dacb74a7b",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-15T03:38:45+00:00"
-    },
-    {
-      "id": "body/body-metal-routed",
-      "category": "body",
-      "file": "body/body-metal-routed.png",
-      "thumbnail": "body/body-metal-routed.thumb.png",
-      "width_px": 864,
-      "height_px": 305,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_metal_routed.jpg",
-      "source_sha1": "c55f2ec984b7c1d4509937191682b6bad26f161f",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-15T03:38:47+00:00"
-    },
-    {
       "id": "body/body-shield-amber-routed",
       "category": "body",
       "file": "body/body-shield-amber-routed.png",
@@ -557,22 +426,6 @@
       "anchors": {},
       "group": null,
       "added_at": "2026-07-29T15:49:55+00:00"
-    },
-    {
-      "id": "body/body-shield-crimson-xl",
-      "category": "body",
-      "file": "body/body-shield-crimson-xl.png",
-      "thumbnail": "body/body-shield-crimson-xl.thumb.png",
-      "width_px": 694,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_shield-crimson-xl.jpg",
-      "source_sha1": "b3d3978bf803b1f29c4f2b52fc248ec6af9da2e9",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-29T15:49:56+00:00"
     },
     {
       "id": "body/body-shield-darkwalnut",
@@ -655,22 +508,6 @@
       "added_at": "2026-07-29T15:50:03+00:00"
     },
     {
-      "id": "body/body-shield-slate-xl",
-      "category": "body",
-      "file": "body/body-shield-slate-xl.png",
-      "thumbnail": "body/body-shield-slate-xl.thumb.png",
-      "width_px": 617,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_shield-slate-xl.jpg",
-      "source_sha1": "dccefec92e458ab22a225009456b9d3e251b559d",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-29T15:50:04+00:00"
-    },
-    {
       "id": "body/body-shield-slate",
       "category": "body",
       "file": "body/body-shield-slate.png",
@@ -719,52 +556,20 @@
       "added_at": "2026-07-29T15:50:08+00:00"
     },
     {
-      "id": "body/body-shield-walnut-xl",
-      "category": "body",
-      "file": "body/body-shield-walnut-xl.png",
-      "thumbnail": "body/body-shield-walnut-xl.thumb.png",
-      "width_px": 701,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_shield-walnut-xl.jpg",
-      "source_sha1": "b4fd72e8de5a335228829ea38dd727cbd7b4e511",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-29T15:50:09+00:00"
-    },
-    {
-      "id": "body/body-metal-ornate-shield",
-      "category": "body",
-      "file": "body/body-metal-ornate-shield.png",
-      "thumbnail": "body/body-metal-ornate-shield.thumb.png",
-      "width_px": 855,
-      "height_px": 864,
-      "longest_in": 18.0,
+      "id": "headstock/headstock-metal-ornate",
+      "category": "headstock",
+      "file": "headstock/headstock-metal-ornate.png",
+      "thumbnail": "headstock/headstock-metal-ornate.thumb.png",
+      "width_px": 380,
+      "height_px": 384,
+      "longest_in": 8.0,
       "ppi": 48,
       "source": "body_metal_ornate_shield.jpg",
-      "source_sha1": "2be5fbb7569c0478f63b01cecc453ee00f31a5d3",
-      "slot": "body",
+      "source_sha1": null,
+      "slot": "headstock",
       "anchors": {},
       "group": null,
-      "added_at": "2026-07-15T03:38:46+00:00"
-    },
-    {
-      "id": "body/body-metal-shield",
-      "category": "body",
-      "file": "body/body-metal-shield.png",
-      "thumbnail": "body/body-metal-shield.thumb.png",
-      "width_px": 490,
-      "height_px": 864,
-      "longest_in": 18.0,
-      "ppi": 48,
-      "source": "body_metal_shield.jpg",
-      "source_sha1": "1999671414dea4e27360d40d6612f0dec0baf830",
-      "slot": "body",
-      "anchors": {},
-      "group": null,
-      "added_at": "2026-07-15T03:38:48+00:00"
+      "added_at": "2026-08-04T00:00:00+00:00"
     }
   ]
 }
