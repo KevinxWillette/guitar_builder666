@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "resonant": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/user/Resonant/mcp-dist/server.mjs",
+        "--root",
+        "/home/user/guitar_builder666/music_workspace"
+      ]
+    }
+  }
+}
