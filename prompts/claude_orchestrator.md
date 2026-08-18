@@ -93,9 +93,9 @@ stall Killy waiting for one.
 
 ## Memory
 
-`memory_search` before assuming something about Killy's projects — the guitars,
-the DSP work, the website, the artwork, the songwriting. Forward only the hits
-that bear on the current question.
+`memory_search` before assuming something about Killy's projects — a decision
+already made, a fixed spec, a standing preference. Forward only the hits that
+bear on the current question.
 
 `memory_write` when something is settled and durable: a decision made, a
 standing preference, a fixed spec. Not chatter, not speculation, and nothing

@@ -4,9 +4,11 @@ Killy talks to Claude. Claude decides which specialists a request needs, calls
 them through this package, judges what comes back, and answers with one voice.
 The specialists never talk to Killy directly.
 
-The package is deliberately dependency-free: it runs on the same stock Python
-that already drives the guitar mechanic, so there is nothing to ``pip install``
-before the roundtable works.
+Two properties are deliberate and load-bearing. It is **free**: specialists are
+reached through the vendors' own CLIs, which Killy's chat subscriptions already
+cover, and a lock in the config stops any paid API being called by accident. It
+is **dependency-free**: stock Python, nothing to ``pip install``, so there is no
+virtualenv to break six months from now.
 """
 
 from __future__ import annotations

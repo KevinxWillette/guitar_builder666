@@ -49,9 +49,13 @@ def cmd_doctor(args: argparse.Namespace) -> int:
         print(json.dumps(rows, indent=2))
         return 0 if all(r["available"] for r in rows) else 1
 
-    print(f"Killy AI Roundtable {__version__}")
+    print(f"AI Roundtable {__version__}")
     print(f"config: {settings.source or 'built-in defaults'}")
     print(f"state:  {settings.state_dir}")
+    if settings.free_only:
+        print("money:  LOCKED — free_only is on, so no paid API can be called.")
+    else:
+        print("money:  UNLOCKED — free_only is off; paid API calls are allowed.")
     print()
     for row in rows:
         mark = "OK " if row["available"] else "-- "
@@ -66,6 +70,9 @@ def cmd_doctor(args: argparse.Namespace) -> int:
                 print(f"     live check: replied {row.get('probe_reply', '')!r}")
             elif row["probe"] == "failed":
                 print(f"     live check FAILED: {row.get('probe_error')}")
+                print("     -> usually a wrong CLI flag or a login that expired.")
+                print("        Run the command by hand, then fix `command` in")
+                print("        roundtable.config.json to match what works.")
         print()
 
     reachable = [r for r in rows if r["available"]]

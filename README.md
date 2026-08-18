@@ -59,8 +59,10 @@ python -m pytest tests/ -v
 
 This repo also hosts **Killy AI Roundtable** (`roundtable/`) — an MCP server that
 lets Claude call GPT and Grok as specialist agents and synthesise one answer,
-instead of Killy copying prompts between three chat tabs. It runs on the
-subscriptions he already pays for. See **ROUNDTABLE.md**.
+instead of copying prompts between three chat tabs. It is free to run: it uses
+the vendors' own CLIs, covered by subscriptions already paid for, and a config
+lock stops any paid API being called by accident. Unrelated to the guitar
+pipeline above; it just lives here. See **ROUNDTABLE.md**.
 
 ```bash
 python3 -m roundtable doctor     # which specialists are reachable

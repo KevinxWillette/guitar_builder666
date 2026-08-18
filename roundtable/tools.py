@@ -268,11 +268,10 @@ def build_tools(settings: Settings, orchestrator: Orchestrator | None = None) ->
             name="memory_search",
             description=(
                 "Search the shared project memory for standing facts about "
-                "Killy's projects — guitar builds, DSP work, the website, "
-                "artwork specs, songwriting preferences. Search before "
-                "assuming, and forward only the hits a given specialist "
-                "actually needs; the whole profile does not belong in every "
-                "brief."
+                "the user's projects — decisions already made, fixed specs, "
+                "standing preferences. Search before assuming, and forward "
+                "only the hits a given specialist actually needs; the whole "
+                "profile does not belong in every brief."
             ),
             input_schema={
                 "type": "object",
@@ -304,13 +303,13 @@ def build_tools(settings: Settings, orchestrator: Orchestrator | None = None) ->
                 "properties": {
                     "key": {
                         "type": "string",
-                        "description": "Short stable name, e.g. 'killette-headstock-policy'.",
+                        "description": "Short stable name, e.g. 'deploy-target'.",
                     },
                     "text": {"type": "string", "description": "The fact, in a sentence or two."},
                     "tags": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": "Project tags, e.g. ['guitars', 'killette'].",
+                        "description": "Project tags, e.g. ['website', 'infra'].",
                     },
                 },
                 "required": ["key", "text"],

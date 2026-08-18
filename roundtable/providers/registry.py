@@ -65,11 +65,12 @@ def describe(provider: ProviderConfig) -> dict[str, Any]:
         "cli_installed": provider.cli_installed(),
         "api_key_env": provider.api.get("key_env"),
         "api_key_present": provider.api_key() is not None,
+        "free_only": provider.free_only,
         "timeout_seconds": provider.timeout_seconds,
     }
     if resolved == "cli":
         row["model"] = provider.cli.get("model") or f"{provider.cli_binary} default"
-        row["cost"] = "covered by the chat subscription"
+        row["cost"] = "free — covered by the subscription you already pay for"
     elif resolved == "api":
         row["model"] = provider.api.get("model")
         row["cost"] = "metered — billed per token"

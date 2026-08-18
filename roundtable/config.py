@@ -35,12 +35,20 @@ from typing import Any
 #   off  — never call this specialist.
 BACKENDS = ("auto", "cli", "api", "off")
 
+# The table is free to run, and that is enforced rather than merely intended:
+# while ``free_only`` is on, the metered API backend can never be selected, no
+# matter what the config or the environment says. Turning it off is a
+# deliberate, single-line decision to allow spending.
+DEFAULT_FREE_ONLY = True
+
 ENV_PATTERN = re.compile(r"\$\{([A-Za-z_][A-Za-z0-9_]*)\}")
 
 # Built-in defaults. The CLI command templates below reflect the documented
 # headless modes as of August 2026; `python -m roundtable doctor` verifies them
 # against what is actually installed, and any of them can be overridden.
 DEFAULTS: dict[str, Any] = {
+    # Set to false only if you decide you want to pay for API calls.
+    "free_only": True,
     "providers": {
         "gpt": {
             "label": "GPT",
@@ -163,6 +171,8 @@ class ProviderConfig:
     timeout_seconds: float
     cli: dict[str, Any]
     api: dict[str, Any]
+    #: While true, this specialist may only be reached over the free CLI.
+    free_only: bool = DEFAULT_FREE_ONLY
 
     @property
     def cli_binary(self) -> str | None:
@@ -192,9 +202,13 @@ class ProviderConfig:
         if self.backend == "cli":
             return "cli" if self.cli_installed() else "off"
         if self.backend == "api":
+            if self.free_only:
+                return "off"
             return "api" if self.api_key() else "off"
         if self.cli_installed():
             return "cli"
+        if self.free_only:
+            return "off"
         if self.api_key():
             return "api"
         return "off"
@@ -208,10 +222,20 @@ class ProviderConfig:
             return None
         binary = self.cli_binary or "its CLI"
         key_env = self.api.get("key_env", "an API key")
+        if self.backend == "api" and self.free_only:
+            return (
+                f"{self.label} is set to use the paid API, but free_only is on. "
+                "Install its CLI, or set free_only to false to allow spending."
+            )
         if self.backend == "cli":
             return f"{self.label}'s CLI (`{binary}`) is not installed."
         if self.backend == "api":
             return f"{self.label} has no API key: ${key_env} is not set."
+        if self.free_only:
+            return (
+                f"{self.label}'s CLI (`{binary}`) is not installed. That is the "
+                "only free way to reach it, so it is unavailable."
+            )
         return (
             f"{self.label} is unreachable: `{binary}` is not installed and "
             f"${key_env} is not set."
@@ -227,6 +251,7 @@ class Settings:
     limits: dict[str, Any]
     memory: dict[str, Any]
     transcript: dict[str, Any]
+    free_only: bool = DEFAULT_FREE_ONLY
     source: Path | None = None
     raw: dict[str, Any] = field(default_factory=dict)
 
@@ -265,6 +290,7 @@ def load_settings(
         data = _merge(data, overrides)
     data = _expand(data)
 
+    free_only = bool(data.get("free_only", DEFAULT_FREE_ONLY))
     providers: dict[str, ProviderConfig] = {}
     for name, spec in (data.get("providers") or {}).items():
         backend = spec.get("backend", "auto")
@@ -280,6 +306,7 @@ def load_settings(
             timeout_seconds=float(spec.get("timeout_seconds", 180)),
             cli=dict(spec.get("cli") or {}),
             api=dict(spec.get("api") or {}),
+            free_only=free_only,
         )
 
     return Settings(
@@ -288,6 +315,7 @@ def load_settings(
         limits=dict(data.get("limits") or {}),
         memory=dict(data.get("memory") or {}),
         transcript=dict(data.get("transcript") or {}),
+        free_only=free_only,
         source=source,
         raw=data,
     )

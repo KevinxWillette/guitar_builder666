@@ -119,9 +119,8 @@ def test_invalid_backend_is_rejected_loudly(workspace):
         load_settings(root=workspace)
 
 
-def test_backend_resolution_prefers_the_subscription_cli(workspace, monkeypatch):
-    """`auto` picks the already-paid-for CLI over the metered API."""
-    provider = ProviderConfig(
+def _provider(**kwargs):
+    defaults = dict(
         name="gpt",
         label="GPT",
         backend="auto",
@@ -129,6 +128,13 @@ def test_backend_resolution_prefers_the_subscription_cli(workspace, monkeypatch)
         cli={"command": ["definitely-not-installed"]},
         api={"key_env": "OPENAI_API_KEY", "base_url": "x", "model": "y"},
     )
+    defaults.update(kwargs)
+    return ProviderConfig(**defaults)
+
+
+def test_backend_resolution_prefers_the_subscription_cli(workspace, monkeypatch):
+    """`auto` picks the already-paid-for CLI over the metered API."""
+    provider = _provider(free_only=False)
     assert provider.resolve_backend() == "off"
     assert "not installed" in provider.unavailable_reason()
 
@@ -139,6 +145,46 @@ def test_backend_resolution_prefers_the_subscription_cli(workspace, monkeypatch)
         "roundtable.config.shutil.which", lambda binary: "/usr/bin/" + binary
     )
     assert provider.resolve_backend() == "cli"
+
+
+def test_free_only_blocks_paid_calls_even_with_a_key_available(monkeypatch):
+    """The money lock is the point: a stray API key must not start spending."""
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    provider = _provider(free_only=True)
+    assert provider.api_key() == "sk-test"        # the key is right there...
+    assert provider.resolve_backend() == "off"    # ...and still nothing is spent.
+    assert "only free way" in provider.unavailable_reason()
+
+
+def test_free_only_overrides_an_explicit_api_backend(monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    provider = _provider(backend="api", free_only=True)
+    assert provider.resolve_backend() == "off"
+    assert "free_only" in provider.unavailable_reason()
+
+
+def test_free_only_never_blocks_the_free_cli(monkeypatch):
+    monkeypatch.setattr("roundtable.config.shutil.which", lambda binary: "/usr/bin/" + binary)
+    assert _provider(free_only=True).resolve_backend() == "cli"
+
+
+def test_free_only_is_on_by_default_and_can_be_switched_off(workspace):
+    assert load_settings(root=workspace).free_only is True
+    assert all(p.free_only for p in load_settings(root=workspace).providers.values())
+
+    (workspace / "roundtable.config.json").write_text(json.dumps({"free_only": False}))
+    settings = load_settings(root=workspace)
+    assert settings.free_only is False
+    assert not any(p.free_only for p in settings.providers.values())
+
+
+def test_the_orchestrator_refuses_a_paid_call_under_the_lock(workspace, monkeypatch):
+    """End to end: with the lock on, a real dispatch never reaches a backend."""
+    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
+    settings = load_settings(root=workspace)
+    reply = Orchestrator(settings).ask("gpt", "would this cost money?")
+    assert reply.ok is False
+    assert "free" in reply.error
 
 
 def test_switched_off_provider_stays_off(workspace, monkeypatch):
@@ -417,28 +463,28 @@ def test_api_backend_needs_a_model_and_a_base_url():
 
 def test_memory_writes_searches_and_upserts(tmp_path):
     memory = Memory(tmp_path / "memory.jsonl")
-    memory.write("headstock-policy", "Generated headstocks were rejected; use real photos.", ["guitars"])
-    memory.write("string-count", "All Killette parts are 6-string.", ["guitars"])
+    memory.write("deploy-target", "The site deploys from the docs folder.", ["infra"])
+    memory.write("python-version", "Everything targets Python 3.9.", ["infra"])
 
-    hits = memory.search("headstock")
-    assert hits[0][0].key == "headstock-policy"
+    hits = memory.search("where does it deploy")
+    assert hits[0][0].key == "deploy-target"
 
-    memory.write("string-count", "Six strings, always.", ["guitars"])
+    memory.write("python-version", "Everything targets Python 3.11 now.", ["infra"])
     assert len(memory.all()) == 2  # replaced, not duplicated
-    assert "Six strings" in memory.search("string-count")[0][0].text
+    assert "3.11" in memory.search("python-version")[0][0].text
 
 
 def test_memory_search_is_scoped_not_a_data_dump(tmp_path):
     """The point of search is that unrelated projects stay out of the brief."""
     memory = Memory(tmp_path / "memory.jsonl")
-    memory.write("guitar-finish", "Shield bodies come in 12 colourways.", ["guitars"])
-    memory.write("website-host", "killykillette.com runs on WordPress Premium.", ["website"])
+    memory.write("build-command", "The build runs with make release.", ["infra"])
+    memory.write("editor-choice", "Drafts are written in plain markdown.", ["writing"])
 
-    hits = memory.search("what colourways do the bodies come in")
-    assert [entry.key for entry, _ in hits] == ["guitar-finish"]
+    hits = memory.search("how does the build run")
+    assert [entry.key for entry, _ in hits] == ["build-command"]
 
-    tagged = memory.search("anything", tags=["website"])
-    assert all("website" in entry.tags for entry, _ in tagged)
+    tagged = memory.search("anything", tags=["writing"])
+    assert all("writing" in entry.tags for entry, _ in tagged)
 
 
 def test_memory_truncates_oversized_entries(tmp_path):
@@ -605,15 +651,15 @@ def test_memory_tools_round_trip_through_mcp(server):
         "tools/call",
         {
             "name": "memory_write",
-            "arguments": {"key": "amp-pref", "text": "Killy tracks guitars through a 5150.", "tags": ["gear"]},
+            "arguments": {"key": "backup-policy", "text": "Backups run nightly to an external disk.", "tags": ["infra"]},
         },
     )
     body = json.loads(
-        request(server, "tools/call", {"name": "memory_search", "arguments": {"query": "what amp"}})["result"][
-            "content"
-        ][0]["text"]
+        request(server, "tools/call", {"name": "memory_search", "arguments": {"query": "when do backups run"}})[
+            "result"
+        ]["content"][0]["text"]
     )
-    assert body["hits"][0]["key"] == "amp-pref"
+    assert body["hits"][0]["key"] == "backup-policy"
 
 
 def test_transcript_tool_returns_what_a_specialist_actually_said(server):

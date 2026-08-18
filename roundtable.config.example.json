@@ -7,6 +7,13 @@
     "never live in this file."
   ],
 
+  "_free_only": [
+    "While true, the paid API can never be called — not by config, not by a",
+    "stray API key in your environment. Set it to false ONLY if you have",
+    "decided you want to pay per token."
+  ],
+  "free_only": true,
+
   "providers": {
     "gpt": {
       "_backend": "auto = use the CLI if installed, else the API key. Also: cli, api, off.",
