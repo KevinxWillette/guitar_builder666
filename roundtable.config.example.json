@@ -1,0 +1,59 @@
+{
+  "_comment": [
+    "Copy this file to roundtable.config.json and edit it. Every key is",
+    "optional — anything you leave out keeps its built-in default, which you",
+    "can see with: python3 -m roundtable doctor --json",
+    "Use ${VAR} to read a value from an environment variable so that keys",
+    "never live in this file."
+  ],
+
+  "providers": {
+    "gpt": {
+      "_backend": "auto = use the CLI if installed, else the API key. Also: cli, api, off.",
+      "backend": "auto",
+      "timeout_seconds": 180,
+      "cli": {
+        "_comment": "Flags for the vendor's headless mode. If a flag is renamed, fix it here.",
+        "command": ["codex", "exec", "--sandbox", "read-only", "--skip-git-repo-check"],
+        "model_flag": "--model",
+        "model": null,
+        "prompt_via": "arg"
+      },
+      "api": {
+        "base_url": "https://api.openai.com/v1",
+        "key_env": "OPENAI_API_KEY",
+        "model": "gpt-5.5",
+        "max_output_tokens": 4000,
+        "max_tokens_field": "max_completion_tokens"
+      }
+    },
+
+    "grok": {
+      "backend": "auto",
+      "timeout_seconds": 180,
+      "cli": {
+        "command": ["grok", "-p", "--no-auto-update"],
+        "model_flag": "--model",
+        "model": null,
+        "prompt_via": "arg"
+      },
+      "api": {
+        "base_url": "https://api.x.ai/v1",
+        "key_env": "XAI_API_KEY",
+        "model": "grok-4.6",
+        "max_output_tokens": 4000,
+        "max_tokens_field": "max_tokens"
+      }
+    }
+  },
+
+  "limits": {
+    "context_chars": 24000,
+    "prompt_chars": 12000,
+    "cache_ttl_seconds": 900,
+    "max_parallel": 4
+  },
+
+  "memory": { "enabled": true, "max_entries_returned": 5, "max_entry_chars": 2000 },
+  "transcript": { "enabled": true, "max_files": 200 }
+}

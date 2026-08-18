@@ -55,6 +55,18 @@ pip install pytest
 python -m pytest tests/ -v
 ```
 
+## The AI roundtable
+
+This repo also hosts **Killy AI Roundtable** (`roundtable/`) — an MCP server that
+lets Claude call GPT and Grok as specialist agents and synthesise one answer,
+instead of Killy copying prompts between three chat tabs. It runs on the
+subscriptions he already pays for. See **ROUNDTABLE.md**.
+
+```bash
+python3 -m roundtable doctor     # which specialists are reachable
+python3 -m roundtable selftest   # prove the plumbing works, offline
+```
+
 ## Notes & current limits
 
 - Background removal is heuristic (built for plain-ish product-photo

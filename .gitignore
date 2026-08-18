@@ -5,3 +5,6 @@ __pycache__/
 # The mechanic's working folders — generated content stays local.
 uploads/
 library/
+
+# The roundtable keeps its memory, transcripts and cache locally.
+.roundtable/
