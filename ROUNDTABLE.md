@@ -113,8 +113,10 @@ roundtable/
     ├── api_backend.py     OpenAI-compatible HTTP, both vendors        ← locked off
     └── registry.py        config → live backend, plus availability reporting
 
+INSTALL_ROUNDTABLE_WINDOWS.bat installs everything, start to finish (Windows)
+ROUNDTABLE_START_HERE.md       the same, written for a non-technical reader
 setup_roundtable_mac.command   double-click setup (Mac)
-setup_roundtable_windows.bat   double-click setup (Windows)
+setup_roundtable_windows.bat   double-click setup, if already installed
 roundtable_server.py           launcher — the one absolute path Claude runs
 roundtable.config.example.json copy to roundtable.config.json to change anything
 prompts/claude_orchestrator.md Claude's instructions as lead of the table
@@ -171,37 +173,16 @@ Two logins and one double-click. Nothing here asks for a card.
 
 ### Windows + Claude Desktop (the setup this was built for)
 
-**Step 1 — Install Node.js**, if you do not have it: <https://nodejs.org>. The
-next step needs `npm`, which comes with it.
+**Double-click `INSTALL_ROUNDTABLE_WINDOWS.bat`.** That is the whole thing.
 
-**Step 2 — Install the two CLIs and sign in.** In a terminal (press Start, type
-`cmd`, Enter):
+It installs Python and Node if they are missing (via `winget`, no websites to
+visit), installs both helper CLIs from npm, pauses twice so you can sign in to
+ChatGPT and SuperGrok in a browser, works out which command each CLI accepts,
+and writes the Claude Desktop config itself. Then quit Claude Desktop from the
+tray icon, reopen it, and ask *"what does roundtable_status say?"*
 
-```
-npm install -g @openai/codex
-codex
-```
-
-`codex` opens a browser — choose **Sign in with ChatGPT**. Then install Grok
-Build per <https://docs.x.ai/build>, run `grok` once, and sign in with your
-SuperGrok account. Both remember you afterwards.
-
-**Step 3 — Double-click `setup_roundtable_windows.bat`.**
-
-It checks both CLIs, works out which command each one actually accepts on your
-machine, saves that, and then **writes the Claude Desktop config itself** —
-backing up whatever was there and leaving any other MCP servers you have
-untouched. No JSON to hand-edit.
-
-**Step 4 — Quit Claude Desktop completely and reopen it.** Closing the window is
-not enough; quit it from the system tray, or MCP servers will not reload.
-
-**Step 5 — Paste `prompts/claude_orchestrator.md`** into your Claude project's
-custom instructions. Without it the tools work, but Claude uses them like a
-search engine instead of running a team.
-
-Then ask Claude: *"what does roundtable_status say?"* It should name GPT and
-Grok and how it reaches them.
+`ROUNDTABLE_START_HERE.md` is the same thing written for someone who has never
+opened a terminal, including how to download the folder in the first place.
 
 ### Mac
 

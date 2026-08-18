@@ -181,7 +181,7 @@ def cmd_calibrate(args: argparse.Namespace) -> int:
     providers = [args.provider] if args.provider else None
     found = calibrate(settings, providers, timeout=args.timeout, save=not args.dry_run)
     if not found:
-        print("\nNothing calibrated. Install the CLIs and log in, then run this again.")
+        print("\nNothing worked. Install the helpers and sign in, then try again.")
         return 1
     print(f"\n{len(found)} of {len(settings.providers)} specialists calibrated.")
     return 0
@@ -202,7 +202,7 @@ def cmd_setup(args: argparse.Namespace) -> int:
     print()
 
     # 1. Which CLIs are present?
-    print("Step 1 — looking for the specialist CLIs")
+    print("Looking for the two helpers...")
     missing: list[tuple[str, str]] = []
     for name, provider in settings.providers.items():
         binary = provider.cli_binary or name
@@ -225,21 +225,22 @@ def cmd_setup(args: argparse.Namespace) -> int:
                 print(f"    {label}:  npm install -g @openai/codex")
                 print( "             then run `codex` once and Sign in with ChatGPT")
             elif binary == "grok":
-                print(f"    {label}:  install Grok Build per docs.x.ai/build")
+                print(f"    {label}:  npm install -g @xai-official/grok")
                 print( "             then run `grok` once and sign in with SuperGrok")
             else:
                 print(f"    {label}:  install `{binary}` and log in")
         if len(missing) == len(settings.providers):
             print()
-            print("  Nothing to calibrate yet — stopping here.")
+            print("  Neither helper is installed yet, so there is nothing to set")
+            print("  up. Install them and run this again.")
             return 1
         print()
         print("  Carrying on with the ones that are installed.")
 
     # 2. Find the invocation that actually works on this machine.
     print()
-    print("Step 2 — testing which command each CLI actually accepts")
-    print("  (this asks each one a one-word question; it takes a minute)")
+    print("Working out how to talk to them...")
+    print("  (asking each one a one-word question - this takes a moment)")
     found = calibrate(settings, timeout=args.timeout)
     if not found:
         print()
@@ -250,14 +251,14 @@ def cmd_setup(args: argparse.Namespace) -> int:
     # 3. Show the result.
     settings = load_settings()  # reload: calibrate just wrote the config
     print()
-    print("Step 3 — the table")
+    print("Who is ready:")
     for row in status(settings):
         mark = "ready" if row["available"] else "not ready"
         print(f"  {row['label']}: {mark}" + (f" — via {row['active_backend']}" if row["available"] else ""))
 
     # 4. Connect it to Claude.
     print()
-    print("Step 4 — connect it to Claude")
+    print("Connecting to Claude...")
     connected = False
 
     if desktop.desktop_installed() or args.desktop:
@@ -303,11 +304,11 @@ def cmd_setup(args: argparse.Namespace) -> int:
         print("  installed, re-run this and it will wire itself in.")
 
     print()
-    print("Step 5 — tell Claude how to lead")
-    print(f"  Paste {settings.root / 'prompts' / 'claude_orchestrator.md'}")
-    print("  into your Claude project's custom instructions.")
+    print("Optional, but makes Claude much better at this:")
+    print(f"  Open this file: {settings.root / 'prompts' / 'claude_orchestrator.md'}")
+    print("  Copy all of it into your Claude project's instructions.")
     print()
-    print("Then ask Claude: \"what does roundtable_status say?\"")
+    print('Then ask Claude:  what does roundtable_status say?')
     return 0
 
 

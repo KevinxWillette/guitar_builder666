@@ -101,23 +101,26 @@ def calibrate_provider(
 
     binary = candidates[0][0][0] if candidates and candidates[0][0] else provider
     if not config.cli_installed():
-        report(f"  {config.label}: `{binary}` is not installed — skipping.")
+        report(f"  {config.label}: not installed — skipping it.")
         return None
 
     for argv, prompt_via, note in candidates:
         shown = " ".join(argv) + (" <prompt>" if prompt_via == "arg" else " < prompt")
-        report(f"  trying: {shown}   ({note})")
+        report(f"  asking {config.label} this way: {shown}")
         started = time.monotonic()
         worked, detail = try_candidate(
             provider, config.label, argv, prompt_via, str(settings.root), timeout
         )
         elapsed = time.monotonic() - started
         if worked:
-            report(f"  WORKS ({elapsed:.1f}s) — replied {detail!r}")
+            report(f"    -> that worked. {config.label} answered {detail!r}.")
             return {"command": argv, "prompt_via": prompt_via}
-        report(f"  no ({elapsed:.1f}s): {detail}")
+        report(f"    -> no good ({detail}). Trying another way.")
 
-    report(f"  {config.label}: nothing worked. Is it logged in? Try `{binary}` by hand.")
+    report(
+        f"  {config.label} would not answer any way I asked. Usually that means "
+        f"it is installed but not signed in yet."
+    )
     return None
 
 
@@ -133,7 +136,7 @@ def calibrate(
     found: dict[str, dict[str, Any]] = {}
 
     for name in wanted:
-        report(f"\nCalibrating {settings.provider(name).label}...")
+        report(f"\nChecking {settings.provider(name).label}...")
         winner = calibrate_provider(settings, name, timeout=timeout, report=report)
         if winner:
             found[name] = winner
@@ -141,5 +144,5 @@ def calibrate(
     if found and save:
         updates = {"providers": {name: {"cli": cli} for name, cli in found.items()}}
         path = write_user_config(settings.root, updates)
-        report(f"\nSaved the working commands to {path}")
+        report(f"\n  Remembered what works, so this only happens once.")
     return found
