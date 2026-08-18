@@ -13,10 +13,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
+import subprocess
 import sys
 from typing import Any
 
 from . import __version__
+from .calibrate import CANDIDATES, calibrate
 from .config import load_settings
 from .memory import open_memory
 from .mcp_stdio import McpServer
@@ -172,6 +175,109 @@ def cmd_memory(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_calibrate(args: argparse.Namespace) -> int:
+    settings = load_settings()
+    providers = [args.provider] if args.provider else None
+    found = calibrate(settings, providers, timeout=args.timeout, save=not args.dry_run)
+    if not found:
+        print("\nNothing calibrated. Install the CLIs and log in, then run this again.")
+        return 1
+    print(f"\n{len(found)} of {len(settings.providers)} specialists calibrated.")
+    return 0
+
+
+def cmd_setup(args: argparse.Namespace) -> int:
+    """One command that takes the table from 'installed' to 'connected'."""
+    settings = load_settings()
+    server_path = (settings.root / "roundtable_server.py").resolve()
+
+    print("=" * 68)
+    print(" AI Roundtable — setup")
+    print("=" * 68)
+    print()
+    print("This connects GPT and Grok to Claude as specialists, using the chat")
+    print("subscriptions you already pay for. It will not ask for a card, and")
+    print("it cannot spend money: free_only is on.")
+    print()
+
+    # 1. Which CLIs are present?
+    print("Step 1 — looking for the specialist CLIs")
+    missing: list[tuple[str, str]] = []
+    for name, provider in settings.providers.items():
+        binary = provider.cli_binary or name
+        if provider.cli_installed():
+            print(f"  found: {binary}  ({provider.label})")
+        else:
+            print(f"  MISSING: {binary}  ({provider.label})")
+            missing.append((provider.label, binary))
+
+    if missing:
+        print()
+        print("  Install what is missing, then run this again:")
+        for label, binary in missing:
+            if binary == "codex":
+                print(f"    {label}:  npm install -g @openai/codex")
+                print( "             then run `codex` once and Sign in with ChatGPT")
+            elif binary == "grok":
+                print(f"    {label}:  install Grok Build per docs.x.ai/build")
+                print( "             then run `grok` once and sign in with SuperGrok")
+            else:
+                print(f"    {label}:  install `{binary}` and log in")
+        if len(missing) == len(settings.providers):
+            print()
+            print("  Nothing to calibrate yet — stopping here.")
+            return 1
+        print()
+        print("  Carrying on with the ones that are installed.")
+
+    # 2. Find the invocation that actually works on this machine.
+    print()
+    print("Step 2 — testing which command each CLI actually accepts")
+    print("  (this asks each one a one-word question; it takes a minute)")
+    found = calibrate(settings, timeout=args.timeout)
+    if not found:
+        print()
+        print("No specialist answered. Usually that means a CLI is installed but")
+        print("not logged in — run it by hand once, sign in, then re-run setup.")
+        return 1
+
+    # 3. Show the result.
+    settings = load_settings()  # reload: calibrate just wrote the config
+    print()
+    print("Step 3 — the table")
+    for row in status(settings):
+        mark = "ready" if row["available"] else "not ready"
+        print(f"  {row['label']}: {mark}" + (f" — via {row['active_backend']}" if row["available"] else ""))
+
+    # 4. Connect it to Claude.
+    print()
+    print("Step 4 — connect it to Claude")
+    command = ["claude", "mcp", "add", "killy-roundtable", "--", "python3", str(server_path)]
+    printable = " ".join(command)
+    if args.connect and shutil.which("claude"):
+        print(f"  running: {printable}")
+        result = subprocess.run(command, capture_output=True, text=True)
+        print("  " + (result.stdout or result.stderr).strip().replace("\n", "\n  "))
+        if result.returncode != 0:
+            print("  That failed — run the command yourself in a terminal.")
+            return 1
+    else:
+        print("  Run this once, in a terminal:")
+        print()
+        print(f"    {printable}")
+        print()
+        print("  Or for Claude Desktop, add to claude_desktop_config.json:")
+        print(f'    "killy-roundtable": {{"command": "python3", "args": ["{server_path}"]}}')
+
+    print()
+    print("Step 5 — tell Claude how to lead")
+    print(f"  Paste {settings.root / 'prompts' / 'claude_orchestrator.md'}")
+    print("  into your Claude project's custom instructions.")
+    print()
+    print("Then ask Claude: \"what does roundtable_status say?\"")
+    return 0
+
+
 def cmd_selftest(args: argparse.Namespace) -> int:
     """Exercise the whole stack with fake specialists — no network, no keys."""
     import io
@@ -308,6 +414,21 @@ def build_parser() -> argparse.ArgumentParser:
     memory.set_defaults(func=cmd_memory, memory_command=None)
     for sub in (mem_list, mem_add, mem_search, mem_forget):
         sub.set_defaults(func=cmd_memory)
+
+    setup = subparsers.add_parser("setup", help="install check, calibrate, and connect to Claude")
+    setup.add_argument("--timeout", type=float, default=90.0)
+    setup.add_argument(
+        "--connect", action="store_true", help="run `claude mcp add` instead of printing it"
+    )
+    setup.set_defaults(func=cmd_setup)
+
+    calib = subparsers.add_parser(
+        "calibrate", help="find the CLI command that actually works here, and save it"
+    )
+    calib.add_argument("--provider", default=None, choices=sorted(CANDIDATES))
+    calib.add_argument("--timeout", type=float, default=90.0)
+    calib.add_argument("--dry-run", action="store_true", help="probe but do not save")
+    calib.set_defaults(func=cmd_calibrate)
 
     selftest = subparsers.add_parser("selftest", help="prove the plumbing works, offline")
     selftest.set_defaults(func=cmd_selftest)

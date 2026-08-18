@@ -21,7 +21,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from roundtable import __version__
-from roundtable.config import ProviderConfig, load_settings
+from roundtable.calibrate import _looks_like_an_answer, calibrate
+from roundtable.config import ProviderConfig, load_settings, write_user_config
 from roundtable.mcp_stdio import McpServer
 from roundtable.memory import Memory
 from roundtable.orchestrator import Orchestrator, clip
@@ -389,6 +390,88 @@ def test_cli_backend_appends_the_model_flag_when_configured():
         "gpt", "GPT", {"command": ["tool", "exec"], "model_flag": "--model", "model": "gpt-x"}
     )
     assert backend._argv("hello") == ["tool", "exec", "--model", "gpt-x", "hello"]
+
+
+# --- calibration: finding the invocation that works on this machine --------
+
+
+def test_usage_text_is_not_mistaken_for_an_answer():
+    """The classic wrong-flag symptom: a usage screen, on stdout, exit code 0."""
+    assert _looks_like_an_answer("OK") is True
+    assert _looks_like_an_answer("Usage: codex exec [OPTIONS]") is False
+    assert _looks_like_an_answer("error: unexpected argument '--sandbox'") is False
+    assert _looks_like_an_answer("unknown option --print") is False
+    assert _looks_like_an_answer("") is False
+    assert _looks_like_an_answer("   ") is False
+
+
+@pytest.mark.skipif(os.name == "nt", reason="shell-script stand-ins are POSIX only")
+def test_calibrate_finds_the_working_flags_and_saves_them(workspace, monkeypatch):
+    """A CLI that rejects the first candidate must not leave the table broken."""
+    bin_dir = workspace / "bin"
+    # This stand-in rejects --sandbox, as if the flag had been renamed.
+    _fake_cli(
+        bin_dir,
+        "codex",
+        '#!/bin/sh\n'
+        'for a in "$@"; do\n'
+        '  if [ "$a" = "--sandbox" ]; then echo "error: unexpected argument"; exit 0; fi\n'
+        "done\n"
+        "echo OK\n",
+    )
+    # ...and this one only answers when the prompt arrives on stdin.
+    _fake_cli(
+        bin_dir,
+        "grok",
+        '#!/bin/sh\ndata=$(cat)\nif [ -n "$data" ]; then echo OK; else echo "Usage: grok"; exit 0; fi\n',
+    )
+    monkeypatch.setenv("PATH", f"{bin_dir}{os.pathsep}{os.environ['PATH']}")
+
+    settings = load_settings(root=workspace)
+    found = calibrate(settings, timeout=15, report=lambda *_: None)
+
+    # It skipped the broken candidate rather than giving up on GPT...
+    assert found["gpt"]["command"] == ["codex", "exec", "--skip-git-repo-check"]
+    assert found["gpt"]["prompt_via"] == "arg"
+    # ...and discovered that Grok needs the prompt piped in.
+    assert found["grok"]["prompt_via"] == "stdin"
+
+    # The result is persisted, so the machine is only figured out once.
+    saved = json.loads((workspace / "roundtable.config.json").read_text())
+    assert saved["providers"]["gpt"]["cli"]["command"] == found["gpt"]["command"]
+    # ...and reloading actually picks it up.
+    assert load_settings(root=workspace).provider("gpt").cli["command"] == found["gpt"]["command"]
+
+
+@pytest.mark.skipif(os.name == "nt", reason="shell-script stand-ins are POSIX only")
+def test_calibrate_reports_nothing_when_a_cli_never_answers(workspace, monkeypatch):
+    _fake_cli(workspace / "bin", "codex", '#!/bin/sh\necho "Usage: codex"\nexit 0\n')
+    monkeypatch.setenv("PATH", f"{workspace / 'bin'}{os.pathsep}{os.environ['PATH']}")
+    found = calibrate(load_settings(root=workspace), timeout=15, report=lambda *_: None)
+    assert "gpt" not in found
+
+
+def test_calibrate_skips_a_cli_that_is_not_installed(workspace):
+    found = calibrate(load_settings(root=workspace), timeout=5, report=lambda *_: None)
+    assert found == {}
+    # Nothing was written, because nothing was learned.
+    assert not (workspace / "roundtable.config.json").exists()
+
+
+def test_write_user_config_merges_instead_of_clobbering(workspace):
+    write_user_config(workspace, {"providers": {"gpt": {"cli": {"command": ["a"]}}}})
+    write_user_config(workspace, {"providers": {"grok": {"cli": {"command": ["b"]}}}})
+    saved = json.loads((workspace / "roundtable.config.json").read_text())
+    assert saved["providers"]["gpt"]["cli"]["command"] == ["a"]  # survived
+    assert saved["providers"]["grok"]["cli"]["command"] == ["b"]
+
+
+def test_write_user_config_never_destroys_an_unparseable_file(workspace):
+    broken = workspace / "roundtable.config.json"
+    broken.write_text("{ this was hand-edited badly")
+    path = write_user_config(workspace, {"free_only": True})
+    assert path.name == "roundtable.config.generated.json"
+    assert broken.read_text().startswith("{ this was")  # left alone
 
 
 # --- the API backend (no network) ------------------------------------------

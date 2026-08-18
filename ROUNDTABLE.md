@@ -99,6 +99,7 @@ JSON-RPC, small enough to implement directly, so it is
 roundtable/
 ├── __main__.py            serve / doctor / ask / panel / roles / memory / selftest
 ├── config.py              JSON config, the free_only lock, backend resolution
+├── calibrate.py           finds the CLI invocation that works on this machine
 ├── roles.py               the seven specialist seats and their prompts
 ├── orchestrator.py        dispatch, parallel panels, timeouts, cache, failure isolation
 ├── memory.py              shared project memory (searched, never broadcast)
@@ -111,10 +112,12 @@ roundtable/
     ├── api_backend.py     OpenAI-compatible HTTP, both vendors        ← locked off
     └── registry.py        config → live backend, plus availability reporting
 
+setup_roundtable_mac.command   double-click setup (Mac)
+setup_roundtable_windows.bat   double-click setup (Windows)
 roundtable_server.py           launcher — the one absolute path Claude runs
 roundtable.config.example.json copy to roundtable.config.json to change anything
 prompts/claude_orchestrator.md Claude's instructions as lead of the table
-tests/test_roundtable.py       62 tests, no network, no keys
+tests/test_roundtable.py       68 tests, no network, no keys
 ```
 
 ## 3. The tools Claude gets
@@ -163,68 +166,72 @@ python3 -m roundtable roles --full --role critic   # one prompt, verbatim
 
 ## 5. Setting it up
 
-Nothing here needs a developer, and nothing here asks for a card. Each step says
-how to tell it worked.
+Two logins and one command. Nothing here asks for a card.
 
-**Step 1 — Install the two specialist CLIs.**
-
-These are the vendors' own tools, signed into with the subscriptions Killy
-already has. Install each, and log in when it opens a browser:
+**Step 1 — Install the two CLIs and log in.** These are the vendors' own tools,
+signed into with the subscriptions already paid for:
 
 - **Codex (GPT)** — `npm install -g @openai/codex`, then run `codex` once and
   choose **Sign in with ChatGPT**.
-- **Grok Build (Grok)** — install per xAI's current instructions at
-  `docs.x.ai/build`, then run `grok` once and sign in with the SuperGrok
-  account. Credentials land in `~/.grok/auth.json` and refresh themselves.
+- **Grok Build (Grok)** — install per xAI's instructions at `docs.x.ai/build`,
+  then run `grok` once and sign in with the SuperGrok account.
 
-Take the exact install command from each vendor's page rather than from here —
-those change. Step 2 tells you whether it worked, whatever the command was.
-
-**Step 2 — Check the table.**
+**Step 2 — Run setup.** Double-click `setup_roundtable_mac.command` (Mac) or
+`setup_roundtable_windows.bat` (Windows), or run:
 
 ```bash
-cd /path/to/guitar_builder666
-python3 -m roundtable doctor --live
+python3 -m roundtable setup
 ```
 
-It prints the money lock, then each specialist, the backend it would use, and —
-if it cannot be reached — exactly why. `--live` actually calls each one, so it
-proves the login works rather than just that the binary exists. If a live check
-fails it prints what to fix.
+It checks both CLIs are installed, **works out which command each one actually
+accepts on this machine**, saves that, reports who is ready, and prints the exact
+line to connect it to Claude. If a CLI is missing it says precisely what to
+install.
 
-**Step 3 — Connect it to Claude.**
+That calibration step is the important one. The flags in the defaults are
+researched, not verified — vendors rename things — so setup probes the plausible
+invocations with a one-word question and keeps whichever answers. A renamed flag
+becomes a non-event instead of a debugging session.
 
-In Claude Code, one command, with the **full** path:
+**Step 3 — Connect to Claude.** Setup prints this, with the real path filled in:
 
 ```bash
-claude mcp add killy-roundtable -- python3 /full/path/to/guitar_builder666/roundtable_server.py
+claude mcp add killy-roundtable -- python3 /full/path/to/roundtable_server.py
 ```
 
-For Claude Desktop, add this to `claude_desktop_config.json` instead:
+For Claude Desktop, add to `claude_desktop_config.json` instead:
 
 ```json
 {
   "mcpServers": {
     "killy-roundtable": {
       "command": "python3",
-      "args": ["/full/path/to/guitar_builder666/roundtable_server.py"]
+      "args": ["/full/path/to/roundtable_server.py"]
     }
   }
 }
 ```
 
-Restart Claude and ask *"what does roundtable_status say?"* — it should name GPT
-and Grok and how it would reach them.
+**Step 4 — Tell Claude how to lead.** Paste `prompts/claude_orchestrator.md`
+into the project's custom instructions. Without it the tools still work, but
+Claude uses them like a search engine rather than running a team.
 
-**Step 4 — Tell Claude how to lead.**
+Then ask Claude: *"what does roundtable_status say?"*
 
-Paste `prompts/claude_orchestrator.md` into the project's custom instructions.
-Without it the tools still work, but Claude will use them like a search engine
-rather than running a team — delegating too often, and relaying replies instead
-of judging them.
+**Where this has to run.** The roundtable runs on your own computer — it drives
+CLIs that are logged into there. That means Claude Desktop or the Claude Code
+CLI on your Mac or PC. Claude in a web browser cannot reach a local MCP server,
+so the web app is not a route to this.
 
-**There is no API-key step.** If `doctor` says a specialist is unreachable, the
-fix is to get its free CLI installed and logged in — not to buy credits.
+**Fixing it if a specialist will not answer:**
+
+```bash
+python3 -m roundtable calibrate          # re-probe and re-save the flags
+python3 -m roundtable doctor --live      # call each one, show the real error
+```
+
+Nine times out of ten the answer is that a CLI is installed but not logged in.
+Run it by hand once, sign in, re-run setup.
 
 ## 6. Using it
 
@@ -268,7 +275,7 @@ not Claude's instructions.
 
 ```bash
 pip install pytest
-python3 -m pytest tests/test_roundtable.py -v     # 62 tests, ~1 second
+python3 -m pytest tests/test_roundtable.py -v     # 68 tests, ~1 second
 ```
 
 No network, no API keys, no accounts. Specialists are replaced by fakes, and
@@ -285,12 +292,11 @@ pytest.
 
 ## 9. Limits worth knowing
 
-- **The CLI flags are the most likely thing to break.** They reflect the
-  documented headless modes as of August 2026, but vendor docs were unreachable
-  from the machine this was built on, so treat them as well-researched defaults
-  rather than verified ones. `doctor --live` is the real test, and any flag that
-  drifts is a config edit, not a code change — which is exactly why the argv
-  lives in JSON.
+- **The CLI flags were researched, not verified against live vendor docs** —
+  those were unreachable from the machine this was built on. This is why
+  `calibrate` exists: it tries the plausible invocations on your machine and
+  keeps what works, so drift is handled automatically rather than by hand. If
+  every candidate fails, the argv is still plain JSON you can edit.
 - **Grok Build is an agentic coding CLI.** Specialists run with this repo as
   their working directory so they can read code they are asked about. Codex is
   pinned to `--sandbox read-only`; the equivalent flag for `grok` could not be

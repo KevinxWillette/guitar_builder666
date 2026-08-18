@@ -161,6 +161,27 @@ def find_config_file(root: Path | None = None) -> Path | None:
     return None
 
 
+def write_user_config(root: Path, updates: dict[str, Any]) -> Path:
+    """Merge ``updates`` into the user's config file, creating it if needed.
+
+    Used by ``calibrate`` to record the CLI invocation that actually worked, so
+    a machine only has to be figured out once.
+    """
+    path = root / "roundtable.config.json"
+    existing: dict[str, Any] = {}
+    if path.is_file():
+        try:
+            loaded = json.loads(path.read_text(encoding="utf-8"))
+            if isinstance(loaded, dict):
+                existing = loaded
+        except json.JSONDecodeError:
+            # Never destroy a file we cannot parse — keep it and write beside it.
+            path = root / "roundtable.config.generated.json"
+    merged = _merge(existing, updates)
+    path.write_text(json.dumps(merged, indent=2) + "\n", encoding="utf-8")
+    return path
+
+
 @dataclass
 class ProviderConfig:
     """How to reach one specialist provider."""
