@@ -100,6 +100,7 @@ roundtable/
 ├── __main__.py            serve / doctor / ask / panel / roles / memory / selftest
 ├── config.py              JSON config, the free_only lock, backend resolution
 ├── calibrate.py           finds the CLI invocation that works on this machine
+├── desktop.py             writes the Claude Desktop config, safely
 ├── roles.py               the seven specialist seats and their prompts
 ├── orchestrator.py        dispatch, parallel panels, timeouts, cache, failure isolation
 ├── memory.py              shared project memory (searched, never broadcast)
@@ -117,7 +118,7 @@ setup_roundtable_windows.bat   double-click setup (Windows)
 roundtable_server.py           launcher — the one absolute path Claude runs
 roundtable.config.example.json copy to roundtable.config.json to change anything
 prompts/claude_orchestrator.md Claude's instructions as lead of the table
-tests/test_roundtable.py       68 tests, no network, no keys
+tests/test_roundtable.py       74 tests, no network, no keys
 ```
 
 ## 3. The tools Claude gets
@@ -166,72 +167,71 @@ python3 -m roundtable roles --full --role critic   # one prompt, verbatim
 
 ## 5. Setting it up
 
-Two logins and one command. Nothing here asks for a card.
+Two logins and one double-click. Nothing here asks for a card.
 
-**Step 1 — Install the two CLIs and log in.** These are the vendors' own tools,
-signed into with the subscriptions already paid for:
+### Windows + Claude Desktop (the setup this was built for)
 
-- **Codex (GPT)** — `npm install -g @openai/codex`, then run `codex` once and
-  choose **Sign in with ChatGPT**.
-- **Grok Build (Grok)** — install per xAI's instructions at `docs.x.ai/build`,
-  then run `grok` once and sign in with the SuperGrok account.
+**Step 1 — Install Node.js**, if you do not have it: <https://nodejs.org>. The
+next step needs `npm`, which comes with it.
 
-**Step 2 — Run setup.** Double-click `setup_roundtable_mac.command` (Mac) or
-`setup_roundtable_windows.bat` (Windows), or run:
+**Step 2 — Install the two CLIs and sign in.** In a terminal (press Start, type
+`cmd`, Enter):
 
-```bash
-python3 -m roundtable setup
+```
+npm install -g @openai/codex
+codex
 ```
 
-It checks both CLIs are installed, **works out which command each one actually
-accepts on this machine**, saves that, reports who is ready, and prints the exact
-line to connect it to Claude. If a CLI is missing it says precisely what to
-install.
+`codex` opens a browser — choose **Sign in with ChatGPT**. Then install Grok
+Build per <https://docs.x.ai/build>, run `grok` once, and sign in with your
+SuperGrok account. Both remember you afterwards.
 
-That calibration step is the important one. The flags in the defaults are
-researched, not verified — vendors rename things — so setup probes the plausible
-invocations with a one-word question and keeps whichever answers. A renamed flag
-becomes a non-event instead of a debugging session.
+**Step 3 — Double-click `setup_roundtable_windows.bat`.**
 
-**Step 3 — Connect to Claude.** Setup prints this, with the real path filled in:
+It checks both CLIs, works out which command each one actually accepts on your
+machine, saves that, and then **writes the Claude Desktop config itself** —
+backing up whatever was there and leaving any other MCP servers you have
+untouched. No JSON to hand-edit.
 
-```bash
-claude mcp add killy-roundtable -- python3 /full/path/to/roundtable_server.py
+**Step 4 — Quit Claude Desktop completely and reopen it.** Closing the window is
+not enough; quit it from the system tray, or MCP servers will not reload.
+
+**Step 5 — Paste `prompts/claude_orchestrator.md`** into your Claude project's
+custom instructions. Without it the tools work, but Claude uses them like a
+search engine instead of running a team.
+
+Then ask Claude: *"what does roundtable_status say?"* It should name GPT and
+Grok and how it reaches them.
+
+### Mac
+
+Identical, except double-click `setup_roundtable_mac.command` at step 3.
+
+### Claude Code (terminal) instead of Desktop
+
+Setup detects it and prints a `claude mcp add ...` line to run, with the right
+interpreter and path already filled in.
+
+### Notes that save time
+
+- **It has to run on your own computer.** The roundtable drives CLIs that are
+  logged in there, so it needs Claude Desktop or the Claude Code CLI. Claude in
+  a web browser cannot reach a local MCP server.
+- **Windows rarely has a `python3` command** — only `python` or `py`. Nothing
+  here depends on that: the launcher finds whichever you have, and the Desktop
+  config records the interpreter's full path rather than trusting PATH.
+- **Setup is safe to re-run.** It is idempotent, it backs up before writing, and
+  it never touches your other MCP servers.
+
+### If a specialist will not answer
+
+```
+python -m roundtable calibrate       # re-probe the CLI flags and re-save
+python -m roundtable doctor --live   # call each one, print the real error
 ```
 
-For Claude Desktop, add to `claude_desktop_config.json` instead:
-
-```json
-{
-  "mcpServers": {
-    "killy-roundtable": {
-      "command": "python3",
-      "args": ["/full/path/to/roundtable_server.py"]
-    }
-  }
-}
-```
-
-**Step 4 — Tell Claude how to lead.** Paste `prompts/claude_orchestrator.md`
-into the project's custom instructions. Without it the tools still work, but
-Claude uses them like a search engine rather than running a team.
-
-Then ask Claude: *"what does roundtable_status say?"*
-
-**Where this has to run.** The roundtable runs on your own computer — it drives
-CLIs that are logged into there. That means Claude Desktop or the Claude Code
-CLI on your Mac or PC. Claude in a web browser cannot reach a local MCP server,
-so the web app is not a route to this.
-
-**Fixing it if a specialist will not answer:**
-
-```bash
-python3 -m roundtable calibrate          # re-probe and re-save the flags
-python3 -m roundtable doctor --live      # call each one, show the real error
-```
-
-Nine times out of ten the answer is that a CLI is installed but not logged in.
-Run it by hand once, sign in, re-run setup.
+Nine times out of ten a CLI is installed but not logged in. Run it by hand once,
+sign in, re-run setup.
 
 ## 6. Using it
 
@@ -275,7 +275,7 @@ not Claude's instructions.
 
 ```bash
 pip install pytest
-python3 -m pytest tests/test_roundtable.py -v     # 68 tests, ~1 second
+python3 -m pytest tests/test_roundtable.py -v     # 74 tests, ~1 second
 ```
 
 No network, no API keys, no accounts. Specialists are replaced by fakes, and

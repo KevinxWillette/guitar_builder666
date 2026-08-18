@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from roundtable import __version__
 from roundtable.calibrate import _looks_like_an_answer, calibrate
+from roundtable import desktop
 from roundtable.config import ProviderConfig, load_settings, write_user_config
 from roundtable.mcp_stdio import McpServer
 from roundtable.memory import Memory
@@ -472,6 +473,74 @@ def test_write_user_config_never_destroys_an_unparseable_file(workspace):
     path = write_user_config(workspace, {"free_only": True})
     assert path.name == "roundtable.config.generated.json"
     assert broken.read_text().startswith("{ this was")  # left alone
+
+
+# --- wiring into Claude Desktop --------------------------------------------
+
+
+def test_desktop_entry_records_the_exact_interpreter():
+    """Windows often has no `python3` on PATH, so record the real executable."""
+    entry = desktop.server_entry(Path("/somewhere/roundtable_server.py"))
+    assert entry["command"] == sys.executable
+    assert entry["args"] == ["/somewhere/roundtable_server.py"]
+
+
+def test_desktop_install_creates_the_config_when_absent(tmp_path):
+    target = tmp_path / "Claude" / "claude_desktop_config.json"
+    result = desktop.install(tmp_path / "roundtable_server.py", path=target)
+
+    assert result["ok"] and result["changed"]
+    written = json.loads(target.read_text())
+    assert written["mcpServers"]["killy-roundtable"]["command"] == sys.executable
+
+
+def test_desktop_install_preserves_other_servers_and_backs_up(tmp_path):
+    """The failure that would really hurt: losing someone's other connectors."""
+    target = tmp_path / "claude_desktop_config.json"
+    target.write_text(json.dumps({
+        "mcpServers": {"filesystem": {"command": "npx", "args": ["-y", "server-filesystem"]}},
+        "someOtherSetting": {"theme": "dark"},
+    }))
+
+    result = desktop.install(tmp_path / "roundtable_server.py", path=target)
+    assert result["ok"]
+    assert result["siblings"] == ["filesystem"]
+
+    written = json.loads(target.read_text())
+    assert written["mcpServers"]["filesystem"]["command"] == "npx"   # untouched
+    assert written["someOtherSetting"] == {"theme": "dark"}          # untouched
+    assert "killy-roundtable" in written["mcpServers"]
+
+    backups = list(tmp_path.glob("*.backup-*.json"))
+    assert len(backups) == 1
+    assert "filesystem" in backups[0].read_text()
+
+
+def test_desktop_install_is_idempotent(tmp_path):
+    target = tmp_path / "claude_desktop_config.json"
+    script = tmp_path / "roundtable_server.py"
+    assert desktop.install(script, path=target)["changed"] is True
+    second = desktop.install(script, path=target)
+    assert second["changed"] is False            # nothing to do...
+    assert not list(tmp_path.glob("*.backup-*"))  # ...so no backup churn
+
+
+def test_desktop_install_refuses_to_touch_a_broken_config(tmp_path):
+    """A hand-mangled config must be reported, never silently overwritten."""
+    target = tmp_path / "claude_desktop_config.json"
+    target.write_text("{ oops, someone edited this by hand")
+    result = desktop.install(tmp_path / "roundtable_server.py", path=target)
+    assert result["ok"] is False
+    assert "not valid JSON" in result["error"]
+    assert target.read_text().startswith("{ oops")  # left exactly as found
+
+
+def test_desktop_install_repairs_a_non_dict_mcpservers(tmp_path):
+    target = tmp_path / "claude_desktop_config.json"
+    target.write_text(json.dumps({"mcpServers": "this should be an object"}))
+    result = desktop.install(tmp_path / "roundtable_server.py", path=target)
+    assert result["ok"]
+    assert "killy-roundtable" in json.loads(target.read_text())["mcpServers"]
 
 
 # --- the API backend (no network) ------------------------------------------

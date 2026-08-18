@@ -21,6 +21,7 @@ from typing import Any
 from . import __version__
 from .calibrate import CANDIDATES, calibrate
 from .config import load_settings
+from . import desktop
 from .memory import open_memory
 from .mcp_stdio import McpServer
 from .orchestrator import Orchestrator
@@ -216,6 +217,11 @@ def cmd_setup(args: argparse.Namespace) -> int:
         print("  Install what is missing, then run this again:")
         for label, binary in missing:
             if binary == "codex":
+                if shutil.which("npm") is None:
+                    # Worth catching early: the install command below is not
+                    # going to work, and the error it gives is unhelpful.
+                    print(f"    {label}:  FIRST install Node.js from nodejs.org")
+                    print( "             (it provides npm, which the next line needs)")
                 print(f"    {label}:  npm install -g @openai/codex")
                 print( "             then run `codex` once and Sign in with ChatGPT")
             elif binary == "grok":
@@ -252,22 +258,49 @@ def cmd_setup(args: argparse.Namespace) -> int:
     # 4. Connect it to Claude.
     print()
     print("Step 4 — connect it to Claude")
-    command = ["claude", "mcp", "add", "killy-roundtable", "--", "python3", str(server_path)]
-    printable = " ".join(command)
-    if args.connect and shutil.which("claude"):
-        print(f"  running: {printable}")
-        result = subprocess.run(command, capture_output=True, text=True)
-        print("  " + (result.stdout or result.stderr).strip().replace("\n", "\n  "))
-        if result.returncode != 0:
-            print("  That failed — run the command yourself in a terminal.")
-            return 1
-    else:
-        print("  Run this once, in a terminal:")
-        print()
-        print(f"    {printable}")
-        print()
-        print("  Or for Claude Desktop, add to claude_desktop_config.json:")
-        print(f'    "killy-roundtable": {{"command": "python3", "args": ["{server_path}"]}}')
+    connected = False
+
+    if desktop.desktop_installed() or args.desktop:
+        result = desktop.install(server_path)
+        if result["ok"]:
+            connected = True
+            if result.get("changed"):
+                verb = "Updated" if result.get("replaced") else "Added"
+                print(f"  {verb} the roundtable in Claude Desktop's config:")
+            else:
+                print("  Claude Desktop was already configured:")
+            print(f"    {result['path']}")
+            print(f"    command: {result['entry']['command']}")
+            if result.get("backup"):
+                print(f"    (your previous config was backed up to {result['backup']})")
+            siblings = result.get("siblings") or []
+            if siblings:
+                print(f"    left your other servers alone: {', '.join(siblings)}")
+            print()
+            print("  >> Quit Claude Desktop completely and reopen it. <<")
+            print("     (closing the window is not enough — quit from the tray/menu)")
+        else:
+            print(f"  Could not write Claude Desktop's config: {result['error']}")
+            print("  Add this to the mcpServers section by hand:")
+            entry = desktop.server_entry(server_path)
+            print(f'    "{desktop.SERVER_KEY}": {json.dumps(entry)}')
+
+    if not connected and shutil.which("claude"):
+        command = ["claude", "mcp", "add", SERVER_NAME, "--", sys.executable, str(server_path)]
+        printable = " ".join(command)
+        if args.connect:
+            print(f"  running: {printable}")
+            result = subprocess.run(command, capture_output=True, text=True)
+            print("  " + (result.stdout or result.stderr).strip().replace("\n", "\n  "))
+            connected = result.returncode == 0
+        else:
+            print("  For Claude Code, run this once in a terminal:")
+            print(f"    {printable}")
+            connected = True
+
+    if not connected:
+        print("  No Claude install found to configure. Once Claude Desktop is")
+        print("  installed, re-run this and it will wire itself in.")
 
     print()
     print("Step 5 — tell Claude how to lead")
@@ -419,6 +452,11 @@ def build_parser() -> argparse.ArgumentParser:
     setup.add_argument("--timeout", type=float, default=90.0)
     setup.add_argument(
         "--connect", action="store_true", help="run `claude mcp add` instead of printing it"
+    )
+    setup.add_argument(
+        "--desktop",
+        action="store_true",
+        help="write the Claude Desktop config even if it is not detected yet",
     )
     setup.set_defaults(func=cmd_setup)
 
