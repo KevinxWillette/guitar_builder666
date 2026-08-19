@@ -13,13 +13,17 @@ real-world size. Detection is deliberately cheap and transparent:
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 from .config import CATEGORY_KEYWORDS
 
 
 def classify_filename(name: str) -> str | None:
     """Return a category from filename keywords, or None."""
-    slug = re.sub(r"[^a-z0-9]+", "_", name.lower())
+    # Strip the extension first — "peg" (-> tuner) hides inside "jpeg", and
+    # extensions never carry part-type meaning.
+    stem = Path(name).stem
+    slug = re.sub(r"[^a-z0-9]+", "_", stem.lower())
     # Longest keywords first so compound names win over their substrings.
     for keyword in sorted(CATEGORY_KEYWORDS, key=len, reverse=True):
         if keyword in slug:

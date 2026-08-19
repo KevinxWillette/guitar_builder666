@@ -209,3 +209,12 @@ def test_debris_is_removed():
     assert len(parts) == 1
     alpha = np.asarray(parts[0].split()[3])
     assert (alpha > 16).mean() > 0.3  # cropped tight to the real part
+
+
+def test_extension_does_not_leak_into_keyword_match():
+    # "jpeg" contains "peg" (-> tuner) as a raw substring; the extension
+    # must be stripped before keyword matching or every .JPEG file
+    # misclassifies as a tuner.
+    assert classify.classify_filename("IMG_3928.JPEG") is None
+    assert classify.classify_filename("IMG_3928.jpeg") is None
+    assert classify.classify("body_shot.jpeg") == "body"
