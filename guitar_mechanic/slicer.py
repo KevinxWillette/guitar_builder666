@@ -28,15 +28,19 @@ GROW_TOLERANCE = 42.0
 # Padding (fraction of longest side) kept around the sliced part.
 CROP_MARGIN = 0.02
 
+# Below this fraction kept, an ML mask reads as "no real subject found"
+# rather than a genuinely small part — fall back to the classical engines.
+MIN_TRUSTED_FILL = 0.02
+
 
 def slice_component(image: Image.Image) -> Image.Image:
     """Return the component cut out of *image* as a cropped RGBA image."""
     rgba = _rembg_cutout(image)
     if rgba is not None:
         # rembg finding almost nothing means there was no clear subject —
-        # fall back to the classical engines rather than return emptiness.
+        # fall back to the classical engines rather than return near-emptiness.
         fill = (np.asarray(rgba.split()[3]) > 16).mean()
-        if fill < 0.01:
+        if fill < MIN_TRUSTED_FILL:
             rgba = None
     if rgba is None:
         rgba = _best_cutout(image)
