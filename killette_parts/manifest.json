@@ -35,7 +35,12 @@
       "source": "headstock_black_abalone_chrome.jpg",
       "source_sha1": "331823949e258dd671ce465dadc2f9fee34fc361",
       "slot": "headstock",
-      "anchors": {},
+      "anchors": {
+        "bottom": [
+          153.5,
+          376
+        ]
+      },
       "group": null,
       "added_at": "2026-07-14T22:37:55+00:00"
     },
@@ -51,7 +56,12 @@
       "source": "headstock_black_abalone_gold.jpg",
       "source_sha1": "5a65fbbea582081048002e5f4a3a2384412811f5",
       "slot": "headstock",
-      "anchors": {},
+      "anchors": {
+        "bottom": [
+          153.0,
+          376
+        ]
+      },
       "group": null,
       "added_at": "2026-07-14T22:37:59+00:00"
     },
@@ -67,7 +77,12 @@
       "source": "headstock_black_chrome.jpg",
       "source_sha1": "ba0d679e47fd04f7012e15fda02809f0ec734336",
       "slot": "headstock",
-      "anchors": {},
+      "anchors": {
+        "bottom": [
+          151.0,
+          375
+        ]
+      },
       "group": null,
       "added_at": "2026-07-14T22:38:07+00:00"
     },
