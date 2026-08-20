@@ -1039,48 +1039,6 @@
       "added_at": "2026-08-19T18:06:21+00:00"
     },
     {
-      "id": "headstock/headstock-img-3982",
-      "category": "headstock",
-      "file": "headstock/headstock-img-3982.png",
-      "thumbnail": "headstock/headstock-img-3982.thumb.png",
-      "width_px": 664,
-      "height_px": 875,
-      "longest_in": 18.23,
-      "ppi": 48,
-      "source": "headstock_IMG_3982.JPEG",
-      "source_sha1": "a4fef682021d4eaa3b8d2188585362ac8d088e1f",
-      "slot": "headstock",
-      "anchors": {
-        "bottom": [
-          286,
-          874
-        ]
-      },
-      "group": "a4fef68202",
-      "added_at": "2026-08-19T18:07:22+00:00"
-    },
-    {
-      "id": "body/body-img-3982",
-      "category": "body",
-      "file": "body/body-img-3982.png",
-      "thumbnail": "body/body-img-3982.thumb.png",
-      "width_px": 778,
-      "height_px": 889,
-      "longest_in": 18.52,
-      "ppi": 48,
-      "source": "body_IMG_3982.JPEG",
-      "source_sha1": "a4fef682021d4eaa3b8d2188585362ac8d088e1f",
-      "slot": "body",
-      "anchors": {
-        "pocket": [
-          302.0,
-          248
-        ]
-      },
-      "group": "a4fef68202",
-      "added_at": "2026-08-19T18:07:22+00:00"
-    },
-    {
       "id": "body/body-img-3983-1",
       "category": "body",
       "file": "body/body-img-3983-1.png",
@@ -4350,6 +4308,48 @@
       "anchors": {},
       "group": null,
       "added_at": "2026-08-19T19:41:41+00:00"
+    },
+    {
+      "id": "body/img-3982-1",
+      "category": "body",
+      "file": "body/img-3982-1.png",
+      "thumbnail": "body/img-3982-1.thumb.png",
+      "width_px": 610,
+      "height_px": 864,
+      "longest_in": 18.0,
+      "ppi": 48,
+      "source": "IMG_3982-1.JPEG",
+      "source_sha1": "a4fef682021d4eaa3b8d2188585362ac8d088e1f",
+      "slot": "body",
+      "anchors": {
+        "pocket": [
+          334.5,
+          276
+        ]
+      },
+      "group": null,
+      "added_at": "2026-08-20T06:38:54+00:00"
+    },
+    {
+      "id": "body/img-3982-2",
+      "category": "body",
+      "file": "body/img-3982-2.png",
+      "thumbnail": "body/img-3982-2.thumb.png",
+      "width_px": 612,
+      "height_px": 864,
+      "longest_in": 18.0,
+      "ppi": 48,
+      "source": "IMG_3982-2.JPEG",
+      "source_sha1": null,
+      "slot": "body",
+      "anchors": {
+        "pocket": [
+          334.5,
+          275
+        ]
+      },
+      "group": null,
+      "added_at": "2026-08-20T06:38:54+00:00"
     }
   ]
 }
