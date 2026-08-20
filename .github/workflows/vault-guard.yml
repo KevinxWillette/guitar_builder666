@@ -15,7 +15,13 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install -r requirements.txt pytest
+        run: |
+          pip install -r requirements.txt pytest
+          # <5 on purpose: OpenCV 5 dropped the bundled Haar cascade and its
+          # DNN replacement needs a model file that is not shipped. Face
+          # detection is the screen's strongest signal, so CI always has it
+          # even when a laptop does not.
+          pip install "opencv-python-headless<5"
       - name: Nothing from the vault may be committed
         run: |
           if git ls-files --error-unmatch vault/ >/dev/null 2>&1; then
