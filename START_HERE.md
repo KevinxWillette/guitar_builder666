@@ -22,3 +22,17 @@ Killette parts — no server needed. To host it free on GitHub Pages:
    `https://kevinxwillette.github.io/guitar_builder666/`
 4. Link that URL from killykillette.com (a "BUILD YOUR KILLETTE" button) —
    ask your website assistant to add it.
+
+## Keep private pictures out of the public repo
+
+This repo is public, and `docs/` is served on the open web. Before you
+add photos, turn the vault on — once per clone:
+
+```bash
+python -m guitar_mechanic vault init
+```
+
+That creates `vault/` (never committed) and installs a commit guard that
+refuses to let a private picture into a commit, even a resized copy of
+one. `python -m guitar_mechanic vault doctor` tells you every layer is up.
+Full details in VAULT.md.

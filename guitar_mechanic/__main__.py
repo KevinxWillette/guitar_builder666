@@ -4,6 +4,7 @@
     python -m guitar_mechanic process          # one pass over uploads/
     python -m guitar_mechanic watch            # keep watching uploads/
     python -m guitar_mechanic status           # what's in the library
+    python -m guitar_mechanic vault init       # the private vault + guards
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ from pathlib import Path
 
 from .config import Settings
 from .mechanic import Mechanic
+from .vault import cli as vault_cli
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -62,6 +64,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_app = sub.add_parser("app", help="run the guitar builder web app")
     p_app.add_argument("--port", type=int, default=8666)
+
+    vault_cli.add_parser(sub)
     return parser
 
 
@@ -92,6 +96,9 @@ def cmd_status(settings: Settings) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.command == "vault":
+        # The vault has its own settings; it never touches the public library.
+        return vault_cli.run(args)
     settings = make_settings(args)
 
     if args.command == "process":

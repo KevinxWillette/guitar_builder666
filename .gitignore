@@ -5,3 +5,11 @@ __pycache__/
 # The mechanic's working folders — generated content stays local.
 uploads/
 library/
+
+# THE VAULT — private pictures, the private pipeline, generated images, and
+# the locked galleries. Never commit any of it. vault/.gitignore repeats
+# this from the inside, and a pre-commit hook enforces it either way:
+#   python -m guitar_mechanic vault install-hooks
+# Leading slash on purpose: a bare `vault/` would also swallow the
+# guitar_mechanic/vault/ package that implements all of this.
+/vault/

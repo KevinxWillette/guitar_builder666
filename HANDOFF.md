@@ -29,6 +29,13 @@ Working branch: `claude/guitar-component-automation-w2xwfs`  (everything lives h
    (transparent PNG) + all rebranded renders (de-branded pickups sheet,
    relettered headstock, Plite guitars re-scripted).
 
+5. **The vault** (`vault/`, docs in VAULT.md) — the private half:
+   librarian, a private copy of the pipeline, a local offline image
+   generator, and password-locked (encrypted) galleries. Six independent
+   safety layers keep private pictures out of the public repo and off the
+   public site; `vault doctor` reports on all of them. Turn it on in a
+   fresh clone with `python -m guitar_mechanic vault init`.
+
 ## Inventory (owner-approved, in `killette_parts/` + mirrored to `docs/parts/`)
 
 - 12 empty shield-body colorways (routed + solid)
@@ -73,4 +80,7 @@ Working branch: `claude/guitar-component-automation-w2xwfs`  (everything lives h
   catbox.moe (blocked for many visitors — replacement plan: host the list
   where the configurator lives, then repoint the page buttons).
 - The original uploads for every processed part are archived in `photos/`
-  and mirrored in session work folders.
+  and mirrored in session work folders. NOTE: 125 of those carry EXIF
+  timestamps and per-image UUIDs (no GPS, no name). `python -m
+  guitar_mechanic vault scrub photos/` strips them losslessly, though the
+  old bytes remain in git history.

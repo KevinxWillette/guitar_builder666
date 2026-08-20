@@ -1,2 +1,6 @@
 Pillow>=10.0
 numpy>=1.26
+# Connected-component analysis in guitar_mechanic/qc.py. It was already an
+# import, just never declared; without it (or opencv-python) the pipeline
+# fails on any multi-part upload.
+scipy>=1.11

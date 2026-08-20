@@ -48,6 +48,22 @@ python -m guitar_mechanic status         # what's in the library
 python -m guitar_mechanic process --category pickup_humbucker  # force a type
 ```
 
+## Private pictures
+
+Anything private goes in the vault — a local, never-committed,
+never-published folder with the librarian, a private copy of the pipeline,
+the local image generator, and password-locked galleries:
+
+```bash
+python -m guitar_mechanic vault init      # create it, install the guards
+python -m guitar_mechanic vault doctor    # check every safety layer is up
+```
+
+The vault is ignored twice over, a pre-commit hook refuses any commit
+carrying vault content (including a resized copy of it), the builder's
+server refuses to serve it, and gallery contents are encrypted at rest.
+See [VAULT.md](VAULT.md).
+
 ## Tests
 
 ```bash

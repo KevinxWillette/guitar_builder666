@@ -1,0 +1,17 @@
+{
+  "comment": "Files reviewed by a human and confirmed safe to publish. Keyed by sha1, so editing a file revokes its approval. This waives heuristic screen findings only \u2014 vault content is refused regardless.",
+  "approved": [
+    {
+      "sha1": "cdfcd0565e2311f6d1f0d0db4e745c327ffc6af8",
+      "path": "photos/bodies_batch_2/IMG_4059.JPEG",
+      "note": "walnut guitar bodies; smooth finish reads as skin tone to the screen",
+      "approved_at": "2026-08-20T06:35:11+00:00"
+    },
+    {
+      "sha1": "145a92f719c3df61fd2fd93e10bea986cb4a28f5",
+      "path": "photos/bodies_batch_2/IMG_4067.JPEG",
+      "note": "walnut guitar bodies; smooth finish reads as skin tone to the screen",
+      "approved_at": "2026-08-20T06:35:11+00:00"
+    }
+  ]
+}

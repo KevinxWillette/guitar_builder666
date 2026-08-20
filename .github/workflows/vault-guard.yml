@@ -1,0 +1,32 @@
+name: vault guard
+
+# The commit hook is local and can be skipped with --no-verify or missed on
+# a fresh clone. This runs the same audit where it cannot be skipped.
+on:
+  push:
+  pull_request:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+      - name: Nothing from the vault may be committed
+        run: |
+          if git ls-files --error-unmatch vault/ >/dev/null 2>&1; then
+            echo "::error::vault/ content is tracked by git"
+            git ls-files vault/
+            exit 1
+          fi
+          echo "no vault content tracked"
+      - name: Screen everything that goes on the web
+        run: python -m guitar_mechanic vault check-publish docs/
+      - name: Screen the committed photo archive
+        run: python -m guitar_mechanic vault check-publish photos/
+      - name: Tests
+        run: python -m pytest tests/ -q

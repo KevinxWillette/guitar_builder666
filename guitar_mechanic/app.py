@@ -27,13 +27,41 @@ MAX_UPLOAD_BYTES = 40 * 1024 * 1024
 
 WEBAPP_DIR = Path(__file__).resolve().parent.parent / "webapp"
 
+# The server's document root is the project root, which is also where the
+# vault lives. Nothing under these prefixes is ever served, so a stray URL
+# (or a tunnelled port) cannot walk into private pictures.
+PRIVATE_PREFIXES = ("/vault", "/.git", "/.vaultmeta")
+
 
 class BuilderHandler(http.server.SimpleHTTPRequestHandler):
     # Class-level, set by serve(); one mechanic shared across requests.
     mechanic: Mechanic
     lock: threading.Lock
 
+    def _is_private(self) -> bool:
+        from urllib.parse import unquote
+
+        path = unquote(self.path.split("?", 1)[0].split("#", 1)[0])
+        path = "/" + path.replace("\\", "/").lstrip("/")
+        parts = [p for p in path.split("/") if p not in ("", ".")]
+        # Resolve ".." before matching so /library/../vault/x is caught too.
+        resolved: list[str] = []
+        for part in parts:
+            if part == "..":
+                if resolved:
+                    resolved.pop()
+            else:
+                resolved.append(part)
+        normalised = "/" + "/".join(resolved)
+        return any(
+            normalised == prefix or normalised.startswith(prefix + "/")
+            for prefix in PRIVATE_PREFIXES
+        )
+
     def do_GET(self) -> None:  # noqa: N802 (stdlib naming)
+        if self._is_private():
+            self.send_error(403, "private — the vault is not served")
+            return
         if self.path in ("/", "/index.html"):
             self._send_file(WEBAPP_DIR / "index.html", "text/html; charset=utf-8")
             return
