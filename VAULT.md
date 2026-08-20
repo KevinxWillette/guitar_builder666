@@ -118,6 +118,40 @@ type it, or put it in `KILLETTE_VAULT_PASSPHRASE` for scripting.
 `--shred` overwrites the cleartext original (and the generator's prompt
 sidecar) after locking it away.
 
+## Putting private photos somewhere safe
+
+For photos you simply do not want anyone else to see, skip `vault add` —
+it stages files in `originals/` or `quarantine/`, which are ordinary
+plaintext files on your disk. Put them straight into a locked gallery:
+
+```bash
+python -m guitar_mechanic vault gallery new "Private"
+python -m guitar_mechanic vault gallery add "Private" ~/path/to/folder --shred
+```
+
+That encrypts each file — pixels, filename and all — and overwrites the
+original where it lay. A whole folder works; it walks it recursively.
+Afterwards `vault gallery items "Private"` lists what is in there, and
+`vault gallery export` is the only way anything comes back out in the
+clear.
+
+Four things matter more than anything in this repo:
+
+- **Exclude `vault/` from every sync and backup tool.** iCloud Drive,
+  Dropbox, Google Drive, OneDrive and Time Machine will happily copy the
+  folder. The galleries stay encrypted wherever they land, but
+  `originals/`, `uploads/`, `library/` and `generated/` do not — which is
+  the other reason to go straight to a gallery.
+- **The phone copy is usually the real exposure.** If the photos are in
+  your camera roll and it backs up to iCloud or Google Photos, that copy
+  is untouched by anything here. Deal with it there as well.
+- **Your operating system may have made thumbnails** of the originals
+  before you shredded them — QuickLook caches on macOS, `thumbs.db` on
+  Windows, `~/.cache/thumbnails` on Linux. Clear those if it matters.
+- **Use a passphrase you have stored somewhere** — a password manager, or
+  written down somewhere physical. There is no reset, and nobody can
+  recover it for you.
+
 ## The local generator
 
 Local, offline, and unfiltered — it renders what you ask it to, and no

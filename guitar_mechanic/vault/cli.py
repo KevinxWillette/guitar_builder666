@@ -233,6 +233,7 @@ def run(args: argparse.Namespace) -> int:
 
     if command == "add":
         librarian = Librarian(settings)
+        held = 0
         for path in _expand(args.paths):
             item = librarian.take_in(
                 path, move=args.move, tags=args.tag, note=args.note
@@ -240,6 +241,14 @@ def run(args: argparse.Namespace) -> int:
             where = "quarantine" if item["verdict"] != screen.CLEAR else "originals"
             detail = f" ({'; '.join(item['reasons'])})" if item["reasons"] else ""
             print(f"  {item['id']}  {item['name']} -> {where}{detail}")
+            held += item["verdict"] != screen.CLEAR
+        if held:
+            print(f"\n{held} image(s) are in quarantine — which is still "
+                  f"plaintext on this disk.")
+            print("For anything you want encrypted, put it in a locked "
+                  "gallery instead:")
+            print("  vault gallery new \"Private\"")
+            print("  vault gallery add \"Private\" <files or folder> --shred")
         return 0
 
     if command == "list":
@@ -562,6 +571,7 @@ def _gallery(settings: VaultSettings, args: argparse.Namespace) -> int:
 
     if command == "add":
         librarian = Librarian(settings)
+        held = 0
         for path in _expand(args.paths):
             librarian.ledger.record(path, origin="gallery")
             record = locked.add_file(path, shred_source=args.shred)
