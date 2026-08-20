@@ -2,6 +2,24 @@
   "comment": "Files reviewed by a human and confirmed safe to publish. Keyed by sha1, so editing a file revokes its approval. This waives heuristic screen findings only \u2014 vault content is refused regardless.",
   "approved": [
     {
+      "sha1": "d7454b390be2176329943d8b65d629fd69bb3a77",
+      "path": "docs/parts/body/body-img-3979.png",
+      "note": "walnut guitar bodies; smooth grain reads as a face box to the cascade",
+      "approved_at": "2026-08-20T06:45:26+00:00"
+    },
+    {
+      "sha1": "0c6feb0387436a337b973248579f20b090f27b58",
+      "path": "docs/parts/body/body-shield-darkwalnut.png",
+      "note": "walnut guitar bodies; smooth grain reads as a face box to the cascade",
+      "approved_at": "2026-08-20T06:45:26+00:00"
+    },
+    {
+      "sha1": "854de44d205785c4718f81cdfe20cd9aaf93b903",
+      "path": "photos/bodies_batch_2/IMG_3987.JPEG",
+      "note": "walnut guitar bodies; smooth grain reads as a face box to the cascade",
+      "approved_at": "2026-08-20T06:45:26+00:00"
+    },
+    {
       "sha1": "cdfcd0565e2311f6d1f0d0db4e745c327ffc6af8",
       "path": "photos/bodies_batch_2/IMG_4059.JPEG",
       "note": "walnut guitar bodies; smooth finish reads as skin tone to the screen",

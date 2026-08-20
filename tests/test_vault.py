@@ -388,3 +388,42 @@ def test_the_ignore_rule_does_not_swallow_the_package():
         cwd=root, capture_output=True, text=True,
     )
     assert checked.returncode != 0, "the vault package must stay tracked"
+
+
+# ---------------------------------------------------------- face detection
+def test_a_face_box_must_also_look_like_skin():
+    """Wood grain fires a Haar cascade constantly; skin is the tiebreak."""
+    skin = Image.new("RGB", (200, 200), (221, 174, 142)).filter(
+        ImageFilter.GaussianBlur(3)
+    )
+    wood = Image.new("RGB", (200, 200), (198, 158, 112))
+    draw = ImageDraw.Draw(wood)
+    for x in range(0, 200, 5):
+        draw.line([(x, 0), (x + 8, 200)], fill=(150, 110, 70), width=2)
+
+    assert screen._confirm_face(skin) is True
+    assert screen._confirm_face(wood) is False
+
+
+def test_the_screen_always_says_whether_faces_were_checked(tmp_path):
+    """A signal that is silently off is worse than one never claimed."""
+    report = screen.screen_image(make_wood_photo(tmp_path / "body.jpg"))
+    assert report.details.get("face_detection")
+    if report.details["faces"] is None:
+        assert any("face detection" in note for note in report.notes)
+
+
+def test_missing_opencv_is_reported_not_swallowed(tmp_path, monkeypatch):
+    import builtins
+
+    real_import = builtins.__import__
+
+    def no_cv2(name, *args, **kwargs):
+        if name == "cv2":
+            raise ImportError("no cv2")
+        return real_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", no_cv2)
+    count, how = screen.detect_faces(make_wood_photo(tmp_path / "body.jpg"))
+    assert count is None
+    assert "opencv" in how.lower()

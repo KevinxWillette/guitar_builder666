@@ -176,12 +176,25 @@ worse than none:
 
 ## Turning on face detection
 
-The screen's strongest person signal is off unless OpenCV is installed:
+The screen's strongest person signal is off unless OpenCV is installed,
+and the version matters:
 
 ```bash
-pip install opencv-python
+pip install "opencv-python<5"
 ```
 
-`vault screen <file>` reports `face_detection: unavailable` when it is
-missing. CI always installs it, so the audit there is stricter than a
-laptop without it.
+OpenCV 5 removed the bundled Haar cascade, and its DNN replacement needs
+a model file that does not ship with the wheel. If you are on 5, either
+pin below it or drop a YuNet ONNX model at
+`vault/.vaultmeta/face_detection_yunet.onnx` and the screen will use it.
+
+`vault doctor` tells you which of these you have — it probes the detector
+rather than assuming, because a safety signal that is quietly switched
+off is worse than one that was never claimed.
+
+A raw cascade is close to useless here: on this repo's 142 guitar photos
+the stock parameters claim faces in 121 of them, because wood grain looks
+like a face to a Haar cascade. So a candidate box is only counted if the
+pixels inside it also read as skin — smooth, and skin-toned. That takes
+the 121 down to 1, and the three residual false positives across the whole
+repo are handled by `vault approve`.

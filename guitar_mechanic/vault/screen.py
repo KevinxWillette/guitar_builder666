@@ -20,7 +20,8 @@ Signals, cheapest first:
 
 1. filename markers ("selfie", "passport", "kids", ...)
 2. EXIF GPS — a leak on its own, even for a legitimate guitar photo
-3. faces — OpenCV's Haar cascade when ``opencv-python`` is installed
+3. faces — OpenCV, either the bundled Haar cascade (opencv-python 4.x) or
+   a YuNet model you have dropped in the vault (OpenCV 5 ships no cascade)
 4. large skin-tone regions — a coarse YCbCr heuristic that runs anywhere,
    with a grain test so that raw ash and mahogany (which sit squarely in the
    skin range) are not mistaken for a person
@@ -171,26 +172,110 @@ def _skin_metrics(img) -> tuple[float, float]:
     return (fraction, grain)
 
 
-def _face_count(path: Path) -> int | None:
-    """Faces found by OpenCV, or None when OpenCV isn't installed."""
+# Haar cascades fire freely on wood grain — on this repo's 142 guitar
+# photos the stock parameters claim faces in 121 of them. So a candidate
+# box is only believed if the pixels inside it also read as skin: smooth,
+# and skin-toned. Two weak signals agreeing is worth more than either.
+FACE_MIN_NEIGHBOURS = 12
+FACE_SCALE_FACTOR = 1.15
+FACE_MIN_SIDE_FRACTION = 0.08     # of the shorter side
+FACE_SKIN_FRACTION = 0.35
+
+
+def _confirm_face(crop) -> bool:
+    """True if a candidate box really looks like a face rather than timber."""
+    fraction, grain = _skin_metrics(crop)
+    return fraction >= FACE_SKIN_FRACTION and grain < GRAIN_SMOOTH
+
+
+# A YuNet model dropped here turns face detection back on under OpenCV 5,
+# which ships no Haar cascade. Relative to the vault, so it stays private.
+YUNET_FILENAME = "face_detection_yunet.onnx"
+
+
+def _yunet_paths(path: Path) -> list[Path]:
+    """Places a YuNet model may sit, nearest vault first."""
+    candidates = []
+    for parent in [path.resolve(), *path.resolve().parents]:
+        candidates.append(parent / "vault" / ".vaultmeta" / YUNET_FILENAME)
+    return candidates
+
+
+def detect_faces(path: Path) -> tuple[int | None, str]:
+    """Return ``(face_count, how)``.
+
+    ``face_count`` is None when no detector is available — and ``how``
+    then says precisely why and what would fix it, because a safety signal
+    that is quietly switched off is worse than one that was never claimed.
+    """
     try:
         import cv2
     except ImportError:
-        return None
+        return (None, "unavailable — pip install 'opencv-python<5'")
+
+    # OpenCV 4.x: the Haar cascade ships with the wheel and needs no
+    # download, which is why it is preferred here.
+    cascade_file = ""
     try:
-        cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
-        cascade = cv2.CascadeClassifier(cascade_path)
-        if cascade.empty():
-            return None
-        image = cv2.imread(str(path))
-        if image is None:
-            return None
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        gray = cv2.equalizeHist(gray)
-        faces = cascade.detectMultiScale(gray, 1.1, 5, minSize=(40, 40))
-        return len(faces)
+        cascade_file = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
     except Exception:
-        return None
+        cascade_file = ""
+    if hasattr(cv2, "CascadeClassifier") and cascade_file and Path(cascade_file).exists():
+        try:
+            from PIL import Image
+
+            cascade = cv2.CascadeClassifier(cascade_file)
+            image = cv2.imread(str(path))
+            if cascade.empty() or image is None:
+                raise RuntimeError("cascade or image would not load")
+            gray = cv2.equalizeHist(cv2.cvtColor(image, cv2.COLOR_BGR2GRAY))
+            minimum = max(
+                40, int(min(gray.shape) * FACE_MIN_SIDE_FRACTION)
+            )
+            found = cascade.detectMultiScale(
+                gray, FACE_SCALE_FACTOR, FACE_MIN_NEIGHBOURS,
+                minSize=(minimum, minimum),
+            )
+            with Image.open(path) as opened:
+                rgb = opened.convert("RGB")
+                confirmed = sum(
+                    1 for (x, y, w, h) in found
+                    if _confirm_face(rgb.crop((int(x), int(y),
+                                               int(x + w), int(y + h))))
+                )
+            how = "haar cascade + skin confirmation"
+            if len(found) and not confirmed:
+                how += f" ({len(found)} candidate(s) rejected as texture)"
+            return (confirmed, how)
+        except Exception as exc:
+            return (None, f"cascade failed ({exc.__class__.__name__})")
+
+    # OpenCV 5 removed the cascade; YuNet is the replacement, but its model
+    # is a separate download.
+    if hasattr(cv2, "FaceDetectorYN_create"):
+        model = next((p for p in _yunet_paths(path) if p.exists()), None)
+        if model is None:
+            return (
+                None,
+                f"unavailable — OpenCV {cv2.__version__} ships no Haar "
+                f"cascade; either pip install 'opencv-python<5' or put a "
+                f"YuNet model at vault/.vaultmeta/{YUNET_FILENAME}",
+            )
+        try:
+            image = cv2.imread(str(path))
+            if image is None:
+                return (None, "unreadable by OpenCV")
+            height, width = image.shape[:2]
+            detector = cv2.FaceDetectorYN_create(
+                str(model), "", (width, height), 0.6
+            )
+            _, found = detector.detect(image)
+            return (0 if found is None else len(found), "yunet")
+        except Exception as exc:
+            return (None, f"yunet failed ({exc.__class__.__name__})")
+
+    return (None, f"unavailable — OpenCV {cv2.__version__} exposes no "
+                  f"face detector this screen can use")
 
 
 def screen_image(path: Path) -> ScreenReport:
@@ -244,12 +329,13 @@ def screen_image(path: Path) -> ScreenReport:
         report.add(BLOCK, f"cannot screen ({exc.__class__.__name__}) — holding it")
         return report
 
-    faces = _face_count(Path(path))
+    faces, how = detect_faces(Path(path))
     report.details["faces"] = faces
+    report.details["face_detection"] = how
     if faces is None:
-        report.details["face_detection"] = "unavailable (pip install opencv-python)"
+        report.notes.append(f"face detection {how}")
     elif faces > 0:
-        report.add(BLOCK, f"{faces} face(s) detected")
+        report.add(BLOCK, f"{faces} face(s) detected ({how})")
 
     return report
 

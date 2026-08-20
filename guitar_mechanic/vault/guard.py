@@ -322,4 +322,20 @@ def doctor(settings: VaultSettings) -> list[tuple[str, bool, str]]:
         "reviewed-and-public list", True,
         f"{len(approved)} file(s) approved by hand",
     ))
+
+    probe = settings.meta_dir / ".face-probe.png"
+    try:
+        from PIL import Image
+
+        settings.meta_dir.mkdir(parents=True, exist_ok=True)
+        Image.new("RGB", (64, 64), (128, 128, 128)).save(probe)
+        _count, how = screen.detect_faces(probe)
+    except Exception as exc:
+        how = f"could not probe ({exc.__class__.__name__})"
+    finally:
+        probe.unlink(missing_ok=True)
+    working = "unavailable" not in how and "failed" not in how
+    rows.append((
+        "face detection (strongest signal)", working, how,
+    ))
     return rows
