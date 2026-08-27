@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Killy Master Canvas — Forever Zoom</title>
+  <style>
+    :root {
+      --bg: #080a0f;
+      --panel: #12161f;
+      --border: #2a3344;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #c9a227;
+      --accent-glow: rgba(201, 162, 39, 0.35);
+      --folk: #4a7c59;
+      --metal: #8b2635;
+      --ridge: #3d5a80;
+      --studio: #5c4d7d;
+      --myth: #2d6a6a;
+      --poem: #6b4c35;
+      --rail-w: 300px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: Georgia, "Times New Roman", serif; }
+    #app { position: relative; width: 100%; height: 100%; }
+    #viewport { cursor: grab; touch-action: none; position: absolute; top: 0; left: 0; right: var(--rail-w); height: 100%; overflow: hidden; background:
+      radial-gradient(ellipse at 30% 20%, rgba(61, 90, 128, 0.15), transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(139, 38, 53, 0.12), transparent 45%),
+      var(--bg);
+    }
+    body.embed #viewport { right: 0; }
+    #viewport.dragging { cursor: grabbing; }
+    body.mode-draw #viewport { cursor: crosshair; }
+    body.mode-move #viewport { cursor: move; }
+    #world { position: absolute; top: 0; left: 0; transform-origin: 0 0; will-change: transform; }
+    #strokes { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; }
+
+    .node {
+      position: absolute; border-radius: 6px;
+      border: 2px solid rgba(255,255,255,0.12);
+      padding: 10px 12px; overflow: hidden;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      user-select: none; backdrop-filter: blur(2px);
+    }
+    .node:hover { border-color: var(--accent); box-shadow: 0 0 24px var(--accent-glow); z-index: 5; }
+    .node.selected { border-color: var(--accent); box-shadow: 0 0 32px var(--accent-glow); z-index: 6; }
+    .node .label { font-weight: 700; font-size: 14px; line-height: 1.25; letter-spacing: 0.02em; }
+    .node .sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-family: system-ui, sans-serif; }
+    .node .quilt-grid { display: grid; gap: 4px; margin-top: 8px; height: calc(100% - 42px); }
+    .quilt-cell {
+      border-radius: 3px; border: 1px solid rgba(255,255,255,0.08); opacity: 0.7;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 2px; min-height: 0; cursor: default;
+    }
+    .quilt-cell.clickable { cursor: pointer; pointer-events: auto; }
+    .quilt-cell.clickable:hover { opacity: 1; border-color: var(--accent); box-shadow: inset 0 0 12px var(--accent-glow); }
+    .quilt-cell .cell-label {
+      font-size: 12px; line-height: 1.2; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+      font-family: system-ui, sans-serif; font-weight: 700;
+      overflow: hidden; text-overflow: ellipsis;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    }
+    .type-universe { background: linear-gradient(135deg, #1a1520, #2a2035); }
+    .type-realm.folk { background: linear-gradient(145deg, #1a2e1f, #0f1a12); border-color: rgba(74,124,89,0.4); }
+    .type-realm.metal { background: linear-gradient(145deg, #2a1218, #1a0a0e); border-color: rgba(139,38,53,0.45); }
+    .type-realm.ridge { background: linear-gradient(145deg, #152535, #0a1520); border-color: rgba(61,90,128,0.45); }
+    .type-realm.studio { background: linear-gradient(145deg, #1e1830, #120e1e); border-color: rgba(92,77,125,0.45); }
+    .type-realm.myth { background: linear-gradient(145deg, #122828, #081818); border-color: rgba(45,106,106,0.45); }
+    .type-album { background: rgba(20,24,32,0.92); }
+    .type-poem { background: rgba(30,22,16,0.9); border-color: rgba(107,76,53,0.4); }
+    .type-character { background: rgba(18,28,38,0.9); border-color: rgba(61,90,128,0.35); }
+    .type-tool { background: rgba(22,18,32,0.92); font-family: Consolas, monospace; font-size: 12px; }
+
+    .media-item {
+      position: absolute; border: 2px solid rgba(255,255,255,0.15); border-radius: 4px;
+      overflow: hidden; user-select: none; background: #0c0f16;
+    }
+    .media-item img, .media-item video { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .media-item:hover { border-color: var(--accent); box-shadow: 0 0 20px var(--accent-glow); z-index: 5; }
+    .media-item.selected { border-color: var(--accent); box-shadow: 0 0 28px var(--accent-glow); z-index: 6; }
+    .media-item .media-name {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 3px 6px;
+      font: 700 10px system-ui, sans-serif; color: #fff; text-shadow: 0 1px 3px #000;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7)); pointer-events: none;
+    }
+
+    #hud { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start; pointer-events: none; z-index: 100; }
+    #hud > * { pointer-events: auto; }
+    .panel {
+      background: rgba(18, 22, 31, 0.92); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px 14px; font-family: system-ui, sans-serif; font-size: 13px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    }
+    .panel h1 { font-size: 15px; color: var(--accent); margin-bottom: 4px; font-family: Georgia, serif; }
+    .panel p { color: var(--muted); font-size: 12px; line-height: 1.4; }
+    .btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+    button, label.btn {
+      background: #1c2330; color: var(--text); border: 1px solid var(--border); border-radius: 6px;
+      padding: 6px 10px; font-size: 12px; cursor: pointer; font-family: system-ui, sans-serif;
+    }
+    button:hover, label.btn:hover { border-color: var(--accent); color: var(--accent); }
+    button.primary { background: #2a2410; border-color: #6b5a20; color: var(--accent); }
+    button.active { border-color: var(--accent) !important; background: #2a2410 !important; color: var(--accent) !important; }
+    button.danger { border-color: #633; color: #f0a0a0; }
+    label.btn input { display: none; }
+    body.embed #hud, body.embed #draw-panel { display: none; }
+
+    #draw-panel {
+      position: absolute; top: 72px; left: 12px; z-index: 100; display: none;
+      align-items: center; gap: 8px; padding: 8px 12px;
+    }
+    #draw-panel.open { display: flex; }
+    .swatch { width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.25); cursor: pointer; }
+    .swatch.active { border-color: #fff; box-shadow: 0 0 8px var(--accent-glow); }
+    #draw-panel input[type=range] { width: 90px; accent-color: var(--accent); }
+    #draw-panel span { color: var(--muted); font: 11px system-ui, sans-serif; }
+
+    #boot-status {
+      position: absolute; bottom: 140px; left: 12px; z-index: 200;
+      background: rgba(18, 22, 31, 0.95); border: 1px solid var(--border); border-radius: 6px;
+      padding: 8px 12px; font-family: system-ui, sans-serif; font-size: 12px; color: var(--muted);
+      pointer-events: none; transition: opacity 0.6s;
+    }
+    #boot-status.ok { color: var(--folk); border-color: var(--folk); }
+    #boot-status.err { color: #f85149; border-color: var(--metal); background: rgba(40, 12, 18, 0.95); }
+
+    #zoom-badge {
+      position: absolute; top: 12px; right: 12px; z-index: 100;
+      font-family: system-ui, sans-serif; font-size: 12px; color: var(--muted);
+      background: rgba(18,22,31,0.85); padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);
+      pointer-events: none;
+    }
+    #minimap {
+      position: absolute; bottom: 12px; left: 12px; width: 160px; height: 110px;
+      background: rgba(8,10,15,0.85); border: 1px solid var(--border); border-radius: 6px; z-index: 100;
+    }
+    #minimap canvas { width: 100%; height: 100%; display: block; border-radius: 5px; }
+
+    #drop {
+      position: absolute; inset: 0; z-index: 150; display: none;
+      background: rgba(8,12,20,.82); border: 3px dashed var(--accent);
+      align-items: center; justify-content: center; text-align: center;
+      color: var(--accent); font: 700 18px system-ui, sans-serif; pointer-events: none;
+    }
+    #viewport.dragover #drop { display: flex; }
+
+    #nav-rail {
+      position: absolute; top: 0; right: 0; width: var(--rail-w); height: 100%;
+      background: #0e1218; border-left: 3px solid var(--accent);
+      z-index: 300; overflow-y: auto; padding: 14px;
+      font-family: system-ui, sans-serif;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.5);
+    }
+    body.embed #nav-rail { display: none; }
+    #nav-rail h2 { color: var(--accent); font-size: 15px; margin: 12px 0 6px; font-family: Georgia, serif; }
+    #nav-hint { color: var(--muted); font-size: 12px; line-height: 1.4; margin-bottom: 12px; }
+    #nav-detail { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin-bottom: 14px; }
+    #nav-detail h3 { color: var(--accent); font-size: 16px; margin-bottom: 4px; font-family: Georgia, serif; }
+    #nav-detail .nav-type { color: var(--muted); font-size: 11px; text-transform: uppercase; margin-bottom: 8px; }
+    #nav-detail .nav-note { color: #b8c0cc; font-size: 13px; line-height: 1.45; white-space: pre-wrap; }
+    #nav-detail .nav-open-label { color: var(--muted); font-size: 11px; margin: 10px 0 6px; }
+    #nav-detail textarea {
+      width: 100%; min-height: 64px; margin-top: 8px; padding: 6px 8px; font: 12px system-ui, sans-serif;
+      background: #0c1018; color: var(--text); border: 1px solid var(--border); border-radius: 6px; resize: vertical;
+    }
+    .nav-child-btns { display: flex; flex-direction: column; gap: 6px; }
+    .nav-child-btn { width: 100%; padding: 10px 12px !important; font-size: 13px !important; text-align: left; }
+    #nav-list, #media-list { display: flex; flex-direction: column; gap: 6px; }
+    .nav-btn { display: block; width: 100%; text-align: left; padding: 12px 14px !important; font-size: 14px !important; line-height: 1.3; border-radius: 8px !important; }
+    .nav-btn small { display: block; color: var(--muted); font-size: 11px; font-weight: 400; margin-top: 3px; }
+    .nav-btn.active { border-color: var(--accent) !important; background: #2a2410 !important; color: var(--accent) !important; }
+    .media-row { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; background: #0c1018; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+    .media-row:hover { border-color: #4a5568; }
+    .media-row.sel { border-color: var(--accent); }
+    .media-row .name { font-size: 12px; font-weight: 700; word-break: break-word; }
+    .media-row .badge { font-size: 9px; font-weight: 800; letter-spacing: .08em; color: var(--accent); border: 1px solid rgba(201,162,39,.35); border-radius: 4px; padding: 2px 6px; align-self: start; }
+    .media-row .badge.vid { color: #7ec8ff; border-color: rgba(126,200,255,.35); }
+    #zoom-badge { right: calc(var(--rail-w) + 12px); }
+    body.embed #zoom-badge { right: 12px; }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div id="viewport">
+    <div id="world">
+      <svg id="strokes" width="1" height="1"></svg>
+    </div>
+    <div id="hud">
+      <div class="panel" id="help">
+        <h1>Killy Master Canvas</h1>
+        <p>Scroll = zoom · Drag map = pan · Click a patch or use the menu → · <b>E</b> = draw</p>
+        <div class="btn-row">
+          <button class="primary" id="btnHome" type="button">Home</button>
+          <button id="btnFit" type="button">Fit all</button>
+          <button id="btnAdd" type="button">+ Patch</button>
+          <label class="btn">+ Media<input id="fileIn" type="file" accept="image/*,video/*,.gif,.mp4,.webm,.mov,.m4v" multiple /></label>
+          <button id="btnUrl" type="button">+ Image URL</button>
+          <button id="btnMove" type="button" title="Toggle: drag patches & media to move them">Move</button>
+          <button id="btnDraw" type="button" title="Toggle draw mode (E)">Draw</button>
+          <button id="btnSave" type="button">Save</button>
+          <button id="btnExport" type="button">Export JSON</button>
+          <button id="btnImport" type="button">Import JSON</button>
+          <button class="danger" id="btnReset" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="draw-panel">
+      <span>Draw:</span>
+      <div id="swatches"></div>
+      <input type="range" id="brushSize" min="2" max="40" value="6" title="Brush size" />
+      <button id="btnUndoStroke" type="button">Undo</button>
+      <button id="btnClearStrokes" type="button" class="danger">Clear ink</button>
+    </div>
+    <div id="boot-status">Starting…</div>
+    <div id="zoom-badge">100%</div>
+    <div id="minimap"><canvas id="minimapCanvas" width="160" height="110"></canvas></div>
+    <div id="drop">Drop images or videos here</div>
+  </div>
+
+  <div id="nav-rail">
+    <h2 style="margin-top:0">CLICK A PATCH</h2>
+    <p id="nav-hint">Every patch is a button below. Click one — the map zooms and its notes show here.</p>
+    <div id="nav-detail"><p class="nav-note">Loading…</p></div>
+    <h2>ALL PATCHES</h2>
+    <div id="nav-list"></div>
+    <h2>MEDIA</h2>
+    <div id="media-list"><p class="nav-note" style="color:var(--muted);font-size:12px">No media yet. Use <b>+ Media</b> or drop files on the map.</p></div>
+  </div>
+</div>
+<input type="file" id="importFile" accept="application/json,.json" hidden />
+<script>
+(function () {
+'use strict';
+const STORAGE_KEY = 'killy_master_canvas_v1';
+const SWATCHES = ['#c9a227', '#e6edf3', '#8b2635', '#4a7c59', '#5c4d7d', '#6b4c35', '#3d5a80', '#ff6b35', '#000000', '#ffffff'];
+const EMBED = /[?&](embed|view)=1/.test(location.search);
+
+const DEFAULT_STATE = {
+  version: 2,
+  nodes: [
+    { id: 'root', type: 'universe', label: 'THE KILLY UNIVERSE', sub: 'Trouble & Co · Roux Garoux · Ridge · Studio', x: 5200, y: 5200, w: 420, h: 260,
+      note: 'Your expansive world — poems, metal, Appalachia, myth, DSP. Zoom into any quilt patch. Add your own nodes anytime.' },
+    { id: 'folk', type: 'realm', realm: 'folk', label: 'KILLY KILLETTE', sub: 'Appalachia · folk · story songs', x: 4700, y: 4800, w: 280, h: 200, parent: 'root',
+      note: 'Acoustic soul, ridge life, whistlin pines, indifference, black bear, hollow hills folklore.' },
+    { id: 'metal', type: 'realm', realm: 'metal', label: 'ROUX GAROUX', sub: 'Deathcore · slam · Trouble & Co', x: 5400, y: 4750, w: 280, h: 200, parent: 'root',
+      note: 'Heavy production, Poetic Detritus, Devil\'s Banjo, banjocore, SLAMLORD grooves.' },
+    { id: 'ridge', type: 'realm', realm: 'ridge', label: 'THE RIDGE', sub: 'Whistlin pines · law of the land', x: 5050, y: 5550, w: 300, h: 190, parent: 'root',
+      note: 'Old wooden fence metaphor. IN DIFFERENCE. GORGERS RIDGE. The land that hates the living.' },
+    { id: 'studio', type: 'realm', realm: 'studio', label: 'KILLY STUDIO', sub: 'DSP · plugins · HISE · Reaper', x: 5550, y: 5450, w: 290, h: 200, parent: 'root',
+      note: 'Ridge Old Dog X amp sim, SlamSuite JSFX, Freedom DAW, Oracle NAMs, SLAMREAPER live rig.' },
+    { id: 'archive', type: 'realm', realm: 'myth', label: 'POEMS & LYRICS', sub: '270 works · review folder', x: 4850, y: 5350, w: 260, h: 170, parent: 'root',
+      note: 'The poems archive — publish queue lives here.' },
+    { id: 'in-diff', type: 'poem', label: 'IN DIFFERENCE', sub: 'pass by / goodbye', x: 4980, y: 5680, w: 140, h: 80, parent: 'ridge',
+      note: 'Whistlin pines ridge poem. AA BB rhyme. pass by = passing on there.' },
+    { id: 'hollow-hills', type: 'poem', label: 'THE HOLLOW IN THE HILLS', sub: 'slam lyrics', x: 5140, y: 5680, w: 170, h: 80, parent: 'ridge',
+      note: 'Appalachian horror metal poem. The Ridge-Walker.' },
+    { id: 'one-more', type: 'poem', label: 'ONE MORE', sub: 'shame · glass', x: 5300, y: 5680, w: 120, h: 80, parent: 'ridge' },
+    { id: 'black-bear', type: 'poem', label: 'BLACK BEAR', sub: 'newest songs', x: 4720, y: 4920, w: 120, h: 72, parent: 'folk' },
+    { id: 'appalachia-album', type: 'album', label: 'APPALACHIA ALBUM', sub: 'lyrics collection', x: 4860, y: 4920, w: 150, h: 80, parent: 'folk' },
+    { id: 'moonbeam', type: 'album', label: 'MOONBEAM SAGA', sub: '.pages archive', x: 4720, y: 5020, w: 140, h: 72, parent: 'folk' },
+    { id: 'poetic-detritus', type: 'album', label: 'POETIC DETRITUS', sub: 'final mix stems', x: 5440, y: 4880, w: 150, h: 80, parent: 'metal' },
+    { id: 'devils-banjo', type: 'album', label: "DEVIL'S BANJO", sub: 'remastered stems', x: 5600, y: 4880, w: 140, h: 80, parent: 'metal' },
+    { id: 'old-dog-x', type: 'tool', label: 'RIDGE OLD DOG X', sub: 'NAM + IR amp sim', x: 5580, y: 5580, w: 150, h: 85, parent: 'studio',
+      note: 'Signal: DI → NAM head → Vault Chug → Old Dog X IR. HISE + VST3 built.' },
+    { id: 'slamreaper', type: 'tool', label: 'SLAMREAPER', sub: 'live Reaper rig — sacred', x: 5720, y: 5580, w: 140, h: 85, parent: 'studio' },
+    { id: 'ready', type: 'album', label: 'READY TO REVIEW', sub: 'publish candidates', x: 4830, y: 5440, w: 150, h: 72, parent: 'archive' },
+    { id: 'needs-fix', type: 'tool', label: 'NEEDS FIX', sub: 'junk + fragments', x: 5000, y: 5440, w: 130, h: 72, parent: 'archive' },
+    { id: 'killy-voice', type: 'character', label: 'KILLY KILLETTE (VOICE)', sub: 'narrator', x: 4880, y: 5020, w: 150, h: 72, parent: 'folk' },
+    { id: 'appalachian', type: 'character', label: 'THE APPALACHIAN', sub: 'ridge-born reaper', x: 5080, y: 5780, w: 150, h: 75, parent: 'ridge' },
+    { id: 'fence', type: 'character', label: 'THE OLD FENCE', sub: 'central metaphor', x: 5240, y: 5780, w: 140, h: 75, parent: 'ridge',
+      note: 'One side painted, one side grain. Boundaries protect and propel.' }
+  ],
+  media: [],
+  strokes: []
+};
+
+let state = loadState();
+let cam = { x: 0, y: 0, scale: 0.45 };
+let mode = 'view'; // view | move | draw
+let dragging = null; // {kind:'pan'|'node'|'media', ...}
+let pointerMoved = false;
+let selectedId = null;
+let selectedMediaId = null;
+let brush = { color: SWATCHES[0], size: 6 };
+let liveStroke = null;
+const mediaEls = {}; // id -> {wrap, el}
+
+const viewport = document.getElementById('viewport');
+const world = document.getElementById('world');
+const strokesSvg = document.getElementById('strokes');
+const minimapCanvas = document.getElementById('minimapCanvas');
+const minimapCtx = minimapCanvas.getContext('2d');
+
+function uid() { return 'n' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.nodes) && parsed.nodes.length > 0) {
+        parsed.media = parsed.media || [];
+        parsed.strokes = parsed.strokes || [];
+        return parsed;
+      }
+    }
+  } catch (_) {}
+  return JSON.parse(JSON.stringify(DEFAULT_STATE));
+}
+function saveState(silent) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if (!silent) setBoot('Saved in this browser.', true);
+  } catch (err) {
+    setBoot('Save failed (media too big for browser storage). Export JSON instead.', false);
+  }
+}
+
+/* ---------- rendering ---------- */
+function quiltCells(node) {
+  const children = state.nodes.filter(n => n.parent === node.id);
+  const count = Math.max(children.length, 4);
+  const cols = Math.ceil(Math.sqrt(count));
+  const rows = Math.ceil(count / cols);
+  let html = `<div class="quilt-grid" style="grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)">`;
+  const colors = { folk: 'var(--folk)', metal: 'var(--metal)', ridge: 'var(--ridge)', studio: 'var(--studio)', myth: 'var(--myth)', poem: 'var(--poem)' };
+  for (let i = 0; i < cols * rows; i++) {
+    const child = children[i];
+    const bg = child ? (colors[child.realm] || colors[child.type] || '#333') : 'rgba(255,255,255,0.04)';
+    const cls = child ? 'quilt-cell clickable' : 'quilt-cell';
+    const label = child ? `<span class="cell-label">${esc(child.label)}</span>` : '';
+    const data = child ? ` data-child-id="${child.id}"` : '';
+    html += `<div class="${cls}"${data} style="background:${bg}">${label}</div>`;
+  }
+  return html + '</div>';
+}
+
+function render() {
+  // remove old node elements (keep strokes svg + media)
+  world.querySelectorAll('.node').forEach(el => el.remove());
+  for (const node of state.nodes) {
+    const el = document.createElement('div');
+    el.className = 'node type-' + node.type + (node.realm ? ' ' + node.realm : '');
+    el.style.left = node.x + 'px';
+    el.style.top = node.y + 'px';
+    el.style.width = node.w + 'px';
+    el.style.height = node.h + 'px';
+    el.dataset.id = node.id;
+    if (node.id === selectedId) el.classList.add('selected');
+    let inner = `<div class="label">${esc(node.label)}</div>`;
+    if (node.sub) inner += `<div class="sub">${esc(node.sub)}</div>`;
+    if (node.type === 'realm' || node.type === 'universe') inner += quiltCells(node);
+    el.innerHTML = inner;
+    el.querySelectorAll('.quilt-cell[data-child-id]').forEach(cell => {
+      cell.addEventListener('click', e => { e.stopPropagation(); if (mode !== 'move') openPatch(cell.dataset.childId); });
+    });
+    el.addEventListener('click', e => {
+      if (mode === 'move' || pointerMoved) return;
+      if (e.target.closest('.quilt-cell[data-child-id]')) return;
+      e.stopPropagation();
+      openPatch(node.id);
+    });
+    world.appendChild(el);
+  }
+  syncMediaEls();
+  renderStrokes();
+  applyCamera();
+  drawMinimap();
+}
+
+function syncMediaEls() {
+  for (const m of state.media) {
+    let entry = mediaEls[m.id];
+    if (!entry) {
+      const wrap = document.createElement('div');
+      wrap.className = 'media-item';
+      wrap.dataset.mediaId = m.id;
+      let inner;
+      if (m.kind === 'video') {
+        inner = document.createElement('video');
+        inner.src = m.src; inner.muted = true; inner.loop = true; inner.playsInline = true; inner.autoplay = true;
+        inner.play().catch(() => {});
+      } else {
+        inner = document.createElement('img');
+        inner.src = m.src; inner.alt = m.name || '';
+      }
+      wrap.appendChild(inner);
+      const nm = document.createElement('div');
+      nm.className = 'media-name'; nm.textContent = m.name || '';
+      wrap.appendChild(nm);
+      wrap.addEventListener('click', e => {
+        if (pointerMoved) return;
+        e.stopPropagation();
+        selectMedia(m.id, false);
+      });
+      world.appendChild(wrap);
+      entry = mediaEls[m.id] = { wrap, el: inner };
+    }
+    entry.wrap.style.left = m.x + 'px';
+    entry.wrap.style.top = m.y + 'px';
+    entry.wrap.style.width = m.w + 'px';
+    entry.wrap.style.height = m.h + 'px';
+    entry.wrap.classList.toggle('selected', m.id === selectedMediaId);
+  }
+  for (const id of Object.keys(mediaEls)) {
+    if (!state.media.find(m => m.id === id)) {
+      mediaEls[id].wrap.remove();
+      delete mediaEls[id];
+    }
+  }
+}
+
+function renderStrokes() {
+  let d = '';
+  const all = liveStroke ? state.strokes.concat([liveStroke]) : state.strokes;
+  strokesSvg.innerHTML = all.map(s => {
+    const pts = s.points.map(p => p.join(',')).join(' ');
+    return `<polyline points="${pts}" fill="none" stroke="${esc(s.color)}" stroke-width="${s.width}" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"/>`;
+  }).join('');
+}
+
+function applyCamera() {
+  world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.scale})`;
+  document.getElementById('zoom-badge').textContent = Math.round(cam.scale * 100) + '%';
+}
+
+function screenToWorld(sx, sy) {
+  const rect = viewport.getBoundingClientRect();
+  return { x: (sx - rect.left - cam.x) / cam.scale, y: (sy - rect.top - cam.y) / cam.scale };
+}
+
+/* ---------- camera moves (animated zoom from the quilts) ---------- */
+function zoomToRect(x, y, w, h, animate = true) {
+  const rect = viewport.getBoundingClientRect();
+  const padding = 80;
+  const targetScale = clamp(Math.min((rect.width - padding * 2) / w, (rect.height - padding * 2) / h), 0.2, 2.5);
+  const targetX = rect.width / 2 - (x + w / 2) * targetScale;
+  const targetY = rect.height / 2 - (y + h / 2) * targetScale;
+  if (!animate) { cam.scale = targetScale; cam.x = targetX; cam.y = targetY; applyCamera(); drawMinimap(); return; }
+  const start = { ...cam };
+  const t0 = performance.now();
+  const dur = 450;
+  function step(now) {
+    const t = Math.min(1, (now - t0) / dur);
+    const e = 1 - Math.pow(1 - t, 3);
+    cam.scale = start.scale + (targetScale - start.scale) * e;
+    cam.x = start.x + (targetX - start.x) * e;
+    cam.y = start.y + (targetY - start.y) * e;
+    applyCamera();
+    if (t < 1) requestAnimationFrame(step); else drawMinimap();
+  }
+  requestAnimationFrame(step);
+}
+
+function bounds() {
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  const feed = it => {
+    minX = Math.min(minX, it.x); minY = Math.min(minY, it.y);
+    maxX = Math.max(maxX, it.x + it.w); maxY = Math.max(maxY, it.y + it.h);
+  };
+  state.nodes.forEach(feed);
+  state.media.forEach(feed);
+  state.strokes.forEach(s => s.points.forEach(p => {
+    minX = Math.min(minX, p[0]); minY = Math.min(minY, p[1]);
+    maxX = Math.max(maxX, p[0]); maxY = Math.max(maxY, p[1]);
+  }));
+  if (!isFinite(minX)) { minX = 0; minY = 0; maxX = 1000; maxY = 700; }
+  return { minX, minY, maxX, maxY };
+}
+
+function fitAll() {
+  const b = bounds();
+  zoomToRect(b.minX, b.minY, b.maxX - b.minX, b.maxY - b.minY);
+}
+
+function goHome() { const n = state.nodes.find(n => n.id === 'root') || state.nodes[0]; if (n) openPatch(n.id); }
+
+/* ---------- patches / nav rail ---------- */
+function openPatch(id) {
+  selectedId = id; selectedMediaId = null;
+  render();
+  const node = state.nodes.find(n => n.id === id);
+  if (!node) return;
+  updateNavDetail(node);
+  buildNavList();
+  renderMediaList();
+  zoomToRect(node.x, node.y, node.w, node.h);
+}
+
+function updateNavDetail(node) {
+  const el = document.getElementById('nav-detail');
+  if (!el) return;
+  const children = state.nodes.filter(n => n.parent === node.id);
+  let html = '<h3>' + esc(node.label) + '</h3>';
+  html += '<p class="nav-type">' + esc(node.type + (node.realm ? ' · ' + node.realm : '')) + '</p>';
+  html += '<p class="nav-note">' + esc(node.note || 'No notes on this patch yet.') + '</p>';
+  if (!EMBED) html += '<textarea data-note placeholder="Type notes for this patch — saved with the canvas">' + esc(node.note || '') + '</textarea>';
+  if (node.parent) {
+    const parent = state.nodes.find(n => n.id === node.parent);
+    if (parent) html += '<div class="btn-row"><button class="nav-back" type="button">← Back to ' + esc(parent.label) + '</button></div>';
+  }
+  if (children.length) {
+    html += '<p class="nav-open-label">Open inside this patch:</p><div class="nav-child-btns">';
+    for (const c of children) {
+      html += '<button type="button" class="primary nav-child-btn" data-open="' + c.id + '">' + esc(c.label) +
+        (c.sub ? '<small style="display:block;font-weight:400;color:#8b949e">' + esc(c.sub) + '</small>' : '') + '</button>';
+    }
+    html += '</div>';
+  }
+  if (!EMBED && node.id !== 'root') {
+    html += '<div class="btn-row"><button class="danger" data-del type="button">Delete patch</button></div>';
+  }
+  el.innerHTML = html;
+  const back = el.querySelector('.nav-back');
+  if (back && node.parent) back.onclick = () => openPatch(node.parent);
+  el.querySelectorAll('[data-open]').forEach(btn => { btn.onclick = () => openPatch(btn.dataset.open); });
+  const ta = el.querySelector('[data-note]');
+  if (ta) ta.addEventListener('change', () => { node.note = ta.value; saveState(true); updateNavDetail(node); });
+  const del = el.querySelector('[data-del]');
+  if (del) del.onclick = () => {
+    if (!confirm('Delete "' + node.label + '" and everything inside it?')) return;
+    const doomed = new Set([node.id]);
+    let grew = true;
+    while (grew) {
+      grew = false;
+      for (const n of state.nodes) if (n.parent && doomed.has(n.parent) && !doomed.has(n.id)) { doomed.add(n.id); grew = true; }
+    }
+    state.nodes = state.nodes.filter(n => !doomed.has(n.id));
+    selectedId = null;
+    saveState(true); render(); buildNavList(); goHome();
+  };
+}
+
+function buildNavList() {
+  const list = document.getElementById('nav-list');
+  if (!list) return;
+  list.innerHTML = '';
+  const root = state.nodes.find(n => n.id === 'root') || state.nodes[0];
+  if (!root) return;
+  const seen = new Set();
+  function walk(nodeId, depth) {
+    if (seen.has(nodeId)) return;
+    seen.add(nodeId);
+    const node = state.nodes.find(n => n.id === nodeId);
+    if (!node) return;
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'nav-btn' + (selectedId === node.id ? ' active' : '');
+    b.style.width = 'calc(100% - ' + (depth * 10) + 'px)';
+    b.style.marginLeft = (depth * 10) + 'px';
+    b.innerHTML = esc(node.label) + (node.sub ? '<small>' + esc(node.sub) + '</small>' : '');
+    b.onclick = () => openPatch(node.id);
+    list.appendChild(b);
+    state.nodes.filter(n => n.parent === nodeId).forEach(c => walk(c.id, depth + 1));
+  }
+  walk(root.id, 0);
+  state.nodes.filter(n => n.id !== root.id && !state.nodes.find(p => p.id === n.parent)).forEach(orphan => walk(orphan.id, 0));
+}
+
+/* ---------- media (from the video board) ---------- */
+function selectMedia(id, zoom) {
+  selectedMediaId = id; selectedId = null;
+  const m = state.media.find(x => x.id === id);
+  render(); buildNavList(); renderMediaList();
+  if (m && zoom) zoomToRect(m.x, m.y, m.w, m.h);
+}
+
+function renderMediaList() {
+  const list = document.getElementById('media-list');
+  if (!list) return;
+  if (!state.media.length) {
+    list.innerHTML = '<p class="nav-note" style="color:var(--muted);font-size:12px">No media yet. Use <b>+ Media</b> or drop files on the map.</p>';
+    return;
+  }
+  list.innerHTML = '';
+  state.media.forEach((m, idx) => {
+    const row = document.createElement('div');
+    row.className = 'media-row' + (m.id === selectedMediaId ? ' sel' : '');
+    row.innerHTML =
+      '<div class="name">' + esc(m.name || ('media ' + (idx + 1))) + '</div>' +
+      '<span class="badge' + (m.kind === 'video' ? ' vid' : '') + '">' + (m.kind === 'video' ? 'VIDEO' : 'IMAGE') + '</span>' +
+      (EMBED ? '' : '<button type="button" class="danger" data-rm style="grid-column:1/-1;justify-self:start;font-size:10px;padding:3px 8px">Remove</button>');
+    row.addEventListener('click', e => {
+      if (e.target.dataset.rm !== undefined && e.target.hasAttribute('data-rm')) return;
+      selectMedia(m.id, true);
+    });
+    const rm = row.querySelector('[data-rm]');
+    if (rm) rm.addEventListener('click', e => {
+      e.stopPropagation();
+      state.media = state.media.filter(x => x.id !== m.id);
+      if (selectedMediaId === m.id) selectedMediaId = null;
+      saveState(true); render(); renderMediaList();
+    });
+    list.appendChild(row);
+  });
+}
+
+function scaleToFit(nw, nh, maxW, maxH) {
+  const s = Math.min(maxW / nw, maxH / nh, 1);
+  return { w: Math.max(60, nw * s), h: Math.max(40, nh * s) };
+}
+
+function placeCenter(w, h) {
+  const rect = viewport.getBoundingClientRect();
+  const c = screenToWorld(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  return { x: c.x - w / 2 + (state.media.length % 5) * 30, y: c.y - h / 2 + (state.media.length % 5) * 30 };
+}
+
+function addMediaItem(name, kind, src, nw, nh, at) {
+  const dim = scaleToFit(nw || 640, nh || 360, 640, 420);
+  const pos = at ? { x: at.x - dim.w / 2, y: at.y - dim.h / 2 } : placeCenter(dim.w, dim.h);
+  const m = { id: uid(), name, kind, src, x: pos.x, y: pos.y, w: dim.w, h: dim.h };
+  state.media.push(m);
+  selectedMediaId = m.id;
+  saveState(true);
+  render(); renderMediaList();
+  setBoot('Added ' + name + '. Toggle Move to drag it around.', true);
+}
+
+function addFiles(fileList, at) {
+  const files = Array.from(fileList || []);
+  if (!files.length) return;
+  setBoot('Loading ' + files.length + ' file(s)…');
+  files.forEach(file => {
+    const isVid = /^video\//i.test(file.type) || /\.(mp4|webm|mov|m4v)$/i.test(file.name);
+    const isImg = /^image\//i.test(file.type) || /\.(png|jpe?g|gif|webp|bmp|svg)$/i.test(file.name);
+    if (!isVid && !isImg) { setBoot('Skipped ' + file.name + ' (not image/video).', false); return; }
+    if (file.size > 8 * 1024 * 1024) {
+      setBoot(file.name + ' is over 8 MB — for the website, upload it to WordPress Media and use “+ Image URL” instead.', false);
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const src = reader.result;
+      if (isVid) {
+        const v = document.createElement('video');
+        v.preload = 'metadata';
+        v.onloadedmetadata = () => addMediaItem(file.name, 'video', src, v.videoWidth, v.videoHeight, at);
+        v.onerror = () => setBoot('Could not load video: ' + file.name, false);
+        v.src = src;
+      } else {
+        const img = new Image();
+        img.onload = () => addMediaItem(file.name, 'image', src, img.naturalWidth, img.naturalHeight, at);
+        img.onerror = () => setBoot('Could not load image: ' + file.name, false);
+        img.src = src;
+      }
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function addImageUrl() {
+  const url = prompt('Paste an image or video URL (e.g. from your WordPress Media Library):');
+  if (!url) return;
+  const isVid = /\.(mp4|webm|mov|m4v)(\?|#|$)/i.test(url);
+  if (isVid) {
+    const v = document.createElement('video');
+    v.preload = 'metadata';
+    v.onloadedmetadata = () => addMediaItem(url.split('/').pop().split('?')[0] || 'video', 'video', url, v.videoWidth, v.videoHeight);
+    v.onerror = () => setBoot('Could not load that video URL.', false);
+    v.src = url;
+  } else {
+    const img = new Image();
+    img.onload = () => addMediaItem(url.split('/').pop().split('?')[0] || 'image', 'image', url, img.naturalWidth, img.naturalHeight);
+    img.onerror = () => setBoot('Could not load that image URL.', false);
+    img.src = url;
+  }
+}
+
+/* ---------- draw mode (from the infinite canvas) ---------- */
+function setMode(next) {
+  mode = (mode === next) ? 'view' : next;
+  document.body.classList.toggle('mode-draw', mode === 'draw');
+  document.body.classList.toggle('mode-move', mode === 'move');
+  document.getElementById('btnDraw').classList.toggle('active', mode === 'draw');
+  document.getElementById('btnMove').classList.toggle('active', mode === 'move');
+  document.getElementById('draw-panel').classList.toggle('open', mode === 'draw');
+  setBoot(mode === 'draw' ? 'DRAW mode — sketch right on the map. E or Draw to exit.' :
+          mode === 'move' ? 'MOVE mode — drag patches and media to rearrange. Click Move again to exit.' :
+          'View mode.', true);
+}
+
+function buildSwatches() {
+  const wrap = document.getElementById('swatches');
+  wrap.style.display = 'flex'; wrap.style.gap = '5px';
+  SWATCHES.forEach(c => {
+    const b = document.createElement('div');
+    b.className = 'swatch' + (c === brush.color ? ' active' : '');
+    b.style.background = c;
+    b.title = c;
+    b.onclick = () => { brush.color = c; wrap.querySelectorAll('.swatch').forEach(x => x.classList.remove('active')); b.classList.add('active'); };
+    wrap.appendChild(b);
+  });
+}
+
+/* ---------- pointer handling ---------- */
+viewport.addEventListener('pointerdown', e => {
+  if (e.button !== 0) return;
+  viewport.setPointerCapture(e.pointerId);
+  pointerMoved = false;
+  const w = screenToWorld(e.clientX, e.clientY);
+  if (mode === 'draw') {
+    liveStroke = { color: brush.color, width: brush.size, points: [[+w.x.toFixed(1), +w.y.toFixed(1)]] };
+    dragging = { kind: 'draw' };
+    return;
+  }
+  const mediaHit = e.target.closest('.media-item');
+  const nodeHit = e.target.closest('.node');
+  if (mode === 'move' && mediaHit) {
+    const m = state.media.find(x => x.id === mediaHit.dataset.mediaId);
+    if (m) { dragging = { kind: 'media', id: m.id, sx: e.clientX, sy: e.clientY, ox: m.x, oy: m.y }; return; }
+  }
+  if (mode === 'move' && nodeHit) {
+    const n = state.nodes.find(x => x.id === nodeHit.dataset.id);
+    if (n) { dragging = { kind: 'node', id: n.id, sx: e.clientX, sy: e.clientY, ox: n.x, oy: n.y }; return; }
+  }
+  if (mediaHit || nodeHit) { dragging = null; return; } // plain click → element handlers
+  dragging = { kind: 'pan', sx: e.clientX, sy: e.clientY, camX: cam.x, camY: cam.y };
+  viewport.classList.add('dragging');
+});
+
+viewport.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  if (dragging.kind === 'draw') {
+    const w = screenToWorld(e.clientX, e.clientY);
+    liveStroke.points.push([+w.x.toFixed(1), +w.y.toFixed(1)]);
+    renderStrokes();
+    return;
+  }
+  if (Math.abs(e.clientX - (dragging.sx || 0)) > 3 || Math.abs(e.clientY - (dragging.sy || 0)) > 3) pointerMoved = true;
+  if (dragging.kind === 'pan') {
+    cam.x = dragging.camX + (e.clientX - dragging.sx);
+    cam.y = dragging.camY + (e.clientY - dragging.sy);
+    applyCamera();
+  } else if (dragging.kind === 'media') {
+    const m = state.media.find(x => x.id === dragging.id);
+    if (!m) return;
+    m.x = dragging.ox + (e.clientX - dragging.sx) / cam.scale;
+    m.y = dragging.oy + (e.clientY - dragging.sy) / cam.scale;
+    syncMediaEls();
+  } else if (dragging.kind === 'node') {
+    const n = state.nodes.find(x => x.id === dragging.id);
+    if (!n) return;
+    n.x = dragging.ox + (e.clientX - dragging.sx) / cam.scale;
+    n.y = dragging.oy + (e.clientY - dragging.sy) / cam.scale;
+    const el = world.querySelector('.node[data-id="' + n.id + '"]');
+    if (el) { el.style.left = n.x + 'px'; el.style.top = n.y + 'px'; }
+  }
+});
+
+function endPointer() {
+  if (dragging && dragging.kind === 'draw' && liveStroke) {
+    if (liveStroke.points.length > 1) state.strokes.push(liveStroke);
+    liveStroke = null;
+    renderStrokes();
+    saveState(true);
+  }
+  if (dragging && (dragging.kind === 'media' || dragging.kind === 'node') && pointerMoved) {
+    saveState(true); drawMinimap();
+  }
+  dragging = null;
+  viewport.classList.remove('dragging');
+  setTimeout(() => { pointerMoved = false; }, 0);
+}
+viewport.addEventListener('pointerup', endPointer);
+viewport.addEventListener('pointercancel', endPointer);
+
+viewport.addEventListener('wheel', e => {
+  e.preventDefault();
+  const rect = viewport.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const before = screenToWorld(e.clientX, e.clientY);
+  const factor = e.deltaY < 0 ? 1.12 : 0.89;
+  cam.scale = clamp(cam.scale * factor, 0.05, 6);
+  cam.x = mx - before.x * cam.scale;
+  cam.y = my - before.y * cam.scale;
+  applyCamera();
+  drawMinimap();
+}, { passive: false });
+
+/* drag & drop files */
+['dragenter', 'dragover'].forEach(ev => viewport.addEventListener(ev, e => { e.preventDefault(); viewport.classList.add('dragover'); }));
+viewport.addEventListener('dragleave', e => { if (e.target === viewport) viewport.classList.remove('dragover'); });
+viewport.addEventListener('drop', e => {
+  e.preventDefault();
+  viewport.classList.remove('dragover');
+  if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+    addFiles(e.dataTransfer.files, screenToWorld(e.clientX, e.clientY));
+  }
+});
+
+/* ---------- minimap ---------- */
+function drawMinimap() {
+  const w = minimapCanvas.width, h = minimapCanvas.height;
+  minimapCtx.fillStyle = '#080a0f';
+  minimapCtx.fillRect(0, 0, w, h);
+  const b = bounds();
+  const bw = (b.maxX - b.minX) || 1, bh = (b.maxY - b.minY) || 1;
+  const colors = { universe: '#c9a227', folk: '#4a7c59', metal: '#8b2635', ridge: '#3d5a80', studio: '#5c4d7d', myth: '#2d6a6a', poem: '#6b4c35', album: '#556', tool: '#7a6', character: '#58a' };
+  const px = it => ((it.x - b.minX) / bw) * (w - 8) + 4;
+  const py = it => ((it.y - b.minY) / bh) * (h - 8) + 4;
+  for (const n of state.nodes) {
+    minimapCtx.fillStyle = colors[n.realm] || colors[n.type] || '#444';
+    minimapCtx.fillRect(px(n), py(n), Math.max(3, (n.w / bw) * (w - 8)), Math.max(2, (n.h / bh) * (h - 8)));
+  }
+  minimapCtx.fillStyle = '#7ec8ff';
+  for (const m of state.media) {
+    minimapCtx.fillRect(px(m), py(m), Math.max(2, (m.w / bw) * (w - 8)), Math.max(2, (m.h / bh) * (h - 8)));
+  }
+  const rect = viewport.getBoundingClientRect();
+  const vx = (-cam.x / cam.scale - b.minX) / bw * (w - 8) + 4;
+  const vy = (-cam.y / cam.scale - b.minY) / bh * (h - 8) + 4;
+  minimapCtx.strokeStyle = '#c9a227';
+  minimapCtx.lineWidth = 1.5;
+  minimapCtx.strokeRect(vx, vy, (rect.width / cam.scale) / bw * (w - 8), (rect.height / cam.scale) / bh * (h - 8));
+}
+minimapCanvas.parentElement.addEventListener('click', e => {
+  const r = minimapCanvas.getBoundingClientRect();
+  const b = bounds();
+  const wx = b.minX + ((e.clientX - r.left) / r.width) * (b.maxX - b.minX);
+  const wy = b.minY + ((e.clientY - r.top) / r.height) * (b.maxY - b.minY);
+  const rect = viewport.getBoundingClientRect();
+  cam.x = rect.width / 2 - wx * cam.scale;
+  cam.y = rect.height / 2 - wy * cam.scale;
+  applyCamera(); drawMinimap();
+});
+
+/* ---------- toolbar ---------- */
+document.getElementById('btnHome').onclick = goHome;
+document.getElementById('btnFit').onclick = fitAll;
+document.getElementById('btnMove').onclick = () => setMode('move');
+document.getElementById('btnDraw').onclick = () => setMode('draw');
+document.getElementById('btnUrl').onclick = addImageUrl;
+document.getElementById('btnSave').onclick = () => saveState();
+document.getElementById('fileIn').addEventListener('change', e => { addFiles(e.target.files); e.target.value = ''; });
+document.getElementById('btnUndoStroke').onclick = () => { state.strokes.pop(); renderStrokes(); saveState(true); };
+document.getElementById('btnClearStrokes').onclick = () => {
+  if (!state.strokes.length || !confirm('Erase all drawn ink?')) return;
+  state.strokes = []; renderStrokes(); saveState(true);
+};
+document.getElementById('brushSize').addEventListener('input', e => { brush.size = +e.target.value; });
+
+document.getElementById('btnAdd').onclick = () => {
+  const label = prompt('Patch name (song, place, character, album…):');
+  if (!label) return;
+  const rect = viewport.getBoundingClientRect();
+  const c = screenToWorld(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  const id = uid();
+  state.nodes.push({
+    id, type: 'poem', label, sub: 'your patch', x: c.x - 60, y: c.y - 40, w: 140, h: 80,
+    parent: selectedId || 'root', note: ''
+  });
+  saveState(true);
+  openPatch(id);
+};
+
+document.getElementById('btnExport').onclick = () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'killy-master-canvas.json';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  setBoot('Exported killy-master-canvas.json — this carries patches, ink, and embedded media.', true);
+};
+document.getElementById('btnImport').onclick = () => document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = e => {
+  const f = e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const data = JSON.parse(r.result);
+      if (!data || !Array.isArray(data.nodes)) throw new Error('bad');
+      data.media = data.media || []; data.strokes = data.strokes || [];
+      state = data;
+      selectedId = null; selectedMediaId = null;
+      saveState(true); render(); buildNavList(); renderMediaList(); goHome();
+      setBoot('Canvas imported.', true);
+    } catch (_) { setBoot('Invalid JSON file.', false); }
+  };
+  r.readAsText(f);
+};
+document.getElementById('btnReset').onclick = () => {
+  if (!confirm('Reset the whole canvas to the default Killy Universe? Your patches, ink, and media on this canvas will be lost.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+  selectedId = null; selectedMediaId = null;
+  Object.keys(mediaEls).forEach(id => { mediaEls[id].wrap.remove(); delete mediaEls[id]; });
+  render(); buildNavList(); renderMediaList(); goHome();
+};
+
+window.addEventListener('keydown', e => {
+  if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+  if (e.key === 'e' || e.key === 'E') { if (!EMBED) setMode('draw'); }
+  if (e.key === 'm' || e.key === 'M') { if (!EMBED) setMode('move'); }
+  if (e.key === 'Escape' && mode !== 'view') setMode(mode);
+  if ((e.ctrlKey || e.metaKey) && e.key === 'z' && mode === 'draw') { e.preventDefault(); state.strokes.pop(); renderStrokes(); saveState(true); }
+});
+
+/* ---------- boot ---------- */
+function setBoot(msg, ok) {
+  const el = document.getElementById('boot-status');
+  if (!el) return;
+  el.style.opacity = '1';
+  el.textContent = msg;
+  el.className = ok ? 'ok' : (ok === false ? 'err' : '');
+  clearTimeout(setBoot._t);
+  setBoot._t = setTimeout(() => { el.style.opacity = '0.35'; }, 5000);
+}
+
+function boot() {
+  try {
+    if (EMBED) document.body.classList.add('embed');
+    buildSwatches();
+    render();
+    buildNavList();
+    renderMediaList();
+    const root = state.nodes.find(n => n.id === 'root') || state.nodes[0];
+    if (root) {
+      if (EMBED) fitAll(); else openPatch(root.id);
+    }
+    setBoot(EMBED ? 'Explore: scroll to zoom, drag to pan.' : 'READY — click patches in the menu, E to draw, + Media for photos & clips.', true);
+  } catch (err) {
+    setBoot('ERROR: ' + (err && err.message ? err.message : String(err)), false);
+    console.error(err);
+  }
+}
+window.addEventListener('error', e => setBoot('ERROR: ' + (e.message || 'Script failed'), false));
+window.addEventListener('resize', () => { applyCamera(); drawMinimap(); });
+boot();
+})();
+</script>
+</body>
+</html>
