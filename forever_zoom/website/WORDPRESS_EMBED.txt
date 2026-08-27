@@ -1,0 +1,45 @@
+KILLY ZOOM CANVAS — put it on your WordPress site
+=================================================
+
+WHAT IT IS
+  killy-zoom-canvas.html — one self-contained file. No server, no plugins.
+  Visitors get: scroll/pinch zoom, drag pan, click a patch -> overlay card,
+  and the tour bar:  ⟨ Back · Go/Stop · Fwd ⟩ · Map.
+  No editing controls exist — it is view-only by design.
+
+STEP 1 — upload the file
+  WordPress blocks .html uploads in the Media Library, so either:
+  a) Upload it via your host's file manager / FTP into e.g.
+     /wp-content/uploads/killy/killy-zoom-canvas.html      (self-hosted)
+  b) Or use any static host and note the URL.
+
+STEP 2 — embed it on a page
+  Add a "Custom HTML" block where you want the canvas and paste:
+
+    <iframe src="/wp-content/uploads/killy/killy-zoom-canvas.html"
+            style="width:100%;height:80vh;border:0;border-radius:12px;overflow:hidden"
+            title="Killy Killette — The Universe" loading="lazy"
+            allow="fullscreen"></iframe>
+
+  For a full-bleed front page, use a page template with no sidebar and
+  height:100vh.
+
+DEEP LINKS
+  Add ?patch=ID to open zoomed on a patch, e.g.
+    .../killy-zoom-canvas.html?patch=poetic-detritus
+  IDs are in the CONTENT block at the top of the file.
+
+EDITING THE CONTENT (your only job)
+  Open killy-zoom-canvas.html in a text editor. Everything lives in the
+  CONTENT block at the top:
+    - name / tag / desc      -> what the patch and its card say
+    - img: ''                -> paste a WordPress Media Library image URL
+                                (upload cover art to Media, click it,
+                                 copy "File URL"). Empty = drawn ridge art.
+    - links: [{label,url}]   -> the card's buttons (Bandcamp, Spotify,
+                                YouTube, a page on your site...)
+    - tracks: ['...']        -> optional tracklist shown on the card
+    - x / y / w / h          -> where the patch sits on the map
+    - tour: [...]            -> the order Go/Back/Forward travel
+    - tourSeconds            -> seconds per stop on the auto tour
+  Save, re-upload, done.
