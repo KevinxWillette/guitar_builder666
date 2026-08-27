@@ -1,0 +1,2 @@
+Optional backup folder for your mp4 / webm / gif / images.
+The canvas uses + Add media (or drag-drop). This folder is for keeping copies to zip when you share.

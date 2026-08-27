@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>Killy — Infinite Canvas</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #050508; }
+    canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: zoom-in; }
+    #overlay {
+      position: fixed; inset: 0; pointer-events: none;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 20px 24px 28px; z-index: 2;
+    }
+    #title {
+      text-align: center; color: #c9a227; font-family: Georgia, serif;
+      font-size: clamp(14px, 2.5vw, 22px); letter-spacing: 0.28em;
+      text-transform: uppercase; text-shadow: 0 2px 24px rgba(0,0,0,0.9);
+      opacity: 0.92;
+    }
+    #subtitle { text-align: center; color: rgba(230,237,243,0.45); font: 11px system-ui; margin-top: 6px; letter-spacing: 0.12em; }
+    #hint {
+      text-align: center; color: rgba(230,237,243,0.35); font: 12px system-ui;
+      letter-spacing: 0.06em;
+    }
+    #depth-badge {
+      position: fixed; top: 20px; right: 20px; z-index: 3;
+      color: rgba(201,162,39,0.7); font: 11px system-ui;
+      background: rgba(0,0,0,0.45); padding: 6px 10px; border-radius: 4px;
+      border: 1px solid rgba(201,162,39,0.25); pointer-events: none;
+    }
+    #toolbar {
+      position: fixed; top: 20px; left: 20px; z-index: 3;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .tb-btn {
+      background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+      color: #e6edf3; font: 12px system-ui; padding: 8px 14px; border-radius: 6px;
+      cursor: pointer;
+    }
+    .tb-btn:hover { border-color: #c9a227; color: #c9a227; }
+    #upload-panel {
+      position: fixed; top: 64px; left: 20px; z-index: 5;
+      background: rgba(10,12,18,0.94); border: 1px solid rgba(201,162,39,0.45); border-radius: 10px;
+      padding: 14px 18px; max-width: 380px; width: calc(100% - 40px);
+      font-family: system-ui, sans-serif; pointer-events: auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+    }
+    #upload-panel h2 { color: #c9a227; font-size: 14px; margin-bottom: 8px; font-family: Georgia, serif; }
+    #upload-panel p { color: #8b949e; font-size: 11px; line-height: 1.45; margin-bottom: 8px; }
+    #upload-panel input[type=file] { width: 100%; font-size: 11px; margin-bottom: 8px; color: #ccc; }
+    #upload-panel button {
+      background: #2a2410; border: 1px solid #6b5a20; color: #c9a227;
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; margin-right: 6px;
+    }
+    #upload-panel button:hover { filter: brightness(1.15); }
+    #upload-panel.hidden { display: none; }
+    #ready-banner {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 6;
+      background: rgba(20,48,28,0.95); border: 2px solid #4a7c59; color: #d4f5dc;
+      font: 600 15px system-ui; padding: 14px 22px; border-radius: 10px;
+      pointer-events: none; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      animation: readyPulse 2s ease-in-out 3;
+    }
+    #ready-banner.hidden { display: none; }
+    @keyframes readyPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.65; } }
+    .fade #overlay { opacity: 0; transition: opacity 1.2s; }
+    body.edit-mode canvas { cursor: crosshair; }
+    body.edit-mode #hint::after { content: ' · EDIT MODE — E to view · Ctrl+wheel zoom'; }
+    #editor-panel {
+      position: fixed; top: 0; right: 0; z-index: 45;
+      width: min(300px, 92vw); height: 100%;
+      background: rgba(8,10,16,0.96); border-left: 1px solid rgba(201,162,39,0.35);
+      overflow-y: auto; padding: 14px 14px 24px;
+      font: 12px system-ui; color: #e6edf3;
+      pointer-events: auto;
+      transform: translateX(100%); transition: transform 0.25s;
+    }
+    #editor-panel.open { transform: translateX(0); }
+    #editor-panel h3 { color: #c9a227; font: 13px Georgia, serif; margin: 12px 0 8px; letter-spacing: 0.08em; }
+    #editor-panel h3:first-child { margin-top: 0; }
+    .ep-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; align-items: center; }
+    .ep-btn {
+      background: #1a1e28; border: 1px solid rgba(255,255,255,0.12); color: #e6edf3;
+      padding: 6px 10px; border-radius: 5px; cursor: pointer; font-size: 11px;
+    }
+    .ep-btn:hover, .ep-btn.active { border-color: #c9a227; color: #c9a227; }
+    .ep-btn.wide { flex: 1; min-width: 80px; }
+    .ep-label { color: #8b949e; font-size: 10px; min-width: 72px; }
+    .ep-slider { flex: 1; accent-color: #c9a227; }
+    .ep-input {
+      width: 100%; background: #12151c; border: 1px solid rgba(255,255,255,0.12);
+      color: #e6edf3; padding: 5px 8px; border-radius: 4px; font-size: 11px;
+    }
+    .ep-check { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; color: #b0b8c0; }
+    .ep-check input { accent-color: #c9a227; }
+    #mode-badge {
+      position: fixed; top: 56px; right: 20px; z-index: 4;
+      background: rgba(139,38,53,0.85); color: #ffd4dc; font: 600 11px system-ui;
+      padding: 5px 10px; border-radius: 4px; border: 1px solid rgba(255,120,140,0.4);
+      pointer-events: none; display: none;
+    }
+    body.edit-mode #mode-badge { display: block; }
+    #editor-toggle {
+      position: fixed; top: 50%; right: 0; z-index: 9; transform: translateY(-50%);
+      background: rgba(201,162,39,0.9); color: #0a0c10; border: none; border-radius: 6px 0 0 6px;
+      padding: 12px 8px; cursor: pointer; font: 600 11px system-ui; writing-mode: vertical-rl;
+      letter-spacing: 0.1em;
+    }
+    #swatch-row { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+    .swatch {
+      width: 22px; height: 22px; border-radius: 3px; border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+    }
+    .swatch.active { outline: 2px solid #c9a227; outline-offset: 1px; }
+    #layer-select { width: 100%; margin-bottom: 8px; }
+    .ep-hr { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 10px 0; }
+    #ctx-menu {
+      position: fixed; z-index: 20; min-width: 260px;
+      background: rgba(10,12,18,0.98); border: 1px solid rgba(201,162,39,0.45);
+      border-radius: 8px; padding: 6px 0; box-shadow: 0 12px 40px rgba(0,0,0,0.65);
+      font: 12px system-ui; color: #e6edf3; pointer-events: auto;
+    }
+    #ctx-menu.hidden { display: none; }
+    #ctx-menu .ctx-head {
+      padding: 8px 14px 6px; color: #c9a227; font: 600 11px Georgia, serif;
+      letter-spacing: 0.06em; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #ctx-menu button {
+      display: block; width: 100%; text-align: left; border: none; background: transparent;
+      color: #e6edf3; padding: 8px 14px; cursor: pointer; font: 12px system-ui;
+    }
+    #ctx-menu button:hover { background: rgba(201,162,39,0.15); color: #c9a227; }
+    #ctx-menu button .ctx-tip { display: block; color: #8b949e; font-size: 10px; margin-top: 2px; }
+    #ctx-menu .ctx-sep { border-top: 1px solid rgba(255,255,255,0.08); margin: 4px 0; }
+    #ctx-menu .ctx-status {
+      padding: 6px 14px 8px; color: #8b949e; font-size: 10px; line-height: 1.45;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    #ctx-menu .ctx-status strong { color: #c9a227; font-weight: 600; }
+    .tb-btn[title] { position: relative; }
+    #canvas-hover-tip {
+      position: fixed; z-index: 4; pointer-events: none;
+      background: rgba(0,0,0,0.72); border: 1px solid rgba(201,162,39,0.3);
+      color: #e6edf3; font: 11px system-ui; padding: 6px 10px; border-radius: 6px;
+      max-width: 240px; line-height: 1.4; transform: translate(14px, 14px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+    }
+    #canvas-hover-tip.hidden { display: none; }
+    #canvas-hover-tip .ht-layer { color: #c9a227; font-weight: 600; }
+    #rc-hint {
+      position: fixed; bottom: 72px; left: 50%; transform: translateX(-50%); z-index: 5;
+      background: rgba(10,12,18,0.88); border: 1px dashed rgba(201,162,39,0.45);
+      color: rgba(230,237,243,0.7); font: 11px system-ui; padding: 8px 14px; border-radius: 8px;
+      pointer-events: none; letter-spacing: 0.04em;
+    }
+    #rc-hint.hidden { display: none; }
+    #infinite-tips-panel {
+      position: fixed; inset: 0; z-index: 25; background: rgba(0,0,0,0.65);
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+      pointer-events: auto;
+    }
+    #infinite-tips-panel.hidden { display: none; }
+    #infinite-tips-panel .tips-card {
+      background: #0c0e14; border: 1px solid rgba(201,162,39,0.45); border-radius: 12px;
+      max-width: 480px; width: 100%; max-height: 85vh; overflow-y: auto;
+      padding: 20px 22px; font: 12px/1.5 system-ui; color: #e6edf3;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    #infinite-tips-panel h2 { color: #c9a227; font: 18px Georgia, serif; margin-bottom: 4px; }
+    #infinite-tips-panel .tips-sub { color: #8b949e; font-size: 11px; margin-bottom: 14px; }
+    #infinite-tips-panel dl { margin: 0; }
+    #infinite-tips-panel dt { color: #c9a227; font-weight: 600; margin-top: 10px; }
+    #infinite-tips-panel dd { color: #b0b8c0; margin: 2px 0 0 0; }
+    #infinite-tips-panel button {
+      margin-top: 16px; background: #2a2410; border: 1px solid #6b5a20; color: #c9a227;
+      padding: 10px 18px; border-radius: 6px; cursor: pointer; font-size: 12px; width: 100%;
+    }
+    /* Main menu */
+    #main-menu {
+      position: fixed; inset: 0; z-index: 40; background: rgba(5,5,10,0.94);
+      display: flex; align-items: stretch; justify-content: center;
+      overflow-y: auto; padding: 28px 20px; font: 13px/1.45 system-ui; color: #e6edf3;
+      pointer-events: auto;
+    }
+    #main-menu.hidden { display: none; }
+    #main-menu .mm-wrap { max-width: 920px; width: 100%; margin: auto; }
+    #main-menu h1 {
+      color: #c9a227; font: 28px Georgia, serif; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 6px; text-align: center;
+    }
+    #main-menu .mm-sub { color: #8b949e; text-align: center; font-size: 12px; margin-bottom: 22px; }
+    #main-menu .mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 720px) { #main-menu .mm-grid { grid-template-columns: 1fr; } }
+    #main-menu .mm-card {
+      background: #0c0e14; border: 1px solid rgba(201,162,39,0.35); border-radius: 12px;
+      padding: 16px 18px;
+    }
+    #main-menu .mm-card h2 { color: #c9a227; font: 15px Georgia, serif; margin-bottom: 10px; letter-spacing: 0.06em; }
+    #main-menu .mm-card p { color: #8b949e; font-size: 11px; margin-bottom: 10px; }
+    #main-menu .mm-btn {
+      display: block; width: 100%; text-align: left; margin-bottom: 8px;
+      background: #1a1e28; border: 1px solid rgba(255,255,255,0.12); color: #e6edf3;
+      padding: 10px 12px; border-radius: 8px; cursor: pointer; font: 12px system-ui;
+    }
+    #main-menu .mm-btn:hover { border-color: #c9a227; color: #c9a227; }
+    #main-menu .mm-btn.primary { background: #2a2410; border-color: #6b5a20; color: #c9a227; font-weight: 600; }
+    #main-menu .mm-btn.danger { border-color: rgba(139,38,53,0.5); color: #e8a0a8; }
+    #main-menu .mm-list { max-height: 280px; overflow-y: auto; margin-bottom: 10px; }
+    #main-menu .mm-uni {
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 10px; margin-bottom: 8px;
+      background: rgba(0,0,0,0.25);
+    }
+    #main-menu .mm-uni.active { border-color: rgba(201,162,39,0.55); }
+    #main-menu .mm-uni strong { color: #c9a227; display: block; margin-bottom: 4px; }
+    #main-menu .mm-uni .mm-meta { color: #8b949e; font-size: 10px; margin-bottom: 8px; }
+    #main-menu .mm-uni .mm-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    #main-menu .mm-uni .mm-row button {
+      background: #1a1e28; border: 1px solid rgba(255,255,255,0.12); color: #e6edf3;
+      padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 10px;
+    }
+    #main-menu .mm-uni .mm-row button:hover { border-color: #c9a227; color: #c9a227; }
+    #main-menu .mm-field { margin-bottom: 10px; }
+    #main-menu .mm-field label { display: block; color: #8b949e; font-size: 10px; margin-bottom: 4px; }
+    #main-menu .mm-field input, #main-menu .mm-field select {
+      width: 100%; background: #12151c; border: 1px solid rgba(255,255,255,0.12);
+      color: #e6edf3; padding: 7px 10px; border-radius: 6px; font-size: 12px;
+    }
+    #main-menu .mm-hint {
+      margin-top: 16px; color: #8b949e; font-size: 11px; text-align: center; line-height: 1.5;
+    }
+    /* Junction choose-your-path */
+    #junction-panel {
+      position: fixed; inset: 0; z-index: 35; background: rgba(0,0,0,0.72);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+      pointer-events: auto;
+    }
+    #junction-panel.hidden { display: none; }
+    #junction-panel .jn-card {
+      background: #0c0e14; border: 1px solid rgba(201,162,39,0.45); border-radius: 14px;
+      padding: 20px 22px; max-width: 960px; width: 100%; max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.65);
+    }
+    #junction-panel h2 { color: #c9a227; font: 20px Georgia, serif; margin-bottom: 4px; text-align: center; }
+    #junction-panel .jn-sub { color: #8b949e; font-size: 12px; text-align: center; margin-bottom: 14px; }
+    #junction-panel .jn-timer {
+      height: 6px; background: #1a1e28; border-radius: 4px; overflow: hidden; margin-bottom: 8px;
+    }
+    #junction-panel .jn-timer > i {
+      display: block; height: 100%; width: 100%; background: linear-gradient(90deg, #c9a227, #8b2635);
+      transform-origin: left center; transition: transform 0.2s linear;
+    }
+    #junction-panel .jn-timer-lab { color: #8b949e; font-size: 11px; text-align: center; margin-bottom: 14px; }
+    #junction-panel .jn-choices {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;
+    }
+    #junction-panel .jn-choice {
+      background: #12151c; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px;
+      padding: 8px; cursor: pointer; text-align: center; color: #e6edf3; font: 12px system-ui;
+    }
+    #junction-panel .jn-choice:hover, #junction-panel .jn-choice:focus {
+      border-color: #c9a227; color: #c9a227; outline: none;
+    }
+    #junction-panel .jn-choice canvas, #junction-panel .jn-choice img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 6px; display: block;
+      margin-bottom: 8px; background: #050508;
+    }
+    #junction-panel .jn-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+    #junction-panel .jn-actions button {
+      flex: 1; min-width: 120px; background: #1a1e28; border: 1px solid rgba(255,255,255,0.12);
+      color: #e6edf3; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 12px;
+    }
+    #junction-panel .jn-actions button:hover { border-color: #c9a227; color: #c9a227; }
+    body.in-menu #toolbar .tb-hide-in-menu,
+    body.in-menu #depth-badge,
+    body.in-menu #overlay,
+    body.in-menu #editor-toggle,
+    body.in-menu #ready-banner,
+    body.in-menu #rc-hint,
+    body.in-menu #canvas-hover-tip { display: none !important; }
+    body.in-menu canvas { opacity: 0.25; }
+    /* Embed / gallery mode (iframe on site) */
+    body.embed-mode #title,
+    body.embed-mode #subtitle,
+    body.embed-mode #hint,
+    body.embed-mode #rc-hint,
+    body.embed-mode #ready-banner,
+    body.embed-mode #editor-toggle { display: none !important; }
+    body.embed-mode #toolbar { top: 8px; left: 8px; right: 8px; max-width: none; }
+    body.embed-mode #depth-badge { top: 8px; right: 8px; font-size: 10px; padding: 4px 8px; }
+    body.embed-mode .tb-btn { padding: 6px 10px; font-size: 11px; }
+    /* Bug report */
+    #bug-panel {
+      position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,0.72);
+      display: flex; align-items: center; justify-content: center; padding: 16px;
+    }
+    #bug-panel.hidden { display: none; }
+    #bug-panel .bug-card {
+      background: #0c0e14; border: 1px solid rgba(201,162,39,0.45); border-radius: 12px;
+      padding: 18px 20px; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto;
+      font: 12px/1.45 system-ui; color: #e6edf3;
+    }
+    #bug-panel h2 { color: #c9a227; font: 16px Georgia, serif; margin-bottom: 6px; }
+    #bug-panel p { color: #8b949e; font-size: 11px; margin-bottom: 12px; }
+    #bug-panel label { display: block; color: #8b949e; font-size: 10px; margin: 8px 0 4px; }
+    #bug-panel input, #bug-panel textarea, #bug-panel select {
+      width: 100%; background: #12151c; border: 1px solid rgba(255,255,255,0.12);
+      color: #e6edf3; padding: 8px 10px; border-radius: 6px; font: 12px system-ui;
+    }
+    #bug-panel textarea { min-height: 110px; resize: vertical; }
+    #bug-panel .bug-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    #bug-panel .bug-actions button {
+      flex: 1; min-width: 120px; background: #1a1e28; border: 1px solid rgba(255,255,255,0.12);
+      color: #e6edf3; padding: 10px; border-radius: 8px; cursor: pointer; font-size: 12px;
+    }
+    #bug-panel .bug-actions button.primary { background: #2a2410; border-color: #6b5a20; color: #c9a227; font-weight: 600; }
+    #bug-panel .bug-status { color: #8b949e; font-size: 10px; margin-top: 10px; min-height: 1.2em; }
+    /* Mobile */
+    @media (max-width: 640px) {
+      #toolbar { top: 8px; left: 8px; right: 8px; gap: 6px; }
+      .tb-btn { padding: 8px 10px; font-size: 11px; }
+      #depth-badge { top: auto; bottom: 12px; right: 10px; left: auto; font-size: 10px; }
+      #overlay { padding: 12px 12px 20px; }
+      #title { letter-spacing: 0.14em; font-size: 13px; }
+      #subtitle, #hint { font-size: 10px; }
+      #editor-panel { width: min(100vw, 100%); }
+      #editor-toggle { padding: 10px 6px; font-size: 10px; }
+      #main-menu { padding: 16px 12px; }
+      #main-menu h1 { font-size: 20px; letter-spacing: 0.08em; }
+      #main-menu .mm-list { max-height: 40vh; }
+      #ctx-menu { min-width: min(280px, 92vw); max-width: 94vw; }
+      #junction-panel .jn-choices { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      #junction-panel .jn-choices { grid-template-columns: 1fr; }
+      .tb-hide-on-narrow { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="depth-badge">Layer 1</div>
+<div id="toolbar">
+  <button id="btn-main-menu" class="tb-btn" type="button" title="Main menu — press M or Esc">Menu (M)</button>
+  <button id="fs" class="tb-btn tb-hide-in-menu tb-hide-on-narrow" type="button" title="Fullscreen — press F">Fullscreen</button>
+  <button id="btn-show-upload" class="tb-btn tb-hide-in-menu tb-hide-on-narrow" type="button" title="Add / swap layer images">My images</button>
+  <button id="btn-edit-mode" class="tb-btn tb-hide-in-menu tb-hide-on-narrow" type="button" title="Draw on layers — press E to toggle">Draw (E)</button>
+  <button id="btn-editor-panel" class="tb-btn tb-hide-in-menu" type="button" title="Brush, export, zoom settings — press C">Controls</button>
+  <button id="btn-canvas-tips" class="tb-btn tb-hide-in-menu tb-hide-on-narrow" type="button" title="Infinite canvas tip sheet — press ?">Tips (?)</button>
+  <button id="btn-report-bug" class="tb-btn" type="button" title="Report a bug to killykillette@gmail.com">Report bug</button>
+</div>
+<div id="bug-panel" class="hidden" role="dialog" aria-label="Report a bug">
+  <div class="bug-card">
+    <h2>Report a bug</h2>
+    <p>Opens your email to <strong style="color:#c9a227">killykillette@gmail.com</strong> with details filled in. If email doesn’t open, use Copy report and paste into any mail app.</p>
+    <label for="bug-what">What went wrong?</label>
+    <textarea id="bug-what" placeholder="What happened? What did you expect?"></textarea>
+    <label for="bug-steps">Steps to reproduce (optional)</label>
+    <textarea id="bug-steps" placeholder="1. Opened menu&#10;2. Entered universe&#10;3. …" style="min-height:70px"></textarea>
+    <label for="bug-email">Your email (optional — so Killy can reply)</label>
+    <input id="bug-email" type="email" placeholder="you@example.com" autocomplete="email" />
+    <div class="bug-actions">
+      <button type="button" class="primary" id="bug-send">Send via email</button>
+      <button type="button" id="bug-copy">Copy report</button>
+      <button type="button" id="bug-cancel">Cancel</button>
+    </div>
+    <p class="bug-status" id="bug-status"></p>
+  </div>
+</div>
+<div id="main-menu" role="dialog" aria-label="Main menu">
+  <div class="mm-wrap">
+    <h1>Infinite Canvas</h1>
+    <p class="mm-sub">Your universes · links · junctions · choose-your-own story · no built-in map art</p>
+    <div class="mm-grid">
+      <div class="mm-card">
+        <h2>Universes</h2>
+        <p>Each universe is a chain of your photos. Enter to zoom. Esc / Menu always brings you back here.</p>
+        <div id="mm-universe-list" class="mm-list"></div>
+        <button type="button" class="mm-btn primary" id="mm-new-universe">+ New universe (pick photos)</button>
+        <button type="button" class="mm-btn" id="mm-load-folder">Load folder photos as universe</button>
+        <button type="button" class="mm-btn" id="mm-continue" disabled>Continue last zoom</button>
+      </div>
+      <div class="mm-card">
+        <h2>Link / junction editor</h2>
+        <p><strong style="color:#c9a227">Linear</strong> = end of A → start of B.<br>
+           <strong style="color:#c9a227">Junction</strong> = 2–5 paths, previews, ~90s slow crawl then default first path.</p>
+        <div class="mm-field">
+          <label for="mm-link-from">From universe (at last image)</label>
+          <select id="mm-link-from"></select>
+        </div>
+        <div class="mm-field">
+          <label for="mm-link-type">Exit type</label>
+          <select id="mm-link-type">
+            <option value="none">None — stop / return to menu</option>
+            <option value="loop">Loop this universe</option>
+            <option value="linear">Linear link → one universe</option>
+            <option value="junction">Junction — split 2–5 ways</option>
+          </select>
+        </div>
+        <div id="mm-linear-fields" class="hidden">
+          <div class="mm-field">
+            <label for="mm-link-to">Linked universe</label>
+            <select id="mm-link-to"></select>
+          </div>
+        </div>
+        <div id="mm-junction-fields" class="hidden">
+          <div class="mm-field">
+            <label for="mm-grace">Grace period (seconds)</label>
+            <input id="mm-grace" type="number" min="5" max="300" value="90" />
+          </div>
+          <div class="mm-field">
+            <label>Branches (check 2–5)</label>
+            <div id="mm-branch-checks" style="max-height:160px;overflow-y:auto"></div>
+          </div>
+        </div>
+        <button type="button" class="mm-btn primary" id="mm-save-link">Save exit for selected universe</button>
+        <button type="button" class="mm-btn" id="mm-clear-link">Clear exit</button>
+        <p id="mm-link-status" style="color:#8b949e;font-size:10px;margin-top:8px">—</p>
+      </div>
+    </div>
+    <div class="mm-card" style="margin-top:16px">
+      <h2>Quick</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <button type="button" class="mm-btn" id="mm-open-controls" style="width:auto;flex:1">Controls (clarity)</button>
+        <button type="button" class="mm-btn" id="mm-open-tips" style="width:auto;flex:1">Tips</button>
+        <button type="button" class="mm-btn" id="mm-fullscreen" style="width:auto;flex:1">Fullscreen</button>
+        <button type="button" class="mm-btn" id="mm-report-bug" style="width:auto;flex:1">Report bug</button>
+      </div>
+    </div>
+    <p class="mm-hint">M or Esc → menu · Report bug → killykillette@gmail.com · Embed: add ?embed=1 to the URL · Photos re-load from folder or re-pick after refresh</p>
+  </div>
+</div>
+<div id="junction-panel" class="hidden" role="dialog" aria-label="Choose path">
+  <div class="jn-card">
+    <h2>Choose your path</h2>
+    <p class="jn-sub">Junction — pick a universe, or wait for the crawl to take the first path</p>
+    <div class="jn-timer" aria-hidden="true"><i id="jn-timer-bar"></i></div>
+    <div class="jn-timer-lab" id="jn-timer-lab">90s</div>
+    <div class="jn-choices" id="jn-choices"></div>
+    <div class="jn-actions">
+      <button type="button" id="jn-pick-first">Take first path now</button>
+      <button type="button" id="jn-to-menu">Main menu</button>
+    </div>
+  </div>
+</div>
+<input id="mm-file-in" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml,.svg,image/gif,video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov,.m4v" multiple style="display:none" />
+<div id="canvas-hover-tip" class="hidden" aria-hidden="true">
+  <span class="ht-layer" id="ht-layer">Layer</span><br>
+  <span id="ht-depth">1 / 1</span> · zoom <span id="ht-zoom">100%</span><br>
+  <span style="color:#8b949e">Right-click for infinite canvas menu</span>
+</div>
+<div id="rc-hint">Right-click the canvas for infinite zoom tips</div>
+<div id="ctx-menu" class="hidden" role="menu" aria-label="Infinite canvas quick tips">
+  <div class="ctx-head">Infinite canvas</div>
+  <div class="ctx-status" id="ctx-status">Layer <strong>1</strong> of <strong>1</strong></div>
+  <button type="button" data-action="dive">Dive deeper<span class="ctx-tip">Same as clicking — punch through to next layer</span></button>
+  <button type="button" data-action="zoom-in">Zoom in<span class="ctx-tip">Mouse wheel up · + key</span></button>
+  <button type="button" data-action="zoom-out">Zoom out<span class="ctx-tip">Mouse wheel down · − key · go back a layer when far out</span></button>
+  <button type="button" data-action="layer-up">Previous layer<span class="ctx-tip">Zoom out until you surface one level</span></button>
+  <button type="button" data-action="layer-down">Next layer<span class="ctx-tip">Zoom in until you drop into the next painting</span></button>
+  <button type="button" data-action="reset">Back to surface<span class="ctx-tip">Outermost layer · center view · start of loop</span></button>
+  <button type="button" data-action="pan-reset">Center pan<span class="ctx-tip">Keep zoom · recenter the painting</span></button>
+  <div class="ctx-sep"></div>
+  <button type="button" data-action="toggle-drift">Toggle auto-drift<span class="ctx-tip" id="ctx-drift-tip">Slow endless zoom in</span></button>
+  <button type="button" data-action="toggle-click-zoom">Toggle click-to-dive<span class="ctx-tip" id="ctx-click-tip">Click canvas to zoom</span></button>
+  <div class="ctx-sep"></div>
+  <button type="button" data-action="tips">Full tip sheet<span class="ctx-tip">All infinite canvas controls · ? key</span></button>
+  <button type="button" data-action="fullscreen">Fullscreen<span class="ctx-tip">Press F</span></button>
+  <button type="button" data-action="edit">Draw on layer<span class="ctx-tip">Press E · brush &amp; vector tools</span></button>
+  <button type="button" data-action="controls">Controls panel<span class="ctx-tip">Press C · fit, overscan, clarity, reload photos</span></button>
+  <button type="button" data-action="images">My image layers<span class="ctx-tip">KILLY_UNIVERSE_CANVASES\KILLY_ZOOMQUILT_LAYERS</span></button>
+  <div class="ctx-sep"></div>
+  <button type="button" data-action="menu">Main menu<span class="ctx-tip">Press M or Esc · leave map · edit links</span></button>
+</div>
+<div id="infinite-tips-panel" class="hidden" role="dialog" aria-label="Infinite canvas tips">
+  <div class="tips-card">
+    <h2>Infinite canvas tips</h2>
+    <p class="tips-sub">Zoom quilt — scroll forever through painted layers</p>
+    <dl>
+      <dt>Scroll wheel</dt><dd>Zoom in and out. Keep scrolling to pass through layers forever.</dd>
+      <dt>Click</dt><dd>Dive — rapid zoom punch into the center (toggle in Controls).</dd>
+      <dt>Drag</dt><dd>Pan around the current painting while zoomed.</dd>
+      <dt>Layers / universes</dt><dd>Each zoom level is a photo. Link universes linearly or with junctions (2–5 paths) in the Main menu.</dd>
+      <dt>M or Esc</dt><dd>Main menu — leave any map, manage universes &amp; links anytime.</dd>
+      <dt>Junctions</dt><dd>At a split you see path previews. ~90s slow crawl if you don’t pick; then first path auto-plays.</dd>
+      <dt>↑ ↓ keys</dt><dd>Zoom in / out from center.</dd>
+      <dt>Right-click</dt><dd>Quick menu — dive, layer up/down, surface, main menu.</dd>
+      <dt>F</dt><dd>Fullscreen</dd>
+      <dt>E</dt><dd>Draw / view mode — paint on the active layer</dd>
+      <dt>C</dt><dd>Controls — Fit, Overscan, Smooth zoom, drift, prefs</dd>
+      <dt>?</dt><dd>Open this tip sheet anytime</dd>
+    </dl>
+    <button type="button" id="btn-close-tips">Got it — back to zooming</button>
+  </div>
+</div>
+<div id="mode-badge">EDIT MODE — drawing on layer</div>
+<button id="editor-toggle" type="button" title="Open editor panel">TOOLS</button>
+<div id="editor-panel">
+  <h3>Live canvas editor</h3>
+  <p style="color:#8b949e;font-size:10px;line-height:1.4;margin-bottom:8px">Non-aliased pixel drawing + SVG vector import. Edits save to the active layer. Export PNG when done.</p>
+  <label class="ep-label" for="layer-select">Edit layer</label>
+  <select id="layer-select" class="ep-input"></select>
+  <h3>Tools</h3>
+  <div class="ep-row" id="tool-row">
+    <button class="ep-btn active" data-tool="brush" type="button">Brush</button>
+    <button class="ep-btn" data-tool="pencil" type="button">Pencil 1px</button>
+    <button class="ep-btn" data-tool="eraser" type="button">Eraser</button>
+    <button class="ep-btn" data-tool="line" type="button">Line</button>
+    <button class="ep-btn" data-tool="rect" type="button">Rect</button>
+    <button class="ep-btn" data-tool="ellipse" type="button">Ellipse</button>
+    <button class="ep-btn" data-tool="fill" type="button">Fill</button>
+    <button class="ep-btn" data-tool="vector" type="button">Vector pen</button>
+  </div>
+  <div class="ep-row">
+    <span class="ep-label">Size</span>
+    <input id="brush-size" class="ep-slider" type="range" min="1" max="64" value="8" />
+    <span id="brush-size-val">8</span>
+  </div>
+  <div class="ep-row">
+    <span class="ep-label">Color</span>
+    <input id="color-pick" type="color" value="#c9a227" />
+    <input id="color-hex" class="ep-input" style="width:72px" value="#c9a227" />
+  </div>
+  <div id="swatch-row"></div>
+  <label class="ep-check"><input id="opt-antialias" type="checkbox" checked /> Smooth zoom (anti-alias) — on for clear photos</label>
+  <label class="ep-check"><input id="opt-snap" type="checkbox" /> Snap brush to pixel grid (edit only)</label>
+  <label class="ep-check"><input id="opt-show-grid" type="checkbox" /> Show pixel grid when zoomed (edit only)</label>
+  <hr class="ep-hr" />
+  <h3>Import / export</h3>
+  <div class="ep-row">
+    <button id="btn-import-img" class="ep-btn wide" type="button">Import image → layer</button>
+    <button id="btn-import-svg" class="ep-btn wide" type="button">Import SVG vector</button>
+    <button id="btn-export-layer" class="ep-btn wide" type="button">Export layer PNG</button>
+    <button id="btn-export-all" class="ep-btn wide" type="button">Export all layers</button>
+  </div>
+  <input id="import-img-in" type="file" accept="image/png,image/jpeg,image/webp" style="display:none" />
+  <input id="import-svg-in" type="file" accept="image/svg+xml,.svg" style="display:none" />
+  <div class="ep-row">
+    <button id="btn-undo" class="ep-btn" type="button">Undo</button>
+    <button id="btn-clear-layer" class="ep-btn" type="button">Clear layer</button>
+    <button id="btn-new-layer" class="ep-btn" type="button">+ New layer</button>
+  </div>
+  <hr class="ep-hr" />
+  <h3>View &amp; clarity (fix it yourself)</h3>
+  <p style="color:#8b949e;font-size:10px;line-height:1.45;margin-bottom:8px">
+    <strong style="color:#c9a227">Pixelated?</strong> turn Smooth zoom ON.<br>
+    <strong style="color:#c9a227">Box / frame around photo?</strong> set Fit = Cover + Overscan up.<br>
+    <strong style="color:#c9a227">Crawls in from small?</strong> Auto drift = 0, hit Reset view.<br>
+    <strong style="color:#c9a227">Stuck in a map?</strong> Menu (M) or Esc — always works.
+  </p>
+  <label class="ep-check"><input id="set-smooth-zoom" type="checkbox" checked /> Smooth zoom (anti-alias) — clear photos</label>
+  <div class="ep-row"><span class="ep-label">Fit mode</span>
+    <select id="set-fit-mode" class="ep-input" style="width:auto;flex:1">
+      <option value="cover" selected>Cover — edge-to-edge (crops)</option>
+      <option value="contain">Contain — full image (may letterbox)</option>
+    </select>
+  </div>
+  <div class="ep-row"><span class="ep-label">Overscan</span><input id="set-overscan" class="ep-slider" type="range" min="0" max="0.05" step="0.001" value="0.002" /><span id="set-overscan-val">0.2%</span></div>
+  <div class="ep-row"><span class="ep-label">BG color</span><input id="set-bg-color" type="color" value="#050508" /></div>
+  <div class="ep-row"><span class="ep-label">Sharpness DPR</span><input id="set-dpr-cap" class="ep-slider" type="range" min="1" max="2" step="0.25" value="1.5" /><span id="set-dpr-cap-val">1.5</span></div>
+  <label class="ep-check"><input id="set-hide-chrome" type="checkbox" /> Hide badges / HUD while zooming</label>
+  <div class="ep-row">
+    <button id="btn-reset-view" class="ep-btn wide" type="button">Reset view (full screen · no pan)</button>
+    <button id="btn-fill-screen" class="ep-btn wide" type="button">Jump to fill screen</button>
+  </div>
+  <hr class="ep-hr" />
+  <h3>Zoom motion</h3>
+  <div class="ep-row"><span class="ep-label">Zoom step</span><input id="set-zoom-step" class="ep-slider" type="range" min="1.5" max="5" step="0.1" value="2.8" /><span id="set-zoom-step-val">2.8</span></div>
+  <div class="ep-row"><span class="ep-label">Wheel speed</span><input id="set-wheel-speed" class="ep-slider" type="range" min="1.02" max="1.35" step="0.01" value="1.14" /><span id="set-wheel-speed-val">1.14</span></div>
+  <div class="ep-row"><span class="ep-label">Auto drift</span><input id="set-drift" class="ep-slider" type="range" min="0" max="0.001" step="0.00005" value="0" /><span id="set-drift-val">off</span></div>
+  <div class="ep-row"><span class="ep-label">Max zoom</span><input id="set-max-scale" class="ep-slider" type="range" min="3" max="20" step="0.5" value="9" /><span id="set-max-scale-val">9</span></div>
+  <div class="ep-row"><span class="ep-label">Smoothness</span><input id="set-pan-smooth" class="ep-slider" type="range" min="0.02" max="0.3" step="0.01" value="0.22" /><span id="set-pan-smooth-val">0.22</span></div>
+  <label class="ep-check"><input id="set-click-zoom" type="checkbox" checked /> Click to dive zoom</label>
+  <label class="ep-check"><input id="set-fade-ui" type="checkbox" checked /> Fade title after 5s</label>
+  <label class="ep-check"><input id="set-loop-end" type="checkbox" /> Loop last layer → first (only if no link/exit set)</label>
+  <hr class="ep-hr" />
+  <h3>Layers source</h3>
+  <p style="color:#8b949e;font-size:10px;line-height:1.45">Folder: <strong style="color:#c9a227">KILLY_ZOOMQUILT_LAYERS\</strong><br>Use <strong>OPEN_INFINITE_CANVAS.bat</strong> so the server finds your photos.</p>
+  <div class="ep-row">
+    <button id="btn-reload-photos" class="ep-btn wide" type="button">Reload folder into current universe</button>
+    <button id="btn-pick-photos" class="ep-btn wide" type="button">Pick photos for current…</button>
+    <button id="btn-to-menu" class="ep-btn wide" type="button">Main menu</button>
+  </div>
+  <p id="layer-status" style="color:#8b949e;font-size:10px;margin:6px 0 0">—</p>
+  <button id="btn-copy-manifest" class="ep-btn wide" type="button">Copy manifest.json to clipboard</button>
+  <button id="btn-save-prefs" class="ep-btn wide" type="button">Save my preferences</button>
+  <button id="btn-reset-prefs" class="ep-btn wide" type="button">Reset preferences</button>
+</div>
+<div id="upload-panel" class="hidden">
+  <h2>Load photos into current universe</h2>
+  <p>Pick images and short videos (sorted by name). Videos loop as layers you can zoom through. Or drop files in <strong>KILLY_ZOOMQUILT_LAYERS</strong> and Main menu → Load folder.</p>
+  <input type="file" id="file-in" accept="image/png,image/jpeg,image/webp,image/svg+xml,.svg,image/gif,video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov,.m4v,.gif" multiple />
+  <button type="button" id="btn-upload">Load picked media</button>
+  <button type="button" id="btn-hide-upload">Close</button>
+</div>
+<div id="ready-banner">Infinite canvas ready — scroll to zoom · right-click for quick tips</div>
+<div id="overlay">
+  <div>
+    <div id="title">Infinite Canvas</div>
+    <div id="subtitle">Scroll forever · Draw (E) · Drop photos &amp; short videos · Paint at pencil tip</div>
+  </div>
+  <div id="hint">Scroll = zoom forever · Drag = pan · E = draw · My images = add photos/video · Right-click = tips</div>
+</div>
+<script>
+const W = 1920, H = 1080;
+const FOLDER_LAYERS = [
+  { file: '01_killette_art.jpg', name: 'Killy Killette' },
+  { file: '02_black_bear.png', name: 'Black Bear' },
+  { file: '03_gallery.png', name: 'Gallery' },
+  { file: '04_roux_garoux.png', name: 'Roux Garoux' },
+  { file: '05_stock.png', name: 'Killette Stock' },
+  { file: '06_untitled.png', name: 'Untitled' },
+];
+let ZOOM_STEP = 2.8;
+const MIN_SCALE = 0.35;
+let MAX_SCALE = 9;
+// Higher smoothness slider = snappier (legacy name kept for UI)
+let PAN_SMOOTH = 0.22;
+let ZOOM_SMOOTH = 0.22;
+/** Time-based follow rates (higher = less lag) */
+let ZOOM_FOLLOW = 22;
+let PAN_FOLLOW = 18;
+
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
+// 1.5 max — big photos + high DPR was the main stutter source
+let dprCap = 1.5;
+let dpr = Math.min(window.devicePixelRatio || 1, dprCap);
+let lastFrameTs = 0;
+let zoomBusyUntil = 0;
+/** Continuous zoom velocity (log-space / sec) — scroll adds impulse, decays smoothly */
+let zoomVel = 0;
+let zoomFocalSX = 0, zoomFocalSY = 0;
+let hasZoomFocal = false;
+
+const layers = [];
+let layerIndex = 0;
+// Multi-universe story graph (user-authored, no built-in map art)
+const STORY_KEY = 'killy_universe_story_v1';
+/** @type {{ id: string, name: string, layers: any[], exit: any }[]} */
+let universes = [];
+let currentUniverseId = null;
+let appMode = 'menu'; // menu | zoom | junction
+let junctionState = null;
+let lastZoomUniverseId = null;
+let uidSeq = 1;
+let universeEndLock = false;
+let scale = 1;
+let targetScale = 1;
+let panX = 0, panY = 0;
+let targetPanX = 0, targetPanY = 0;
+let focalX = W / 2, focalY = H / 2;
+let transitioning = 0;
+// OFF — was crawling zoom from tiny size while vector placeholders showed
+let autoDrift = 0;
+let clickZoomEnabled = true;
+let fadeUiEnabled = true;
+let wheelIn = 1.14;
+let wheelOut = 0.87;
+let loopEndEnabled = false; // default off — exits use links / menu instead of auto-map loop
+// v2 — ignore old prefs that forced DPR=3 / molasses-smooth zoom
+const PREFS_KEY = 'killy_zoomquilt_prefs_v2';
+
+const settings = {
+  editMode: false,
+  tool: 'brush',
+  brushSize: 8,
+  color: '#c9a227',
+  antiAlias: true,
+  snap: false,
+  showGrid: false,
+  editLayerIndex: 0,
+  fitMode: 'cover',   // cover = edge-to-edge; contain = full image (may letterbox)
+  overscan: 0.002,    // extra draw bleed to hide AA edge seams
+  bgColor: '#050508',
+  hideChrome: false,
+};
+
+function setSmoothScale(g, on) {
+  g.imageSmoothingEnabled = !!on;
+  try { g.imageSmoothingQuality = on ? 'high' : 'low'; } catch (_) {}
+}
+const undoStacks = new Map();
+const MAX_UNDO = 40;
+const SWATCHES = ['#c9a227', '#e6edf3', '#8b2635', '#4a7c59', '#5c4d7d', '#6b4c35', '#000000', '#ffffff', '#3d5a80', '#ff6b35'];
+let drawing = false;
+let lineStart = null;
+let vectorPoints = [];
+
+// --- paint helpers ---
+function grad(ctx, x0, y0, x1, y1, stops) {
+  const g = ctx.createLinearGradient(x0, y0, x1, y1);
+  stops.forEach(([p, c]) => g.addColorStop(p, c));
+  return g;
+}
+function rad(ctx, x, y, r, stops) {
+  const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+  stops.forEach(([p, c]) => g.addColorStop(p, c));
+  return g;
+}
+function txt(ctx, s, x, y, size, color, align = 'center', font = 'Georgia') {
+  ctx.fillStyle = color;
+  ctx.font = `700 ${size}px ${font}`;
+  ctx.textAlign = align;
+  ctx.textBaseline = 'middle';
+  ctx.fillText(s, x, y);
+}
+function pine(ctx, x, y, h, dark) {
+  ctx.fillStyle = dark ? '#0d1a12' : '#1a3d28';
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+  ctx.lineTo(x - h * 0.22, y);
+  ctx.lineTo(x, y - h);
+  ctx.lineTo(x + h * 0.22, y);
+  ctx.fill();
+}
+
+function layerSize(layer) {
+  if (!layer) return { w: W, h: H };
+  const w = layer.width || layer.canvas?.width || W;
+  const h = layer.height || layer.canvas?.height || H;
+  return { w, h };
+}
+
+function makeLayer(name, draw) {
+  const c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const cx = c.getContext('2d');
+  draw(cx, W, H);
+  return { name, canvas: c, width: W, height: H };
+}
+
+function loadImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(url));
+    img.src = url;
+  });
+}
+
+function imageToLayer(img, name) {
+  // Full-bleed 16:9 layer — downscale huge photos so zoom stays fluid
+  const iw = img.naturalWidth || img.width;
+  const ih = img.naturalHeight || img.height;
+  // Internal layer buffer: 1280×720 is plenty for screen zoom; 1920 was crushing FPS
+  const LW = 1280, LH = 720;
+  const c = document.createElement('canvas');
+  c.width = LW;
+  c.height = LH;
+  const cx = c.getContext('2d');
+  setSmoothScale(cx, true);
+  const cover = Math.max(LW / iw, LH / ih);
+  const dw = iw * cover, dh = ih * cover;
+  cx.fillStyle = '#050508';
+  cx.fillRect(0, 0, LW, LH);
+  cx.drawImage(img, (LW - dw) / 2, (LH - dh) / 2, dw, dh);
+  return { name, canvas: c, width: LW, height: LH };
+}
+
+function paintVideoFrame(layer) {
+  if (!layer || !layer.video) return;
+  const v = layer.video;
+  if (v.readyState < 2) return;
+  const LW = layer.width || 1280, LH = layer.height || 720;
+  const iw = v.videoWidth || LW, ih = v.videoHeight || LH;
+  const g = layer.canvas.getContext('2d');
+  setSmoothScale(g, false); // video already soft; skip expensive AA every frame
+  const cover = Math.max(LW / iw, LH / ih);
+  const dw = iw * cover, dh = ih * cover;
+  g.fillStyle = '#050508';
+  g.fillRect(0, 0, LW, LH);
+  try { g.drawImage(v, (LW - dw) / 2, (LH - dh) / 2, dw, dh); } catch (_) {}
+}
+
+function videoToLayer(video, name) {
+  const c = document.createElement('canvas');
+  const LW = 1280, LH = 720;
+  c.width = LW;
+  c.height = LH;
+  const layer = { name, canvas: c, width: LW, height: LH, video, isVideo: true };
+  paintVideoFrame(layer);
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.play().catch(() => {});
+  return layer;
+}
+
+function loadVideo(url) {
+  return new Promise((resolve, reject) => {
+    const v = document.createElement('video');
+    v.preload = 'auto';
+    v.muted = true;
+    v.loop = true;
+    v.playsInline = true;
+    v.onloadeddata = () => resolve(v);
+    v.onerror = () => reject(new Error(url));
+    v.src = url;
+  });
+}
+
+function resetZoom() {
+  layerIndex = 0;
+  scale = targetScale = 1;
+  panX = panY = targetPanX = targetPanY = 0;
+  settings.editLayerIndex = 0;
+  document.getElementById('depth-badge').textContent = layers[0]?.name || 'Layer 1';
+  refreshLayerSelect();
+}
+
+function applyLayers(newLayers) {
+  if (!newLayers.length) return false;
+  const padded = padLayersForZoom(newLayers);
+  let u = getCurrentUniverse();
+  if (!u) u = createUniverse('My photos', padded);
+  else u.layers = padded;
+  return enterUniverse(u.id, { banner: false });
+}
+
+function parseManifestJson(text) {
+  return JSON.parse(text.replace(/^\uFEFF/, '').trim());
+}
+
+async function loadLayerFiles(items) {
+  const loaded = [];
+  for (const item of items) {
+    try {
+      const img = await loadImage('KILLY_ZOOMQUILT_LAYERS/' + item.file);
+      loaded.push(imageToLayer(img, item.name || item.file));
+    } catch (_) {
+      console.warn('Skipped missing layer:', item.file);
+    }
+  }
+  return loaded;
+}
+
+async function loadFromManifest() {
+  try {
+    const res = await fetch('KILLY_ZOOMQUILT_LAYERS/manifest.json?' + Date.now());
+    if (!res.ok) return false;
+    const data = parseManifestJson(await res.text());
+    if (!data.layers || !data.layers.length) return false;
+    const loaded = padLayersForZoom(await loadLayerFiles(data.layers));
+    return loaded.length ? applyLayers(loaded) : false;
+  } catch (_) {
+    return false;
+  }
+}
+
+async function loadFromFolderDirect() {
+  const loaded = padLayersForZoom(await loadLayerFiles(FOLDER_LAYERS));
+  return loaded.length ? applyLayers(loaded) : false;
+}
+
+function padLayersForZoom(loaded) {
+  if (!loaded.length) return [];
+  if (loaded.length === 1) return [loaded[0], loaded[0]];
+  return loaded;
+}
+
+async function filesToLayers(fileList) {
+  const files = Array.from(fileList).filter(f => {
+    const n = f.name.toLowerCase();
+    return f.type.startsWith('image/') || f.type.startsWith('video/') ||
+      n.endsWith('.svg') || n.endsWith('.mp4') || n.endsWith('.webm') || n.endsWith('.mov') || n.endsWith('.m4v') || n.endsWith('.gif');
+  }).sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+  if (!files.length) return [];
+  const loaded = [];
+  for (const file of files) {
+    const url = URL.createObjectURL(file);
+    const n = file.name.toLowerCase();
+    const isVid = file.type.startsWith('video/') || /\.(mp4|webm|mov|m4v)$/i.test(n);
+    try {
+      if (isVid) {
+        const v = await loadVideo(url);
+        // keep blob URL alive for video element
+        v.dataset.blobUrl = url;
+        loaded.push(videoToLayer(v, file.name.replace(/\.[^.]+$/, '')));
+      } else {
+        const img = await loadImage(url);
+        loaded.push(imageToLayer(img, file.name.replace(/\.[^.]+$/, '')));
+        URL.revokeObjectURL(url);
+      }
+    } catch (err) {
+      console.warn('Skip file', file.name, err);
+      try { URL.revokeObjectURL(url); } catch (_) {}
+    }
+  }
+  return padLayersForZoom(loaded);
+}
+
+async function loadFromFiles(fileList) {
+  const loaded = await filesToLayers(fileList);
+  if (!loaded.length) { alert('No image or video selected.'); return false; }
+  let u = getCurrentUniverse();
+  if (u) u.layers = loaded;
+  else u = createUniverse('My photos', loaded);
+  return enterUniverse(u.id);
+}
+
+// --- Universe / story graph ---
+function newUniverseId() {
+  return 'u' + (Date.now().toString(36) + (uidSeq++));
+}
+
+function getUniverse(id) {
+  return universes.find(u => u.id === id) || null;
+}
+
+function getCurrentUniverse() {
+  return getUniverse(currentUniverseId);
+}
+
+function createUniverse(name, layerArr) {
+  const u = {
+    id: newUniverseId(),
+    name: name || ('Universe ' + (universes.length + 1)),
+    layers: layerArr || [],
+    exit: null, // null | { type:'linear', targetId } | { type:'junction', graceSec, choices:[{id,label}] } | { type:'loop' } | { type:'menu' }
+  };
+  universes.push(u);
+  saveStoryGraph();
+  return u;
+}
+
+function deleteUniverse(id) {
+  universes = universes.filter(u => u.id !== id);
+  universes.forEach(u => {
+    if (!u.exit) return;
+    if (u.exit.type === 'linear' && u.exit.targetId === id) u.exit = null;
+    if (u.exit.type === 'junction') {
+      u.exit.choices = (u.exit.choices || []).filter(c => c.id !== id);
+      if ((u.exit.choices || []).length < 2) u.exit = null;
+    }
+  });
+  if (currentUniverseId === id) {
+    currentUniverseId = null;
+    layers.length = 0;
+  }
+  saveStoryGraph();
+  refreshMainMenuUI();
+}
+
+function saveStoryGraph() {
+  try {
+    const data = {
+      universes: universes.map(u => ({
+        id: u.id,
+        name: u.name,
+        exit: u.exit,
+        layerCount: (u.layers || []).length,
+        layerNames: (u.layers || []).map(l => l.name),
+      })),
+      lastId: currentUniverseId,
+    };
+    localStorage.setItem(STORY_KEY, JSON.stringify(data));
+  } catch (_) {}
+}
+
+function loadStoryGraphMeta() {
+  try {
+    const raw = localStorage.getItem(STORY_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (_) {
+    return null;
+  }
+}
+
+function restoreUniverseShellsFromMeta(meta) {
+  if (!meta || !Array.isArray(meta.universes)) return;
+  meta.universes.forEach(m => {
+    if (universes.some(u => u.id === m.id)) return;
+    universes.push({
+      id: m.id,
+      name: m.name || m.id,
+      layers: [],
+      exit: m.exit || null,
+    });
+  });
+}
+
+function exitSummary(u) {
+  if (!u || !u.exit) return 'No exit (end → menu)';
+  if (u.exit.type === 'loop') return 'Loops itself';
+  if (u.exit.type === 'menu') return 'End → main menu';
+  if (u.exit.type === 'linear') {
+    const t = getUniverse(u.exit.targetId);
+    return 'Linear → ' + (t ? t.name : '?');
+  }
+  if (u.exit.type === 'junction') {
+    const n = (u.exit.choices || []).length;
+    return `Junction (${n} paths · ${u.exit.graceSec || 90}s)`;
+  }
+  return '—';
+}
+
+function enterUniverse(id, opts = {}) {
+  const u = getUniverse(id);
+  if (!u) return false;
+  if (!u.layers || u.layers.length < 1) {
+    alert('This universe has no photos yet. Pick photos first.');
+    showMainMenu();
+    return false;
+  }
+  universeEndLock = false;
+  currentUniverseId = id;
+  lastZoomUniverseId = id;
+  layers.length = 0;
+  layers.push(...u.layers);
+  layerIndex = 0;
+  scale = targetScale = 1;
+  panX = panY = targetPanX = targetPanY = 0;
+  transitioning = 0;
+  settings.editLayerIndex = 0;
+  hideJunction();
+  hideMainMenu();
+  appMode = 'zoom';
+  document.getElementById('depth-badge').textContent = (u.name + ' · ' + (layers[0]?.name || 'Layer 1'));
+  document.getElementById('title').textContent = u.name;
+  document.getElementById('subtitle').textContent = 'Your universe — scroll deeper · Menu (M) anytime';
+  refreshLayerSelect();
+  updateCanvasTipUI();
+  updateLayerStatus();
+  saveStoryGraph();
+  if (opts.banner !== false) {
+    const b = document.getElementById('ready-banner');
+    if (b) {
+      b.textContent = u.name + ' · scroll to zoom · Menu (M) to leave';
+      b.classList.remove('hidden');
+      setTimeout(() => b.classList.add('hidden'), 5000);
+    }
+  }
+  return true;
+}
+
+function showMainMenu() {
+  cancelJunctionTimer();
+  hideJunction();
+  appMode = 'menu';
+  document.body.classList.add('in-menu');
+  document.getElementById('main-menu').classList.remove('hidden');
+  document.getElementById('editor-panel').classList.remove('open');
+  setEditMode(false);
+  refreshMainMenuUI();
+}
+
+function hideMainMenu() {
+  document.body.classList.remove('in-menu');
+  document.getElementById('main-menu').classList.add('hidden');
+  if (appMode === 'menu') appMode = layers.length ? 'zoom' : 'menu';
+}
+
+function refreshMainMenuUI() {
+  const list = document.getElementById('mm-universe-list');
+  const from = document.getElementById('mm-link-from');
+  const to = document.getElementById('mm-link-to');
+  const cont = document.getElementById('mm-continue');
+  if (!list) return;
+  list.innerHTML = '';
+  if (!universes.length) {
+    list.innerHTML = '<p style="color:#8b949e;font-size:11px">No universes yet. Create one with your photos or load the folder.</p>';
+  }
+  universes.forEach(u => {
+    const n = (u.layers || []).length;
+    const div = document.createElement('div');
+    div.className = 'mm-uni' + (u.id === currentUniverseId ? ' active' : '');
+    div.innerHTML = `<strong>${escapeHtml(u.name)}</strong>
+      <div class="mm-meta">${n} layer(s) · ${escapeHtml(exitSummary(u))}${n < 1 ? ' · needs photos' : ''}</div>
+      <div class="mm-row">
+        <button type="button" data-act="enter" data-id="${u.id}">Enter</button>
+        <button type="button" data-act="photos" data-id="${u.id}">Set photos</button>
+        <button type="button" data-act="rename" data-id="${u.id}">Rename</button>
+        <button type="button" data-act="del" data-id="${u.id}">Delete</button>
+      </div>`;
+    list.appendChild(div);
+  });
+  list.onclick = e => {
+    const btn = e.target.closest('button[data-act]');
+    if (!btn) return;
+    const id = btn.dataset.id;
+    const act = btn.dataset.act;
+    if (act === 'enter') enterUniverse(id);
+    if (act === 'photos') {
+      currentUniverseId = id;
+      document.getElementById('mm-file-in').dataset.targetId = id;
+      document.getElementById('mm-file-in').click();
+    }
+    if (act === 'rename') {
+      const u = getUniverse(id);
+      if (!u) return;
+      const name = prompt('Universe name', u.name);
+      if (name && name.trim()) { u.name = name.trim(); saveStoryGraph(); refreshMainMenuUI(); }
+    }
+    if (act === 'del') {
+      if (confirm('Delete this universe from the story graph?')) deleteUniverse(id);
+    }
+  };
+  // selects
+  const fillSel = (sel, excludeId) => {
+    if (!sel) return;
+    const cur = sel.value;
+    sel.innerHTML = '';
+    universes.forEach(u => {
+      if (excludeId && u.id === excludeId) return;
+      const o = document.createElement('option');
+      o.value = u.id;
+      o.textContent = u.name + ((u.layers || []).length ? '' : ' (empty)');
+      sel.appendChild(o);
+    });
+    if (cur && [...sel.options].some(o => o.value === cur)) sel.value = cur;
+  };
+  fillSel(from);
+  fillSel(to, from?.value);
+  if (from) {
+    from.onchange = () => {
+      fillSel(to, from.value);
+      syncLinkEditorFromUniverse();
+      refreshBranchChecks();
+    };
+  }
+  refreshBranchChecks();
+  syncLinkEditorFromUniverse();
+  if (cont) {
+    cont.disabled = !(lastZoomUniverseId && getUniverse(lastZoomUniverseId)?.layers?.length);
+  }
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function syncLinkEditorFromUniverse() {
+  const fromId = document.getElementById('mm-link-from')?.value;
+  const u = getUniverse(fromId);
+  const typeEl = document.getElementById('mm-link-type');
+  const lin = document.getElementById('mm-linear-fields');
+  const jun = document.getElementById('mm-junction-fields');
+  if (!typeEl) return;
+  let t = 'none';
+  if (u?.exit?.type === 'loop') t = 'loop';
+  else if (u?.exit?.type === 'linear') t = 'linear';
+  else if (u?.exit?.type === 'junction') t = 'junction';
+  else if (u?.exit?.type === 'menu') t = 'none';
+  typeEl.value = t;
+  lin.classList.toggle('hidden', t !== 'linear');
+  jun.classList.toggle('hidden', t !== 'junction');
+  if (t === 'linear' && u.exit?.targetId) {
+    const to = document.getElementById('mm-link-to');
+    if (to) to.value = u.exit.targetId;
+  }
+  if (t === 'junction') {
+    const g = document.getElementById('mm-grace');
+    if (g) g.value = u.exit?.graceSec || 90;
+  }
+  typeEl.onchange = () => {
+    const v = typeEl.value;
+    lin.classList.toggle('hidden', v !== 'linear');
+    jun.classList.toggle('hidden', v !== 'junction');
+  };
+}
+
+function refreshBranchChecks() {
+  const box = document.getElementById('mm-branch-checks');
+  const fromId = document.getElementById('mm-link-from')?.value;
+  if (!box) return;
+  box.innerHTML = '';
+  const u = getUniverse(fromId);
+  const chosen = new Set((u?.exit?.type === 'junction' ? u.exit.choices : [])?.map(c => c.id) || []);
+  universes.filter(x => x.id !== fromId).forEach(x => {
+    const lab = document.createElement('label');
+    lab.className = 'ep-check';
+    lab.style.display = 'flex';
+    lab.innerHTML = `<input type="checkbox" value="${x.id}" ${chosen.has(x.id) ? 'checked' : ''}/> ${escapeHtml(x.name)}`;
+    box.appendChild(lab);
+  });
+  if (!box.children.length) box.innerHTML = '<span style="color:#8b949e;font-size:10px">Create more universes to branch.</span>';
+}
+
+function saveLinkFromEditor() {
+  const fromId = document.getElementById('mm-link-from')?.value;
+  const u = getUniverse(fromId);
+  const status = document.getElementById('mm-link-status');
+  if (!u) { if (status) status.textContent = 'Pick a universe first'; return; }
+  const t = document.getElementById('mm-link-type')?.value || 'none';
+  if (t === 'none') {
+    u.exit = { type: 'menu' };
+  } else if (t === 'loop') {
+    u.exit = { type: 'loop' };
+  } else if (t === 'linear') {
+    const targetId = document.getElementById('mm-link-to')?.value;
+    if (!targetId || targetId === fromId) {
+      if (status) status.textContent = 'Pick a different target universe';
+      return;
+    }
+    u.exit = { type: 'linear', targetId };
+  } else if (t === 'junction') {
+    const graceSec = Math.max(5, Math.min(300, +document.getElementById('mm-grace')?.value || 90));
+    const checks = [...document.querySelectorAll('#mm-branch-checks input[type=checkbox]:checked')].map(c => c.value);
+    if (checks.length < 2 || checks.length > 5) {
+      if (status) status.textContent = 'Junction needs 2–5 branches checked';
+      return;
+    }
+    u.exit = {
+      type: 'junction',
+      graceSec,
+      choices: checks.map(id => ({ id, label: getUniverse(id)?.name || id })),
+    };
+  }
+  saveStoryGraph();
+  if (status) status.textContent = 'Saved: ' + exitSummary(u);
+  refreshMainMenuUI();
+}
+
+function clearLinkFromEditor() {
+  const fromId = document.getElementById('mm-link-from')?.value;
+  const u = getUniverse(fromId);
+  if (!u) return;
+  u.exit = null;
+  saveStoryGraph();
+  const status = document.getElementById('mm-link-status');
+  if (status) status.textContent = 'Exit cleared';
+  refreshMainMenuUI();
+}
+
+function handleUniverseEnd() {
+  if (universeEndLock || appMode !== 'zoom') return;
+  universeEndLock = true;
+  const u = getCurrentUniverse();
+  const exit = u?.exit;
+  // Prefer explicit exit; loop checkbox is a fallback when no exit set
+  if (!exit) {
+    if (loopEndEnabled) {
+      layerIndex = 0;
+      targetScale = 1.2;
+      scale = 1;
+      targetPanX = targetPanY = panX = panY = 0;
+      transitioning = 1;
+      universeEndLock = false;
+      updateCanvasTipUI();
+      return;
+    }
+    showMainMenu();
+    return;
+  }
+  if (exit.type === 'menu') {
+    showMainMenu();
+    return;
+  }
+  if (exit.type === 'loop') {
+    layerIndex = 0;
+    targetScale = 1.2;
+    scale = 1;
+    targetPanX = targetPanY = panX = panY = 0;
+    transitioning = 1;
+    universeEndLock = false;
+    updateCanvasTipUI();
+    return;
+  }
+  if (exit.type === 'linear') {
+    const ok = enterUniverse(exit.targetId, { banner: true });
+    if (!ok) showMainMenu();
+    return;
+  }
+  if (exit.type === 'junction') {
+    openJunction(exit);
+    return;
+  }
+  showMainMenu();
+}
+
+function openJunction(exit) {
+  const choices = (exit.choices || []).map(c => ({
+    id: c.id,
+    label: c.label || getUniverse(c.id)?.name || c.id,
+    universe: getUniverse(c.id),
+  })).filter(c => c.universe && c.universe.layers?.length);
+  if (!choices.length) {
+    showMainMenu();
+    return;
+  }
+  if (choices.length === 1) {
+    enterUniverse(choices[0].id);
+    return;
+  }
+  appMode = 'junction';
+  const graceSec = Math.max(5, exit.graceSec || 90);
+  const graceMs = graceSec * 1000;
+  junctionState = {
+    choices,
+    graceMs,
+    startedAt: performance.now(),
+    crawl: 0.00012, // gentle slow crawl during grace
+  };
+  // soft crawl so user notices
+  autoDrift = junctionState.crawl;
+  const panel = document.getElementById('junction-panel');
+  const box = document.getElementById('jn-choices');
+  box.innerHTML = '';
+  choices.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'jn-choice';
+    btn.dataset.id = c.id;
+    const thumb = document.createElement('canvas');
+    thumb.width = 320;
+    thumb.height = 180;
+    const tg = thumb.getContext('2d');
+    const L = c.universe.layers[0];
+    if (L?.canvas) {
+      setSmoothScale(tg, true);
+      tg.drawImage(L.canvas, 0, 0, L.canvas.width, L.canvas.height, 0, 0, 320, 180);
+    }
+    btn.appendChild(thumb);
+    const lab = document.createElement('div');
+    lab.textContent = (i === 0 ? '★ ' : '') + c.label;
+    btn.appendChild(lab);
+    btn.onclick = () => pickJunction(c.id);
+    box.appendChild(btn);
+  });
+  panel.classList.remove('hidden');
+  updateJunctionTimerUI();
+}
+
+function updateJunctionTimerUI() {
+  if (!junctionState || appMode !== 'junction') return;
+  const elapsed = performance.now() - junctionState.startedAt;
+  const left = Math.max(0, junctionState.graceMs - elapsed);
+  const pct = left / junctionState.graceMs;
+  const bar = document.getElementById('jn-timer-bar');
+  const lab = document.getElementById('jn-timer-lab');
+  if (bar) bar.style.transform = `scaleX(${pct})`;
+  if (lab) lab.textContent = left > 0
+    ? `${Math.ceil(left / 1000)}s — pick a path or first path auto-plays`
+    : 'Taking first path…';
+  if (left <= 0) {
+    pickJunction(junctionState.choices[0].id);
+    return;
+  }
+  requestAnimationFrame(updateJunctionTimerUI);
+}
+
+function pickJunction(id) {
+  cancelJunctionTimer();
+  hideJunction();
+  // restore drift from prefs-ish (off unless user set)
+  if (autoDrift === 0.00012 || (junctionState && autoDrift === junctionState.crawl)) autoDrift = 0;
+  const ok = enterUniverse(id);
+  if (!ok) showMainMenu();
+}
+
+function hideJunction() {
+  document.getElementById('junction-panel')?.classList.add('hidden');
+  if (appMode === 'junction') appMode = layers.length ? 'zoom' : 'menu';
+}
+
+function cancelJunctionTimer() {
+  junctionState = null;
+}
+
+const BUG_REPORT_EMAIL = 'killykillette@gmail.com';
+
+function buildBugReportText() {
+  const what = (document.getElementById('bug-what')?.value || '').trim();
+  const steps = (document.getElementById('bug-steps')?.value || '').trim();
+  const reply = (document.getElementById('bug-email')?.value || '').trim();
+  const u = getCurrentUniverse();
+  const lines = [
+    'FOREVER ZOOMER / INFINITE CANVAS — BUG REPORT',
+    '============================================',
+    '',
+    'What went wrong:',
+    what || '(not filled in)',
+    '',
+    'Steps to reproduce:',
+    steps || '(none)',
+    '',
+    'Reply-to (user): ' + (reply || '(not provided)'),
+    '',
+    '--- tech context (auto) ---',
+    'Page: ' + location.href,
+    'Time: ' + new Date().toISOString(),
+    'UA: ' + navigator.userAgent,
+    'Screen: ' + screen.width + 'x' + screen.height + ' · window ' + window.innerWidth + 'x' + window.innerHeight,
+    'DPR: ' + (window.devicePixelRatio || 1),
+    'App mode: ' + appMode,
+    'Universe: ' + (u ? (u.name + ' (' + u.id + ')') : '(none)'),
+    'Layers: ' + layers.length + ' · index ' + layerIndex,
+    'Scale: ' + (typeof scale === 'number' ? scale.toFixed(3) : scale),
+    'Embed: ' + (document.body.classList.contains('embed-mode') ? 'yes' : 'no'),
+  ];
+  return lines.join('\n');
+}
+
+function openBugPanel() {
+  document.getElementById('bug-panel')?.classList.remove('hidden');
+  const st = document.getElementById('bug-status');
+  if (st) st.textContent = '';
+}
+
+function closeBugPanel() {
+  document.getElementById('bug-panel')?.classList.add('hidden');
+}
+
+function sendBugViaEmail() {
+  const body = buildBugReportText();
+  const what = (document.getElementById('bug-what')?.value || '').trim();
+  if (!what) {
+    document.getElementById('bug-status').textContent = 'Please describe what went wrong first.';
+    return;
+  }
+  const subject = encodeURIComponent('[Forever Zoomer bug] ' + what.slice(0, 60));
+  const mailBody = encodeURIComponent(body);
+  // mailto length limits exist — still best zero-backend option
+  const href = `mailto:${BUG_REPORT_EMAIL}?subject=${subject}&body=${mailBody}`;
+  if (href.length > 1800) {
+    document.getElementById('bug-status').textContent = 'Report is long — use Copy report, then paste into email to ' + BUG_REPORT_EMAIL;
+    return;
+  }
+  window.location.href = href;
+  document.getElementById('bug-status').textContent = 'Email app should open. If not, use Copy report.';
+}
+
+async function copyBugReport() {
+  const body = buildBugReportText();
+  const what = (document.getElementById('bug-what')?.value || '').trim();
+  if (!what) {
+    document.getElementById('bug-status').textContent = 'Please describe what went wrong first.';
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(body);
+    document.getElementById('bug-status').textContent = 'Copied. Paste into email to ' + BUG_REPORT_EMAIL;
+  } catch (_) {
+    document.getElementById('bug-status').textContent = 'Copy failed — select text manually or use Send via email.';
+  }
+}
+
+function applyEmbedModeFromUrl() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('embed') === '1' || q.get('gallery') === '1') {
+    document.body.classList.add('embed-mode');
+  }
+}
+
+function initMainMenuUI() {
+  document.getElementById('btn-main-menu').onclick = () => showMainMenu();
+  document.getElementById('btn-report-bug').onclick = () => openBugPanel();
+  document.getElementById('mm-report-bug')?.addEventListener('click', () => openBugPanel());
+  document.getElementById('bug-cancel').onclick = () => closeBugPanel();
+  document.getElementById('bug-send').onclick = () => sendBugViaEmail();
+  document.getElementById('bug-copy').onclick = () => copyBugReport();
+  document.getElementById('bug-panel').addEventListener('click', e => {
+    if (e.target.id === 'bug-panel') closeBugPanel();
+  });
+  document.getElementById('mm-new-universe').onclick = () => {
+    document.getElementById('mm-file-in').dataset.targetId = '';
+    document.getElementById('mm-file-in').dataset.createNew = '1';
+    document.getElementById('mm-file-in').click();
+  };
+  document.getElementById('mm-file-in').onchange = async e => {
+    const files = e.target.files;
+    if (!files?.length) return;
+    const loaded = await filesToLayers(files);
+    e.target.value = '';
+    if (!loaded.length) { alert('No images loaded'); return; }
+    const createNew = e.target.dataset.createNew === '1';
+    const targetId = e.target.dataset.targetId;
+    e.target.dataset.createNew = '';
+    e.target.dataset.targetId = '';
+    if (createNew || !targetId) {
+      const name = prompt('Name this universe', 'Universe ' + (universes.length + 1)) || ('Universe ' + (universes.length + 1));
+      const u = createUniverse(name, loaded);
+      refreshMainMenuUI();
+      if (confirm('Enter this universe now?')) enterUniverse(u.id);
+      else refreshMainMenuUI();
+    } else {
+      const u = getUniverse(targetId);
+      if (!u) return;
+      u.layers = loaded;
+      saveStoryGraph();
+      refreshMainMenuUI();
+      alert('Photos set for ' + u.name);
+    }
+  };
+  document.getElementById('mm-load-folder').onclick = async () => {
+    let loaded = [];
+    try {
+      const res = await fetch('KILLY_ZOOMQUILT_LAYERS/manifest.json?' + Date.now());
+      if (res.ok) {
+        const data = parseManifestJson(await res.text());
+        if (data.layers?.length) loaded = await loadLayerFiles(data.layers);
+      }
+    } catch (_) {}
+    if (loaded.length < 1) {
+      // try fixed list
+      loaded = await loadLayerFiles(FOLDER_LAYERS);
+    }
+    loaded = padLayersForZoom(loaded);
+    if (!loaded.length) {
+      alert('No folder photos found. Use OPEN_INFINITE_CANVAS.bat and put images in KILLY_ZOOMQUILT_LAYERS.');
+      return;
+    }
+    let u = universes.find(x => x.name === 'Folder photos');
+    if (u) u.layers = loaded;
+    else u = createUniverse('Folder photos', loaded);
+    saveStoryGraph();
+    refreshMainMenuUI();
+    if (confirm('Enter Folder photos universe?')) enterUniverse(u.id);
+  };
+  document.getElementById('mm-continue').onclick = () => {
+    if (lastZoomUniverseId) enterUniverse(lastZoomUniverseId);
+  };
+  document.getElementById('mm-save-link').onclick = () => saveLinkFromEditor();
+  document.getElementById('mm-clear-link').onclick = () => clearLinkFromEditor();
+  document.getElementById('mm-open-controls').onclick = () => {
+    document.getElementById('editor-panel').classList.add('open');
+  };
+  document.getElementById('mm-open-tips').onclick = () => showInfiniteTips();
+  document.getElementById('mm-fullscreen').onclick = () => toggleFs();
+  document.getElementById('jn-pick-first').onclick = () => {
+    if (junctionState?.choices?.[0]) pickJunction(junctionState.choices[0].id);
+  };
+  document.getElementById('jn-to-menu').onclick = () => { cancelJunctionTimer(); hideJunction(); showMainMenu(); };
+}
+
+function getLayerDrawSize(layer) {
+  const vw = canvas.width / dpr, vh = canvas.height / dpr;
+  const { w: lw, h: lh } = layerSize(layer || layers[layerIndex]);
+  const aspect = lw / Math.max(lh, 1);
+  // cover = edge-to-edge (crops); contain = full image (may letterbox / “box”)
+  let rw, rh;
+  const cover = settings.fitMode !== 'contain';
+  if (cover) {
+    if (vw / vh > aspect) {
+      rw = vw * scale;
+      rh = rw / aspect;
+    } else {
+      rh = vh * scale;
+      rw = rh * aspect;
+    }
+  } else {
+    if (vw / vh > aspect) {
+      rh = vh * scale;
+      rw = rh * aspect;
+    } else {
+      rw = vw * scale;
+      rh = rw / aspect;
+    }
+  }
+  return { vw, vh, rw, rh, lw, lh };
+}
+
+function screenToLayer(sx, sy) {
+  const layer = layers[settings.editLayerIndex] ?? layers[layerIndex];
+  const { vw, vh, rw, rh, lw, lh } = getLayerDrawSize(layer);
+  const cx = vw / 2, cy = vh / 2;
+  let x = lw / 2 + (sx - cx - panX) * (lw / rw);
+  let y = lh / 2 + (sy - cy - panY) * (lh / rh);
+  if (settings.snap) { x = Math.round(x); y = Math.round(y); }
+  return { x, y };
+}
+
+function layerCtx(layer) {
+  const g = layer.canvas.getContext('2d');
+  setSmoothScale(g, settings.antiAlias);
+  return g;
+}
+
+function pushUndo(layer) {
+  if (!layer) return;
+  const g = layer.canvas.getContext('2d');
+  const { w: lw, h: lh } = layerSize(layer);
+  const snap = g.getImageData(0, 0, lw, lh);
+  if (!undoStacks.has(layer)) undoStacks.set(layer, []);
+  const stack = undoStacks.get(layer);
+  stack.push(snap);
+  if (stack.length > MAX_UNDO) stack.shift();
+}
+
+function undoEdit() {
+  const layer = layers[settings.editLayerIndex];
+  if (!layer || !undoStacks.has(layer)) return;
+  const stack = undoStacks.get(layer);
+  if (!stack.length) return;
+  const g = layer.canvas.getContext('2d');
+  g.putImageData(stack.pop(), 0, 0);
+}
+
+function snapCoord(v) {
+  return settings.snap ? Math.round(v) : v;
+}
+
+function paintDab(g, x, y, size, color, erase) {
+  g.imageSmoothingEnabled = settings.antiAlias;
+  if (erase) {
+    g.globalCompositeOperation = 'destination-out';
+    g.fillStyle = 'rgba(0,0,0,1)';
+  } else {
+    g.globalCompositeOperation = 'source-over';
+    g.fillStyle = color;
+  }
+  const s = Math.max(1, size);
+  if (settings.antiAlias) {
+    g.beginPath();
+    g.arc(x, y, s / 2, 0, Math.PI * 2);
+    g.fill();
+  } else {
+    const half = Math.floor(s / 2);
+    g.fillRect(snapCoord(x - half), snapCoord(y - half), s, s);
+  }
+  g.globalCompositeOperation = 'source-over';
+}
+
+function floodFill(layer, sx, sy) {
+  const g = layerCtx(layer);
+  const { w: lw, h: lh } = layerSize(layer);
+  const { x, y } = screenToLayer(sx, sy);
+  if (x < 0 || y < 0 || x >= lw || y >= lh) return;
+  pushUndo(layer);
+  const img = g.getImageData(0, 0, lw, lh);
+  const data = img.data;
+  const xi = Math.floor(x), yi = Math.floor(y);
+  const i0 = (yi * lw + xi) * 4;
+  const tr = data[i0], tg = data[i0 + 1], tb = data[i0 + 2], ta = data[i0 + 3];
+  const fill = hexToRgb(settings.color);
+  if (!fill) return;
+  if (tr === fill.r && tg === fill.g && tb === fill.b && ta === 255) return;
+  const match = (i) => data[i] === tr && data[i + 1] === tg && data[i + 2] === tb && data[i + 3] === ta;
+  const stack = [[xi, yi]];
+  const seen = new Uint8Array(lw * lh);
+  while (stack.length) {
+    const [px, py] = stack.pop();
+    if (px < 0 || py < 0 || px >= lw || py >= lh) continue;
+    const si = py * lw + px;
+    if (seen[si]) continue;
+    const idx = si * 4;
+    if (!match(idx)) continue;
+    seen[si] = 1;
+    data[idx] = fill.r; data[idx + 1] = fill.g; data[idx + 2] = fill.b; data[idx + 3] = 255;
+    stack.push([px + 1, py], [px - 1, py], [px, py + 1], [px, py - 1]);
+  }
+  g.putImageData(img, 0, 0);
+}
+
+function hexToRgb(hex) {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return m ? { r: parseInt(m[1], 16), g: parseInt(m[2], 16), b: parseInt(m[3], 16) } : null;
+}
+
+function drawStroke(layer, x0, y0, x1, y1) {
+  const g = layerCtx(layer);
+  const erase = settings.tool === 'eraser';
+  const col = erase ? '#000' : settings.color;
+  const size = settings.tool === 'pencil' ? 1 : settings.brushSize;
+  g.imageSmoothingEnabled = settings.antiAlias;
+  if (erase) g.globalCompositeOperation = 'destination-out';
+  g.strokeStyle = erase ? 'rgba(0,0,0,1)' : col;
+  g.lineWidth = size;
+  g.lineCap = settings.antiAlias ? 'round' : 'square';
+  g.lineJoin = settings.antiAlias ? 'round' : 'miter';
+  g.beginPath();
+  g.moveTo(x0, y0);
+  g.lineTo(x1, y1);
+  g.stroke();
+  g.globalCompositeOperation = 'source-over';
+}
+
+function drawShape(layer, x0, y0, x1, y1, kind) {
+  const g = layerCtx(layer);
+  const erase = settings.tool === 'eraser';
+  const col = settings.color;
+  const size = settings.brushSize;
+  g.imageSmoothingEnabled = settings.antiAlias;
+  if (erase) g.globalCompositeOperation = 'destination-out';
+  g.strokeStyle = erase ? 'rgba(0,0,0,1)' : col;
+  g.fillStyle = col;
+  g.lineWidth = size;
+  const x = Math.min(x0, x1), y = Math.min(y0, y1);
+  const w = Math.abs(x1 - x0), h = Math.abs(y1 - y0);
+  if (kind === 'rect') {
+    if (erase) g.clearRect(x, y, w, h);
+    else g.strokeRect(snapCoord(x), snapCoord(y), snapCoord(w), snapCoord(h));
+  } else {
+    g.beginPath();
+    g.ellipse((x0 + x1) / 2, (y0 + y1) / 2, w / 2, h / 2, 0, 0, Math.PI * 2);
+    if (erase) { g.fillStyle = 'rgba(0,0,0,1)'; g.fill(); }
+    else g.stroke();
+  }
+  g.globalCompositeOperation = 'source-over';
+}
+
+function finishVectorPath(layer) {
+  if (vectorPoints.length < 2) { vectorPoints = []; return; }
+  const g = layerCtx(layer);
+  pushUndo(layer);
+  g.imageSmoothingEnabled = false;
+  g.strokeStyle = settings.color;
+  g.lineWidth = Math.max(1, settings.brushSize);
+  g.lineJoin = 'miter';
+  g.lineCap = 'square';
+  g.beginPath();
+  g.moveTo(vectorPoints[0].x, vectorPoints[0].y);
+  for (let i = 1; i < vectorPoints.length; i++) g.lineTo(vectorPoints[i].x, vectorPoints[i].y);
+  g.stroke();
+  vectorPoints = [];
+}
+
+async function importImageToLayer(file) {
+  const layer = layers[settings.editLayerIndex];
+  if (!layer || !file) return;
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await loadImage(url);
+    pushUndo(layer);
+    const g = layerCtx(layer);
+    g.imageSmoothingEnabled = settings.antiAlias;
+    const scaleFit = Math.min(W / img.width, H / img.height) * 0.85;
+    const dw = img.width * scaleFit, dh = img.height * scaleFit;
+    g.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+async function importSvgToLayer(file) {
+  const layer = layers[settings.editLayerIndex];
+  if (!layer || !file) return;
+  const text = await file.text();
+  const blob = new Blob([text], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  try {
+    const img = await loadImage(url);
+    pushUndo(layer);
+    const g = layerCtx(layer);
+    g.imageSmoothingEnabled = settings.antiAlias;
+    const scaleFit = Math.min(W / img.width, H / img.height) * 0.9;
+    const dw = img.width * scaleFit, dh = img.height * scaleFit;
+    g.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+function downloadCanvas(c, name) {
+  c.toBlob(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }, 'image/png');
+}
+
+function exportLayer() {
+  const layer = layers[settings.editLayerIndex];
+  if (!layer) return;
+  downloadCanvas(layer.canvas, (layer.name || 'layer').replace(/[^\w.-]+/g, '_') + '.png');
+}
+
+function exportAllLayers() {
+  layers.forEach((layer, i) => {
+    setTimeout(() => downloadCanvas(layer.canvas, `${String(i + 1).padStart(2, '0')}_${(layer.name || 'layer').replace(/[^\w.-]+/g, '_')}.png`), i * 350);
+  });
+}
+
+function refreshLayerSelect() {
+  const sel = document.getElementById('layer-select');
+  if (!sel) return;
+  sel.innerHTML = '';
+  layers.forEach((l, i) => {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = `${i + 1}. ${l.name}`;
+    sel.appendChild(o);
+  });
+  sel.value = String(Math.min(settings.editLayerIndex, Math.max(0, layers.length - 1)));
+}
+
+function setEditMode(on) {
+  settings.editMode = on;
+  document.body.classList.toggle('edit-mode', on);
+  document.getElementById('btn-edit-mode').textContent = on ? 'View (E)' : 'Draw (E)';
+  if (on) {
+    settings.editLayerIndex = layerIndex;
+    refreshLayerSelect();
+    document.getElementById('editor-panel').classList.add('open');
+  }
+}
+
+function buildManifestJson() {
+  const files = layers.map((l, i) => ({
+    file: `${String(i + 1).padStart(2, '0')}_${(l.name || 'layer').replace(/[^\w.-]+/g, '_').toLowerCase()}.png`,
+    name: l.name || `Layer ${i + 1}`,
+  }));
+  return JSON.stringify({ layers: files }, null, 2);
+}
+
+function applyDpr() {
+  dpr = Math.min(window.devicePixelRatio || 1, dprCap);
+  canvas.width = Math.floor(window.innerWidth * dpr);
+  canvas.height = Math.floor(window.innerHeight * dpr);
+}
+function resize() { applyDpr(); }
+resize();
+window.addEventListener('resize', resize);
+
+function updateLayerStatus(msg) {
+  const el = document.getElementById('layer-status');
+  if (!el) return;
+  if (msg) { el.textContent = msg; return; }
+  const names = layers.map(l => l.name).filter(Boolean);
+  const src = names.length ? names.slice(0, 4).join(', ') + (names.length > 4 ? '…' : '') : 'none';
+  el.textContent = `${layers.length} layers · ${src}`;
+}
+
+function setSmoothZoomUI(on) {
+  settings.antiAlias = !!on;
+  const a = document.getElementById('opt-antialias');
+  const b = document.getElementById('set-smooth-zoom');
+  if (a) a.checked = settings.antiAlias;
+  if (b) b.checked = settings.antiAlias;
+}
+
+function applyChromeVisibility() {
+  const hide = settings.hideChrome;
+  ['depth-badge', 'toolbar', 'hint', 'title', 'subtitle', 'mode-badge', 'rc-hint'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'toolbar' || id === 'depth-badge' || id === 'mode-badge') {
+      el.style.opacity = hide ? '0.15' : '';
+    } else if (id === 'hint' || id === 'title' || id === 'subtitle') {
+      el.style.visibility = hide ? 'hidden' : '';
+    }
+  });
+}
+
+function collectPrefs() {
+  return {
+    antiAlias: settings.antiAlias,
+    fitMode: settings.fitMode,
+    overscan: settings.overscan,
+    bgColor: settings.bgColor,
+    dprCap,
+    hideChrome: settings.hideChrome,
+    ZOOM_STEP,
+    wheelIn,
+    autoDrift,
+    MAX_SCALE,
+    PAN_SMOOTH,
+    clickZoomEnabled,
+    fadeUiEnabled,
+    loopEndEnabled,
+  };
+}
+
+function applyPrefs(p) {
+  if (!p || typeof p !== 'object') return;
+  if (typeof p.antiAlias === 'boolean') setSmoothZoomUI(p.antiAlias);
+  if (p.fitMode === 'cover' || p.fitMode === 'contain') settings.fitMode = p.fitMode;
+  if (typeof p.overscan === 'number') settings.overscan = Math.max(0, Math.min(0.05, p.overscan));
+  if (typeof p.bgColor === 'string' && /^#[0-9a-f]{6}$/i.test(p.bgColor)) settings.bgColor = p.bgColor;
+  if (typeof p.dprCap === 'number') { dprCap = Math.max(1, Math.min(2, p.dprCap)); applyDpr(); }
+  if (typeof p.hideChrome === 'boolean') { settings.hideChrome = p.hideChrome; applyChromeVisibility(); }
+  if (typeof p.ZOOM_STEP === 'number') ZOOM_STEP = p.ZOOM_STEP;
+  if (typeof p.wheelIn === 'number') { wheelIn = p.wheelIn; wheelOut = Math.max(0.7, 1 / p.wheelIn); }
+  if (typeof p.autoDrift === 'number') autoDrift = p.autoDrift;
+  if (typeof p.MAX_SCALE === 'number') MAX_SCALE = p.MAX_SCALE;
+  if (typeof p.PAN_SMOOTH === 'number') {
+    PAN_SMOOTH = ZOOM_SMOOTH = p.PAN_SMOOTH;
+    const t = Math.max(0.04, Math.min(0.35, PAN_SMOOTH));
+    ZOOM_FOLLOW = PAN_FOLLOW = 3 + t * 55;
+  }
+  if (typeof p.clickZoomEnabled === 'boolean') clickZoomEnabled = p.clickZoomEnabled;
+  if (typeof p.fadeUiEnabled === 'boolean') fadeUiEnabled = p.fadeUiEnabled;
+  if (typeof p.loopEndEnabled === 'boolean') loopEndEnabled = p.loopEndEnabled;
+  syncPrefsToUI();
+}
+
+function syncPrefsToUI() {
+  const g = id => document.getElementById(id);
+  if (g('set-smooth-zoom')) g('set-smooth-zoom').checked = settings.antiAlias;
+  if (g('opt-antialias')) g('opt-antialias').checked = settings.antiAlias;
+  if (g('set-fit-mode')) g('set-fit-mode').value = settings.fitMode;
+  if (g('set-overscan')) {
+    g('set-overscan').value = settings.overscan;
+    g('set-overscan-val').textContent = (settings.overscan * 100).toFixed(1) + '%';
+  }
+  if (g('set-bg-color')) g('set-bg-color').value = settings.bgColor;
+  if (g('set-dpr-cap')) {
+    g('set-dpr-cap').value = dprCap;
+    g('set-dpr-cap-val').textContent = String(dprCap);
+  }
+  if (g('set-hide-chrome')) g('set-hide-chrome').checked = settings.hideChrome;
+  if (g('set-zoom-step')) {
+    g('set-zoom-step').value = ZOOM_STEP;
+    g('set-zoom-step-val').textContent = ZOOM_STEP.toFixed(1);
+  }
+  if (g('set-wheel-speed')) {
+    g('set-wheel-speed').value = wheelIn;
+    g('set-wheel-speed-val').textContent = wheelIn.toFixed(2);
+  }
+  if (g('set-drift')) {
+    g('set-drift').value = autoDrift;
+    g('set-drift-val').textContent = autoDrift > 0 ? 'on' : 'off';
+  }
+  if (g('set-max-scale')) {
+    g('set-max-scale').value = MAX_SCALE;
+    g('set-max-scale-val').textContent = String(MAX_SCALE);
+  }
+  if (g('set-pan-smooth')) {
+    g('set-pan-smooth').value = PAN_SMOOTH;
+    g('set-pan-smooth-val').textContent = PAN_SMOOTH.toFixed(2);
+  }
+  if (g('set-click-zoom')) g('set-click-zoom').checked = clickZoomEnabled;
+  if (g('set-fade-ui')) g('set-fade-ui').checked = fadeUiEnabled;
+  if (g('set-loop-end')) g('set-loop-end').checked = loopEndEnabled;
+}
+
+function savePrefs() {
+  try {
+    localStorage.setItem(PREFS_KEY, JSON.stringify(collectPrefs()));
+    updateLayerStatus('Preferences saved (this browser)');
+  } catch (_) {
+    updateLayerStatus('Could not save preferences');
+  }
+}
+
+function loadPrefs() {
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    if (!raw) return;
+    applyPrefs(JSON.parse(raw));
+  } catch (_) {}
+}
+
+function resetPrefs() {
+  try { localStorage.removeItem(PREFS_KEY); } catch (_) {}
+  setSmoothZoomUI(true);
+  settings.fitMode = 'cover';
+  settings.overscan = 0.002;
+  settings.bgColor = '#050508';
+  settings.hideChrome = false;
+  dprCap = 1.5;
+  applyDpr();
+  ZOOM_STEP = 2.8;
+  wheelIn = 1.14;
+  wheelOut = 0.87;
+  autoDrift = 0;
+  MAX_SCALE = 9;
+  PAN_SMOOTH = ZOOM_SMOOTH = 0.22;
+  ZOOM_FOLLOW = 22;
+  PAN_FOLLOW = 18;
+  zoomVel = 0;
+  clickZoomEnabled = true;
+  fadeUiEnabled = true;
+  loopEndEnabled = true;
+  applyChromeVisibility();
+  syncPrefsToUI();
+  updateLayerStatus('Preferences reset to defaults');
+}
+
+function resetViewFull() {
+  scale = targetScale = 1;
+  panX = panY = targetPanX = targetPanY = 0;
+  layerIndex = 0;
+  transitioning = 0;
+  document.getElementById('depth-badge').textContent = layers[0]?.name || 'Layer 1';
+  updateCanvasTipUI();
+  updateLayerStatus('View reset · full screen · layer 1');
+}
+
+function jumpFillScreen() {
+  // Snap scale so current layer fills viewport under current fit mode
+  scale = targetScale = 1;
+  panX = panY = targetPanX = targetPanY = 0;
+  updateLayerStatus('Jumped to fill screen');
+}
+
+function screenToWorld(sx, sy) {
+  const layer = layers[layerIndex];
+  const { vw, vh, rw, rh, lw, lh } = getLayerDrawSize(layer);
+  const cx = vw / 2, cy = vh / 2;
+  return {
+    x: lw / 2 + (sx - cx - panX) * (lw / rw),
+    y: lh / 2 + (sy - cy - panY) * (lh / rh),
+  };
+}
+
+/** Apply a zoom factor toward screen point (sx,sy). Snappy: updates scale immediately. */
+function zoomAt(sx, sy, factor) {
+  const layer = layers[layerIndex];
+  if (!layer || appMode !== 'zoom') return;
+  const before = screenToWorld(sx, sy);
+  const next = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale * factor));
+  scale = next;
+  targetScale = next;
+  // Recompute pan with NEW scale so the world point stays under the cursor
+  const { vw, vh, rw, rh, lw, lh } = getLayerDrawSize(layer);
+  const cx = vw / 2, cy = vh / 2;
+  panX = sx - cx - (before.x - lw / 2) * (rw / Math.max(lw, 1e-9));
+  panY = sy - cy - (before.y - lh / 2) * (rh / Math.max(lh, 1e-9));
+  targetPanX = panX;
+  targetPanY = panY;
+  zoomBusyUntil = performance.now() + 120;
+  checkLayerTransition();
+}
+
+/**
+ * Wheel → velocity impulse (continuous, smooth, fast).
+ * Trackpads and mice both feel good; no multi-frame lag behind a target.
+ */
+function addWheelZoom(e, sx, sy) {
+  let dy = e.deltaY;
+  if (e.deltaMode === 1) dy *= 16;
+  else if (e.deltaMode === 2) dy *= 400;
+  // log-speed: negative dy (scroll up) = zoom in
+  // tuned so one mouse notch is a clear step, trackpad is fluid
+  const impulse = -dy * 0.012 * Math.log(Math.max(wheelIn, 1.01)) / Math.log(1.14);
+  zoomVel += impulse;
+  // clamp runaway velocity
+  zoomVel = Math.max(-4.5, Math.min(4.5, zoomVel));
+  zoomFocalSX = sx;
+  zoomFocalSY = sy;
+  hasZoomFocal = true;
+  zoomBusyUntil = performance.now() + 200;
+}
+
+function checkLayerTransition() {
+  if (appMode !== 'zoom' || !layers.length) return;
+  // Continuous wrap in log space — no black flash (that felt like stutter)
+  while (scale >= ZOOM_STEP && layerIndex < layers.length - 1) {
+    const k = ZOOM_STEP;
+    scale /= k;
+    targetScale /= k;
+    panX /= k; panY /= k;
+    targetPanX /= k; targetPanY /= k;
+    layerIndex++;
+    transitioning = 0; // was causing hitchy fades
+    updateCanvasTipUI();
+  }
+  while (scale < 1 / ZOOM_STEP && layerIndex > 0) {
+    const k = ZOOM_STEP;
+    scale *= k;
+    targetScale *= k;
+    panX *= k; panY *= k;
+    targetPanX *= k; targetPanY *= k;
+    layerIndex--;
+    transitioning = 0;
+    updateCanvasTipUI();
+  }
+  if (layerIndex === layers.length - 1 && scale >= ZOOM_STEP) {
+    scale = Math.min(scale, ZOOM_STEP * 0.98);
+    targetScale = scale;
+    handleUniverseEnd();
+  }
+}
+
+function draw(now) {
+  if (!now) now = performance.now();
+  let dt = lastFrameTs ? (now - lastFrameTs) / 1000 : 1 / 60;
+  lastFrameTs = now;
+  if (dt > 0.033) dt = 0.033; // cap ~30fps hitch so we don't jump
+  if (dt < 0.001) dt = 0.001;
+
+  const vw = canvas.width / dpr, vh = canvas.height / dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = settings.bgColor || '#050508';
+  ctx.fillRect(0, 0, vw, vh);
+
+  if (appMode === 'menu' || !layers.length) {
+    ctx.fillStyle = '#c9a227';
+    ctx.font = '16px system-ui';
+    ctx.textAlign = 'center';
+    ctx.fillText(appMode === 'menu' ? 'Main menu' : 'No photos — open Menu (M)', vw / 2, vh / 2);
+    requestAnimationFrame(draw);
+    return;
+  }
+
+  // --- Velocity zoom (smooth + responsive) ---
+  if (appMode === 'zoom' && Math.abs(zoomVel) > 1e-4) {
+    const sx = hasZoomFocal ? zoomFocalSX : vw / 2;
+    const sy = hasZoomFocal ? zoomFocalSY : vh / 2;
+    const before = screenToWorld(sx, sy);
+    const factor = Math.exp(zoomVel * dt);
+    let next = scale * factor;
+    next = Math.max(MIN_SCALE, Math.min(MAX_SCALE, next));
+    scale = next;
+    targetScale = next;
+    const layer0 = layers[layerIndex];
+    if (layer0) {
+      const { rw, rh, lw, lh } = getLayerDrawSize(layer0);
+      const cx0 = vw / 2, cy0 = vh / 2;
+      panX = sx - cx0 - (before.x - lw / 2) * (rw / Math.max(lw, 1e-9));
+      panY = sy - cy0 - (before.y - lh / 2) * (rh / Math.max(lh, 1e-9));
+      targetPanX = panX;
+      targetPanY = panY;
+    }
+    // friction — stops cleanly, no endless crawl
+    zoomVel *= Math.exp(-10 * dt);
+    if (Math.abs(zoomVel) < 0.02) zoomVel = 0;
+    checkLayerTransition();
+  }
+
+  // Pan ease only (zoom is direct via velocity)
+  const pFollow = Math.max(8, PAN_FOLLOW);
+  const pa = 1 - Math.exp(-pFollow * dt);
+  panX += (targetPanX - panX) * pa;
+  panY += (targetPanY - panY) * pa;
+  if (Math.abs(targetPanX - panX) < 0.05) panX = targetPanX;
+  if (Math.abs(targetPanY - panY) < 0.05) panY = targetPanY;
+
+  if (appMode === 'zoom' && autoDrift > 0 && Math.abs(zoomVel) < 0.05) {
+    const perSec = autoDrift * 90; // slightly livelier default drift
+    const sx = vw / 2, sy = vh / 2;
+    const before = screenToWorld(sx, sy);
+    scale = Math.min(MAX_SCALE, scale * Math.exp(perSec * dt));
+    targetScale = scale;
+    const layer0 = layers[layerIndex];
+    if (layer0) {
+      const { rw, rh, lw, lh } = getLayerDrawSize(layer0);
+      const cx0 = vw / 2, cy0 = vh / 2;
+      panX = sx - cx0 - (before.x - lw / 2) * (rw / Math.max(lw, 1e-9));
+      panY = sy - cy0 - (before.y - lh / 2) * (rh / Math.max(lh, 1e-9));
+      targetPanX = panX; targetPanY = panY;
+    }
+    checkLayerTransition();
+  }
+  if (appMode === 'junction' && junctionState) {
+    const crawl = junctionState.crawl || 0;
+    if (crawl) {
+      scale *= Math.exp(crawl * 60 * dt);
+      targetScale = scale;
+    }
+  }
+
+  const layer = layers[layerIndex];
+  if (layer && layer.isVideo && layer.video && !drawing) paintVideoFrame(layer);
+  // Only ensure current + next video is playing (was waking 3 videos every frame)
+  if (layer && layer.isVideo && layer.video && layer.video.paused) layer.video.play().catch(() => {});
+  const nL = layers[layerIndex + 1];
+  if (nL && nL.isVideo && nL.video && nL.video.paused) nL.video.play().catch(() => {});
+
+  const cx = vw / 2, cy = vh / 2;
+  const { rw, rh, lw, lh } = getLayerDrawSize(layer);
+
+  ctx.save();
+  ctx.translate(cx + panX, cy + panY);
+  // Low/medium smoothing while moving — high AA tanks FPS on big photos
+  const busy = Math.abs(zoomVel) > 0.05 || now < zoomBusyUntil;
+  if (settings.antiAlias) {
+    ctx.imageSmoothingEnabled = true;
+    try { ctx.imageSmoothingQuality = busy ? 'low' : 'medium'; } catch (_) {}
+  } else {
+    ctx.imageSmoothingEnabled = false;
+  }
+  const os = Math.max(0, settings.overscan || 0);
+  const ox = rw * os, oy = rh * os;
+  ctx.drawImage(layer.canvas, 0, 0, lw, lh, -rw / 2 - ox, -rh / 2 - oy, rw + ox * 2, rh + oy * 2);
+  if (settings.editMode && settings.showGrid && scale >= 1.5) {
+    ctx.strokeStyle = 'rgba(201,162,39,0.10)';
+    ctx.lineWidth = 1;
+    const step = Math.max(2, (rw / lw) * (settings.snap ? 1 : 16));
+    for (let gx = -rw / 2; gx <= rw / 2; gx += step) {
+      ctx.beginPath(); ctx.moveTo(gx, -rh / 2); ctx.lineTo(gx, rh / 2); ctx.stroke();
+    }
+    for (let gy = -rh / 2; gy <= rh / 2; gy += step) {
+      ctx.beginPath(); ctx.moveTo(-rw / 2, gy); ctx.lineTo(rw / 2, gy); ctx.stroke();
+    }
+  }
+  if (vectorPoints.length && settings.editMode) {
+    ctx.strokeStyle = settings.color;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo((vectorPoints[0].x - lw / 2) * (rw / lw), (vectorPoints[0].y - lh / 2) * (rh / lh));
+    for (let i = 1; i < vectorPoints.length; i++) {
+      ctx.lineTo((vectorPoints[i].x - lw / 2) * (rw / lw), (vectorPoints[i].y - lh / 2) * (rh / lh));
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  requestAnimationFrame(draw);
+}
+
+let dragging = false, dragStart = { x: 0, y: 0, px: 0, py: 0 };
+let lastPaint = null;
+let shapeStart = null;
+let didDrag = false;
+
+canvas.addEventListener('wheel', e => {
+  e.preventDefault();
+  if (appMode !== 'zoom') return;
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  if (settings.editMode && !e.ctrlKey) {
+    settings.brushSize = Math.max(1, Math.min(64, settings.brushSize + (e.deltaY < 0 ? 1 : -1)));
+    document.getElementById('brush-size').value = settings.brushSize;
+    document.getElementById('brush-size-val').textContent = settings.brushSize;
+    return;
+  }
+  addWheelZoom(e, sx, sy);
+}, { passive: false });
+
+canvas.addEventListener('pointerdown', e => {
+  if (appMode !== 'zoom') return;
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  didDrag = false;
+  if (settings.editMode && e.button === 0) {
+    const layer = layers[settings.editLayerIndex];
+    if (!layer) return;
+    const pt = screenToLayer(sx, sy);
+    if (settings.tool === 'fill') {
+      floodFill(layer, sx, sy);
+      return;
+    }
+    if (settings.tool === 'vector') {
+      vectorPoints.push(pt);
+      return;
+    }
+    drawing = true;
+    pushUndo(layer);
+    lastPaint = pt;
+    if (settings.tool === 'line' || settings.tool === 'rect' || settings.tool === 'ellipse') {
+      shapeStart = pt;
+    } else {
+      paintDab(layerCtx(layer), pt.x, pt.y, settings.tool === 'pencil' ? 1 : settings.brushSize, settings.color, settings.tool === 'eraser');
+    }
+    canvas.setPointerCapture(e.pointerId);
+    return;
+  }
+  if (e.button === 1 || e.button === 2 || (e.button === 0 && e.altKey)) {
+    dragging = true;
+    dragStart = { x: e.clientX, y: e.clientY, px: panX, py: panY };
+    canvas.setPointerCapture(e.pointerId);
+    return;
+  }
+  dragging = true;
+  dragStart = { x: e.clientX, y: e.clientY, px: panX, py: panY };
+  canvas.setPointerCapture(e.pointerId);
+});
+
+canvas.addEventListener('pointermove', e => {
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  if (drawing && settings.editMode) {
+    didDrag = true;
+    const layer = layers[settings.editLayerIndex];
+    const pt = screenToLayer(sx, sy);
+    if (settings.tool === 'brush' || settings.tool === 'pencil' || settings.tool === 'eraser') {
+      if (lastPaint) drawStroke(layer, lastPaint.x, lastPaint.y, pt.x, pt.y);
+      lastPaint = pt;
+    }
+    return;
+  }
+  if (!dragging) return;
+  didDrag = true;
+  targetPanX = dragStart.px + (e.clientX - dragStart.x);
+  targetPanY = dragStart.py + (e.clientY - dragStart.y);
+});
+
+canvas.addEventListener('pointerup', e => {
+  const rect = canvas.getBoundingClientRect();
+  const sx = e.clientX - rect.left, sy = e.clientY - rect.top;
+  if (drawing) {
+    const layer = layers[settings.editLayerIndex];
+    const pt = screenToLayer(sx, sy);
+    if (shapeStart && (settings.tool === 'line' || settings.tool === 'rect' || settings.tool === 'ellipse')) {
+      if (settings.tool === 'line') drawStroke(layer, shapeStart.x, shapeStart.y, pt.x, pt.y);
+      else drawShape(layer, shapeStart.x, shapeStart.y, pt.x, pt.y, settings.tool);
+    }
+    drawing = false;
+    lastPaint = null;
+    shapeStart = null;
+  }
+  dragging = false;
+});
+
+canvas.addEventListener('click', e => {
+  if (didDrag) return;
+  if (settings.editMode) return;
+  if (!clickZoomEnabled) return;
+  const rect = canvas.getBoundingClientRect();
+  // One smooth dive toward cursor (was 8 hard jumps — felt stuttery)
+  zoomAt(e.clientX - rect.left, e.clientY - rect.top, Math.pow(1.18, 6));
+});
+
+const ctxMenu = document.getElementById('ctx-menu');
+const canvasHoverTip = document.getElementById('canvas-hover-tip');
+const rcHint = document.getElementById('rc-hint');
+const infiniteTipsPanel = document.getElementById('infinite-tips-panel');
+const RC_HINT_KEY = 'killy_zoomquilt_rc_hint_seen';
+
+function canvasCenter() {
+  return { x: canvas.width / dpr / 2, y: canvas.height / dpr / 2 };
+}
+
+function updateCanvasTipUI() {
+  const layer = layers[layerIndex];
+  const name = layer?.name || 'Layer';
+  document.getElementById('ht-layer').textContent = name;
+  document.getElementById('ht-depth').textContent = `${layerIndex + 1} / ${layers.length}`;
+  document.getElementById('ht-zoom').textContent = Math.round(scale * 100) + '%';
+  document.getElementById('depth-badge').textContent = name + (layerIndex === 0 && layers.length > 1 ? '' : '');
+  const nextName = layers[layerIndex + 1]?.name;
+  const prevName = layers[layerIndex - 1]?.name;
+  document.getElementById('ctx-status').innerHTML =
+    `<strong>${name}</strong> · layer ${layerIndex + 1} of ${layers.length}` +
+    (nextName ? `<br>Zoom in more → <strong>${nextName}</strong>` : '<br>∞ loops to surface') +
+    (prevName ? `<br>Zoom out more → <strong>${prevName}</strong>` : '');
+  document.getElementById('ctx-drift-tip').textContent =
+    autoDrift > 0 ? 'Auto-drift ON — slow endless zoom' : 'Auto-drift OFF — only you zoom';
+  document.getElementById('ctx-click-tip').textContent =
+    clickZoomEnabled ? 'Click-to-dive ON' : 'Click-to-dive OFF';
+}
+
+function hideCtxMenu() {
+  ctxMenu.classList.add('hidden');
+}
+
+function showCtxMenu(clientX, clientY) {
+  updateCanvasTipUI();
+  ctxMenu.classList.remove('hidden');
+  try { localStorage.setItem(RC_HINT_KEY, '1'); } catch (_) {}
+  rcHint.classList.add('hidden');
+  const pad = 8;
+  const rect = ctxMenu.getBoundingClientRect();
+  let x = clientX;
+  let y = clientY;
+  if (x + rect.width > window.innerWidth - pad) x = window.innerWidth - rect.width - pad;
+  if (y + rect.height > window.innerHeight - pad) y = window.innerHeight - rect.height - pad;
+  ctxMenu.style.left = x + 'px';
+  ctxMenu.style.top = y + 'px';
+}
+
+function resetView() {
+  layerIndex = 0;
+  scale = targetScale = 1;
+  panX = panY = targetPanX = targetPanY = 0;
+  updateCanvasTipUI();
+}
+
+function centerPan() {
+  panX = panY = targetPanX = targetPanY = 0;
+}
+
+function nudgeLayer(direction) {
+  const cx = canvasCenter();
+  const steps = direction > 0 ? 12 : 12;
+  const factor = direction > 0 ? 1.22 : 0.82;
+  for (let i = 0; i < steps; i++) zoomAt(cx.x, cx.y, factor);
+}
+
+function showInfiniteTips() {
+  hideCtxMenu();
+  infiniteTipsPanel.classList.remove('hidden');
+}
+
+function hideInfiniteTips() {
+  infiniteTipsPanel.classList.add('hidden');
+}
+
+ctxMenu.addEventListener('click', e => {
+  const btn = e.target.closest('[data-action]');
+  if (!btn) return;
+  const action = btn.dataset.action;
+  hideCtxMenu();
+  const { x: cx, y: cy } = canvasCenter();
+  if (action === 'dive') {
+    for (let i = 0; i < 8; i++) zoomAt(cx, cy, 1.18);
+  }
+  if (action === 'zoom-in') zoomAt(cx, cy, 1.25);
+  if (action === 'zoom-out') zoomAt(cx, cy, 0.8);
+  if (action === 'layer-up') nudgeLayer(-1);
+  if (action === 'layer-down') nudgeLayer(1);
+  if (action === 'reset') resetView();
+  if (action === 'pan-reset') centerPan();
+  if (action === 'toggle-drift') {
+    autoDrift = autoDrift > 0 ? 0 : 0.00015;
+    const driftEl = document.getElementById('set-drift');
+    if (driftEl) {
+      driftEl.value = autoDrift;
+      document.getElementById('set-drift-val').textContent = autoDrift > 0 ? 'on' : 'off';
+    }
+  }
+  if (action === 'toggle-click-zoom') {
+    clickZoomEnabled = !clickZoomEnabled;
+    const el = document.getElementById('set-click-zoom');
+    if (el) el.checked = clickZoomEnabled;
+  }
+  if (action === 'tips') showInfiniteTips();
+  if (action === 'fullscreen') toggleFs();
+  if (action === 'edit') setEditMode(!settings.editMode);
+  if (action === 'controls') document.getElementById('editor-panel').classList.add('open');
+  if (action === 'images') document.getElementById('upload-panel').classList.remove('hidden');
+  if (action === 'menu') showMainMenu();
+  updateCanvasTipUI();
+});
+
+document.getElementById('btn-close-tips').onclick = hideInfiniteTips;
+infiniteTipsPanel.addEventListener('click', e => {
+  if (e.target === infiniteTipsPanel) hideInfiniteTips();
+});
+
+document.addEventListener('click', e => {
+  if (!ctxMenu.contains(e.target)) hideCtxMenu();
+});
+window.addEventListener('resize', () => { hideCtxMenu(); canvasHoverTip.classList.add('hidden'); });
+window.addEventListener('blur', hideCtxMenu);
+
+canvas.addEventListener('mousemove', e => {
+  if (settings.editMode || ctxMenu.classList.contains('hidden') === false) {
+    canvasHoverTip.classList.add('hidden');
+    return;
+  }
+  updateCanvasTipUI();
+  canvasHoverTip.classList.remove('hidden');
+  canvasHoverTip.style.left = e.clientX + 'px';
+  canvasHoverTip.style.top = e.clientY + 'px';
+});
+canvas.addEventListener('mouseleave', () => canvasHoverTip.classList.add('hidden'));
+
+canvas.addEventListener('contextmenu', e => {
+  if (settings.editMode && settings.tool === 'vector') {
+    e.preventDefault();
+    finishVectorPath(layers[settings.editLayerIndex]);
+    return;
+  }
+  e.preventDefault();
+  showCtxMenu(e.clientX, e.clientY);
+});
+
+window.addEventListener('keydown', e => {
+  if (e.target.matches('input, select, textarea')) return;
+  if (e.key === 'Escape') {
+    hideInfiniteTips();
+    hideCtxMenu();
+    if (!document.getElementById('bug-panel')?.classList.contains('hidden')) { closeBugPanel(); return; }
+    if (appMode === 'junction') { cancelJunctionTimer(); hideJunction(); showMainMenu(); return; }
+    if (settings.editMode) { vectorPoints = []; setEditMode(false); return; }
+    if (appMode === 'zoom') { showMainMenu(); return; }
+    return;
+  }
+  if (e.key === 'm' || e.key === 'M') { showMainMenu(); return; }
+  if (appMode === 'menu') return;
+  if (e.key === 'e' || e.key === 'E') setEditMode(!settings.editMode);
+  if ((e.ctrlKey || e.metaKey) && e.key === 'z') { e.preventDefault(); undoEdit(); }
+  if (e.key === 'Enter' && settings.editMode && settings.tool === 'vector') finishVectorPath(layers[settings.editLayerIndex]);
+  if (e.key === 'ArrowUp' || e.key === '+' || e.key === '=') {
+    zoomAt(canvas.width / dpr / 2, canvas.height / dpr / 2, 1.2);
+  }
+  if (e.key === 'ArrowDown' || e.key === '-') {
+    zoomAt(canvas.width / dpr / 2, canvas.height / dpr / 2, 0.83);
+  }
+  if (e.key === 'f' || e.key === 'F') toggleFs();
+  if (e.key === 'u' || e.key === 'U') document.getElementById('upload-panel').classList.remove('hidden');
+  if (e.key === 'c' || e.key === 'C') document.getElementById('editor-panel').classList.toggle('open');
+  if (e.key === '?' || (e.shiftKey && e.key === '/')) showInfiniteTips();
+});
+
+document.getElementById('fs').onclick = toggleFs;
+function toggleFs() {
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+  else document.exitFullscreen();
+}
+
+document.getElementById('btn-upload').onclick = async () => {
+  const inp = document.getElementById('file-in');
+  if (!inp.files.length) { alert('Choose images first.'); return; }
+  if (await loadFromFiles(inp.files)) {
+    document.getElementById('upload-panel').classList.add('hidden');
+  }
+};
+document.getElementById('btn-hide-upload').onclick = () => {
+  document.getElementById('upload-panel').classList.add('hidden');
+};
+document.getElementById('btn-show-upload').onclick = () => {
+  document.getElementById('upload-panel').classList.remove('hidden');
+};
+
+function initEditorUI() {
+  const swRow = document.getElementById('swatch-row');
+  SWATCHES.forEach(c => {
+    const d = document.createElement('div');
+    d.className = 'swatch' + (c === settings.color ? ' active' : '');
+    d.style.background = c;
+    d.onclick = () => {
+      settings.color = c;
+      document.getElementById('color-pick').value = c;
+      document.getElementById('color-hex').value = c;
+      swRow.querySelectorAll('.swatch').forEach(s => s.classList.toggle('active', s.style.background === c || rgbToHex(s.style.background) === c));
+      d.classList.add('active');
+    };
+    swRow.appendChild(d);
+  });
+  function rgbToHex(rgb) {
+    if (rgb.startsWith('#')) return rgb;
+    const m = rgb.match(/\d+/g);
+    if (!m) return rgb;
+    return '#' + m.slice(0, 3).map(n => (+n).toString(16).padStart(2, '0')).join('');
+  }
+  document.getElementById('tool-row').addEventListener('click', e => {
+    const btn = e.target.closest('[data-tool]');
+    if (!btn) return;
+    settings.tool = btn.dataset.tool;
+    document.querySelectorAll('#tool-row .ep-btn').forEach(b => b.classList.toggle('active', b === btn));
+  });
+  document.getElementById('brush-size').oninput = e => {
+    settings.brushSize = +e.target.value;
+    document.getElementById('brush-size-val').textContent = settings.brushSize;
+  };
+  document.getElementById('color-pick').oninput = e => {
+    settings.color = e.target.value;
+    document.getElementById('color-hex').value = settings.color;
+  };
+  document.getElementById('color-hex').onchange = e => {
+    if (/^#[0-9a-f]{6}$/i.test(e.target.value)) {
+      settings.color = e.target.value;
+      document.getElementById('color-pick').value = settings.color;
+    }
+  };
+  document.getElementById('opt-antialias').checked = settings.antiAlias;
+  document.getElementById('opt-snap').checked = settings.snap;
+  document.getElementById('opt-antialias').onchange = e => setSmoothZoomUI(e.target.checked);
+  document.getElementById('opt-snap').onchange = e => { settings.snap = e.target.checked; };
+  document.getElementById('opt-show-grid').onchange = e => { settings.showGrid = e.target.checked; };
+  document.getElementById('layer-select').onchange = e => { settings.editLayerIndex = +e.target.value; };
+  document.getElementById('btn-edit-mode').onclick = () => setEditMode(!settings.editMode);
+  document.getElementById('btn-editor-panel').onclick = () => document.getElementById('editor-panel').classList.toggle('open');
+  document.getElementById('btn-canvas-tips').onclick = showInfiniteTips;
+  document.getElementById('editor-toggle').onclick = () => document.getElementById('editor-panel').classList.toggle('open');
+  document.getElementById('btn-import-img').onclick = () => document.getElementById('import-img-in').click();
+  document.getElementById('btn-import-svg').onclick = () => document.getElementById('import-svg-in').click();
+  document.getElementById('import-img-in').onchange = e => { if (e.target.files[0]) importImageToLayer(e.target.files[0]); e.target.value = ''; };
+  document.getElementById('import-svg-in').onchange = e => { if (e.target.files[0]) importSvgToLayer(e.target.files[0]); e.target.value = ''; };
+  document.getElementById('btn-export-layer').onclick = exportLayer;
+  document.getElementById('btn-export-all').onclick = exportAllLayers;
+  document.getElementById('btn-undo').onclick = undoEdit;
+  document.getElementById('btn-clear-layer').onclick = () => {
+    const layer = layers[settings.editLayerIndex];
+    if (!layer || !confirm('Clear this layer?')) return;
+    pushUndo(layer);
+    layerCtx(layer).clearRect(0, 0, W, H);
+  };
+  document.getElementById('btn-new-layer').onclick = () => {
+    const n = layers.length + 1;
+    const blank = makeLayer(`New Layer ${n}`, g => { g.fillStyle = '#0a0c12'; g.fillRect(0, 0, W, H); });
+    layers.push(blank);
+    const u = getCurrentUniverse();
+    if (u) u.layers = layers.slice();
+    settings.editLayerIndex = layers.length - 1;
+    refreshLayerSelect();
+    updateLayerStatus();
+    saveStoryGraph();
+  };
+  document.getElementById('btn-copy-manifest').onclick = () => {
+    navigator.clipboard.writeText(buildManifestJson()).then(() => alert('manifest.json copied. Paste into KILLY_ZOOMQUILT_LAYERS\\manifest.json after exporting PNGs.'));
+  };
+
+  // --- View & clarity (self-service remedies) ---
+  document.getElementById('set-smooth-zoom').onchange = e => setSmoothZoomUI(e.target.checked);
+  document.getElementById('set-fit-mode').onchange = e => {
+    settings.fitMode = e.target.value === 'contain' ? 'contain' : 'cover';
+    updateLayerStatus(settings.fitMode === 'cover' ? 'Fit: Cover (edge-to-edge)' : 'Fit: Contain (may show letterbox)');
+  };
+  document.getElementById('set-overscan').oninput = e => {
+    settings.overscan = +e.target.value;
+    document.getElementById('set-overscan-val').textContent = (settings.overscan * 100).toFixed(1) + '%';
+  };
+  document.getElementById('set-bg-color').oninput = e => {
+    settings.bgColor = e.target.value;
+    document.documentElement.style.background = settings.bgColor;
+    document.body.style.background = settings.bgColor;
+  };
+  document.getElementById('set-dpr-cap').oninput = e => {
+    dprCap = +e.target.value;
+    document.getElementById('set-dpr-cap-val').textContent = String(dprCap);
+    applyDpr();
+  };
+  document.getElementById('set-hide-chrome').onchange = e => {
+    settings.hideChrome = e.target.checked;
+    applyChromeVisibility();
+  };
+  document.getElementById('btn-reset-view').onclick = () => resetViewFull();
+  document.getElementById('btn-fill-screen').onclick = () => jumpFillScreen();
+
+  // --- Zoom motion ---
+  document.getElementById('set-zoom-step').oninput = e => {
+    ZOOM_STEP = +e.target.value;
+    document.getElementById('set-zoom-step-val').textContent = ZOOM_STEP.toFixed(1);
+  };
+  document.getElementById('set-wheel-speed').oninput = e => {
+    wheelIn = +e.target.value;
+    wheelOut = Math.max(0.7, +(1 / wheelIn).toFixed(3));
+    document.getElementById('set-wheel-speed-val').textContent = wheelIn.toFixed(2);
+  };
+  document.getElementById('set-drift').oninput = e => {
+    autoDrift = +e.target.value;
+    document.getElementById('set-drift-val').textContent = autoDrift > 0 ? 'on' : 'off';
+  };
+  document.getElementById('set-max-scale').oninput = e => {
+    MAX_SCALE = +e.target.value;
+    document.getElementById('set-max-scale-val').textContent = MAX_SCALE;
+  };
+  document.getElementById('set-pan-smooth').oninput = e => {
+    PAN_SMOOTH = ZOOM_SMOOTH = +e.target.value;
+    const t = Math.max(0.04, Math.min(0.35, PAN_SMOOTH));
+    ZOOM_FOLLOW = 12 + t * 60;
+    PAN_FOLLOW = 10 + t * 50;
+    document.getElementById('set-pan-smooth-val').textContent = PAN_SMOOTH.toFixed(2);
+  };
+  document.getElementById('set-click-zoom').onchange = e => { clickZoomEnabled = e.target.checked; };
+  document.getElementById('set-fade-ui').onchange = e => { fadeUiEnabled = e.target.checked; };
+  document.getElementById('set-loop-end').onchange = e => { loopEndEnabled = e.target.checked; };
+
+  // --- Layers source ---
+  document.getElementById('btn-reload-photos').onclick = async () => {
+    updateLayerStatus('Reloading photos…');
+    let ok = await loadFromManifest();
+    if (!ok) ok = await loadFromFolderDirect();
+    if (ok) updateLayerStatus('Reloaded folder into current universe');
+    else updateLayerStatus('No folder photos found — use Main menu');
+  };
+  document.getElementById('btn-pick-photos').onclick = () => {
+    document.getElementById('upload-panel').classList.remove('hidden');
+  };
+  const btnMenu = document.getElementById('btn-to-menu');
+  if (btnMenu) btnMenu.onclick = () => showMainMenu();
+  document.getElementById('btn-save-prefs').onclick = () => savePrefs();
+  document.getElementById('btn-reset-prefs').onclick = () => {
+    if (confirm('Reset all view/zoom preferences to defaults?')) resetPrefs();
+  };
+
+  loadPrefs();
+  syncPrefsToUI();
+}
+
+function showReadyBanner() {
+  const banner = document.getElementById('ready-banner');
+  banner.classList.remove('hidden');
+  setTimeout(() => banner.classList.add('hidden'), 8000);
+}
+
+async function init() {
+  applyEmbedModeFromUrl();
+  initEditorUI();
+  initMainMenuUI();
+  document.getElementById('upload-panel').classList.add('hidden');
+  document.documentElement.style.background = settings.bgColor;
+  document.body.style.background = settings.bgColor;
+  applyChromeVisibility();
+  updateCanvasTipUI();
+  try {
+    if (!localStorage.getItem(RC_HINT_KEY)) rcHint.classList.remove('hidden');
+    else rcHint.classList.add('hidden');
+  } catch (_) {
+    rcHint.classList.remove('hidden');
+  }
+  setTimeout(() => rcHint.classList.add('hidden'), 14000);
+
+  // Restore link graph shells (names/exits). Photos reloaded from folder or re-picked.
+  restoreUniverseShellsFromMeta(loadStoryGraphMeta());
+
+  draw();
+
+  // Optionally preload folder into a universe — stay on main menu (no forced map art)
+  let folderLayers = [];
+  try {
+    const res = await fetch('KILLY_ZOOMQUILT_LAYERS/manifest.json?' + Date.now());
+    if (res.ok) {
+      const data = parseManifestJson(await res.text());
+      if (data.layers?.length) folderLayers = await loadLayerFiles(data.layers);
+    }
+  } catch (_) {}
+  if (folderLayers.length < 1) {
+    try { folderLayers = await loadLayerFiles(FOLDER_LAYERS); } catch (_) {}
+  }
+  folderLayers = padLayersForZoom(folderLayers);
+  if (folderLayers.length) {
+    let u = universes.find(x => x.name === 'Folder photos');
+    if (u) u.layers = folderLayers;
+    else {
+      // Prefer reusing empty shell with same idea
+      u = createUniverse('Folder photos', folderLayers);
+    }
+    lastZoomUniverseId = u.id;
+  }
+
+  scale = targetScale = 1;
+  panX = panY = targetPanX = targetPanY = 0;
+  layerIndex = 0;
+  layers.length = 0;
+  currentUniverseId = null;
+  updateCanvasTipUI();
+  updateLayerStatus();
+  showMainMenu();
+
+  const b = document.getElementById('ready-banner');
+  if (b) {
+    b.textContent = folderLayers.length
+      ? 'Main menu · Folder photos ready · create links · Enter to zoom'
+      : 'Main menu · create a universe with your photos';
+    b.classList.remove('hidden');
+    setTimeout(() => b.classList.add('hidden'), 7000);
+  }
+}
+init();
+</script>
+</body>
+</html>

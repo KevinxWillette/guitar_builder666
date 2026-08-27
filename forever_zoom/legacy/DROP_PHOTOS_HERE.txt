@@ -1,0 +1,6 @@
+DROP PHOTOS HERE
+================
+
+1. Dump your images in this folder.
+2. Run: Desktop\KILLY DESKTOP LAUNCHERS\ADD PHOTOS - FOREVER ZOOMER.bat  (pick 1)
+3. Open: Desktop\FOREVER ZOOMER.bat

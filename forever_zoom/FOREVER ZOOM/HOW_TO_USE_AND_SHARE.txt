@@ -1,0 +1,37 @@
+FOREVER ZOOM — clean video canvas
+================================
+
+WHAT IT IS
+  One canvas. Zoom forever. Add short animated videos (your ~41s clips are fine)
+  plus images/GIFs. Right-side list shows every clip by name — no guessing.
+
+OPEN
+  Double-click:  OPEN FOREVER ZOOM.bat
+  Or open:       index.html  (Chrome / Edge)
+
+USE
+  + Add media     → pick images or videos
+  Or drag-drop onto the canvas
+  Scroll         → zoom
+  Drag empty     → pan
+  Drag a clip    → move it
+  Click list name → select + focus that clip
+  Fit all / Reset view
+  Download project → saves positions as forever-zoom-project.json
+  Clear all      → wipe the board
+
+SHARE / DOWNLOAD FOR SOMEONE ELSE
+  1. Add the media you want (or keep copies in the media\ folder).
+  2. Click Download project (optional but keeps layout).
+  3. Right-click the FOREVER ZOOM folder on Desktop → Send to → Compressed zip
+  4. Send the zip. They unzip and run OPEN FOREVER ZOOM.bat
+  5. They click + Add media and pick the same files (layout matches by file name
+     if they Load project first).
+
+NOTE
+  Videos play muted + looped so the browser allows autoplay.
+  Unmute is not required for show-and-tell on stream (OBS captures the picture).
+
+EMPTY UNIVERSES
+  The old multi-world “Killy Universe” presets were removed.
+  This folder is the only Forever Zoom board.
