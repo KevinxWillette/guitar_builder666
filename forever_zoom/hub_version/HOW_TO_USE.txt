@@ -1,0 +1,27 @@
+FOREVER ZOOM — one folder, two boards
+=====================================
+
+OPEN
+  Double-click:  OPEN FOREVER ZOOM.bat
+  That opens the INFINITE CANVAS (the old deep-zoom board).
+
+BOARDS
+  1) KILLY_ZOOMQUILT.html  — Infinite Canvas
+     Scroll forever · pan · Draw (E) pencil/brush · My images for photos + short videos
+     Right-click for tips. Videos loop as zoom layers (~41s fine).
+
+  2) video-board.html — flat video board
+     Free list of clips, pan/zoom, download project JSON.
+
+  Hub: index.html (pick either)
+
+DESK
+  Only use this FOREVER ZOOM folder. Ignore empty KILLY_UNIVERSE_CANVASES on Desktop
+  if it still exists — the live home is here.
+
+TIPS (Infinite Canvas)
+  Scroll     zoom deeper through layers
+  Drag       pan
+  E          draw / view (pencil tip on the layer)
+  My images  load photos & videos
+  M          main menu (if enabled)

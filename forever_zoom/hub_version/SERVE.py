@@ -8,7 +8,7 @@ import subprocess
 import threading
 from pathlib import Path
 
-PORT = 17891
+PORT = 17892
 CANVAS_HOME = Path(__file__).resolve().parent
 HOST = "127.0.0.1"
 

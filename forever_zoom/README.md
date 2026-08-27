@@ -27,8 +27,12 @@ An alternate build with a landing hub linking two boards:
   photo/video layers, editor panel.
 - `video-board.html` — the flat video board (same app as the canonical
   `FOREVER ZOOM/index.html`).
-- `SERVE.py` + `OPEN FOREVER ZOOM.bat` — custom server on port 17891 that
-  opens the infinite canvas directly.
+- `SERVE.py` + `OPEN FOREVER ZOOM.bat` — custom server that opens the
+  infinite canvas directly (latest SERVE.py uses port 17892; the .bat's
+  port-kill line still says 17891 from an earlier revision).
+- `HOW_TO_USE.txt` — "one folder, two boards" instructions; says this
+  FOREVER ZOOM folder is the live home and KILLY_UNIVERSE_CANVASES on the
+  Desktop is empty leftovers.
 
 ## `legacy/` — old leftovers
 
