@@ -6,198 +6,180 @@
 <title>KILLETTE DSP</title>
 <style>
   :root {
-    --bg: #0b0c0b;
-    --bg2: #131513;
+    --bg: #070807;
     --steel-hi: #f2f4f5;
     --steel-mid: #9aa2a6;
-    --steel-dark: #3c4144;
     --green: #39ff14;
     --green-deep: #1f8f3a;
-    --green-dark: #0f3d1c;
     --ink: #e8ece8;
-    --muted: #8b948b;
+    --muted: #7d877d;
     color-scheme: dark;
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; }
   html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: Impact, "Arial Black", "Franklin Gothic Bold", sans-serif;
     background:
-      repeating-conic-gradient(rgba(255,255,255,.012) 0% 25%, transparent 0% 50%) 0 0 / 26px 26px,
-      radial-gradient(ellipse at 50% -10%, #1a1d1a 0%, var(--bg) 60%);
+      repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 1px, transparent 1px 3px),
+      repeating-conic-gradient(rgba(255,255,255,.014) 0% 25%, transparent 0% 50%) 0 0 / 22px 22px,
+      radial-gradient(ellipse at 50% -10%, #151713 0%, var(--bg) 65%);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.45;
     overflow-x: hidden;
   }
+  .body-font { font-family: "Arial Narrow", Arial, sans-serif; }
 
-  /* ---------- chrome + green text treatments ---------- */
   .chrome {
     background: linear-gradient(178deg,
-      #ffffff 0%, #dfe4e7 18%, #8f979c 38%, #4a5054 50%,
-      #c7cdd1 55%, #6d7478 72%, #f0f2f4 90%, #a9b0b4 100%);
+      #ffffff 0%, #dfe4e7 16%, #82898e 36%, #33383b 50%,
+      #c7cdd1 54%, #565c60 74%, #f0f2f4 90%, #8f979c 100%);
     -webkit-background-clip: text; background-clip: text;
     color: transparent;
   }
   .venom {
     background: linear-gradient(180deg,
-      #d7ffcf 0%, #7cff4f 30%, #1fae37 55%, #0d5a20 78%, #39ff14 100%);
+      #ccffbe 0%, #63ff2e 34%, #16a02f 58%, #063d14 80%, #39ff14 100%);
     -webkit-background-clip: text; background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 0 14px rgba(57,255,20,.45)) drop-shadow(0 2px 1px rgba(0,0,0,.9));
+    filter: drop-shadow(0 4px 0 #000) drop-shadow(0 0 18px rgba(57,255,20,.5));
   }
 
   /* ---------- nav ---------- */
   header {
     position: sticky; top: 0; z-index: 50;
-    display: flex; align-items: center; gap: 16px;
-    padding: 12px 20px;
-    background: rgba(9,10,9,.92);
-    backdrop-filter: blur(6px);
-    border-bottom: 1px solid #1e221e;
-    box-shadow: 0 1px 0 rgba(57,255,20,.25), 0 8px 30px rgba(0,0,0,.6);
+    display: flex; align-items: stretch; gap: 0;
+    background: #0a0b0a;
+    border-bottom: 3px solid var(--green);
+    box-shadow: 0 6px 0 #000, 0 10px 40px rgba(0,0,0,.9);
   }
   header .mark {
-    font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
-    font-size: 15px; text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    font-size: 19px; letter-spacing: .1em; text-transform: uppercase;
+    text-decoration: none;
+    background: repeating-linear-gradient(-45deg, #101210 0 12px, #0a0b0a 12px 24px);
+    border-right: 3px solid #000;
   }
-  header .mark .k { color: var(--green); text-shadow: 0 0 10px rgba(57,255,20,.6); }
-  header .mark .d { color: var(--steel-mid); }
+  header .mark .k { color: var(--green); text-shadow: 0 0 12px rgba(57,255,20,.8), 2px 2px 0 #000; }
+  header .mark .d { color: var(--steel-mid); text-shadow: 2px 2px 0 #000; }
   header .spacer { flex: 1; }
+  header nav { display: flex; }
   header nav a {
-    color: var(--muted); text-decoration: none; font-size: 12px;
-    letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
-    padding: 8px 12px;
+    display: flex; align-items: center;
+    color: var(--muted); text-decoration: none; font-size: 14px;
+    letter-spacing: .16em; text-transform: uppercase;
+    padding: 0 20px;
+    border-left: 1px solid #161816;
   }
-  header nav a:hover { color: var(--green); text-shadow: 0 0 8px rgba(57,255,20,.7); }
+  header nav a:hover { color: #04120a; background: var(--green); text-shadow: none; }
 
   /* ---------- hero ---------- */
   .hero {
     position: relative;
     text-align: center;
-    padding: 90px 16px 70px;
-    isolation: isolate;
-  }
-  .hero::before {
-    /* smoke */
-    content: "";
-    position: absolute; inset: 0; z-index: -1;
-    background:
-      radial-gradient(closest-side at 22% 30%, rgba(120,130,125,.10), transparent 70%),
-      radial-gradient(closest-side at 78% 60%, rgba(120,130,125,.08), transparent 70%),
-      radial-gradient(closest-side at 50% 90%, rgba(57,255,20,.05), transparent 70%);
+    padding: 60px 8px 40px;
   }
   .hero .dsp {
-    font-size: clamp(6rem, 24vw, 17rem);
-    font-weight: 900;
-    letter-spacing: .02em;
-    line-height: .85;
-    margin: 0;
-    filter: drop-shadow(0 10px 24px rgba(0,0,0,.85));
+    font-size: clamp(7rem, 30vw, 22rem);
+    letter-spacing: -.01em;
+    line-height: .8;
+    filter: drop-shadow(0 14px 0 #000) drop-shadow(0 24px 40px rgba(0,0,0,.9));
     user-select: none;
   }
   .hero .killette {
     position: relative;
-    margin-top: clamp(-4.2rem, -9vw, -6.5rem);
-    font-size: clamp(2.6rem, 9vw, 6.2rem);
-    font-weight: 900;
-    font-style: italic;
-    letter-spacing: .04em;
+    margin-top: clamp(-5rem, -12vw, -8.5rem);
+    font-size: clamp(3rem, 12vw, 8.5rem);
+    letter-spacing: .02em;
     text-transform: uppercase;
-    transform: rotate(-4deg);
+    transform: rotate(-5deg);
     z-index: 2;
   }
   .hero .tag {
-    margin: 34px auto 0;
-    max-width: 620px;
+    margin: 40px auto 0;
+    max-width: 640px;
     color: var(--muted);
-    font-size: 1rem;
-    letter-spacing: .06em;
+    font-size: 1.05rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
   .hero .tag b { color: var(--ink); }
-  .cta-row { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-row { margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
   .btn {
     display: inline-block;
-    padding: 14px 30px;
-    font-size: 13px; font-weight: 900;
-    letter-spacing: .16em; text-transform: uppercase;
+    padding: 18px 40px;
+    font-family: inherit;
+    font-size: 16px;
+    letter-spacing: .18em; text-transform: uppercase;
     text-decoration: none; cursor: pointer;
-    border-radius: 4px;
-    transition: transform .1s, box-shadow .15s;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition: transform .08s;
   }
-  .btn:active { transform: translateY(1px); }
+  .btn:active { transform: translate(2px, 2px); }
   .btn.green {
     color: #04120a;
-    background: linear-gradient(180deg, #8dff62, #2ecc40 55%, #178a2c);
-    border: 1px solid #4dff2a;
-    box-shadow: 0 0 18px rgba(57,255,20,.35), inset 0 1px 0 rgba(255,255,255,.5);
+    background: linear-gradient(180deg, #7dff4d, #23c437 50%, #0f7a22);
+    box-shadow: 6px 6px 0 #000;
   }
-  .btn.green:hover { box-shadow: 0 0 30px rgba(57,255,20,.6), inset 0 1px 0 rgba(255,255,255,.5); }
+  .btn.green:hover { background: var(--green); box-shadow: 6px 6px 0 #000, 0 0 34px rgba(57,255,20,.7); }
   .btn.steel {
     color: var(--steel-hi);
-    background: linear-gradient(180deg, #3a3f42, #202426 60%, #2c3134);
-    border: 1px solid #4c5356;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.15);
+    background: linear-gradient(180deg, #4a5054, #24282a 55%, #33383b);
+    box-shadow: 6px 6px 0 #000;
   }
-  .btn.steel:hover { border-color: var(--green); color: #c8ffc0; }
+  .btn.steel:hover { color: var(--green); }
 
-  /* ---------- waveform divider ---------- */
-  .pulse { display: block; width: 100%; height: 60px; margin: 10px 0; }
+  /* ---------- jagged divider ---------- */
+  .pulse { display: block; width: 100%; height: 70px; margin: 24px 0 0; }
   .pulse polyline {
-    fill: none; stroke: var(--green); stroke-width: 2.5;
-    filter: drop-shadow(0 0 6px rgba(57,255,20,.9));
+    fill: none; stroke: var(--green); stroke-width: 3;
+    filter: drop-shadow(0 0 8px rgba(57,255,20,1));
   }
 
   /* ---------- sections ---------- */
-  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 18px 80px; }
-  section { margin-top: 70px; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 18px 90px; }
+  section { margin-top: 80px; }
   h2.sec {
-    font-size: clamp(1.6rem, 4vw, 2.4rem);
-    font-weight: 900; font-style: italic;
-    letter-spacing: .06em; text-transform: uppercase;
-    margin: 0 0 26px;
-    transform: rotate(-1.5deg);
+    display: inline-block;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: .04em; text-transform: uppercase;
+    margin-bottom: 30px;
+    transform: rotate(-2deg);
   }
 
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
   .card {
     position: relative;
-    background: linear-gradient(180deg, #161916, #0e100e);
-    border: 1px solid #242824;
-    border-top: 2px solid #3a413a;
-    border-radius: 6px;
-    padding: 24px 20px 20px;
-    transition: border-color .15s, box-shadow .15s, transform .15s;
-    overflow: hidden;
-  }
-  .card::after {
-    content: "";
-    position: absolute; left: 0; right: 0; top: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--green), transparent);
-    opacity: 0; transition: opacity .15s;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.25) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, #171a17, #0b0d0b);
+    border: 2px solid #000;
+    outline: 1px solid #2c312c;
+    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+    padding: 26px 22px 22px;
+    box-shadow: 8px 8px 0 #000;
+    transition: transform .1s, outline-color .1s;
   }
   .card:hover {
-    border-color: var(--green-deep);
-    box-shadow: 0 0 24px rgba(57,255,20,.12), 0 12px 30px rgba(0,0,0,.5);
-    transform: translateY(-3px);
+    outline-color: var(--green);
+    transform: translate(-2px, -2px);
   }
-  .card:hover::after { opacity: 1; }
   .card h3 {
-    margin: 0 0 8px;
-    font-size: 17px; font-weight: 900;
-    letter-spacing: .1em; text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: 10px;
   }
-  .card p { margin: 0; font-size: 13.5px; color: var(--muted); }
+  .card p { font-family: "Arial Narrow", Arial, sans-serif; font-size: 14.5px; color: var(--muted); letter-spacing: .03em; }
   .card .status {
-    display: inline-block; margin-top: 16px;
-    font-size: 10px; font-weight: 900;
-    letter-spacing: .18em; text-transform: uppercase;
-    color: var(--green);
-    border: 1px solid var(--green-deep);
-    background: rgba(57,255,20,.06);
-    border-radius: 3px; padding: 4px 10px;
-    text-shadow: 0 0 8px rgba(57,255,20,.6);
+    display: inline-block; margin-top: 18px;
+    font-size: 12px;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: #04120a;
+    background: var(--green);
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+    padding: 5px 14px;
+    box-shadow: 3px 3px 0 #000;
   }
 
   /* ---------- signup ---------- */
@@ -205,36 +187,39 @@
     position: relative;
     text-align: center;
     background:
-      repeating-conic-gradient(rgba(255,255,255,.015) 0% 25%, transparent 0% 50%) 0 0 / 22px 22px,
-      linear-gradient(180deg, #141714, #0b0d0b);
-    border: 1px solid #2a2f2a;
-    border-radius: 8px;
-    padding: 50px 24px 46px;
-    overflow: hidden;
+      repeating-linear-gradient(-45deg, rgba(57,255,20,.05) 0 18px, transparent 18px 36px),
+      linear-gradient(180deg, #121412, #080908);
+    border: 2px solid #000;
+    outline: 2px solid var(--green-deep);
+    clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+    padding: 60px 24px 54px;
   }
-  .signup::before, .signup::after {
-    content: "";
-    position: absolute; top: 0; bottom: 0; width: 2px;
-    background: linear-gradient(180deg, transparent, var(--green), transparent);
-    opacity: .5;
-  }
-  .signup::before { left: 0; }
-  .signup::after { right: 0; }
   .signup h2 {
-    margin: 0 0 8px;
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    font-weight: 900; font-style: italic;
-    letter-spacing: .08em; text-transform: uppercase;
+    font-size: clamp(2rem, 5vw, 3rem);
+    letter-spacing: .05em; text-transform: uppercase;
+    margin-bottom: 10px;
+    transform: rotate(-1.5deg);
   }
-  .signup p { color: var(--muted); margin: 0 0 24px; font-size: 14px; letter-spacing: .04em; }
+  .signup p {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    color: var(--muted); margin-bottom: 28px; font-size: 15px;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
 
   footer {
     text-align: center;
-    padding: 26px 18px 34px;
-    border-top: 1px solid #1c201c;
-    color: #5c665c; font-size: 12px; letter-spacing: .08em;
+    padding: 28px 18px 38px;
+    border-top: 3px solid #000;
+    box-shadow: 0 -1px 0 #232823;
+    color: #566056; font-size: 13px; letter-spacing: .1em;
+    font-family: "Arial Narrow", Arial, sans-serif;
   }
-  footer .fmark { color: var(--green); font-weight: 900; }
+  footer .fmark {
+    color: var(--green);
+    font-family: Impact, "Arial Black", sans-serif;
+    letter-spacing: .14em;
+    text-shadow: 0 0 10px rgba(57,255,20,.6);
+  }
 </style>
 </head>
 <body>
@@ -252,16 +237,16 @@
 <div class="hero" id="top">
   <div class="dsp chrome" aria-hidden="true">DSP</div>
   <div class="killette venom">Killette</div>
-  <p class="tag"><b>Audio code for DSP.</b> Audio engineering &middot; studio production &middot;
-     DAWs &middot; plug-ins &middot; standalone &middot; web apps.</p>
+  <p class="tag"><b>Audio code for DSP.</b><br>
+     Audio engineering &middot; studio production &middot; DAWs &middot; plug-ins &middot; standalone &middot; web apps</p>
   <div class="cta-row">
-    <a class="btn green" href="#lineup">Enter the Lineup</a>
-    <a class="btn steel" href="#signup">Get Updates</a>
+    <a class="btn green" href="#lineup">The Lineup</a>
+    <a class="btn steel" href="#signup">Plug In</a>
   </div>
 </div>
 
-<svg class="pulse" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
-  <polyline points="0,30 260,30 290,30 305,8 320,52 335,18 348,42 360,30 520,30 545,30 560,4 578,56 596,14 610,44 622,30 900,30 925,30 938,12 952,48 966,22 978,30 1200,30"/>
+<svg class="pulse" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+  <polyline points="0,35 240,35 262,35 276,6 292,64 308,14 322,54 336,24 348,35 540,35 562,35 578,2 598,68 618,10 634,58 648,35 880,35 902,35 916,12 932,60 948,20 960,35 1200,35"/>
 </svg>
 
 <div class="wrap">
@@ -272,22 +257,22 @@
       <div class="card">
         <h3 class="chrome">DAW</h3>
         <p>Full production environment. Record, arrange, mix, master, export — front to back.</p>
-        <span class="status">Coming Soon</span>
+        <span class="status">In the Forge</span>
       </div>
       <div class="card">
         <h3 class="chrome">Plug-ins</h3>
         <p>Killette-built processors and effects for the DAW you already run.</p>
-        <span class="status">Coming Soon</span>
+        <span class="status">In the Forge</span>
       </div>
       <div class="card">
         <h3 class="chrome">Standalone</h3>
-        <p>Desktop audio tools that run on their own. No host required.</p>
-        <span class="status">Coming Soon</span>
+        <p>Desktop audio weapons that run on their own. No host required.</p>
+        <span class="status">In the Forge</span>
       </div>
       <div class="card">
         <h3 class="chrome">Web Apps</h3>
-        <p>DSP that runs straight in the browser. Nothing to install.</p>
-        <span class="status">Coming Soon</span>
+        <p>DSP straight in the browser. Nothing to install. No excuses.</p>
+        <span class="status">In the Forge</span>
       </div>
     </div>
   </section>
@@ -301,11 +286,11 @@
       </div>
       <div class="card">
         <h3 class="chrome">Studio-Proven</h3>
-        <p>Forged in actual sessions: tracking, mixing, and mastering — not spec sheets.</p>
+        <p>Forged in actual sessions: tracking, mixing, mastering — not spec sheets.</p>
       </div>
       <div class="card">
         <h3 class="chrome">For Musicians</h3>
-        <p>Tools priced and built for working artists, from first riff to final master.</p>
+        <p>Built and priced for working artists, from first riff to final master.</p>
       </div>
     </div>
   </section>
@@ -313,15 +298,15 @@
   <section id="signup">
     <div class="signup">
       <h2 class="venom">Plug Into Killette DSP</h2>
-      <p>Early access &middot; release drops &middot; studio updates. Free.</p>
+      <p>Early access &middot; release drops &middot; studio updates &middot; free</p>
       <a class="btn green" href="mailto:killykillette@gmail.com?subject=Killette%20DSP%20Signup&body=Plug%20me%20in.%0A%0AName%3A%20%0AEmail%3A%20">Sign Me Up</a>
     </div>
   </section>
 
 </div>
 
-<svg class="pulse" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
-  <polyline points="0,30 380,30 400,30 415,10 430,50 445,20 458,40 470,30 1200,30"/>
+<svg class="pulse" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+  <polyline points="0,35 400,35 420,35 436,8 452,62 468,16 482,52 496,35 1200,35"/>
 </svg>
 
 <footer>
