@@ -4862,6 +4862,90 @@
    },
    "group": "fdc8e92d3f",
    "added_at": "2026-08-30T14:26:43+00:00"
+  },
+  {
+   "id": "body/body-shield-purpleheart",
+   "category": "body",
+   "file": "body/body-shield-purpleheart.png",
+   "thumbnail": "body/body-shield-purpleheart.thumb.png",
+   "width_px": 666,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "body/body-shield-tan.png (recolor)",
+   "source_sha1": "a68451d5901c02837d1c9eb3754d681305554655",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     352.5,
+     279
+    ]
+   },
+   "group": null,
+   "added_at": "2026-08-30T14:29:34+00:00"
+  },
+  {
+   "id": "body/body-shield-olive",
+   "category": "body",
+   "file": "body/body-shield-olive.png",
+   "thumbnail": "body/body-shield-olive.thumb.png",
+   "width_px": 666,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "body/body-shield-tan.png (recolor)",
+   "source_sha1": "a68451d5901c02837d1c9eb3754d681305554655",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     352.5,
+     279
+    ]
+   },
+   "group": null,
+   "added_at": "2026-08-30T14:29:34+00:00"
+  },
+  {
+   "id": "body/body-shield-oak",
+   "category": "body",
+   "file": "body/body-shield-oak.png",
+   "thumbnail": "body/body-shield-oak.thumb.png",
+   "width_px": 666,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "body/body-shield-tan.png (recolor)",
+   "source_sha1": "a68451d5901c02837d1c9eb3754d681305554655",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     352.5,
+     279
+    ]
+   },
+   "group": null,
+   "added_at": "2026-08-30T14:29:34+00:00"
+  },
+  {
+   "id": "body/body-shield-padauk",
+   "category": "body",
+   "file": "body/body-shield-padauk.png",
+   "thumbnail": "body/body-shield-padauk.thumb.png",
+   "width_px": 666,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "body/body-shield-tan.png (recolor)",
+   "source_sha1": "a68451d5901c02837d1c9eb3754d681305554655",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     352.5,
+     279
+    ]
+   },
+   "group": null,
+   "added_at": "2026-08-30T14:29:34+00:00"
   }
  ]
 }
