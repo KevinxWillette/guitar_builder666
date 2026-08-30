@@ -4946,6 +4946,3725 @@
    },
    "group": null,
    "added_at": "2026-08-30T14:29:34+00:00"
+  },
+  {
+   "id": "body/body-blank-ash-1",
+   "category": "body",
+   "file": "body/body-blank-ash-1.png",
+   "thumbnail": "body/body-blank-ash-1.thumb.png",
+   "width_px": 574,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2d240d645d43f5b6f2a03bef57442ab824f30906",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     287,
+     168
+    ]
+   },
+   "group": "2d240d645d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-blank-ash-2",
+   "category": "body",
+   "file": "body/body-blank-ash-2.png",
+   "thumbnail": "body/body-blank-ash-2.thumb.png",
+   "width_px": 611,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "1a7467830a25cbc3e2bd2cad53c17656c3ff4a7c",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     305,
+     166
+    ]
+   },
+   "group": "1a7467830a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-blank-ash-3",
+   "category": "body",
+   "file": "body/body-blank-ash-3.png",
+   "thumbnail": "body/body-blank-ash-3.thumb.png",
+   "width_px": 660,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "933f530c89cd4a6583a19ac921a342b82e1c5a67",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     330,
+     159
+    ]
+   },
+   "group": "933f530c89",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-blank-ash-4",
+   "category": "body",
+   "file": "body/body-blank-ash-4.png",
+   "thumbnail": "body/body-blank-ash-4.thumb.png",
+   "width_px": 625,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "798de0061611b99e846da5b707412b694bdf9d74",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     312,
+     184
+    ]
+   },
+   "group": "798de00616",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger-charcoal",
+   "category": "body",
+   "file": "body/body-dagger-charcoal.png",
+   "thumbnail": "body/body-dagger-charcoal.thumb.png",
+   "width_px": 703,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "47c1a1e74950e16e53cf96da0cf9eee21d376a17",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     351,
+     120
+    ]
+   },
+   "group": "47c1a1e749",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger-forest",
+   "category": "body",
+   "file": "body/body-dagger-forest.png",
+   "thumbnail": "body/body-dagger-forest.thumb.png",
+   "width_px": 607,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "605d703894a20a61338e1c8049990fdf7eec7acb",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     303,
+     148
+    ]
+   },
+   "group": "605d703894",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger-navy",
+   "category": "body",
+   "file": "body/body-dagger-navy.png",
+   "thumbnail": "body/body-dagger-navy.thumb.png",
+   "width_px": 666,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "f83f5d3ced903a23ebcd6984160f62edf9f9219e",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     333,
+     150
+    ]
+   },
+   "group": "f83f5d3ced",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger-slate",
+   "category": "body",
+   "file": "body/body-dagger-slate.png",
+   "thumbnail": "body/body-dagger-slate.thumb.png",
+   "width_px": 612,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6c2cb76632cc3640dd901f731acc15556dca1da9",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     306,
+     156
+    ]
+   },
+   "group": "6c2cb76632",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger-walnut",
+   "category": "body",
+   "file": "body/body-dagger-walnut.png",
+   "thumbnail": "body/body-dagger-walnut.thumb.png",
+   "width_px": 713,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3651ef6e17d236e4e6afc710312476fe805cee18",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     356,
+     114
+    ]
+   },
+   "group": "3651ef6e17",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-1",
+   "category": "body",
+   "file": "body/body-dagger2-1.png",
+   "thumbnail": "body/body-dagger2-1.thumb.png",
+   "width_px": 532,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b620493c0f7bce3c0e01034e4b77758bed01955b",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     266,
+     168
+    ]
+   },
+   "group": "b620493c0f",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-10",
+   "category": "body",
+   "file": "body/body-dagger2-10.png",
+   "thumbnail": "body/body-dagger2-10.thumb.png",
+   "width_px": 546,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7d8540b1e3c030795c6596c3e3d96d7081afe868",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     273,
+     130
+    ]
+   },
+   "group": "7d8540b1e3",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-11",
+   "category": "body",
+   "file": "body/body-dagger2-11.png",
+   "thumbnail": "body/body-dagger2-11.thumb.png",
+   "width_px": 535,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2e4a037438c3530faa06ae6c490f9d0501ef2334",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     267,
+     130
+    ]
+   },
+   "group": "2e4a037438",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-12",
+   "category": "body",
+   "file": "body/body-dagger2-12.png",
+   "thumbnail": "body/body-dagger2-12.thumb.png",
+   "width_px": 522,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7031bb4ac1969e7ae95942cefebae39e38164b08",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     261,
+     132
+    ]
+   },
+   "group": "7031bb4ac1",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-2",
+   "category": "body",
+   "file": "body/body-dagger2-2.png",
+   "thumbnail": "body/body-dagger2-2.thumb.png",
+   "width_px": 451,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "9a33d2b3b9b7b8373e5939e072b7f3c91a04e1e8",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     225,
+     160
+    ]
+   },
+   "group": "9a33d2b3b9",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-3",
+   "category": "body",
+   "file": "body/body-dagger2-3.png",
+   "thumbnail": "body/body-dagger2-3.thumb.png",
+   "width_px": 572,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c8cf644ed7f57fcd197319254895c3847381aeb7",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     286,
+     157
+    ]
+   },
+   "group": "c8cf644ed7",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-4",
+   "category": "body",
+   "file": "body/body-dagger2-4.png",
+   "thumbnail": "body/body-dagger2-4.thumb.png",
+   "width_px": 572,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "20dc7d04515e9f7ebf0c9fe1740a0db34849bdd7",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     286,
+     141
+    ]
+   },
+   "group": "20dc7d0451",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-5",
+   "category": "body",
+   "file": "body/body-dagger2-5.png",
+   "thumbnail": "body/body-dagger2-5.thumb.png",
+   "width_px": 602,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "57b984cf2e19874883f837831dec9902509d4fc1",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     301,
+     139
+    ]
+   },
+   "group": "57b984cf2e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-6",
+   "category": "body",
+   "file": "body/body-dagger2-6.png",
+   "thumbnail": "body/body-dagger2-6.thumb.png",
+   "width_px": 559,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "a6188409b6bff5c77ed43ff18d1638cd7edcd6a7",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     279,
+     130
+    ]
+   },
+   "group": "a6188409b6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-7",
+   "category": "body",
+   "file": "body/body-dagger2-7.png",
+   "thumbnail": "body/body-dagger2-7.thumb.png",
+   "width_px": 545,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6084226b3138cd2a6b29d3d522aca4878987e7fb",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     272,
+     130
+    ]
+   },
+   "group": "6084226b31",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-8",
+   "category": "body",
+   "file": "body/body-dagger2-8.png",
+   "thumbnail": "body/body-dagger2-8.thumb.png",
+   "width_px": 534,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "bb8d0f6a0454348de2d554ffca95c25c04b01876",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     267,
+     132
+    ]
+   },
+   "group": "bb8d0f6a04",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-dagger2-9",
+   "category": "body",
+   "file": "body/body-dagger2-9.png",
+   "thumbnail": "body/body-dagger2-9.thumb.png",
+   "width_px": 528,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "721c9392b9b7d60f2016509b9afdeb91b05b9b44",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     264,
+     165
+    ]
+   },
+   "group": "721c9392b9",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame-charcoal",
+   "category": "body",
+   "file": "body/body-flame-charcoal.png",
+   "thumbnail": "body/body-flame-charcoal.thumb.png",
+   "width_px": 708,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "51a0cc7bbdd42c6da2a5d0d813a9255fb06b3e35",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     354,
+     119
+    ]
+   },
+   "group": "51a0cc7bbd",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-1",
+   "category": "body",
+   "file": "body/body-flame2-1.png",
+   "thumbnail": "body/body-flame2-1.thumb.png",
+   "width_px": 549,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b6bfb7cbfd8d589c1d8b7b82830dbdbe1a15624b",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     274,
+     153
+    ]
+   },
+   "group": "b6bfb7cbfd",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-10",
+   "category": "body",
+   "file": "body/body-flame2-10.png",
+   "thumbnail": "body/body-flame2-10.thumb.png",
+   "width_px": 567,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "468f26bb51c224d7ea75fb24721cb5d66aed26ae",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     283,
+     105
+    ]
+   },
+   "group": "468f26bb51",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-11",
+   "category": "body",
+   "file": "body/body-flame2-11.png",
+   "thumbnail": "body/body-flame2-11.thumb.png",
+   "width_px": 557,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7e12f9fd768179dee97e150593f2e1d916c36f58",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     278,
+     103
+    ]
+   },
+   "group": "7e12f9fd76",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-12",
+   "category": "body",
+   "file": "body/body-flame2-12.png",
+   "thumbnail": "body/body-flame2-12.thumb.png",
+   "width_px": 547,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7e62bc878315705246cc8e072ee332a887821faa",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     273,
+     101
+    ]
+   },
+   "group": "7e62bc8783",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-2",
+   "category": "body",
+   "file": "body/body-flame2-2.png",
+   "thumbnail": "body/body-flame2-2.thumb.png",
+   "width_px": 472,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3b3e9b4c5ea75c1390f10b86f7091dc1d8bf2dd6",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     236,
+     130
+    ]
+   },
+   "group": "3b3e9b4c5e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-3",
+   "category": "body",
+   "file": "body/body-flame2-3.png",
+   "thumbnail": "body/body-flame2-3.thumb.png",
+   "width_px": 600,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "9805c052d02c90ae22863d7c230f92fef58feab8",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     300,
+     105
+    ]
+   },
+   "group": "9805c052d0",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-4",
+   "category": "body",
+   "file": "body/body-flame2-4.png",
+   "thumbnail": "body/body-flame2-4.thumb.png",
+   "width_px": 545,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b2db909173907c9ff92e5c700d50d4675d0cf16d",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     272,
+     100
+    ]
+   },
+   "group": "b2db909173",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-5",
+   "category": "body",
+   "file": "body/body-flame2-5.png",
+   "thumbnail": "body/body-flame2-5.thumb.png",
+   "width_px": 630,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c745574bf4c0d91fb0fc2939fc26948c5d3448a1",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     315,
+     107
+    ]
+   },
+   "group": "c745574bf4",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-6",
+   "category": "body",
+   "file": "body/body-flame2-6.png",
+   "thumbnail": "body/body-flame2-6.thumb.png",
+   "width_px": 581,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "03e1ee9a4a897468316e43b675e54a17c2417a01",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     290,
+     102
+    ]
+   },
+   "group": "03e1ee9a4a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-7",
+   "category": "body",
+   "file": "body/body-flame2-7.png",
+   "thumbnail": "body/body-flame2-7.thumb.png",
+   "width_px": 569,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "cb096e9de665d5c486b96ace0d9e8b249513428c",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     284,
+     102
+    ]
+   },
+   "group": "cb096e9de6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-8",
+   "category": "body",
+   "file": "body/body-flame2-8.png",
+   "thumbnail": "body/body-flame2-8.thumb.png",
+   "width_px": 557,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e8c14b9384a0505ddf8f7774b764e6fa9efcb7c2",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     278,
+     102
+    ]
+   },
+   "group": "e8c14b9384",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-flame2-9",
+   "category": "body",
+   "file": "body/body-flame2-9.png",
+   "thumbnail": "body/body-flame2-9.thumb.png",
+   "width_px": 583,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "640650ebb5f2d103a62a4450e352c4d11d23bf01",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     291,
+     101
+    ]
+   },
+   "group": "640650ebb5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-round-olive",
+   "category": "body",
+   "file": "body/body-round-olive.png",
+   "thumbnail": "body/body-round-olive.thumb.png",
+   "width_px": 576,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3b3a6299160fb242ad36f706ac16e2518f83e600",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     288,
+     152
+    ]
+   },
+   "group": "3b3a629916",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-1",
+   "category": "body",
+   "file": "body/body-spike-1.png",
+   "thumbnail": "body/body-spike-1.thumb.png",
+   "width_px": 512,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "9373cf8053d59c5978d541d5033f969cffa01bbe",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     256,
+     119
+    ]
+   },
+   "group": "9373cf8053",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-10",
+   "category": "body",
+   "file": "body/body-spike-10.png",
+   "thumbnail": "body/body-spike-10.thumb.png",
+   "width_px": 494,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6bfce31d25e761d481d35eb25269f7da8dbeaac1",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     247,
+     138
+    ]
+   },
+   "group": "6bfce31d25",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-11",
+   "category": "body",
+   "file": "body/body-spike-11.png",
+   "thumbnail": "body/body-spike-11.thumb.png",
+   "width_px": 493,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7b4d709ca6bf3f824e6e606f35d8446504b1cedc",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     246,
+     142
+    ]
+   },
+   "group": "7b4d709ca6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-12",
+   "category": "body",
+   "file": "body/body-spike-12.png",
+   "thumbnail": "body/body-spike-12.thumb.png",
+   "width_px": 488,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "850c487b5b63e1b0f6bb89ae46734828a5b2e826",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     244,
+     140
+    ]
+   },
+   "group": "850c487b5b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-2",
+   "category": "body",
+   "file": "body/body-spike-2.png",
+   "thumbnail": "body/body-spike-2.thumb.png",
+   "width_px": 496,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "fdb90dd86f4ed98b187097ce725124e6d6a35d0b",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     248,
+     138
+    ]
+   },
+   "group": "fdb90dd86f",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-3",
+   "category": "body",
+   "file": "body/body-spike-3.png",
+   "thumbnail": "body/body-spike-3.thumb.png",
+   "width_px": 496,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6811f9fea4281da3315f28973d927118868247a1",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     248,
+     138
+    ]
+   },
+   "group": "6811f9fea4",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-4",
+   "category": "body",
+   "file": "body/body-spike-4.png",
+   "thumbnail": "body/body-spike-4.thumb.png",
+   "width_px": 488,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "ee3193db29a4ef88f7a9b1579cc35bac1345597d",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     244,
+     140
+    ]
+   },
+   "group": "ee3193db29",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-5",
+   "category": "body",
+   "file": "body/body-spike-5.png",
+   "thumbnail": "body/body-spike-5.thumb.png",
+   "width_px": 497,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7b2b13064577e4f4a267293e9fd3774b84d5449f",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     248,
+     139
+    ]
+   },
+   "group": "7b2b130645",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-6",
+   "category": "body",
+   "file": "body/body-spike-6.png",
+   "thumbnail": "body/body-spike-6.thumb.png",
+   "width_px": 495,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "f67fe65ad94fdfb0274d651f1aec48f33cd71657",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     247,
+     139
+    ]
+   },
+   "group": "f67fe65ad9",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-7",
+   "category": "body",
+   "file": "body/body-spike-7.png",
+   "thumbnail": "body/body-spike-7.thumb.png",
+   "width_px": 497,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "233507c4d65c7c674eb1eff445e0fa95a66f4b4f",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     248,
+     137
+    ]
+   },
+   "group": "233507c4d6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-8",
+   "category": "body",
+   "file": "body/body-spike-8.png",
+   "thumbnail": "body/body-spike-8.thumb.png",
+   "width_px": 492,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "47197324abbfe6efafcc0b375d5ed2d698bc6260",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     246,
+     137
+    ]
+   },
+   "group": "47197324ab",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-spike-9",
+   "category": "body",
+   "file": "body/body-spike-9.png",
+   "thumbnail": "body/body-spike-9.thumb.png",
+   "width_px": 495,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "146a2afce5c89586b73596de96b812f28edda1a0",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     247,
+     139
+    ]
+   },
+   "group": "146a2afce5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-1",
+   "category": "body",
+   "file": "body/body-strat-1.png",
+   "thumbnail": "body/body-strat-1.thumb.png",
+   "width_px": 520,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "83c51b3b2a39446e2d814bab77953cced753765c",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     111
+    ]
+   },
+   "group": "83c51b3b2a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-10",
+   "category": "body",
+   "file": "body/body-strat-10.png",
+   "thumbnail": "body/body-strat-10.thumb.png",
+   "width_px": 522,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3943389ba1d2effd3e5ea9d073754fd55e226916",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     261,
+     111
+    ]
+   },
+   "group": "3943389ba1",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-11",
+   "category": "body",
+   "file": "body/body-strat-11.png",
+   "thumbnail": "body/body-strat-11.thumb.png",
+   "width_px": 522,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "469cec99e32b881a2a35e3932af068dafbb93e87",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     261,
+     111
+    ]
+   },
+   "group": "469cec99e3",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-12",
+   "category": "body",
+   "file": "body/body-strat-12.png",
+   "thumbnail": "body/body-strat-12.thumb.png",
+   "width_px": 520,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "36cce9d82d6d240d03539dc6260f015424343d25",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     111
+    ]
+   },
+   "group": "36cce9d82d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-2",
+   "category": "body",
+   "file": "body/body-strat-2.png",
+   "thumbnail": "body/body-strat-2.thumb.png",
+   "width_px": 520,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "5d2f4f52afdc1511b6c2d7fb904eec3c33536870",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     111
+    ]
+   },
+   "group": "5d2f4f52af",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-3",
+   "category": "body",
+   "file": "body/body-strat-3.png",
+   "thumbnail": "body/body-strat-3.thumb.png",
+   "width_px": 520,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2cd1fa9dabd92d67260cfd29af621faabdd555f0",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     111
+    ]
+   },
+   "group": "2cd1fa9dab",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-4",
+   "category": "body",
+   "file": "body/body-strat-4.png",
+   "thumbnail": "body/body-strat-4.thumb.png",
+   "width_px": 520,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c15fa8fc1bf3edf7bad4b3884159577c8b2d6557",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     111
+    ]
+   },
+   "group": "c15fa8fc1b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-5",
+   "category": "body",
+   "file": "body/body-strat-5.png",
+   "thumbnail": "body/body-strat-5.thumb.png",
+   "width_px": 521,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c98c69cc8be3ffaf1aae62bb8d60ebca7a0e682e",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     112
+    ]
+   },
+   "group": "c98c69cc8b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-6",
+   "category": "body",
+   "file": "body/body-strat-6.png",
+   "thumbnail": "body/body-strat-6.thumb.png",
+   "width_px": 522,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "5bb05e0d1d224b491264b25304215edf66e5e91b",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     261,
+     111
+    ]
+   },
+   "group": "5bb05e0d1d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-7",
+   "category": "body",
+   "file": "body/body-strat-7.png",
+   "thumbnail": "body/body-strat-7.thumb.png",
+   "width_px": 522,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "215f0726b710104429c9ae09ecec97c600f60671",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     261,
+     111
+    ]
+   },
+   "group": "215f0726b7",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-8",
+   "category": "body",
+   "file": "body/body-strat-8.png",
+   "thumbnail": "body/body-strat-8.thumb.png",
+   "width_px": 520,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "31c7ec20320504ababd096c9af5f3eadfac3c164",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     260,
+     111
+    ]
+   },
+   "group": "31c7ec2032",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-strat-9",
+   "category": "body",
+   "file": "body/body-strat-9.png",
+   "thumbnail": "body/body-strat-9.thumb.png",
+   "width_px": 522,
+   "height_px": 720,
+   "longest_in": 15.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b6949b5c3a11f6c9db67240678124f08e7721cc4",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     261,
+     111
+    ]
+   },
+   "group": "b6949b5c3a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-thorn-oak",
+   "category": "body",
+   "file": "body/body-thorn-oak.png",
+   "thumbnail": "body/body-thorn-oak.thumb.png",
+   "width_px": 608,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "054925da2b1cc8e8c00e6d72938a9db4b333f855",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     304,
+     151
+    ]
+   },
+   "group": "054925da2b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-thorn-tan",
+   "category": "body",
+   "file": "body/body-thorn-tan.png",
+   "thumbnail": "body/body-thorn-tan.thumb.png",
+   "width_px": 653,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c81717fc8cd53930016114a280f3343865f4db0e",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     326,
+     159
+    ]
+   },
+   "group": "c81717fc8c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "body/body-thorn-walnut",
+   "category": "body",
+   "file": "body/body-thorn-walnut.png",
+   "thumbnail": "body/body-thorn-walnut.thumb.png",
+   "width_px": 614,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e5a4ce71449e150323f2d2b1e5fea6bb72116524",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     307,
+     155
+    ]
+   },
+   "group": "e5a4ce7144",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-8string",
+   "category": "bridge",
+   "file": "bridge/bridge-8string.png",
+   "thumbnail": "bridge/bridge-8string.thumb.png",
+   "width_px": 300,
+   "height_px": 106,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7a59bc34cd7cb3fc993782652d349e343e5c41c7",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "7a59bc34cd",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-dark-1",
+   "category": "bridge",
+   "file": "bridge/bridge-dark-1.png",
+   "thumbnail": "bridge/bridge-dark-1.thumb.png",
+   "width_px": 300,
+   "height_px": 109,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "56f015fa0d94b1b70a142795ad7f8d675a5a6d98",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "56f015fa0d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-dark-2",
+   "category": "bridge",
+   "file": "bridge/bridge-dark-2.png",
+   "thumbnail": "bridge/bridge-dark-2.thumb.png",
+   "width_px": 238,
+   "height_px": 308,
+   "longest_in": 6.42,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "fbe79f9fe6ea531567ae74ab00afae0324680999",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "fbe79f9fe6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-1",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-1.png",
+   "thumbnail": "bridge/bridge-fan8-1.thumb.png",
+   "width_px": 300,
+   "height_px": 223,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "019710ef0a9814b0655b7346866eaca725014e27",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "019710ef0a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-2",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-2.png",
+   "thumbnail": "bridge/bridge-fan8-2.thumb.png",
+   "width_px": 300,
+   "height_px": 144,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "53e53fd02a7bec4d6b2649b30ddaa4c800c7ea8a",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "53e53fd02a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-3",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-3.png",
+   "thumbnail": "bridge/bridge-fan8-3.thumb.png",
+   "width_px": 300,
+   "height_px": 224,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e8d00f94d7407884dd8c9271694fd5b8892ff83a",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "e8d00f94d7",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-4",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-4.png",
+   "thumbnail": "bridge/bridge-fan8-4.thumb.png",
+   "width_px": 300,
+   "height_px": 127,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "44570edf33637b080fe42cc0fe467b7e8d943c16",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "44570edf33",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-5",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-5.png",
+   "thumbnail": "bridge/bridge-fan8-5.thumb.png",
+   "width_px": 300,
+   "height_px": 144,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "51851788252f3e77cf4d37a76a92b0d35de3ef70",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "5185178825",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-6",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-6.png",
+   "thumbnail": "bridge/bridge-fan8-6.thumb.png",
+   "width_px": 300,
+   "height_px": 144,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "541f6c05416e4596a327be02a89caba92f190165",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "541f6c0541",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-7",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-7.png",
+   "thumbnail": "bridge/bridge-fan8-7.thumb.png",
+   "width_px": 300,
+   "height_px": 223,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "1759c6e50b11251cb9e4fbaaa8ee120b73b6493e",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "1759c6e50b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-8",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-8.png",
+   "thumbnail": "bridge/bridge-fan8-8.thumb.png",
+   "width_px": 300,
+   "height_px": 223,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "fb60a4e34cb68e9be6b2b7ed680812a028025c1d",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "fb60a4e34c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-fan8-9",
+   "category": "bridge",
+   "file": "bridge/bridge-fan8-9.png",
+   "thumbnail": "bridge/bridge-fan8-9.thumb.png",
+   "width_px": 300,
+   "height_px": 145,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "803374f797dce2b16296b186e460638de21c1879",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "803374f797",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "bridge/bridge-skullrow",
+   "category": "bridge",
+   "file": "bridge/bridge-skullrow.png",
+   "thumbnail": "bridge/bridge-skullrow.thumb.png",
+   "width_px": 300,
+   "height_px": 126,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4c450aafb834e0182cc83b791cf67a2780340dcd",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "4c450aafb8",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-1",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-1.png",
+   "thumbnail": "pickup_cover/cover-chrome-1.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "dba069aa563e6f42395e387b55599b891e349d73",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "dba069aa56",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-2",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-2.png",
+   "thumbnail": "pickup_cover/cover-chrome-2.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e47ef4a588b28dfc4e76bf9901cf0d007608eb4a",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "e47ef4a588",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-3",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-3.png",
+   "thumbnail": "pickup_cover/cover-chrome-3.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "0d47511388da5ab58c61d11993fd5b1c2b9aa23b",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "0d47511388",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-4",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-4.png",
+   "thumbnail": "pickup_cover/cover-chrome-4.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e937e527c56521f22f7d6485432d5d77e4d335fa",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "e937e527c5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-5",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-5.png",
+   "thumbnail": "pickup_cover/cover-chrome-5.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e42aa950b6b4a77ffd2738e5ca86ad981130845c",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "e42aa950b6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-6",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-6.png",
+   "thumbnail": "pickup_cover/cover-chrome-6.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4c5d041f23b69973155f1eb06b5bf9685a2445a3",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "4c5d041f23",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-7",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-7.png",
+   "thumbnail": "pickup_cover/cover-chrome-7.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2db20505188ec44bdaf290f6cb98b572a9b39f19",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "2db2050518",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-chrome-8",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-chrome-8.png",
+   "thumbnail": "pickup_cover/cover-chrome-8.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "0aa1b687f0c0249f507c4b5883244700fb6f0a2a",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "0aa1b687f0",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-1",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-1.png",
+   "thumbnail": "pickup_cover/cover-color-1.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "25a9dab2624f46e37191414601e05bcd5beb45cc",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "25a9dab262",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-2",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-2.png",
+   "thumbnail": "pickup_cover/cover-color-2.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "d0a0744db142feb79ad108d9bd5afea0d5a5cdd5",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "d0a0744db1",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-3",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-3.png",
+   "thumbnail": "pickup_cover/cover-color-3.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "aca160c5320ea3135dc0598dc88ba67693afa76b",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "aca160c532",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-4",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-4.png",
+   "thumbnail": "pickup_cover/cover-color-4.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b9767168141499e20dcbffa61ace3a5fa5c2dfed",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "b976716814",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-5",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-5.png",
+   "thumbnail": "pickup_cover/cover-color-5.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "61a830cbb83956a45a3efeb490aa7b8bc7132466",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "61a830cbb8",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-6",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-6.png",
+   "thumbnail": "pickup_cover/cover-color-6.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "305fa5bc4b56c3191f2a385f9198f1fde791c038",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "305fa5bc4b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-7",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-7.png",
+   "thumbnail": "pickup_cover/cover-color-7.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4541c72ec602955126de7277b2f97427b512cc9a",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "4541c72ec6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-color-8",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-color-8.png",
+   "thumbnail": "pickup_cover/cover-color-8.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "17976e34d24e84f8b60c8075ad0ebf1a401244aa",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "17976e34d2",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-1",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-1.png",
+   "thumbnail": "pickup_cover/cover-gold-1.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "5e10a3bdd6b3d098ebfe016f71600425e030d29d",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "5e10a3bdd6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-2",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-2.png",
+   "thumbnail": "pickup_cover/cover-gold-2.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "70b150ef1a975c3abbc28383beb5dbd127182fbc",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "70b150ef1a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-3",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-3.png",
+   "thumbnail": "pickup_cover/cover-gold-3.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c1ec9fd6f5e327d3e5b288820521cf4678439876",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "c1ec9fd6f5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-4",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-4.png",
+   "thumbnail": "pickup_cover/cover-gold-4.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3721fdfcb3ae6b9b032baf14c3b427c2787d9fca",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "3721fdfcb3",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-5",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-5.png",
+   "thumbnail": "pickup_cover/cover-gold-5.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e06cddeb1ca2552750b02178faf1a99bc2a1d180",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "e06cddeb1c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-6",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-6.png",
+   "thumbnail": "pickup_cover/cover-gold-6.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "96b32480fcfb22d05df4a182b3e7a0ed2375b991",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "96b32480fc",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-7",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-7.png",
+   "thumbnail": "pickup_cover/cover-gold-7.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "751f370cc06f412bce9afd492b8ed35d91628a68",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "751f370cc0",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_cover/cover-gold-8",
+   "category": "pickup_cover",
+   "file": "pickup_cover/cover-gold-8.png",
+   "thumbnail": "pickup_cover/cover-gold-8.thumb.png",
+   "width_px": 175,
+   "height_px": 131,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "58ed7d592cc832db7ad253b9a6a415f5ae6bdd82",
+   "slot": "pickup_cover",
+   "anchors": {},
+   "group": "58ed7d592c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "headstock/headstock-darkwood",
+   "category": "headstock",
+   "file": "headstock/headstock-darkwood.png",
+   "thumbnail": "headstock/headstock-darkwood.thumb.png",
+   "width_px": 553,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "442804c478c98cf92ab2a448f67a9bb2342a31d9",
+   "slot": "headstock",
+   "anchors": {
+    "bottom": [
+     276,
+     863
+    ]
+   },
+   "group": "442804c478",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "headstock/headstock-hardwood",
+   "category": "headstock",
+   "file": "headstock/headstock-hardwood.png",
+   "thumbnail": "headstock/headstock-hardwood.thumb.png",
+   "width_px": 300,
+   "height_px": 448,
+   "longest_in": 9.33,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6958ec641bdeed93cdbfb15e9196036b88e7c2f1",
+   "slot": "headstock",
+   "anchors": {
+    "bottom": [
+     150,
+     447
+    ]
+   },
+   "group": "6958ec641b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-arrow-walnut-01",
+   "category": "neck",
+   "file": "neck/neck-arrow-walnut-01.png",
+   "thumbnail": "neck/neck-arrow-walnut-01.thumb.png",
+   "width_px": 238,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "be93fc092d50d9302c5452b4ad8918b042e8f393",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     119,
+     0
+    ],
+    "bottom": [
+     119,
+     1299
+    ]
+   },
+   "group": "be93fc092d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-arrow-walnut-02",
+   "category": "neck",
+   "file": "neck/neck-arrow-walnut-02.png",
+   "thumbnail": "neck/neck-arrow-walnut-02.thumb.png",
+   "width_px": 238,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "71b90bf8dcd12137660289939d366d107a3e1d8d",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     119,
+     0
+    ],
+    "bottom": [
+     119,
+     1299
+    ]
+   },
+   "group": "71b90bf8dc",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-arrow-walnut-03",
+   "category": "neck",
+   "file": "neck/neck-arrow-walnut-03.png",
+   "thumbnail": "neck/neck-arrow-walnut-03.thumb.png",
+   "width_px": 238,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c7dade03dad72601d6d00a648829822cfb4e3e14",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     119,
+     0
+    ],
+    "bottom": [
+     119,
+     1299
+    ]
+   },
+   "group": "c7dade03da",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-arrow-walnut-04",
+   "category": "neck",
+   "file": "neck/neck-arrow-walnut-04.png",
+   "thumbnail": "neck/neck-arrow-walnut-04.thumb.png",
+   "width_px": 238,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "234531bff5d2b8ad9fd758a45be0cf948f5dcdee",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     119,
+     0
+    ],
+    "bottom": [
+     119,
+     1299
+    ]
+   },
+   "group": "234531bff5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-arrow-walnut-05",
+   "category": "neck",
+   "file": "neck/neck-arrow-walnut-05.png",
+   "thumbnail": "neck/neck-arrow-walnut-05.thumb.png",
+   "width_px": 238,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "96d35af6b37752b7eddea71207e2f0005c78a8f8",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     119,
+     0
+    ],
+    "bottom": [
+     119,
+     1299
+    ]
+   },
+   "group": "96d35af6b3",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-arrow-walnut-06",
+   "category": "neck",
+   "file": "neck/neck-arrow-walnut-06.png",
+   "thumbnail": "neck/neck-arrow-walnut-06.thumb.png",
+   "width_px": 238,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c27c7c4b0534b28de190f8000dd04db9977a42d9",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     119,
+     0
+    ],
+    "bottom": [
+     119,
+     1299
+    ]
+   },
+   "group": "c27c7c4b05",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-banana-amber-01",
+   "category": "neck",
+   "file": "neck/neck-banana-amber-01.png",
+   "thumbnail": "neck/neck-banana-amber-01.thumb.png",
+   "width_px": 377,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6094f31263610f26c09c84df6adbfb6bebd6bdfb",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     188,
+     0
+    ],
+    "bottom": [
+     188,
+     1299
+    ]
+   },
+   "group": "6094f31263",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-banana-black-01",
+   "category": "neck",
+   "file": "neck/neck-banana-black-01.png",
+   "thumbnail": "neck/neck-banana-black-01.thumb.png",
+   "width_px": 373,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2def3f5b59161706b5659ef232aa060cfdd7ae52",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     186,
+     0
+    ],
+    "bottom": [
+     186,
+     1299
+    ]
+   },
+   "group": "2def3f5b59",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-banana-black-02",
+   "category": "neck",
+   "file": "neck/neck-banana-black-02.png",
+   "thumbnail": "neck/neck-banana-black-02.thumb.png",
+   "width_px": 373,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "552f55b80897ca27f78de5f2fb2d330d4f45daa3",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     186,
+     0
+    ],
+    "bottom": [
+     186,
+     1299
+    ]
+   },
+   "group": "552f55b808",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-banana-pale-flame-01",
+   "category": "neck",
+   "file": "neck/neck-banana-pale-flame-01.png",
+   "thumbnail": "neck/neck-banana-pale-flame-01.thumb.png",
+   "width_px": 360,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "5a5b06c43d87aeb4e6746bf9fc851b9217319761",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     180,
+     0
+    ],
+    "bottom": [
+     180,
+     1299
+    ]
+   },
+   "group": "5a5b06c43d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-banana-quilt-amber-01",
+   "category": "neck",
+   "file": "neck/neck-banana-quilt-amber-01.png",
+   "thumbnail": "neck/neck-banana-quilt-amber-01.thumb.png",
+   "width_px": 362,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "17774866ec5477ca36d165dcf63dd07f0347771a",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     181,
+     0
+    ],
+    "bottom": [
+     181,
+     1299
+    ]
+   },
+   "group": "17774866ec",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-spike-flame-fade-01",
+   "category": "neck",
+   "file": "neck/neck-spike-flame-fade-01.png",
+   "thumbnail": "neck/neck-spike-flame-fade-01.thumb.png",
+   "width_px": 220,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b4b823d9b2c4c3e04a0d3340f7318e04106a17c0",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     110,
+     0
+    ],
+    "bottom": [
+     110,
+     1299
+    ]
+   },
+   "group": "b4b823d9b2",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-spike-flame-fade-02",
+   "category": "neck",
+   "file": "neck/neck-spike-flame-fade-02.png",
+   "thumbnail": "neck/neck-spike-flame-fade-02.thumb.png",
+   "width_px": 220,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "8c052807d8fe7437319165f7ccbc1da61ff3121a",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     110,
+     0
+    ],
+    "bottom": [
+     110,
+     1299
+    ]
+   },
+   "group": "8c052807d8",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-amber-01",
+   "category": "neck",
+   "file": "neck/neck-sweep-amber-01.png",
+   "thumbnail": "neck/neck-sweep-amber-01.thumb.png",
+   "width_px": 181,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3237c4e8deafb960d3ae8d97b6638a3553a95664",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     90,
+     0
+    ],
+    "bottom": [
+     90,
+     1299
+    ]
+   },
+   "group": "3237c4e8de",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-amber-02",
+   "category": "neck",
+   "file": "neck/neck-sweep-amber-02.png",
+   "thumbnail": "neck/neck-sweep-amber-02.thumb.png",
+   "width_px": 187,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4a88902edbed3aad142870442311e6592d52687c",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     93,
+     0
+    ],
+    "bottom": [
+     93,
+     1299
+    ]
+   },
+   "group": "4a88902edb",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-flame-01",
+   "category": "neck",
+   "file": "neck/neck-sweep-flame-01.png",
+   "thumbnail": "neck/neck-sweep-flame-01.thumb.png",
+   "width_px": 179,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6cb0d1cc4b8866878ebe275560f23b6a98b7ef78",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     89,
+     0
+    ],
+    "bottom": [
+     89,
+     1299
+    ]
+   },
+   "group": "6cb0d1cc4b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-flame-amber-01",
+   "category": "neck",
+   "file": "neck/neck-sweep-flame-amber-01.png",
+   "thumbnail": "neck/neck-sweep-flame-amber-01.thumb.png",
+   "width_px": 179,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6bb95ceb98e1fd4d7dd9077b3cc03dff4e471d68",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     89,
+     0
+    ],
+    "bottom": [
+     89,
+     1299
+    ]
+   },
+   "group": "6bb95ceb98",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-flame-amber-02",
+   "category": "neck",
+   "file": "neck/neck-sweep-flame-amber-02.png",
+   "thumbnail": "neck/neck-sweep-flame-amber-02.thumb.png",
+   "width_px": 179,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6cb0d1cc4b8866878ebe275560f23b6a98b7ef78",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     89,
+     0
+    ],
+    "bottom": [
+     89,
+     1299
+    ]
+   },
+   "group": "6cb0d1cc4b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-quilt-amber-01",
+   "category": "neck",
+   "file": "neck/neck-sweep-quilt-amber-01.png",
+   "thumbnail": "neck/neck-sweep-quilt-amber-01.thumb.png",
+   "width_px": 270,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "156f55074db8f5155471f20b4e43e784e763fdb5",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     135,
+     0
+    ],
+    "bottom": [
+     135,
+     1299
+    ]
+   },
+   "group": "156f55074d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-quilt-amber-02",
+   "category": "neck",
+   "file": "neck/neck-sweep-quilt-amber-02.png",
+   "thumbnail": "neck/neck-sweep-quilt-amber-02.thumb.png",
+   "width_px": 212,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "f6fa9d607e2d5241321e2c727902cf23cd6e16f2",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     106,
+     0
+    ],
+    "bottom": [
+     106,
+     1299
+    ]
+   },
+   "group": "f6fa9d607e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-quilt-amber-03",
+   "category": "neck",
+   "file": "neck/neck-sweep-quilt-amber-03.png",
+   "thumbnail": "neck/neck-sweep-quilt-amber-03.thumb.png",
+   "width_px": 270,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "82eedd5eb6d49cb079d1be50d592b152f8bf0944",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     135,
+     0
+    ],
+    "bottom": [
+     135,
+     1299
+    ]
+   },
+   "group": "82eedd5eb6",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-sweep-tiger-walnut-01",
+   "category": "neck",
+   "file": "neck/neck-sweep-tiger-walnut-01.png",
+   "thumbnail": "neck/neck-sweep-tiger-walnut-01.thumb.png",
+   "width_px": 377,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "17fecbc41477f698b0717b12a8de914a47100181",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     188,
+     0
+    ],
+    "bottom": [
+     188,
+     1299
+    ]
+   },
+   "group": "17fecbc414",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-black-01",
+   "category": "neck",
+   "file": "neck/neck-vclaw-black-01.png",
+   "thumbnail": "neck/neck-vclaw-black-01.thumb.png",
+   "width_px": 203,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e6c7a8348cb7cfc3b9adca040cd5906c8f3361ee",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     101,
+     0
+    ],
+    "bottom": [
+     101,
+     1299
+    ]
+   },
+   "group": "e6c7a8348c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-dark-walnut-01",
+   "category": "neck",
+   "file": "neck/neck-vclaw-dark-walnut-01.png",
+   "thumbnail": "neck/neck-vclaw-dark-walnut-01.thumb.png",
+   "width_px": 204,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "d7e9516350bd2cf1300c870049b481672eddc518",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     102,
+     0
+    ],
+    "bottom": [
+     102,
+     1299
+    ]
+   },
+   "group": "d7e9516350",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-flame-amber-01",
+   "category": "neck",
+   "file": "neck/neck-vclaw-flame-amber-01.png",
+   "thumbnail": "neck/neck-vclaw-flame-amber-01.thumb.png",
+   "width_px": 203,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c205856028873de460d45a11ed6bb05e2d743532",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     101,
+     0
+    ],
+    "bottom": [
+     101,
+     1299
+    ]
+   },
+   "group": "c205856028",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-flame-amber-02",
+   "category": "neck",
+   "file": "neck/neck-vclaw-flame-amber-02.png",
+   "thumbnail": "neck/neck-vclaw-flame-amber-02.thumb.png",
+   "width_px": 203,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "9b978dce90d9a57aea174d226dab41039d0f4907",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     101,
+     0
+    ],
+    "bottom": [
+     101,
+     1299
+    ]
+   },
+   "group": "9b978dce90",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-quilt-amber-01",
+   "category": "neck",
+   "file": "neck/neck-vclaw-quilt-amber-01.png",
+   "thumbnail": "neck/neck-vclaw-quilt-amber-01.thumb.png",
+   "width_px": 203,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c205856028873de460d45a11ed6bb05e2d743532",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     101,
+     0
+    ],
+    "bottom": [
+     101,
+     1299
+    ]
+   },
+   "group": "c205856028",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-quilt-amber-02",
+   "category": "neck",
+   "file": "neck/neck-vclaw-quilt-amber-02.png",
+   "thumbnail": "neck/neck-vclaw-quilt-amber-02.thumb.png",
+   "width_px": 204,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "ff0d13b9ac83e996d1cc111f11afbab65879f941",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     102,
+     0
+    ],
+    "bottom": [
+     102,
+     1299
+    ]
+   },
+   "group": "ff0d13b9ac",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-tiger-amber-01",
+   "category": "neck",
+   "file": "neck/neck-vclaw-tiger-amber-01.png",
+   "thumbnail": "neck/neck-vclaw-tiger-amber-01.thumb.png",
+   "width_px": 203,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "f45966bb95435620e312cb2a9da53b76690d8aac",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     101,
+     0
+    ],
+    "bottom": [
+     101,
+     1299
+    ]
+   },
+   "group": "f45966bb95",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-wenge-01",
+   "category": "neck",
+   "file": "neck/neck-vclaw-wenge-01.png",
+   "thumbnail": "neck/neck-vclaw-wenge-01.thumb.png",
+   "width_px": 204,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "f0f6253e5e5369f3e104f54d9176075b6c59dc95",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     102,
+     0
+    ],
+    "bottom": [
+     102,
+     1299
+    ]
+   },
+   "group": "f0f6253e5e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "neck/neck-vclaw-wenge-02",
+   "category": "neck",
+   "file": "neck/neck-vclaw-wenge-02.png",
+   "thumbnail": "neck/neck-vclaw-wenge-02.thumb.png",
+   "width_px": 206,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "15a3fb0b56e08cea6dd5ef02560ea345e043fae3",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     103,
+     0
+    ],
+    "bottom": [
+     103,
+     1299
+    ]
+   },
+   "group": "15a3fb0b56",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodchain-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodchain-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodchain-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 85,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "116c1fe351a3342890def87d928d9b7c3d74d7cc",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "116c1fe351",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodchain-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodchain-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodchain-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 85,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c44f945446943dc40c0275336ac797cef9cb2ad1",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "c44f945446",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodcult",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodcult.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodcult.thumb.png",
+   "width_px": 175,
+   "height_px": 235,
+   "longest_in": 4.9,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "22f190fec4b9c09d68cc05b53586c03afdcf4e84",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "22f190fec4",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodking-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodking-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodking-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 149,
+   "longest_in": 3.1,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "42417413736b5549d511b39ac95a7eca17423ea5",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "4241741373",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodking-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodking-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodking-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 137,
+   "longest_in": 2.85,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "e8adf51481cce28082d26b88283bae0bfe400cd7",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "e8adf51481",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodskull-1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodskull-1.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodskull-1.thumb.png",
+   "width_px": 175,
+   "height_px": 346,
+   "longest_in": 7.21,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "46a93249def4ab1bb4585fcbb4ba33a46d6502e5",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "46a93249de",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodskull-2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodskull-2.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodskull-2.thumb.png",
+   "width_px": 175,
+   "height_px": 345,
+   "longest_in": 7.19,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4fcb687245ba88fa3b304317e92e055892b3b063",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "4fcb687245",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bloodsplat",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bloodsplat.png",
+   "thumbnail": "pickup_humbucker/pickup-bloodsplat.thumb.png",
+   "width_px": 175,
+   "height_px": 94,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6759fb7f4c50822a16c6224cae2c3978388d8713",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "6759fb7f4c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-bronzeskull",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-bronzeskull.png",
+   "thumbnail": "pickup_humbucker/pickup-bronzeskull.thumb.png",
+   "width_px": 175,
+   "height_px": 321,
+   "longest_in": 6.69,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "a22e977459b430e37e3d3c844b6d5661f3537331",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "a22e977459",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-chainskull",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-chainskull.png",
+   "thumbnail": "pickup_humbucker/pickup-chainskull.thumb.png",
+   "width_px": 175,
+   "height_px": 227,
+   "longest_in": 4.73,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "a880e8cbcadfd0825873b040f78fbda50f5b2243",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "a880e8cbca",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-chaosking-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-chaosking-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-chaosking-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 121,
+   "longest_in": 2.52,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "8916dbc6a72a7ce835e4d87b22d4fccef89677d2",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "8916dbc6a7",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-chaosking-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-chaosking-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-chaosking-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 139,
+   "longest_in": 2.9,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "5eea2f92427f29ec321a65846608f8adc771c991",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "5eea2f9242",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-crimsonwrap",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-crimsonwrap.png",
+   "thumbnail": "pickup_humbucker/pickup-crimsonwrap.thumb.png",
+   "width_px": 175,
+   "height_px": 395,
+   "longest_in": 8.23,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "07aa72dc11f2bca2432d7e2430107551be19389a",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "07aa72dc11",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-doomthorn-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-doomthorn-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-doomthorn-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 84,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "ddc124274240dfc150d44f6fa820637474c8f8d9",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "ddc1242742",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-doomthorn-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-doomthorn-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-doomthorn-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 84,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7d11f646092ff1d9cfeaff87ca9c425dc4f3bbee",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "7d11f64609",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-eternal-damn-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-eternal-damn-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-eternal-damn-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 107,
+   "longest_in": 2.23,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c59975af9b2bf1d11c45e76fc683be0a83f54532",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "c59975af9b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-eternal-damn-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-eternal-damn-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-eternal-damn-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 101,
+   "longest_in": 2.1,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "968e4a4195d790f0ecd4753d10b04d0977735ce0",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "968e4a4195",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-goldpole-b-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-goldpole-b-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-goldpole-b-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 57,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4779be8a7d4db666e5b34483f9c0eb25d19771b5",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "4779be8a7d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-goldpole-b-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-goldpole-b-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-goldpole-b-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 58,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "d5c27518d07bb70c90cdbabbbb32b24d0f194eaf",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "d5c27518d0",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-1-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-1-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-1-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 185,
+   "longest_in": 3.85,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "021933d72e019860e4f2f68262d54d8d4dc4ee8a",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "021933d72e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-1-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-1-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-1-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 185,
+   "longest_in": 3.85,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "282314a1a27909f11b12d42a338a45863c55f3bd",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "282314a1a2",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-2-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-2-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-2-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "90a1316c9a03530b2c1e87c568b505a55bccf62d",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "90a1316c9a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-2-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-2-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-2-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b612bf6c2f8ed9deb7e9490bd52ca30ab16935cf",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "b612bf6c2f",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-3-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-3-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-3-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "49f5e535e70e0a815b086f76459c6e42a0cddc04",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "49f5e535e7",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-3-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-3-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-3-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "509bd7a75e7e9059d7806c455dc380c77c01c6a4",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "509bd7a75e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-4-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-4-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-4-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 185,
+   "longest_in": 3.85,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c020244672976ab69ae4e66f36ad14743d04f371",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "c020244672",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-4-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-4-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-4-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 185,
+   "longest_in": 3.85,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "65c41503770caa1060c38ce0755c1ee603148689",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "65c4150377",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-5-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-5-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-5-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "5bf1b12f1eb3cb808e53da2dcda41b085969ee85",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "5bf1b12f1e",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-5-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-5-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-5-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7e5e4cc822eb93fabddeef8a45d255ff05583c8b",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "7e5e4cc822",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-6-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-6-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-6-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2f15f0f763e4a67ebd312e051d0e0736ee9088d3",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "2f15f0f763",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-6-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-6-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-6-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "d2a00af4980198acd2d275b496b11241365eaf10",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "d2a00af498",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-7-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-7-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-7-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 186,
+   "longest_in": 3.88,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6f6a76d38b607d950657c1f50481574f197549a3",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "6f6a76d38b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-7-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-7-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-7-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 186,
+   "longest_in": 3.88,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c41ad56dc9159e195827549c9d41c47bc284da92",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "c41ad56dc9",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-8-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-8-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-8-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 174,
+   "longest_in": 3.62,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "cc30d769d57f739c73917b882e33976435912631",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "cc30d769d5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-8-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-8-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-8-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 174,
+   "longest_in": 3.62,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "2ebba160dfbb3461c84371d9a9572ced0caf0a18",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "2ebba160df",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-9-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-9-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-9-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b31b940590253ffef1d51b016caf63279986ab53",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "b31b940590",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-holo-9-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-holo-9-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-holo-9-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 175,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "eae7322726afda4e8d9e4f12285a61ce6445005a",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "eae7322726",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-inferno-lord-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-inferno-lord-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-inferno-lord-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 116,
+   "longest_in": 2.42,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "1ce0d7eb5caf2cdc0bd3d93c24278309352f5026",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "1ce0d7eb5c",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-inferno-lord-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-inferno-lord-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-inferno-lord-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 121,
+   "longest_in": 2.52,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "73fdd455bd935cf1f53d381b456b4ca3c0a7e60a",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "73fdd455bd",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-ironskull-1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-ironskull-1.png",
+   "thumbnail": "pickup_humbucker/pickup-ironskull-1.thumb.png",
+   "width_px": 175,
+   "height_px": 350,
+   "longest_in": 7.29,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "d0976b2c5f78535a78a56478d74f92e9c0861d8e",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "d0976b2c5f",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-ironskull-2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-ironskull-2.png",
+   "thumbnail": "pickup_humbucker/pickup-ironskull-2.thumb.png",
+   "width_px": 175,
+   "height_px": 350,
+   "longest_in": 7.29,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "cdd85cad4a1ea0d7f330eb7888525bb65629cfb6",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "cdd85cad4a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-metal-1-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-metal-1-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-metal-1-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 71,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "174662b9b0dedd118f9a661c7e022cde8b5d9da7",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "174662b9b0",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-metal-2-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-metal-2-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-metal-2-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 66,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4423945213f9696cba4938d4dcff3fd445fa7c53",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "4423945213",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-metal-3-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-metal-3-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-metal-3-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 52,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "aa410e69d54640cf9d3a1963ada62491349fee5c",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "aa410e69d5",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-metal-3-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-metal-3-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-metal-3-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 52,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "a236516e8a61aeb862e0902d1b305ef72cf19960",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "a236516e8a",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-metal-4-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-metal-4-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-metal-4-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 48,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "c763d294cd892b211b444e0880213a6f375c5cdf",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "c763d294cd",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-metal-4-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-metal-4-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-metal-4-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 48,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "d63e93aba31071ea896630c2f8a27fbb1af77eab",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "d63e93aba3",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-necroclaw-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-necroclaw-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-necroclaw-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 84,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7b77e37195da6766f9c0855cb0325c693cc62ddc",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "7b77e37195",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-necroclaw-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-necroclaw-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-necroclaw-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 84,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b94c0daa57127e8ae0365155672aec4978e2c29c",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "b94c0daa57",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-necroking",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-necroking.png",
+   "thumbnail": "pickup_humbucker/pickup-necroking.thumb.png",
+   "width_px": 175,
+   "height_px": 231,
+   "longest_in": 4.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "27c74b11ca4a5e142279f09921f9fd7900219cc7",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "27c74b11ca",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-ornate-1-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-ornate-1-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-ornate-1-s1.thumb.png",
+   "width_px": 68,
+   "height_px": 18,
+   "longest_in": 1.42,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "9c80d95a41864076339d3816008e6dbf1af595db",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "9c80d95a41",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-ragefire-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-ragefire-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-ragefire-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 83,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "53d730f1060868689502ca510b913716bc658483",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "53d730f106",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-shattergod-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-shattergod-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-shattergod-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 102,
+   "longest_in": 2.12,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "061bbe045d575be7c56911f2ce426d4bc35c4199",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "061bbe045d",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-shattergod-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-shattergod-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-shattergod-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 102,
+   "longest_in": 2.12,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "7124364364f64c4fe6d6928091d0b38d8ed4d5d2",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "7124364364",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullreaver-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullreaver-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-skullreaver-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 84,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "64964400b46b3561a27e166227c1733222d6f62f",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "64964400b4",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullreaver-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullreaver-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-skullreaver-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 83,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "b809979666727dc6af7f18be059b1bf3110f30b9",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "b809979666",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-spikeskull",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-spikeskull.png",
+   "thumbnail": "pickup_humbucker/pickup-spikeskull.thumb.png",
+   "width_px": 175,
+   "height_px": 226,
+   "longest_in": 4.71,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "1d4c7b6aa854a72da4902d475c7b864833b4bb5b",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "1d4c7b6aa8",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-steamgear-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-steamgear-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-steamgear-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 219,
+   "longest_in": 4.56,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "90ad054a3b5f6a64c541df2c33d59a5f4bcc36b6",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "90ad054a3b",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-steamgear-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-steamgear-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-steamgear-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 219,
+   "longest_in": 4.56,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "3307bf2ffae1c2ac0cf1e28809ef661a39177905",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "3307bf2ffa",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-thornskull",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-thornskull.png",
+   "thumbnail": "pickup_humbucker/pickup-thornskull.thumb.png",
+   "width_px": 175,
+   "height_px": 86,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "63f50f4a95f513d103fb1117dcebf8651c207cb0",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "63f50f4a95",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-violetvine",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-violetvine.png",
+   "thumbnail": "pickup_humbucker/pickup-violetvine.thumb.png",
+   "width_px": 175,
+   "height_px": 270,
+   "longest_in": 5.62,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "4a89e0dec4df813746fc9b5c17d5691416420e47",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "4a89e0dec4",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-warspike-s1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-warspike-s1.png",
+   "thumbnail": "pickup_humbucker/pickup-warspike-s1.thumb.png",
+   "width_px": 87,
+   "height_px": 83,
+   "longest_in": 1.81,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "a6d5bca0133e95348d3adfe1342aa9d4fc9ced59",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "a6d5bca013",
+   "added_at": "2026-08-30T18:22:33+00:00"
+  },
+  {
+   "id": "pickup_humbucker/pickup-warspike-s2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-warspike-s2.png",
+   "thumbnail": "pickup_humbucker/pickup-warspike-s2.thumb.png",
+   "width_px": 88,
+   "height_px": 83,
+   "longest_in": 1.83,
+   "ppi": 48,
+   "source": "killy-zip-drop-2026-08-30",
+   "source_sha1": "6c921c646f77d15fb0a8ab81376c838409dc1104",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "6c921c646f",
+   "added_at": "2026-08-30T18:22:33+00:00"
   }
  ]
 }
