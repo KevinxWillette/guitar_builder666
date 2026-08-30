@@ -240,6 +240,7 @@ let instances = [];
 let selectedUid = null;
 let nextUid = 1;
 let view = { x: 0, y: 0, scale: 0.35 };
+let headstockChosen = false;  // user hand-picked a headstock; stop auto-matching
 
 const $ = id => document.getElementById(id);
 const world = $("world");
@@ -302,11 +303,34 @@ function solveCoreLayout() {
   }
 }
 
-function placePart(part) {
+function colorDist(a, b) {
+  if (!a || !b) return 1e9;
+  return Math.abs(a[0]-b[0]) + Math.abs(a[1]-b[1]) + Math.abs(a[2]-b[2]);
+}
+
+// pick the headstock whose color sits closest to the body's
+function matchHeadstock(bodyPart) {
+  const opts = partsInSlot("headstock");
+  if (!opts.length || !bodyPart.avg_rgb) return null;
+  return opts.reduce((best, h) =>
+    colorDist(h.avg_rgb, bodyPart.avg_rgb) < colorDist(best.avg_rgb, bodyPart.avg_rgb) ? h : best);
+}
+
+function setSlotPart(part) {
+  const existing = instances.find(i => slotOf(i.part) === slotOf(part));
+  if (existing) existing.part = part;
+  else instances.push(newInstance(part));
+}
+
+function placePart(part, fromUser = true) {
   if (isCore(part)) {
-    const existing = instances.find(i => slotOf(i.part) === slotOf(part));
-    if (existing) existing.part = part;
-    else instances.push(newInstance(part));
+    if (slotOf(part) === "headstock" && fromUser) headstockChosen = true;
+    setSlotPart(part);
+    // default: headstock color-matches the body until the user picks one
+    if (slotOf(part) === "body" && !headstockChosen) {
+      const h = matchHeadstock(part);
+      if (h) setSlotPart(h);
+    }
     solveCoreLayout();
   } else {
     const P = pocketWorld();
@@ -323,6 +347,11 @@ function swapInstance(inst, dir) {
   if (options.length < 2) return;
   const idx = options.findIndex(p => p.id === inst.part.id);
   inst.part = options[(idx + dir + options.length) % options.length];
+  if (slotOf(inst.part) === "headstock") headstockChosen = true;
+  if (slotOf(inst.part) === "body" && !headstockChosen) {
+    const h = matchHeadstock(inst.part);
+    if (h) setSlotPart(h);
+  }
   if (isCore(inst.part)) solveCoreLayout();
   render();
 }
@@ -552,13 +581,15 @@ window.addEventListener("keydown", e => {
 $("swap-prev").addEventListener("click", () => withSel(i => swapInstance(i, -1)));
 $("swap-next").addEventListener("click", () => withSel(i => swapInstance(i, +1)));
 $("remove").addEventListener("click", () => removeInstance(selectedUid));
-$("clear").addEventListener("click", () => { instances = []; selectedUid = null; render(); });
+$("clear").addEventListener("click", () => {
+  instances = []; selectedUid = null; headstockChosen = false; render();
+});
 
 $("randomize").addEventListener("click", () => {
-  instances = []; selectedUid = null;
-  for (const slot of CORE_SLOTS) {
+  instances = []; selectedUid = null; headstockChosen = false;
+  for (const slot of ["body", "neck"]) {
     const opts = partsInSlot(slot);
-    if (opts.length) placePart(opts[Math.floor(Math.random() * opts.length)]);
+    if (opts.length) placePart(opts[Math.floor(Math.random() * opts.length)], false);
   }
   fitView();
 });
@@ -631,10 +662,11 @@ fetch("parts/manifest.json")
   .then(r => r.json())
   .then(m => {
     manifest = m;
-    // open with a guitar already on the bench, framed in full
-    for (const slot of CORE_SLOTS) {
+    // open with a guitar already on the bench, framed in full;
+    // headstock auto-matches the body's color
+    for (const slot of ["body", "neck"]) {
       const opts = partsInSlot(slot);
-      if (opts.length) placePart(opts[0]);
+      if (opts.length) placePart(opts[0], false);
     }
     fitView();
   });
