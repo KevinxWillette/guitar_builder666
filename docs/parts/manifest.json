@@ -7833,25 +7833,25 @@
    "category": "headstock",
    "file": "headstock/headstock-darkwood.png",
    "thumbnail": "headstock/headstock-darkwood.thumb.png",
-   "width_px": 553,
-   "height_px": 864,
-   "longest_in": 18.0,
+   "width_px": 269,
+   "height_px": 448,
+   "longest_in": 9.33,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
    "source_sha1": "442804c478c98cf92ab2a448f67a9bb2342a31d9",
    "slot": "headstock",
    "anchors": {
     "bottom": [
-     276,
-     863
+     134,
+     447
     ]
    },
    "group": "442804c478",
    "added_at": "2026-08-30T18:22:33+00:00",
    "avg_rgb": [
-    94,
-    81,
-    74
+    77,
+    62,
+    53
    ]
   },
   {
@@ -7859,7 +7859,7 @@
    "category": "headstock",
    "file": "headstock/headstock-hardwood.png",
    "thumbnail": "headstock/headstock-hardwood.thumb.png",
-   "width_px": 300,
+   "width_px": 266,
    "height_px": 448,
    "longest_in": 9.33,
    "ppi": 48,
@@ -7868,16 +7868,16 @@
    "slot": "headstock",
    "anchors": {
     "bottom": [
-     150,
+     133,
      447
     ]
    },
    "group": "6958ec641b",
    "added_at": "2026-08-30T18:22:33+00:00",
    "avg_rgb": [
-    123,
-    110,
-    104
+    79,
+    61,
+    52
    ]
   },
   {
