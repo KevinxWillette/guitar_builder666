@@ -3732,20 +3732,20 @@
    "file": "body/body-img-4083-1.png",
    "thumbnail": "body/body-img-4083-1.thumb.png",
    "width_px": 353,
-   "height_px": 864,
-   "longest_in": 18.0,
+   "height_px": 495,
+   "longest_in": 10.31,
    "ppi": 48,
    "source": "IMG_4083-1.PNG",
    "source_sha1": "2f5b46b4bf66ed823f237bb3e5b2d1f288da4409",
    "slot": "body",
    "anchors": {
     "pocket": [
-     189.5,
-     183
+     67,
+     49
     ]
    },
    "group": null,
-   "added_at": "2026-08-19T19:45:28+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "body/body-img-4083-2",
@@ -3963,15 +3963,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4088-1.png",
    "thumbnail": "pickup_humbucker/emg-img-4088-1.thumb.png",
-   "width_px": 86,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 86,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4088-1.JPG",
    "source_sha1": "87434f55ca3a69a92b85ee6a227fb6df644683d9",
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:40:43+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4088-2",
@@ -3979,15 +3979,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4088-2.png",
    "thumbnail": "pickup_humbucker/emg-img-4088-2.thumb.png",
-   "width_px": 90,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 90,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4088-2.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:40:43+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4088-3",
@@ -3995,15 +3995,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4088-3.png",
    "thumbnail": "pickup_humbucker/emg-img-4088-3.thumb.png",
-   "width_px": 91,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 91,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4088-3.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:40:43+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4088-4",
@@ -4011,15 +4011,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4088-4.png",
    "thumbnail": "pickup_humbucker/emg-img-4088-4.thumb.png",
-   "width_px": 89,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 89,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4088-4.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:40:43+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4088-5",
@@ -4027,15 +4027,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4088-5.png",
    "thumbnail": "pickup_humbucker/emg-img-4088-5.thumb.png",
-   "width_px": 90,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 90,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4088-5.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:40:44+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4088-6",
@@ -4043,15 +4043,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4088-6.png",
    "thumbnail": "pickup_humbucker/emg-img-4088-6.thumb.png",
-   "width_px": 89,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 89,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4088-6.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:40:44+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-1",
@@ -4059,15 +4059,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-1.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-1.thumb.png",
-   "width_px": 168,
-   "height_px": 163,
-   "longest_in": 3.5,
+   "width_px": 163,
+   "height_px": 84,
+   "longest_in": 3.4,
    "ppi": 48,
    "source": "IMG_4089-1.JPG",
    "source_sha1": "59b8b35eea0d40fdc24ab8be8a9658817f65d1b9",
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:38+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-2",
@@ -4075,15 +4075,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-2.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-2.thumb.png",
-   "width_px": 168,
-   "height_px": 166,
-   "longest_in": 3.5,
+   "width_px": 166,
+   "height_px": 84,
+   "longest_in": 3.46,
    "ppi": 48,
    "source": "IMG_4089-2.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:39+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-3",
@@ -4091,15 +4091,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-3.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-3.thumb.png",
-   "width_px": 87,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 87,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-3.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:39+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-4",
@@ -4107,15 +4107,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-4.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-4.thumb.png",
-   "width_px": 89,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 89,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-4.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:39+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-5",
@@ -4123,15 +4123,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-5.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-5.thumb.png",
-   "width_px": 84,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 84,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-5.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:39+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-6",
@@ -4139,15 +4139,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-6.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-6.thumb.png",
-   "width_px": 90,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 90,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-6.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:39+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-7",
@@ -4155,15 +4155,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-7.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-7.thumb.png",
-   "width_px": 90,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 90,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-7.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:39+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-8",
@@ -4171,15 +4171,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-8.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-8.thumb.png",
-   "width_px": 91,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 91,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-8.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:40+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-9",
@@ -4187,15 +4187,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-9.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-9.thumb.png",
-   "width_px": 90,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 90,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-9.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:40+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-10",
@@ -4203,15 +4203,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-10.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-10.thumb.png",
-   "width_px": 89,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 89,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-10.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:40+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-11",
@@ -4219,15 +4219,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-11.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-11.thumb.png",
-   "width_px": 90,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 90,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-11.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:40+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-12",
@@ -4235,15 +4235,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-12.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-12.thumb.png",
-   "width_px": 87,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 87,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-12.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:40+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-13",
@@ -4251,15 +4251,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-13.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-13.thumb.png",
-   "width_px": 87,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 87,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-13.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:40+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-14",
@@ -4267,15 +4267,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-14.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-14.thumb.png",
-   "width_px": 89,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 89,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-14.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:41+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-15",
@@ -4283,15 +4283,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-15.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-15.thumb.png",
-   "width_px": 85,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 85,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-15.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:41+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "pickup_humbucker/emg-img-4089-16",
@@ -4299,15 +4299,15 @@
    "slot": "pickup",
    "file": "pickup_humbucker/emg-img-4089-16.png",
    "thumbnail": "pickup_humbucker/emg-img-4089-16.thumb.png",
-   "width_px": 85,
-   "height_px": 168,
+   "width_px": 168,
+   "height_px": 85,
    "longest_in": 3.5,
    "ppi": 48,
    "source": "IMG_4089-16.JPG",
    "source_sha1": null,
    "anchors": {},
    "group": null,
-   "added_at": "2026-08-19T19:41:41+00:00"
+   "added_at": "2026-08-30T14:22:54+00:00"
   },
   {
    "id": "body/img-3982-1",
@@ -4732,8 +4732,8 @@
    "file": "body/body-cracked-metal.png",
    "thumbnail": "body/body-cracked-metal.thumb.png",
    "width_px": 565,
-   "height_px": 820,
-   "longest_in": 17.08,
+   "height_px": 753,
+   "longest_in": 15.69,
    "ppi": 48,
    "source": "cracked.png",
    "source_sha1": "32ba1cf4a78bccdd7c6b61ed2bc439e6a35c2aa2",
@@ -4741,11 +4741,127 @@
    "anchors": {
     "pocket": [
      283,
-     275
+     208
     ]
    },
    "group": "32ba1cf4a7",
    "added_at": "2026-08-30T14:12:35+00:00"
+  },
+  {
+   "id": "body/body-img-4083-2",
+   "category": "body",
+   "file": "body/body-img-4083-2.png",
+   "thumbnail": "body/body-img-4083-2.thumb.png",
+   "width_px": 272,
+   "height_px": 369,
+   "longest_in": 7.69,
+   "ppi": 48,
+   "source": "IMG_4083-1.PNG",
+   "source_sha1": "2f5b46b4bf66ed823f237bb3e5b2d1f288da4409",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     49,
+     36
+    ]
+   },
+   "group": null,
+   "added_at": "2026-08-30T14:22:54+00:00"
+  },
+  {
+   "id": "pickup_humbucker/emg-img-4089-1b",
+   "category": "pickup_humbucker",
+   "slot": "pickup",
+   "file": "pickup_humbucker/emg-img-4089-1b.png",
+   "thumbnail": "pickup_humbucker/emg-img-4089-1b.thumb.png",
+   "width_px": 163,
+   "height_px": 84,
+   "longest_in": 3.4,
+   "ppi": 48,
+   "source": "IMG_4089-1.JPG",
+   "source_sha1": "59b8b35eea0d40fdc24ab8be8a9658817f65d1b9",
+   "anchors": {},
+   "group": null,
+   "added_at": "2026-08-30T14:22:54+00:00"
+  },
+  {
+   "id": "pickup_humbucker/emg-img-4089-2b",
+   "category": "pickup_humbucker",
+   "slot": "pickup",
+   "file": "pickup_humbucker/emg-img-4089-2b.png",
+   "thumbnail": "pickup_humbucker/emg-img-4089-2b.thumb.png",
+   "width_px": 166,
+   "height_px": 84,
+   "longest_in": 3.46,
+   "ppi": 48,
+   "source": "IMG_4089-2.JPG",
+   "source_sha1": null,
+   "anchors": {},
+   "group": null,
+   "added_at": "2026-08-30T14:22:54+00:00"
+  },
+  {
+   "id": "body/body-img-3928-1",
+   "category": "body",
+   "file": "body/body-img-3928-1.png",
+   "thumbnail": "body/body-img-3928-1.thumb.png",
+   "width_px": 309,
+   "height_px": 409,
+   "longest_in": 8.52,
+   "ppi": 48,
+   "source": "IMG_3928.JPEG",
+   "source_sha1": "06f348620e5d50aa82652fff159d24cc425e65a9",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     154,
+     72
+    ]
+   },
+   "group": "06f348620e",
+   "added_at": "2026-08-30T14:26:43+00:00"
+  },
+  {
+   "id": "body/body-img-3935-1",
+   "category": "body",
+   "file": "body/body-img-3935-1.png",
+   "thumbnail": "body/body-img-3935-1.thumb.png",
+   "width_px": 679,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "IMG_3935.JPEG",
+   "source_sha1": "13e21b36d3422916d40c59fe88a5f38895c0b049",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     339,
+     149
+    ]
+   },
+   "group": "13e21b36d3",
+   "added_at": "2026-08-30T14:26:43+00:00"
+  },
+  {
+   "id": "body/body-img-3936-1",
+   "category": "body",
+   "file": "body/body-img-3936-1.png",
+   "thumbnail": "body/body-img-3936-1.thumb.png",
+   "width_px": 678,
+   "height_px": 864,
+   "longest_in": 18.0,
+   "ppi": 48,
+   "source": "IMG_3936.JPEG",
+   "source_sha1": "fdc8e92d3f72af76f1c524043a15a1ac380fa4d2",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     339,
+     151
+    ]
+   },
+   "group": "fdc8e92d3f",
+   "added_at": "2026-08-30T14:26:43+00:00"
   }
  ]
 }

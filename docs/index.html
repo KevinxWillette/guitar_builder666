@@ -30,6 +30,7 @@
     padding: 10px 16px;
     background: var(--panel);
     border-bottom: 2px solid var(--accent);
+    flex-wrap: wrap;
   }
   header h1 {
     font-size: 15px; margin: 0; letter-spacing: .14em; text-transform: uppercase;
@@ -71,10 +72,52 @@
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   main { flex: 1; position: relative; overflow: hidden; }
+
+  /* ---- Luthier's workbench ---- */
   #bench {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 42%, #17130d 0%, var(--bg) 78%);
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(255, 214, 130, .12) 0%, rgba(0,0,0,0) 55%),
+      repeating-linear-gradient(90deg,
+        rgba(0,0,0,.22) 0px, rgba(0,0,0,0) 3px 118px, rgba(0,0,0,.28) 120px),
+      repeating-linear-gradient(0deg,
+        rgba(255,255,255,.02) 0 2px, rgba(0,0,0,.03) 2px 5px),
+      linear-gradient(180deg, #3a2a1a 0%, #332415 40%, #241809 100%),
+      #2c1f11;
   }
+  #bench::after { /* vignette + worn sheen */
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+  }
+  .brand-stamp {
+    position: absolute; pointer-events: none; user-select: none;
+    font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(20, 10, 2, .55);
+    text-shadow: 0 1px 0 rgba(255, 220, 160, .07);
+    font-family: Georgia, "Times New Roman", serif;
+    white-space: nowrap;
+  }
+  .brand-stamp.ring {
+    border: 3px double rgba(20, 10, 2, .5); border-radius: 10px;
+    padding: 8px 18px;
+  }
+  #brand-main {
+    left: 50%; top: 12px; transform: translateX(-50%) rotate(-.6deg);
+    font-size: clamp(16px, 3.2vw, 30px);
+  }
+  #brand-kdsp {
+    right: 3%; bottom: 10%; transform: rotate(-8deg);
+    font-size: 13px; text-align: center; line-height: 1.7;
+  }
+  #brand-trouble {
+    left: 3%; bottom: 6%; transform: rotate(4deg);
+    font-size: 12px;
+  }
+  #brand-est {
+    left: 4%; top: 12%; transform: rotate(-3deg);
+    font-size: 11px; letter-spacing: .3em;
+  }
+
   #world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
   .inst { position: absolute; user-select: none; -webkit-user-drag: none; cursor: grab; }
   .inst:active { cursor: grabbing; }
@@ -84,22 +127,42 @@
     color: var(--muted); font-size: 14px; text-align: center; line-height: 1.9;
     pointer-events: none;
   }
+
+  /* ---- floating tool clusters ---- */
+  #view-tools {
+    position: absolute; top: 12px; right: 12px; z-index: 40;
+    display: flex; gap: 6px;
+    background: var(--panel); border: 1px solid var(--panel-edge);
+    border-radius: 10px; padding: 6px;
+  }
+  #view-tools button { padding: 6px 10px; font-size: 14px; }
   #sel-tools {
     position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
-    display: none; gap: 8px; background: var(--panel);
+    display: none; flex-direction: column; gap: 6px; background: var(--panel);
     border: 1px solid var(--panel-edge); border-radius: 10px; padding: 8px;
-    z-index: 40;
+    z-index: 40; max-width: 96%;
   }
   #sel-tools.visible { display: flex; }
+  #sel-tools .row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  #sel-tools button { padding: 6px 10px; font-size: 13px; }
   #sel-tools .label {
     align-self: center; font-size: 12px; color: var(--muted);
-    padding: 0 6px; max-width: 200px; overflow: hidden;
+    padding: 0 6px; max-width: 320px; overflow: hidden;
     text-overflow: ellipsis; white-space: nowrap;
   }
   #sel-tools button.danger { color: #c25444; }
+  #sel-tools .group {
+    display: flex; align-items: center; gap: 2px;
+    border: 1px solid var(--panel-edge); border-radius: 8px; padding: 2px;
+  }
+  #sel-tools .group b {
+    font-size: 10px; color: var(--muted); font-weight: 600;
+    padding: 0 4px; text-transform: uppercase; letter-spacing: .08em;
+  }
   @media (max-width: 700px) {
     aside { width: 44%; min-width: 170px; }
     .grid { grid-template-columns: repeat(2, 1fr); }
+    #brand-kdsp, #brand-est { display: none; }
   }
 </style>
 </head>
@@ -118,20 +181,49 @@
 <div id="layout">
   <aside>
     <div class="hint">
-      Tap a part to put it on the bench. Tap a placed part, then
-      <b>◀ ▶</b> to swap it for another. Drag anything to fine-tune.
-      Hit <b>Save my guitar</b> to download your build.
+      Tap a part to put it on the bench. Tap a placed part to select it —
+      then drag to move, use the toolbar to <b>size / spin / flip / layer</b> it,
+      or arrow keys to nudge. Scroll on the bench to zoom, drag the bench to pan.
     </div>
     <div id="shelf"></div>
   </aside>
   <main>
-    <div id="bench"><div id="world"></div></div>
+    <div id="bench">
+      <div class="brand-stamp ring" id="brand-main">Killette Guitars</div>
+      <div class="brand-stamp" id="brand-est">Custom Shop</div>
+      <div class="brand-stamp" id="brand-kdsp">Killette DSP<br>&mdash; KDSP &mdash;</div>
+      <div class="brand-stamp" id="brand-trouble">Trouble &amp; Co.</div>
+      <div id="world"></div>
+    </div>
     <div id="empty-hint">Pick parts from the shelf 🎸</div>
+    <div id="view-tools">
+      <button id="zoom-out" title="Zoom out">−</button>
+      <button id="zoom-in" title="Zoom in">+</button>
+      <button id="fit" title="Fit guitar to screen">⛶ fit</button>
+    </div>
     <div id="sel-tools">
-      <span class="label" id="sel-label"></span>
-      <button id="swap-prev">◀ swap</button>
-      <button id="swap-next">swap ▶</button>
-      <button id="remove" class="danger">remove</button>
+      <div class="row"><span class="label" id="sel-label"></span></div>
+      <div class="row">
+        <div class="group"><b>size</b>
+          <button id="scale-down" title="Smaller">−</button>
+          <button id="scale-up" title="Bigger">+</button>
+        </div>
+        <div class="group"><b>spin</b>
+          <button id="rot-ccw" title="Rotate left">⟲</button>
+          <button id="rot-cw" title="Rotate right">⟳</button>
+        </div>
+        <div class="group"><b>layer</b>
+          <button id="layer-down" title="Send backward">▼</button>
+          <button id="layer-up" title="Bring forward">▲</button>
+        </div>
+        <button id="flip" title="Mirror left/right">⇋ flip</button>
+        <button id="reset-part" title="Reset size, spin and position">reset</button>
+      </div>
+      <div class="row">
+        <button id="swap-prev">◀ swap</button>
+        <button id="swap-next">swap ▶</button>
+        <button id="remove" class="danger">remove</button>
+      </div>
     </div>
   </main>
 </div>
@@ -140,13 +232,13 @@
 <script>
 "use strict";
 const CORE_SLOTS = ["body", "neck", "headstock"];
-const Z_ORDER = { body: 1, neck: 2, headstock: 3, other: 9 };
+const Z_ORDER = { body: 10, neck: 20, headstock: 30, other: 90 };
 
 let manifest = { ppi: 48, components: [] };
 let instances = [];
 let selectedUid = null;
 let nextUid = 1;
-let viewScale = 0.35;
+let view = { x: 0, y: 0, scale: 0.35 };
 
 const $ = id => document.getElementById(id);
 const world = $("world");
@@ -173,6 +265,15 @@ function anchor(part, name) {
 function pocketWorld() {
   const ppi = manifest.ppi || 48;
   return { x: 12 * ppi, y: 21 * ppi };
+}
+
+function newInstance(part) {
+  return {
+    uid: nextUid++, part,
+    x: 0, y: 0, dx: 0, dy: 0,
+    scale: 1, rot: 0, flip: false,
+    z: Z_ORDER[slotOf(part)] || 90,
+  };
 }
 
 function solveCoreLayout() {
@@ -204,14 +305,14 @@ function placePart(part) {
   if (isCore(part)) {
     const existing = instances.find(i => slotOf(i.part) === slotOf(part));
     if (existing) existing.part = part;
-    else instances.push({ uid: nextUid++, part, x: 0, y: 0, dx: 0, dy: 0 });
+    else instances.push(newInstance(part));
     solveCoreLayout();
   } else {
     const P = pocketWorld();
-    instances.push({
-      uid: nextUid++, part,
-      x: P.x - part.width_px / 2, y: P.y + 6 * 48, dx: 0, dy: 0,
-    });
+    const inst = newInstance(part);
+    inst.x = P.x - part.width_px / 2;
+    inst.y = P.y + 6 * 48;
+    instances.push(inst);
   }
   render();
 }
@@ -231,29 +332,47 @@ function removeInstance(uid) {
   render();
 }
 
+function applyView() {
+  world.style.transform =
+    `translate(${view.x}px, ${view.y}px) scale(${view.scale})`;
+}
+
 function fitView() {
   const ppi = manifest.ppi || 48;
-  viewScale = Math.min(
+  view.scale = Math.min(
     bench.clientHeight * 0.94 / (41 * ppi),
     bench.clientWidth * 0.9 / (24 * ppi),
   );
-  const offsetX = (bench.clientWidth - 24 * ppi * viewScale) / 2;
-  world.style.transform =
-    `translate(${offsetX}px, ${bench.clientHeight * 0.03}px) scale(${viewScale})`;
+  view.x = (bench.clientWidth - 24 * ppi * view.scale) / 2;
+  view.y = bench.clientHeight * 0.03;
+  applyView();
+}
+
+function zoomAt(cx, cy, factor) {
+  const ns = Math.min(3, Math.max(0.05, view.scale * factor));
+  const k = ns / view.scale;
+  view.x = cx - (cx - view.x) * k;
+  view.y = cy - (cy - view.y) * k;
+  view.scale = ns;
+  applyView();
+}
+
+function instTransform(inst) {
+  return `rotate(${inst.rot}deg) scaleX(${inst.flip ? -1 : 1})`;
 }
 
 function render() {
   world.innerHTML = "";
-  const sorted = [...instances].sort(
-    (a, b) => (Z_ORDER[slotOf(a.part)] || 9) - (Z_ORDER[slotOf(b.part)] || 9)
-  );
+  const sorted = [...instances].sort((a, b) => a.z - b.z || a.uid - b.uid);
   for (const inst of sorted) {
     const img = document.createElement("img");
     img.src = "parts/" + inst.part.file;
     img.className = "inst" + (inst.uid === selectedUid ? " selected" : "");
     img.style.left = inst.x + "px";
     img.style.top = inst.y + "px";
-    img.style.width = inst.part.width_px + "px";
+    img.style.width = (inst.part.width_px * inst.scale) + "px";
+    img.style.transform = instTransform(inst);
+    img.style.transformOrigin = "center center";
     img.draggable = false;
     img.dataset.uid = inst.uid;
     img.addEventListener("pointerdown", e => startDrag(inst, e));
@@ -270,7 +389,10 @@ function renderSelTools() {
   tools.classList.toggle("visible", !!inst);
   if (inst) {
     const n = partsInSlot(slotOf(inst.part)).length;
-    $("sel-label").textContent = `${inst.part.id} (${n} option${n === 1 ? "" : "s"})`;
+    const pct = Math.round(inst.scale * 100);
+    $("sel-label").textContent =
+      `${inst.part.id} — ${pct}%${inst.rot ? `, ${inst.rot}°` : ""}` +
+      ` (${n} option${n === 1 ? "" : "s"})`;
     $("swap-prev").disabled = $("swap-next").disabled = n < 2;
   }
 }
@@ -313,8 +435,8 @@ function startDrag(inst, e) {
   const origX = inst.x, origY = inst.y;
   let moved = false;
   const move = ev => {
-    const wx = (ev.clientX - startX) / viewScale;
-    const wy = (ev.clientY - startY) / viewScale;
+    const wx = (ev.clientX - startX) / view.scale;
+    const wy = (ev.clientY - startY) / view.scale;
     if (Math.abs(wx) + Math.abs(wy) > 2) moved = true;
     inst.x = origX + wx; inst.y = origY + wy;
     const el = world.querySelector(`[data-uid="${inst.uid}"]`);
@@ -334,23 +456,89 @@ function startDrag(inst, e) {
   e.stopPropagation();
 }
 
+/* ---- bench pan + zoom ---- */
 bench.addEventListener("pointerdown", e => {
-  if (e.target === bench || e.target === world) { selectedUid = null; render(); }
+  if (e.target !== bench && e.target !== world && !e.target.classList.contains("brand-stamp")) return;
+  selectedUid = null; render();
+  const sx = e.clientX, sy = e.clientY, ox = view.x, oy = view.y;
+  const move = ev => {
+    view.x = ox + ev.clientX - sx;
+    view.y = oy + ev.clientY - sy;
+    applyView();
+  };
+  const up = () => {
+    window.removeEventListener("pointermove", move);
+    window.removeEventListener("pointerup", up);
+  };
+  window.addEventListener("pointermove", move);
+  window.addEventListener("pointerup", up);
 });
+bench.addEventListener("wheel", e => {
+  e.preventDefault();
+  const r = bench.getBoundingClientRect();
+  zoomAt(e.clientX - r.left, e.clientY - r.top, e.deltaY < 0 ? 1.12 : 1 / 1.12);
+}, { passive: false });
+$("zoom-in").addEventListener("click", () =>
+  zoomAt(bench.clientWidth / 2, bench.clientHeight / 2, 1.25));
+$("zoom-out").addEventListener("click", () =>
+  zoomAt(bench.clientWidth / 2, bench.clientHeight / 2, 1 / 1.25));
+$("fit").addEventListener("click", fitView);
+
+/* ---- selected-part tools ---- */
+function withSel(fn) {
+  const inst = instances.find(i => i.uid === selectedUid);
+  if (inst) { fn(inst); render(); }
+}
+function scaleSel(inst, factor) {
+  const ns = Math.min(4, Math.max(0.1, inst.scale * factor));
+  // grow/shrink around the part's center so it stays put
+  inst.x += inst.part.width_px * (inst.scale - ns) / 2;
+  inst.y += inst.part.height_px * (inst.scale - ns) / 2;
+  if (isCore(inst.part)) {
+    inst.dx += inst.part.width_px * (inst.scale - ns) / 2;
+    inst.dy += inst.part.height_px * (inst.scale - ns) / 2;
+  }
+  inst.scale = ns;
+}
+$("scale-up").addEventListener("click", () => withSel(i => scaleSel(i, 1.05)));
+$("scale-down").addEventListener("click", () => withSel(i => scaleSel(i, 1 / 1.05)));
+$("rot-cw").addEventListener("click", () => withSel(i => i.rot = (i.rot + 5) % 360));
+$("rot-ccw").addEventListener("click", () => withSel(i => i.rot = (i.rot - 5 + 360) % 360));
+$("flip").addEventListener("click", () => withSel(i => i.flip = !i.flip));
+$("layer-up").addEventListener("click", () => withSel(i => i.z += 1));
+$("layer-down").addEventListener("click", () => withSel(i => i.z -= 1));
+$("reset-part").addEventListener("click", () => withSel(i => {
+  i.scale = 1; i.rot = 0; i.flip = false;
+  i.dx = 0; i.dy = 0;
+  i.z = Z_ORDER[slotOf(i.part)] || 90;
+  if (isCore(i.part)) solveCoreLayout();
+}));
+
 window.addEventListener("keydown", e => {
   if (!selectedUid) return;
   const inst = instances.find(i => i.uid === selectedUid);
   if (!inst) return;
+  const step = e.shiftKey ? 12 : 3;
+  const nudge = (dx, dy) => {
+    inst.x += dx; inst.y += dy;
+    if (isCore(inst.part)) { inst.dx += dx; inst.dy += dy; }
+    render(); e.preventDefault();
+  };
   if (e.key === "Delete" || e.key === "Backspace") removeInstance(selectedUid);
-  if (e.key === "[") swapInstance(inst, -1);
-  if (e.key === "]") swapInstance(inst, +1);
+  else if (e.key === "[") swapInstance(inst, -1);
+  else if (e.key === "]") swapInstance(inst, +1);
+  else if (e.key === "ArrowLeft") nudge(-step, 0);
+  else if (e.key === "ArrowRight") nudge(step, 0);
+  else if (e.key === "ArrowUp") nudge(0, -step);
+  else if (e.key === "ArrowDown") nudge(0, step);
+  else if (e.key === "+" || e.key === "=") { scaleSel(inst, 1.05); render(); }
+  else if (e.key === "-") { scaleSel(inst, 1 / 1.05); render(); }
+  else if (e.key === "r") { inst.rot = (inst.rot + 5) % 360; render(); }
+  else if (e.key === "R") { inst.rot = (inst.rot - 5 + 360) % 360; render(); }
+  else if (e.key === "f") { inst.flip = !inst.flip; render(); }
 });
-$("swap-prev").addEventListener("click", () => {
-  const i = instances.find(i => i.uid === selectedUid); if (i) swapInstance(i, -1);
-});
-$("swap-next").addEventListener("click", () => {
-  const i = instances.find(i => i.uid === selectedUid); if (i) swapInstance(i, +1);
-});
+$("swap-prev").addEventListener("click", () => withSel(i => swapInstance(i, -1)));
+$("swap-next").addEventListener("click", () => withSel(i => swapInstance(i, +1)));
 $("remove").addEventListener("click", () => removeInstance(selectedUid));
 $("clear").addEventListener("click", () => { instances = []; selectedUid = null; render(); });
 
@@ -362,24 +550,39 @@ $("randomize").addEventListener("click", () => {
   }
 });
 
+function instCorners(inst) {
+  const w = inst.part.width_px * inst.scale;
+  const h = inst.part.height_px * inst.scale;
+  const cx = inst.x + w / 2, cy = inst.y + h / 2;
+  const rad = inst.rot * Math.PI / 180;
+  const cos = Math.cos(rad), sin = Math.sin(rad);
+  return [[-w/2,-h/2],[w/2,-h/2],[w/2,h/2],[-w/2,h/2]].map(([px,py]) =>
+    [cx + px*cos - py*sin, cy + px*sin + py*cos]);
+}
+
 async function renderBuild() {
   const pad = 40;
-  const xs = instances.map(i => i.x), ys = instances.map(i => i.y);
-  const xe = instances.map(i => i.x + i.part.width_px);
-  const ye = instances.map(i => i.y + i.part.height_px);
-  const minX = Math.min(...xs) - pad, minY = Math.min(...ys) - pad;
-  const w = Math.max(...xe) - minX + pad, h = Math.max(...ye) - minY + pad;
+  const pts = instances.flatMap(instCorners);
+  const minX = Math.min(...pts.map(p => p[0])) - pad;
+  const minY = Math.min(...pts.map(p => p[1])) - pad;
+  const w = Math.max(...pts.map(p => p[0])) - minX + pad;
+  const h = Math.max(...pts.map(p => p[1])) - minY + pad;
   const canvas = document.createElement("canvas");
   canvas.width = Math.round(w); canvas.height = Math.round(h);
   const ctx = canvas.getContext("2d");
-  const sorted = [...instances].sort(
-    (a, b) => (Z_ORDER[slotOf(a.part)] || 9) - (Z_ORDER[slotOf(b.part)] || 9)
-  );
+  const sorted = [...instances].sort((a, b) => a.z - b.z || a.uid - b.uid);
   for (const inst of sorted) {
     const img = new Image();
     img.src = "parts/" + inst.part.file;
     await img.decode();
-    ctx.drawImage(img, inst.x - minX, inst.y - minY, inst.part.width_px, inst.part.height_px);
+    const iw = inst.part.width_px * inst.scale;
+    const ih = inst.part.height_px * inst.scale;
+    ctx.save();
+    ctx.translate(inst.x - minX + iw / 2, inst.y - minY + ih / 2);
+    ctx.rotate(inst.rot * Math.PI / 180);
+    if (inst.flip) ctx.scale(-1, 1);
+    ctx.drawImage(img, -iw / 2, -ih / 2, iw, ih);
+    ctx.restore();
   }
   return canvas;
 }
