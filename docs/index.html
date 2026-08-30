@@ -60,10 +60,11 @@
   }
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
   .part {
-    background: #1a1611; border: 1px solid #2c2418; border-radius: 8px;
+    background: #efe6d2; border: 1px solid #2c2418; border-radius: 8px;
     padding: 6px; cursor: pointer; text-align: center;
     transition: border-color .15s;
   }
+  .part span { color: #5a4a38; }
   .part:hover { border-color: var(--accent); }
   .part.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
   .part img { width: 100%; height: 58px; object-fit: contain; pointer-events: none; }
@@ -73,32 +74,32 @@
   }
   main { flex: 1; position: relative; overflow: hidden; }
 
-  /* ---- Luthier's workbench ---- */
+  /* ---- Luthier's workbench (light maple so dark guitars stand out) ---- */
   #bench {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse at 50% 30%, rgba(255, 214, 130, .12) 0%, rgba(0,0,0,0) 55%),
+      radial-gradient(ellipse at 50% 30%, rgba(255, 250, 235, .5) 0%, rgba(0,0,0,0) 55%),
       repeating-linear-gradient(90deg,
-        rgba(0,0,0,.22) 0px, rgba(0,0,0,0) 3px 118px, rgba(0,0,0,.28) 120px),
+        rgba(120, 90, 50, .10) 0px, rgba(0,0,0,0) 3px 118px, rgba(110, 82, 45, .13) 120px),
       repeating-linear-gradient(0deg,
-        rgba(255,255,255,.02) 0 2px, rgba(0,0,0,.03) 2px 5px),
-      linear-gradient(180deg, #3a2a1a 0%, #332415 40%, #241809 100%),
-      #2c1f11;
+        rgba(255,255,255,.05) 0 2px, rgba(120, 90, 50, .04) 2px 5px),
+      linear-gradient(180deg, #e8d7b4 0%, #ddc79d 40%, #cfb488 100%),
+      #d8c299;
   }
-  #bench::after { /* vignette + worn sheen */
+  #bench::after { /* soft vignette */
     content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0) 40%, rgba(0,0,0,.55) 100%);
+    background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0) 45%, rgba(90, 64, 34, .28) 100%);
   }
   .brand-stamp {
     position: absolute; pointer-events: none; user-select: none;
     font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
-    color: rgba(20, 10, 2, .55);
-    text-shadow: 0 1px 0 rgba(255, 220, 160, .07);
+    color: rgba(90, 58, 22, .45);
+    text-shadow: 0 1px 0 rgba(255, 250, 235, .35);
     font-family: Georgia, "Times New Roman", serif;
     white-space: nowrap;
   }
   .brand-stamp.ring {
-    border: 3px double rgba(20, 10, 2, .5); border-radius: 10px;
+    border: 3px double rgba(90, 58, 22, .4); border-radius: 10px;
     padding: 8px 18px;
   }
   #brand-main {
@@ -339,12 +340,23 @@ function applyView() {
 
 function fitView() {
   const ppi = manifest.ppi || 48;
+  // frame the actual parts on the bench (tall necks included); fall back to
+  // the default work area when the bench is empty
+  let minX = 0, minY = 0, maxX = 24 * ppi, maxY = 41 * ppi;
+  if (instances.length) {
+    const pts = instances.flatMap(instCorners);
+    minX = Math.min(...pts.map(p => p[0]));
+    minY = Math.min(...pts.map(p => p[1]));
+    maxX = Math.max(...pts.map(p => p[0]));
+    maxY = Math.max(...pts.map(p => p[1]));
+  }
+  const w = Math.max(1, maxX - minX), h = Math.max(1, maxY - minY);
   view.scale = Math.min(
-    bench.clientHeight * 0.94 / (41 * ppi),
-    bench.clientWidth * 0.9 / (24 * ppi),
+    bench.clientHeight * 0.92 / h,
+    bench.clientWidth * 0.86 / w,
   );
-  view.x = (bench.clientWidth - 24 * ppi * view.scale) / 2;
-  view.y = bench.clientHeight * 0.03;
+  view.x = (bench.clientWidth - w * view.scale) / 2 - minX * view.scale;
+  view.y = (bench.clientHeight - h * view.scale) / 2 - minY * view.scale;
   applyView();
 }
 
@@ -548,6 +560,7 @@ $("randomize").addEventListener("click", () => {
     const opts = partsInSlot(slot);
     if (opts.length) placePart(opts[Math.floor(Math.random() * opts.length)]);
   }
+  fitView();
 });
 
 function instCorners(inst) {
@@ -618,12 +631,12 @@ fetch("parts/manifest.json")
   .then(r => r.json())
   .then(m => {
     manifest = m;
-    fitView();
-    // open with a guitar already on the bench
+    // open with a guitar already on the bench, framed in full
     for (const slot of CORE_SLOTS) {
       const opts = partsInSlot(slot);
       if (opts.length) placePart(opts[0]);
     }
+    fitView();
   });
 window.addEventListener("resize", fitView);
 </script>
