@@ -264,6 +264,10 @@ const shelf = $("shelf");
 
 const partById = id => manifest.components.find(c => c.id === id);
 const partsInSlot = slot => manifest.components.filter(c => (c.slot || "other") === slot);
+// swap options: colorways of the same body style; everything else cycles its whole slot
+const optionsFor = part => part.style
+  ? manifest.components.filter(c => c.style === part.style)
+  : partsInSlot(part.slot || "other");
 const slotOf = part => part.slot || "other";
 const isCore = part => CORE_SLOTS.includes(slotOf(part));
 
@@ -433,7 +437,7 @@ function placePart(part, fromUser = true) {
 }
 
 function swapInstance(inst, dir) {
-  const options = partsInSlot(slotOf(inst.part));
+  const options = optionsFor(inst.part);
   if (options.length < 2) return;
   const idx = options.findIndex(p => p.id === inst.part.id);
   inst.part = options[(idx + dir + options.length) % options.length];
@@ -537,7 +541,7 @@ function renderSelTools() {
   const inst = instances.find(i => i.uid === selectedUid);
   tools.classList.toggle("visible", !!inst);
   if (inst) {
-    const n = partsInSlot(slotOf(inst.part)).length;
+    const n = optionsFor(inst.part).length;
     const pct = Math.round(inst.scale * 100);
     $("sel-label").textContent =
       `${inst.part.id} — ${pct}%${inst.rot ? `, ${inst.rot}°` : ""}` +
@@ -553,7 +557,11 @@ function renderSelTools() {
 function renderShelf() {
   shelf.innerHTML = "";
   const bySlot = {};
-  for (const c of manifest.components) (bySlot[slotOf(c)] ||= []).push(c);
+  for (const c of manifest.components) {
+    // one card per body style (its wood version); swap arrows browse colorways
+    if (c.style && !c.style_rep) continue;
+    (bySlot[slotOf(c)] ||= []).push(c);
+  }
   const order = ["body", "neck", "headstock"];
   const slots = Object.keys(bySlot).sort((a, b) => {
     const ia = order.indexOf(a), ib = order.indexOf(b);
