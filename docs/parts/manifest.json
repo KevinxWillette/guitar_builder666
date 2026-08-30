@@ -4700,6 +4700,52 @@
    },
    "group": "e253633a89",
    "added_at": "2026-08-30T05:56:13+00:00"
+  },
+  {
+   "id": "neck/neck-spiketooth-fanned",
+   "category": "neck",
+   "file": "neck/neck-spiketooth-fanned.png",
+   "thumbnail": "neck/neck-spiketooth-fanned.thumb.png",
+   "width_px": 191,
+   "height_px": 1374,
+   "longest_in": 28.62,
+   "ppi": 48,
+   "source": "fanned frett neck spike tooth.jpg",
+   "source_sha1": "19050e5656f74846d9d828fcd1d8c5149e5ff3c4",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     95,
+     0
+    ],
+    "bottom": [
+     95,
+     1373
+    ]
+   },
+   "group": "19050e5656",
+   "added_at": "2026-08-30T14:12:35+00:00"
+  },
+  {
+   "id": "body/body-cracked-metal",
+   "category": "body",
+   "file": "body/body-cracked-metal.png",
+   "thumbnail": "body/body-cracked-metal.thumb.png",
+   "width_px": 565,
+   "height_px": 820,
+   "longest_in": 17.08,
+   "ppi": 48,
+   "source": "cracked.png",
+   "source_sha1": "32ba1cf4a78bccdd7c6b61ed2bc439e6a35c2aa2",
+   "slot": "body",
+   "anchors": {
+    "pocket": [
+     283,
+     275
+    ]
+   },
+   "group": "32ba1cf4a7",
+   "added_at": "2026-08-30T14:12:35+00:00"
   }
  ]
 }
