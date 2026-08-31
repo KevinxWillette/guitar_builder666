@@ -52,7 +52,9 @@
     54,
     59,
     61
-   ]
+   ],
+   "style": "s001",
+   "style_rep": false
   },
   {
    "id": "headstock/headstock-black-abalone-gold",
@@ -78,7 +80,9 @@
     63,
     70,
     80
-   ]
+   ],
+   "style": "s001",
+   "style_rep": false
   },
   {
    "id": "headstock/headstock-black-chrome",
@@ -104,7 +108,9 @@
     45,
     49,
     51
-   ]
+   ],
+   "style": "s001",
+   "style_rep": true
   },
   {
    "id": "body/body-shield-amber-routed",
@@ -131,7 +137,7 @@
     127,
     55
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -159,7 +165,7 @@
     23,
     22
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -187,7 +193,7 @@
     15,
     15
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -215,7 +221,7 @@
     47,
     38
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -243,7 +249,7 @@
     56,
     47
    ],
-   "style": "bstyle-001",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -271,7 +277,7 @@
     44,
     68
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -299,7 +305,7 @@
     46,
     66
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -327,7 +333,7 @@
     113,
     84
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -355,7 +361,7 @@
     115,
     96
    ],
-   "style": "bstyle-001",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -383,7 +389,7 @@
     82,
     91
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -411,7 +417,7 @@
     137,
     94
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": true
   },
   {
@@ -439,7 +445,7 @@
     62,
     49
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -461,7 +467,9 @@
     57,
     57,
     61
-   ]
+   ],
+   "style": "s003",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-chrome",
@@ -503,7 +511,9 @@
     213,
     180,
     103
-   ]
+   ],
+   "style": "s003",
+   "style_rep": true
   },
   {
    "id": "knob/knob-black",
@@ -524,7 +534,9 @@
     45,
     45,
     49
-   ]
+   ],
+   "style": "s004",
+   "style_rep": false
   },
   {
    "id": "knob/knob-chrome",
@@ -545,7 +557,9 @@
     171,
     171,
     177
-   ]
+   ],
+   "style": "s004",
+   "style_rep": false
   },
   {
    "id": "knob/knob-gold",
@@ -569,7 +583,9 @@
     185,
     157,
     87
-   ]
+   ],
+   "style": "s004",
+   "style_rep": true
   },
   {
    "id": "pickup/pickup-black",
@@ -593,7 +609,9 @@
     40,
     38,
     38
-   ]
+   ],
+   "style": "s005",
+   "style_rep": false
   },
   {
    "id": "pickup/pickup-chrome",
@@ -617,7 +635,9 @@
     171,
     169,
     171
-   ]
+   ],
+   "style": "s005",
+   "style_rep": false
   },
   {
    "id": "pickup/pickup-gold",
@@ -641,7 +661,9 @@
     168,
     145,
     88
-   ]
+   ],
+   "style": "s005",
+   "style_rep": true
   },
   {
    "id": "pickup/pickup-killette-green",
@@ -665,7 +687,9 @@
     36,
     57,
     40
-   ]
+   ],
+   "style": "s005",
+   "style_rep": false
   },
   {
    "id": "body/body-img-3937",
@@ -692,7 +716,7 @@
     42,
     33
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -720,7 +744,7 @@
     18,
     16
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -748,7 +772,7 @@
     24,
     19
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -776,7 +800,7 @@
     15,
     25
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -804,7 +828,7 @@
     17,
     21
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -832,7 +856,7 @@
     71,
     52
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -860,7 +884,7 @@
     34,
     27
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -888,7 +912,7 @@
     20,
     29
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -916,7 +940,7 @@
     22,
     23
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -944,7 +968,7 @@
     33,
     36
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -972,7 +996,7 @@
     72,
     55
    ],
-   "style": "bstyle-003",
+   "style": "s008",
    "style_rep": false
   },
   {
@@ -1000,7 +1024,7 @@
     48,
     39
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -1028,7 +1052,7 @@
     55,
     39
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -1056,7 +1080,7 @@
     62,
     50
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1084,7 +1108,7 @@
     55,
     43
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1112,7 +1136,7 @@
     18,
     17
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1140,7 +1164,7 @@
     10,
     10
    ],
-   "style": "bstyle-001",
+   "style": "s009",
    "style_rep": false
   },
   {
@@ -1168,7 +1192,7 @@
     17,
     24
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1196,7 +1220,7 @@
     71,
     53
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1224,7 +1248,7 @@
     30,
     22
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1252,7 +1276,7 @@
     57,
     45
    ],
-   "style": "bstyle-004",
+   "style": "s009",
    "style_rep": true
   },
   {
@@ -1280,7 +1304,7 @@
     28,
     29
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1308,7 +1332,7 @@
     106,
     58
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -1336,7 +1360,7 @@
     71,
     55
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1364,7 +1388,7 @@
     33,
     27
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -1392,7 +1416,7 @@
     95,
     79
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1420,7 +1444,7 @@
     28,
     23
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -1448,7 +1472,7 @@
     40,
     29
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1476,7 +1500,7 @@
     25,
     36
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1504,7 +1528,7 @@
     33,
     27
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1532,7 +1556,7 @@
     9,
     11
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -1560,7 +1584,7 @@
     40,
     20
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -1588,7 +1612,7 @@
     12,
     12
    ],
-   "style": "bstyle-005",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -1616,7 +1640,7 @@
     97,
     78
    ],
-   "style": "bstyle-003",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -1644,7 +1668,7 @@
     40,
     33
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -1672,7 +1696,7 @@
     16,
     17
    ],
-   "style": "bstyle-005",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -1700,7 +1724,7 @@
     64,
     48
    ],
-   "style": "bstyle-000",
+   "style": "s012",
    "style_rep": false
   },
   {
@@ -1728,7 +1752,7 @@
     14,
     16
    ],
-   "style": "bstyle-001",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1756,7 +1780,7 @@
     21,
     30
    ],
-   "style": "bstyle-000",
+   "style": "s012",
    "style_rep": false
   },
   {
@@ -1784,7 +1808,7 @@
     20,
     27
    ],
-   "style": "bstyle-000",
+   "style": "s012",
    "style_rep": false
   },
   {
@@ -1812,7 +1836,7 @@
     32,
     27
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -1840,7 +1864,7 @@
     26,
     24
    ],
-   "style": "bstyle-001",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1868,7 +1892,7 @@
     68,
     89
    ],
-   "style": "bstyle-001",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1896,7 +1920,7 @@
     18,
     26
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -1924,7 +1948,7 @@
     116,
     77
    ],
-   "style": "bstyle-001",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -1951,9 +1975,7 @@
     169,
     127,
     66
-   ],
-   "style": "bstyle-006",
-   "style_rep": false
+   ]
   },
   {
    "id": "body/body-img-4003-2",
@@ -1980,8 +2002,8 @@
     13,
     15
    ],
-   "style": "bstyle-003",
-   "style_rep": false
+   "style": "s014",
+   "style_rep": true
   },
   {
    "id": "body/body-img-4004",
@@ -2008,7 +2030,7 @@
     29,
     30
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2036,7 +2058,7 @@
     20,
     17
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2064,7 +2086,7 @@
     46,
     38
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2092,7 +2114,7 @@
     22,
     19
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2120,7 +2142,7 @@
     27,
     28
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2148,7 +2170,7 @@
     18,
     29
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2176,7 +2198,7 @@
     97,
     59
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2204,7 +2226,7 @@
     21,
     33
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2232,7 +2254,7 @@
     33,
     36
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2260,7 +2282,7 @@
     25,
     23
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2288,7 +2310,7 @@
     73,
     71
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2316,7 +2338,7 @@
     24,
     23
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2344,7 +2366,7 @@
     39,
     29
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2372,7 +2394,7 @@
     65,
     45
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2400,7 +2422,7 @@
     26,
     27
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2428,7 +2450,7 @@
     17,
     30
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2456,7 +2478,7 @@
     30,
     24
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2484,7 +2506,7 @@
     34,
     36
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2512,7 +2534,7 @@
     24,
     22
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2540,7 +2562,7 @@
     17,
     22
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2568,7 +2590,7 @@
     39,
     31
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2596,7 +2618,7 @@
     65,
     45
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2624,7 +2646,7 @@
     41,
     33
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2652,7 +2674,7 @@
     22,
     29
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2680,7 +2702,7 @@
     44,
     37
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2708,7 +2730,7 @@
     22,
     19
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2736,7 +2758,7 @@
     27,
     27
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2764,7 +2786,7 @@
     18,
     30
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2792,7 +2814,7 @@
     21,
     35
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2820,7 +2842,7 @@
     18,
     19
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2848,7 +2870,7 @@
     42,
     37
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -2876,7 +2898,7 @@
     23,
     22
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2904,7 +2926,7 @@
     16,
     22
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2932,7 +2954,7 @@
     31,
     22
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2960,7 +2982,7 @@
     29,
     34
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -2987,9 +3009,7 @@
     38,
     28,
     25
-   ],
-   "style": "bstyle-004",
-   "style_rep": false
+   ]
   },
   {
    "id": "body/body-img-4047",
@@ -3016,7 +3036,7 @@
     20,
     30
    ],
-   "style": "bstyle-000",
+   "style": "s012",
    "style_rep": false
   },
   {
@@ -3044,7 +3064,7 @@
     23,
     28
    ],
-   "style": "bstyle-000",
+   "style": "s012",
    "style_rep": false
   },
   {
@@ -3072,7 +3092,7 @@
     32,
     26
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -3100,7 +3120,7 @@
     66,
     50
    ],
-   "style": "bstyle-000",
+   "style": "s012",
    "style_rep": false
   },
   {
@@ -3128,7 +3148,7 @@
     49,
     31
    ],
-   "style": "bstyle-000",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3156,7 +3176,7 @@
     7,
     11
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3184,7 +3204,7 @@
     16,
     12
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3212,7 +3232,7 @@
     12,
     14
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3240,7 +3260,7 @@
     16,
     17
    ],
-   "style": "bstyle-005",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3268,8 +3288,8 @@
     62,
     50
    ],
-   "style": "bstyle-005",
-   "style_rep": true
+   "style": "s011",
+   "style_rep": false
   },
   {
    "id": "body/body-img-4058",
@@ -3296,7 +3316,7 @@
     14,
     13
    ],
-   "style": "bstyle-005",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3324,7 +3344,7 @@
     12,
     11
    ],
-   "style": "bstyle-001",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3352,7 +3372,7 @@
     14,
     17
    ],
-   "style": "bstyle-005",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3380,7 +3400,7 @@
     16,
     12
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3408,7 +3428,7 @@
     55,
     44
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3436,7 +3456,7 @@
     41,
     30
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3464,7 +3484,7 @@
     25,
     36
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3492,7 +3512,7 @@
     75,
     43
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3520,7 +3540,7 @@
     52,
     42
    ],
-   "style": "bstyle-001",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3548,7 +3568,7 @@
     34,
     39
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -3576,7 +3596,7 @@
     18,
     17
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3604,7 +3624,7 @@
     24,
     19
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3632,7 +3652,7 @@
     16,
     22
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3660,7 +3680,7 @@
     22,
     23
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3688,7 +3708,7 @@
     64,
     32
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3716,7 +3736,7 @@
     19,
     29
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3744,7 +3764,7 @@
     35,
     28
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -3772,7 +3792,7 @@
     8,
     12
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3800,7 +3820,7 @@
     135,
     89
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3828,7 +3848,7 @@
     114,
     94
    ],
-   "style": "bstyle-001",
+   "style": "s015",
    "style_rep": false
   },
   {
@@ -3856,7 +3876,7 @@
     42,
     63
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -3884,7 +3904,7 @@
     13,
     12
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -3912,7 +3932,7 @@
     55,
     68
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -3940,7 +3960,7 @@
     50,
     25
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -3968,7 +3988,7 @@
     29,
     22
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -3996,7 +4016,7 @@
     19,
     11
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4024,7 +4044,7 @@
     88,
     37
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4052,7 +4072,7 @@
     67,
     46
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4080,7 +4100,7 @@
     32,
     57
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4108,7 +4128,7 @@
     15,
     45
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4136,7 +4156,7 @@
     70,
     46
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4164,7 +4184,7 @@
     40,
     41
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4192,7 +4212,7 @@
     10,
     10
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4220,7 +4240,7 @@
     133,
     73
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4248,7 +4268,7 @@
     29,
     55
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4276,7 +4296,7 @@
     53,
     53
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4304,7 +4324,7 @@
     23,
     47
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4332,7 +4352,7 @@
     102,
     71
    ],
-   "style": "bstyle-001",
+   "style": "s009",
    "style_rep": false
   },
   {
@@ -4360,7 +4380,7 @@
     6,
     6
    ],
-   "style": "bstyle-001",
+   "style": "s009",
    "style_rep": false
   },
   {
@@ -4387,9 +4407,7 @@
     29,
     58,
     93
-   ],
-   "style": "bstyle-007",
-   "style_rep": true
+   ]
   },
   {
    "id": "body/body-img-4080-3",
@@ -4416,7 +4434,7 @@
     38,
     79
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4444,7 +4462,7 @@
     63,
     63
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4472,7 +4490,7 @@
     121,
     91
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4500,7 +4518,7 @@
     122,
     56
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4528,7 +4546,7 @@
     39,
     64
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -4556,7 +4574,7 @@
     122,
     101
    ],
-   "style": "bstyle-001",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -4584,7 +4602,7 @@
     11,
     12
    ],
-   "style": "bstyle-001",
+   "style": "s015",
    "style_rep": false
   },
   {
@@ -4612,7 +4630,7 @@
     18,
     45
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -4640,8 +4658,8 @@
     123,
     93
    ],
-   "style": "bstyle-000",
-   "style_rep": false
+   "style": "s006",
+   "style_rep": true
   },
   {
    "id": "body/body-img-4079-2",
@@ -4668,7 +4686,7 @@
     83,
     56
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -4696,7 +4714,7 @@
     38,
     66
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -4724,7 +4742,7 @@
     68,
     70
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -4752,8 +4770,8 @@
     119,
     87
    ],
-   "style": "bstyle-000",
-   "style_rep": false
+   "style": "s011",
+   "style_rep": true
   },
   {
    "id": "body/body-img-4079-6",
@@ -4780,7 +4798,7 @@
     58,
     35
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -4808,8 +4826,8 @@
     46,
     38
    ],
-   "style": "bstyle-008",
-   "style_rep": true
+   "style": "s006",
+   "style_rep": false
   },
   {
    "id": "body/body-img-4081-2",
@@ -4836,8 +4854,8 @@
     61,
     48
    ],
-   "style": "bstyle-000",
-   "style_rep": false
+   "style": "s013",
+   "style_rep": true
   },
   {
    "id": "body/body-img-4081-3",
@@ -4864,7 +4882,7 @@
     114,
     84
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -4892,7 +4910,7 @@
     43,
     70
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4920,7 +4938,7 @@
     22,
     21
    ],
-   "style": "bstyle-000",
+   "style": "s013",
    "style_rep": false
   },
   {
@@ -4948,7 +4966,7 @@
     127,
     50
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -4976,7 +4994,7 @@
     131,
     96
    ],
-   "style": "bstyle-003",
+   "style": "s007",
    "style_rep": true
   },
   {
@@ -5004,8 +5022,8 @@
     54,
     33
    ],
-   "style": "bstyle-009",
-   "style_rep": false
+   "style": "s016",
+   "style_rep": true
   },
   {
    "id": "body/body-img-4083-3",
@@ -5032,7 +5050,7 @@
     93,
     61
    ],
-   "style": "bstyle-003",
+   "style": "s014",
    "style_rep": false
   },
   {
@@ -5060,7 +5078,7 @@
     76,
     80
    ],
-   "style": "bstyle-003",
+   "style": "s014",
    "style_rep": false
   },
   {
@@ -5088,7 +5106,7 @@
     42,
     70
    ],
-   "style": "bstyle-003",
+   "style": "s014",
    "style_rep": false
   },
   {
@@ -5116,7 +5134,7 @@
     53,
     44
    ],
-   "style": "bstyle-001",
+   "style": "s015",
    "style_rep": true
   },
   {
@@ -5144,7 +5162,7 @@
     116,
     93
    ],
-   "style": "bstyle-001",
+   "style": "s009",
    "style_rep": false
   },
   {
@@ -5172,7 +5190,7 @@
     59,
     62
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -5200,7 +5218,7 @@
     18,
     30
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -5228,7 +5246,7 @@
     121,
     94
    ],
-   "style": "bstyle-000",
+   "style": "s011",
    "style_rep": false
   },
   {
@@ -5256,7 +5274,7 @@
     62,
     41
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -5278,7 +5296,9 @@
     53,
     25,
     28
-   ]
+   ],
+   "style": "s022",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4088-2",
@@ -5299,7 +5319,9 @@
     68,
     72,
     72
-   ]
+   ],
+   "style": "s022",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4088-3",
@@ -5320,7 +5342,9 @@
     55,
     49,
     43
-   ]
+   ],
+   "style": "s022",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4088-4",
@@ -5341,7 +5365,9 @@
     35,
     39,
     40
-   ]
+   ],
+   "style": "s022",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4088-5",
@@ -5362,7 +5388,9 @@
     42,
     45,
     45
-   ]
+   ],
+   "style": "s022",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4088-6",
@@ -5383,7 +5411,9 @@
     54,
     23,
     20
-   ]
+   ],
+   "style": "s022",
+   "style_rep": true
   },
   {
    "id": "pickup_humbucker/emg-img-4089-1",
@@ -5404,7 +5434,9 @@
     73,
     58,
     45
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-2",
@@ -5425,7 +5457,9 @@
     39,
     73,
     30
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-3",
@@ -5446,7 +5480,9 @@
     60,
     33,
     31
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-4",
@@ -5467,7 +5503,9 @@
     42,
     59,
     65
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-5",
@@ -5488,7 +5526,9 @@
     113,
     25,
     92
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-6",
@@ -5509,7 +5549,9 @@
     73,
     75,
     71
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-7",
@@ -5530,7 +5572,9 @@
     111,
     102,
     78
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-8",
@@ -5551,7 +5595,9 @@
     172,
     160,
     152
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-9",
@@ -5572,7 +5618,9 @@
     64,
     55,
     45
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-10",
@@ -5593,7 +5641,9 @@
     42,
     44,
     39
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-11",
@@ -5614,7 +5664,9 @@
     48,
     49,
     45
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-12",
@@ -5635,7 +5687,9 @@
     74,
     66,
     57
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-13",
@@ -5656,7 +5710,9 @@
     118,
     35,
     97
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-14",
@@ -5677,7 +5733,9 @@
     62,
     30,
     22
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-15",
@@ -5698,7 +5756,9 @@
     112,
     103,
     79
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-16",
@@ -5719,7 +5779,9 @@
     151,
     129,
     116
-   ]
+   ],
+   "style": "s023",
+   "style_rep": true
   },
   {
    "id": "body/img-3982-1",
@@ -5746,7 +5808,7 @@
     74,
     28
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -5774,7 +5836,7 @@
     20,
     33
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -5805,7 +5867,9 @@
     109,
     58,
     38
-   ]
+   ],
+   "style": "s024",
+   "style_rep": false
   },
   {
    "id": "neck/neck-mahogany-multiscale",
@@ -5835,7 +5899,9 @@
     109,
     57,
     37
-   ]
+   ],
+   "style": "s025",
+   "style_rep": false
   },
   {
    "id": "neck/neck-black-walnut-straight",
@@ -5865,7 +5931,9 @@
     66,
     47,
     34
-   ]
+   ],
+   "style": "s024",
+   "style_rep": false
   },
   {
    "id": "neck/neck-black-walnut-multiscale",
@@ -5895,7 +5963,9 @@
     66,
     47,
     34
-   ]
+   ],
+   "style": "s025",
+   "style_rep": false
   },
   {
    "id": "neck/neck-maple-straight",
@@ -5925,7 +5995,9 @@
     207,
     185,
     142
-   ]
+   ],
+   "style": "s024",
+   "style_rep": true
   },
   {
    "id": "neck/neck-maple-multiscale",
@@ -5955,7 +6027,9 @@
     207,
     185,
     142
-   ]
+   ],
+   "style": "s025",
+   "style_rep": true
   },
   {
    "id": "neck/neck-purpleheart-straight",
@@ -5985,7 +6059,9 @@
     99,
     47,
     90
-   ]
+   ],
+   "style": "s024",
+   "style_rep": false
   },
   {
    "id": "neck/neck-purpleheart-multiscale",
@@ -6015,7 +6091,9 @@
     99,
     46,
     90
-   ]
+   ],
+   "style": "s025",
+   "style_rep": false
   },
   {
    "id": "neck/neck-acacia-straight",
@@ -6045,7 +6123,9 @@
     122,
     83,
     44
-   ]
+   ],
+   "style": "s024",
+   "style_rep": false
   },
   {
    "id": "neck/neck-acacia-multiscale",
@@ -6075,7 +6155,9 @@
     123,
     84,
     44
-   ]
+   ],
+   "style": "s025",
+   "style_rep": false
   },
   {
    "id": "neck/neck-ebony-straight",
@@ -6105,7 +6187,9 @@
     35,
     31,
     28
-   ]
+   ],
+   "style": "s024",
+   "style_rep": false
   },
   {
    "id": "neck/neck-ebony-multiscale",
@@ -6135,7 +6219,9 @@
     35,
     30,
     27
-   ]
+   ],
+   "style": "s025",
+   "style_rep": false
   },
   {
    "id": "neck/neck-wenge-straight",
@@ -6165,7 +6251,9 @@
     42,
     32,
     23
-   ]
+   ],
+   "style": "s024",
+   "style_rep": false
   },
   {
    "id": "neck/neck-wenge-multiscale",
@@ -6195,7 +6283,9 @@
     43,
     32,
     23
-   ]
+   ],
+   "style": "s025",
+   "style_rep": false
   },
   {
    "id": "neck/neck-spiketooth-fanned",
@@ -6251,9 +6341,7 @@
     65,
     64,
     59
-   ],
-   "style": "bstyle-010",
-   "style_rep": true
+   ]
   },
   {
    "id": "body/body-img-4083-2",
@@ -6280,7 +6368,7 @@
     54,
     33
    ],
-   "style": "bstyle-009",
+   "style": "s016",
    "style_rep": false
   },
   {
@@ -6302,7 +6390,9 @@
     70,
     54,
     41
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/emg-img-4089-2b",
@@ -6323,7 +6413,9 @@
     38,
     76,
     28
-   ]
+   ],
+   "style": "s023",
+   "style_rep": false
   },
   {
    "id": "body/body-img-3928-1",
@@ -6350,7 +6442,7 @@
     129,
     101
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -6378,7 +6470,7 @@
     38,
     61
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -6406,7 +6498,7 @@
     143,
     95
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -6434,7 +6526,7 @@
     51,
     95
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -6462,7 +6554,7 @@
     101,
     61
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -6490,7 +6582,7 @@
     166,
     119
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -6518,7 +6610,7 @@
     73,
     43
    ],
-   "style": "bstyle-000",
+   "style": "s021",
    "style_rep": false
   },
   {
@@ -6546,8 +6638,8 @@
     185,
     154
    ],
-   "style": "bstyle-011",
-   "style_rep": true
+   "style": "s026",
+   "style_rep": false
   },
   {
    "id": "body/body-blank-ash-2",
@@ -6574,7 +6666,7 @@
     182,
     151
    ],
-   "style": "bstyle-012",
+   "style": "s026",
    "style_rep": false
   },
   {
@@ -6602,8 +6694,8 @@
     173,
     140
    ],
-   "style": "bstyle-012",
-   "style_rep": true
+   "style": "s026",
+   "style_rep": false
   },
   {
    "id": "body/body-blank-ash-4",
@@ -6630,7 +6722,7 @@
     170,
     138
    ],
-   "style": "bstyle-013",
+   "style": "s026",
    "style_rep": true
   },
   {
@@ -6658,7 +6750,7 @@
     66,
     66
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -6686,7 +6778,7 @@
     61,
     41
    ],
-   "style": "bstyle-001",
+   "style": "s007",
    "style_rep": false
   },
   {
@@ -6714,7 +6806,7 @@
     38,
     61
    ],
-   "style": "bstyle-000",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -6742,7 +6834,7 @@
     64,
     66
    ],
-   "style": "bstyle-003",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -6770,8 +6862,8 @@
     65,
     45
    ],
-   "style": "bstyle-002",
-   "style_rep": true
+   "style": "s006",
+   "style_rep": false
   },
   {
    "id": "body/body-flame-charcoal",
@@ -6798,7 +6890,7 @@
     66,
     66
    ],
-   "style": "bstyle-002",
+   "style": "s006",
    "style_rep": false
   },
   {
@@ -6826,7 +6918,7 @@
     96,
     73
    ],
-   "style": "bstyle-001",
+   "style": "s010",
    "style_rep": false
   },
   {
@@ -6854,8 +6946,8 @@
     135,
     98
    ],
-   "style": "bstyle-009",
-   "style_rep": true
+   "style": "s027",
+   "style_rep": false
   },
   {
    "id": "body/body-spike-10",
@@ -6882,7 +6974,7 @@
     78,
     79
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -6910,7 +7002,7 @@
     160,
     93
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -6938,7 +7030,7 @@
     9,
     9
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -6966,7 +7058,7 @@
     93,
     63
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -6994,7 +7086,7 @@
     89,
     100
    ],
-   "style": "bstyle-003",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -7022,7 +7114,7 @@
     59,
     47
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -7050,7 +7142,7 @@
     59,
     39
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -7078,7 +7170,7 @@
     44,
     70
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -7106,7 +7198,7 @@
     47,
     73
    ],
-   "style": "bstyle-003",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -7134,7 +7226,7 @@
     129,
     103
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": false
   },
   {
@@ -7162,7 +7254,7 @@
     133,
     101
    ],
-   "style": "bstyle-014",
+   "style": "s027",
    "style_rep": true
   },
   {
@@ -7190,7 +7282,7 @@
     117,
     88
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7218,7 +7310,7 @@
     71,
     73
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7246,7 +7338,7 @@
     140,
     92
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": true
   },
   {
@@ -7274,7 +7366,7 @@
     13,
     14
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7302,7 +7394,7 @@
     86,
     63
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7330,7 +7422,7 @@
     80,
     88
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7358,7 +7450,7 @@
     56,
     46
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7386,7 +7478,7 @@
     60,
     41
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7414,7 +7506,7 @@
     42,
     64
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7442,7 +7534,7 @@
     44,
     64
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7470,7 +7562,7 @@
     119,
     97
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7498,7 +7590,7 @@
     122,
     94
    ],
-   "style": "bstyle-015",
+   "style": "s028",
    "style_rep": false
   },
   {
@@ -7526,8 +7618,8 @@
     100,
     59
    ],
-   "style": "bstyle-003",
-   "style_rep": false
+   "style": "s008",
+   "style_rep": true
   },
   {
    "id": "body/body-thorn-tan",
@@ -7554,7 +7646,7 @@
     124,
     96
    ],
-   "style": "bstyle-006",
+   "style": "s012",
    "style_rep": true
   },
   {
@@ -7582,8 +7674,8 @@
     57,
     39
    ],
-   "style": "bstyle-003",
-   "style_rep": false
+   "style": "s010",
+   "style_rep": true
   },
   {
    "id": "bridge/bridge-fan8-1",
@@ -7604,7 +7696,9 @@
     73,
     73,
     72
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-2",
@@ -7625,7 +7719,9 @@
     193,
     162,
     103
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-3",
@@ -7646,7 +7742,9 @@
     195,
     164,
     105
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-4",
@@ -7667,7 +7765,9 @@
     201,
     200,
     200
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-5",
@@ -7688,7 +7788,9 @@
     73,
     73,
     72
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-6",
@@ -7709,7 +7811,9 @@
     193,
     163,
     104
-   ]
+   ],
+   "style": "s029",
+   "style_rep": true
   },
   {
    "id": "bridge/bridge-fan8-7",
@@ -7730,7 +7834,9 @@
     72,
     72,
     72
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-8",
@@ -7751,7 +7857,9 @@
     197,
     196,
     197
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fan8-9",
@@ -7772,7 +7880,9 @@
     196,
     195,
     195
-   ]
+   ],
+   "style": "s029",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-1",
@@ -7793,7 +7903,9 @@
     165,
     153,
     134
-   ]
+   ],
+   "style": "s030",
+   "style_rep": true
   },
   {
    "id": "pickup_cover/cover-chrome-2",
@@ -7814,7 +7926,9 @@
     157,
     157,
     152
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-3",
@@ -7835,7 +7949,9 @@
     149,
     149,
     144
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-4",
@@ -7856,7 +7972,9 @@
     101,
     100,
     98
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-5",
@@ -7877,7 +7995,9 @@
     87,
     102,
     84
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-6",
@@ -7898,7 +8018,9 @@
     112,
     62,
     59
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-7",
@@ -7919,7 +8041,9 @@
     64,
     86,
     108
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-chrome-8",
@@ -7940,7 +8064,9 @@
     112,
     87,
     107
-   ]
+   ],
+   "style": "s030",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-1",
@@ -7961,7 +8087,9 @@
     163,
     152,
     133
-   ]
+   ],
+   "style": "s031",
+   "style_rep": true
   },
   {
    "id": "pickup_cover/cover-color-2",
@@ -7982,7 +8110,9 @@
     151,
     151,
     148
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-3",
@@ -8003,7 +8133,9 @@
     146,
     146,
     141
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-4",
@@ -8024,7 +8156,9 @@
     76,
     76,
     74
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-5",
@@ -8045,7 +8179,9 @@
     87,
     103,
     85
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-6",
@@ -8066,7 +8202,9 @@
     115,
     69,
     67
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-7",
@@ -8087,7 +8225,9 @@
     64,
     87,
     110
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-color-8",
@@ -8108,7 +8248,9 @@
     112,
     87,
     108
-   ]
+   ],
+   "style": "s031",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-1",
@@ -8129,7 +8271,9 @@
     153,
     137,
     109
-   ]
+   ],
+   "style": "s032",
+   "style_rep": true
   },
   {
    "id": "pickup_cover/cover-gold-2",
@@ -8150,7 +8294,9 @@
     151,
     151,
     149
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-3",
@@ -8171,7 +8317,9 @@
     121,
     121,
     117
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-4",
@@ -8192,7 +8340,9 @@
     88,
     87,
     85
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-5",
@@ -8213,7 +8363,9 @@
     88,
     102,
     89
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-6",
@@ -8234,7 +8386,9 @@
     112,
     84,
     81
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-7",
@@ -8255,7 +8409,9 @@
     77,
     89,
     105
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-8",
@@ -8276,7 +8432,9 @@
     112,
     93,
     111
-   ]
+   ],
+   "style": "s032",
+   "style_rep": false
   },
   {
    "id": "headstock/headstock-darkwood",
@@ -8302,7 +8460,9 @@
     77,
     62,
     53
-   ]
+   ],
+   "style": "s002",
+   "style_rep": false
   },
   {
    "id": "headstock/headstock-hardwood",
@@ -8328,7 +8488,9 @@
     79,
     61,
     52
-   ]
+   ],
+   "style": "s002",
+   "style_rep": true
   },
   {
    "id": "neck/neck-arrow-walnut-01",
@@ -8358,7 +8520,9 @@
     63,
     45,
     35
-   ]
+   ],
+   "style": "s033",
+   "style_rep": true
   },
   {
    "id": "neck/neck-arrow-walnut-02",
@@ -8388,7 +8552,9 @@
     59,
     46,
     37
-   ]
+   ],
+   "style": "s033",
+   "style_rep": false
   },
   {
    "id": "neck/neck-arrow-walnut-03",
@@ -8418,7 +8584,9 @@
     59,
     45,
     36
-   ]
+   ],
+   "style": "s033",
+   "style_rep": false
   },
   {
    "id": "neck/neck-arrow-walnut-04",
@@ -8448,7 +8616,9 @@
     59,
     45,
     36
-   ]
+   ],
+   "style": "s033",
+   "style_rep": false
   },
   {
    "id": "neck/neck-arrow-walnut-05",
@@ -8478,7 +8648,9 @@
     61,
     44,
     35
-   ]
+   ],
+   "style": "s033",
+   "style_rep": false
   },
   {
    "id": "neck/neck-arrow-walnut-06",
@@ -8508,7 +8680,9 @@
     61,
     44,
     35
-   ]
+   ],
+   "style": "s033",
+   "style_rep": false
   },
   {
    "id": "neck/neck-banana-amber-01",
@@ -8538,7 +8712,9 @@
     123,
     113,
     106
-   ]
+   ],
+   "style": "s034",
+   "style_rep": false
   },
   {
    "id": "neck/neck-banana-black-01",
@@ -8568,7 +8744,9 @@
     103,
     101,
     100
-   ]
+   ],
+   "style": "s034",
+   "style_rep": false
   },
   {
    "id": "neck/neck-banana-black-02",
@@ -8598,7 +8776,9 @@
     103,
     101,
     100
-   ]
+   ],
+   "style": "s034",
+   "style_rep": false
   },
   {
    "id": "neck/neck-banana-pale-flame-01",
@@ -8628,7 +8808,9 @@
     125,
     114,
     104
-   ]
+   ],
+   "style": "s034",
+   "style_rep": true
   },
   {
    "id": "neck/neck-banana-quilt-amber-01",
@@ -8658,7 +8840,9 @@
     117,
     108,
     101
-   ]
+   ],
+   "style": "s034",
+   "style_rep": false
   },
   {
    "id": "neck/neck-spike-flame-fade-01",
@@ -8688,7 +8872,9 @@
     129,
     86,
     47
-   ]
+   ],
+   "style": "s035",
+   "style_rep": true
   },
   {
    "id": "neck/neck-spike-flame-fade-02",
@@ -8718,7 +8904,9 @@
     129,
     86,
     47
-   ]
+   ],
+   "style": "s035",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-amber-01",
@@ -8748,7 +8936,9 @@
     76,
     60,
     43
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-amber-02",
@@ -8778,7 +8968,9 @@
     72,
     60,
     46
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-flame-01",
@@ -8808,7 +9000,9 @@
     71,
     59,
     46
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-flame-amber-01",
@@ -8838,7 +9032,9 @@
     72,
     59,
     46
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-flame-amber-02",
@@ -8868,7 +9064,9 @@
     71,
     59,
     46
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-quilt-amber-01",
@@ -8898,7 +9096,9 @@
     75,
     54,
     37
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-quilt-amber-02",
@@ -8928,7 +9128,9 @@
     72,
     59,
     44
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-quilt-amber-03",
@@ -8958,7 +9160,9 @@
     75,
     54,
     37
-   ]
+   ],
+   "style": "s036",
+   "style_rep": false
   },
   {
    "id": "neck/neck-sweep-tiger-walnut-01",
@@ -8988,7 +9192,9 @@
     123,
     113,
     106
-   ]
+   ],
+   "style": "s036",
+   "style_rep": true
   },
   {
    "id": "neck/neck-vclaw-black-01",
@@ -9018,7 +9224,9 @@
     30,
     30,
     29
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-dark-walnut-01",
@@ -9048,7 +9256,9 @@
     77,
     55,
     41
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-flame-amber-01",
@@ -9078,7 +9288,9 @@
     81,
     63,
     41
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-flame-amber-02",
@@ -9108,7 +9320,9 @@
     150,
     103,
     57
-   ]
+   ],
+   "style": "s037",
+   "style_rep": true
   },
   {
    "id": "neck/neck-vclaw-quilt-amber-01",
@@ -9138,7 +9352,9 @@
     81,
     63,
     41
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-quilt-amber-02",
@@ -9168,7 +9384,9 @@
     80,
     63,
     42
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-tiger-amber-01",
@@ -9198,7 +9416,9 @@
     151,
     102,
     55
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-wenge-01",
@@ -9228,7 +9448,9 @@
     77,
     55,
     41
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "neck/neck-vclaw-wenge-02",
@@ -9258,7 +9480,9 @@
     85,
     62,
     47
-   ]
+   ],
+   "style": "s037",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-bloodcult",
@@ -9279,7 +9503,9 @@
     134,
     108,
     107
-   ]
+   ],
+   "style": "s017",
+   "style_rep": true
   },
   {
    "id": "pickup_humbucker/pickup-bloodskull-1",
@@ -9300,7 +9526,9 @@
     102,
     101,
     99
-   ]
+   ],
+   "style": "s017",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-bloodskull-2",
@@ -9321,7 +9549,9 @@
     112,
     95,
     90
-   ]
+   ],
+   "style": "s017",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-bronzeskull",
@@ -9342,7 +9572,9 @@
     99,
     84,
     70
-   ]
+   ],
+   "style": "s017",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-crimsonwrap",
@@ -9363,7 +9595,9 @@
     74,
     24,
     32
-   ]
+   ],
+   "style": "s017",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-doomthorn-s1",
@@ -9384,7 +9618,9 @@
     78,
     67,
     62
-   ]
+   ],
+   "style": "s018",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-doomthorn-s2",
@@ -9405,7 +9641,9 @@
     72,
     62,
     58
-   ]
+   ],
+   "style": "s019",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-eternal-damn-s1",
@@ -9426,7 +9664,9 @@
     48,
     45,
     44
-   ]
+   ],
+   "style": "s018",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-eternal-damn-s2",
@@ -9447,7 +9687,9 @@
     50,
     46,
     45
-   ]
+   ],
+   "style": "s019",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-goldpole-b-s1",
@@ -9510,7 +9752,9 @@
     78,
     87,
     97
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-1-s2",
@@ -9531,7 +9775,9 @@
     81,
     95,
     92
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-2-s1",
@@ -9552,7 +9798,9 @@
     70,
     74,
     93
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-2-s2",
@@ -9573,7 +9821,9 @@
     70,
     78,
     81
-   ]
+   ],
+   "style": "s038",
+   "style_rep": true
   },
   {
    "id": "pickup_humbucker/pickup-holo-3-s1",
@@ -9594,7 +9844,9 @@
     71,
     78,
     98
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-3-s2",
@@ -9615,7 +9867,9 @@
     73,
     91,
     91
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-4-s1",
@@ -9636,7 +9890,9 @@
     74,
     73,
     93
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-4-s2",
@@ -9657,7 +9913,9 @@
     72,
     86,
     89
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-5-s1",
@@ -9678,7 +9936,9 @@
     65,
     70,
     87
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-5-s2",
@@ -9699,7 +9959,9 @@
     70,
     83,
     82
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-6-s1",
@@ -9720,7 +9982,9 @@
     71,
     76,
     92
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-6-s2",
@@ -9741,7 +10005,9 @@
     73,
     91,
     88
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-7-s1",
@@ -9762,7 +10028,9 @@
     71,
     75,
     91
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-7-s2",
@@ -9783,7 +10051,9 @@
     70,
     86,
     86
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-8-s1",
@@ -9804,7 +10074,9 @@
     60,
     68,
     84
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-8-s2",
@@ -9825,7 +10097,9 @@
     67,
     82,
     82
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-9-s1",
@@ -9846,7 +10120,9 @@
     69,
     70,
     89
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-holo-9-s2",
@@ -9867,7 +10143,9 @@
     70,
     86,
     84
-   ]
+   ],
+   "style": "s038",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-ironskull-1",
@@ -9888,7 +10166,9 @@
     120,
     120,
     117
-   ]
+   ],
+   "style": "s017",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-ironskull-2",
@@ -9909,7 +10189,9 @@
     106,
     106,
     104
-   ]
+   ],
+   "style": "s017",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-necroclaw-s1",
@@ -9930,7 +10212,9 @@
     65,
     61,
     60
-   ]
+   ],
+   "style": "s018",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-necroclaw-s2",
@@ -9951,7 +10235,9 @@
     64,
     60,
     59
-   ]
+   ],
+   "style": "s019",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-necroking",
@@ -9972,7 +10258,9 @@
     73,
     69,
     67
-   ]
+   ],
+   "style": "s020",
+   "style_rep": true
   },
   {
    "id": "pickup_humbucker/pickup-ornate-1-s1",
@@ -10014,7 +10302,9 @@
     41,
     39,
     39
-   ]
+   ],
+   "style": "s019",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-shattergod-s1",
@@ -10035,7 +10325,9 @@
     59,
     63,
     55
-   ]
+   ],
+   "style": "s018",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-shattergod-s2",
@@ -10056,7 +10348,9 @@
     61,
     65,
     56
-   ]
+   ],
+   "style": "s019",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-skullreaver-s1",
@@ -10077,7 +10371,9 @@
     51,
     49,
     49
-   ]
+   ],
+   "style": "s018",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-spikeskull",
@@ -10098,7 +10394,9 @@
     72,
     69,
     66
-   ]
+   ],
+   "style": "s020",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-steamgear-s1",
@@ -10119,7 +10417,9 @@
     146,
     133,
     123
-   ]
+   ],
+   "style": "s018",
+   "style_rep": true
   },
   {
    "id": "pickup_humbucker/pickup-steamgear-s2",
@@ -10140,7 +10440,9 @@
     136,
     123,
     112
-   ]
+   ],
+   "style": "s019",
+   "style_rep": true
   },
   {
    "id": "pickup_humbucker/pickup-violetvine",
@@ -10161,7 +10463,9 @@
     83,
     77,
     78
-   ]
+   ],
+   "style": "s020",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-warspike-s1",
@@ -10182,7 +10486,9 @@
     80,
     76,
     77
-   ]
+   ],
+   "style": "s018",
+   "style_rep": false
   },
   {
    "id": "pickup_humbucker/pickup-warspike-s2",
@@ -10203,7 +10509,9 @@
     78,
     73,
     75
-   ]
+   ],
+   "style": "s019",
+   "style_rep": false
   },
   {
    "id": "bridge/bridge-fixed-8string",
@@ -10251,7 +10559,7 @@
     110,
     80
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10279,7 +10587,7 @@
     79,
     51
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10307,8 +10615,8 @@
     110,
     106
    ],
-   "style": "bstyle-016",
-   "style_rep": true
+   "style": "s039",
+   "style_rep": false
   },
   {
    "id": "body/body-dagger2-12-variant",
@@ -10335,7 +10643,7 @@
     132,
     98
    ],
-   "style": "bstyle-017",
+   "style": "s039",
    "style_rep": true
   },
   {
@@ -10363,7 +10671,7 @@
     35,
     33
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10391,7 +10699,7 @@
     78,
     78
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10419,7 +10727,7 @@
     85,
     62
    ],
-   "style": "bstyle-017",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10447,7 +10755,7 @@
     35,
     48
    ],
-   "style": "bstyle-018",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10475,7 +10783,7 @@
     126,
     83
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10503,7 +10811,7 @@
     45,
     37
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10531,8 +10839,8 @@
     48,
     66
    ],
-   "style": "bstyle-019",
-   "style_rep": true
+   "style": "s039",
+   "style_rep": false
   },
   {
    "id": "body/body-dagger2-9",
@@ -10559,7 +10867,7 @@
     67,
     44
    ],
-   "style": "bstyle-000",
+   "style": "s039",
    "style_rep": false
   },
   {
@@ -10587,7 +10895,7 @@
     142,
     102
    ],
-   "style": "bstyle-020",
+   "style": "s040",
    "style_rep": true
   },
   {
@@ -10615,7 +10923,7 @@
     66,
     65
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10643,7 +10951,7 @@
     129,
     56
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10671,8 +10979,8 @@
     19,
     19
    ],
-   "style": "bstyle-021",
-   "style_rep": true
+   "style": "s040",
+   "style_rep": false
   },
   {
    "id": "body/body-flame2-2",
@@ -10699,7 +11007,7 @@
     85,
     56
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10727,7 +11035,7 @@
     88,
     100
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10755,8 +11063,8 @@
     59,
     46
    ],
-   "style": "bstyle-022",
-   "style_rep": true
+   "style": "s040",
+   "style_rep": false
   },
   {
    "id": "body/body-flame2-5",
@@ -10783,7 +11091,7 @@
     63,
     41
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10811,7 +11119,7 @@
     38,
     60
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10839,7 +11147,7 @@
     42,
     65
    ],
-   "style": "bstyle-002",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10867,7 +11175,7 @@
     143,
     119
    ],
-   "style": "bstyle-021",
+   "style": "s040",
    "style_rep": false
   },
   {
@@ -10895,8 +11203,8 @@
     128,
     99
    ],
-   "style": "bstyle-018",
-   "style_rep": true
+   "style": "s040",
+   "style_rep": false
   }
  ]
 }
