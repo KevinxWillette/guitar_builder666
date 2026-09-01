@@ -11023,29 +11023,8 @@
    "style_rep": false
   },
   {
-   "id": "bridge/bridge-fixed-skulls",
-   "category": "bridge",
-   "file": "bridge/bridge-fixed-skulls.png",
-   "thumbnail": "bridge/bridge-fixed-skulls.thumb.png",
-   "width_px": 300,
-   "height_px": 110,
-   "longest_in": 6.25,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "cef41465699e6994669a3b6881208d7df26682d1",
-   "slot": "bridge",
-   "anchors": {},
-   "group": "cef4146569",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    52,
-    52,
-    53
-   ]
-  },
-  {
    "id": "fretboard/fretboard-a1",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a1.png",
    "thumbnail": "fretboard/fretboard-a1.thumb.png",
    "width_px": 214,
@@ -11054,7 +11033,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "a657415e43c41d917b7f82f20ba60212e3f20cab",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "a657415e43",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11068,7 +11047,7 @@
   },
   {
    "id": "fretboard/fretboard-a2",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a2.png",
    "thumbnail": "fretboard/fretboard-a2.thumb.png",
    "width_px": 267,
@@ -11077,7 +11056,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "a6aa18d7659c6819cb957bf0e870ce12a396792e",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "a6aa18d765",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11091,7 +11070,7 @@
   },
   {
    "id": "fretboard/fretboard-a3",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a3.png",
    "thumbnail": "fretboard/fretboard-a3.thumb.png",
    "width_px": 267,
@@ -11100,7 +11079,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "f28ba1192a3629a18e13114d927e70a8ed1f3ada",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "f28ba1192a",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11114,7 +11093,7 @@
   },
   {
    "id": "fretboard/fretboard-a4",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a4.png",
    "thumbnail": "fretboard/fretboard-a4.thumb.png",
    "width_px": 271,
@@ -11123,7 +11102,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "80c31f91e307b3901dcded23cf3740c6d5b4f142",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "80c31f91e3",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11137,7 +11116,7 @@
   },
   {
    "id": "fretboard/fretboard-a5",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a5.png",
    "thumbnail": "fretboard/fretboard-a5.thumb.png",
    "width_px": 269,
@@ -11146,7 +11125,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "6e8b09fa811c78ccf79e3cd47153542ffa011364",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "6e8b09fa81",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11160,7 +11139,7 @@
   },
   {
    "id": "fretboard/fretboard-a6",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a6.png",
    "thumbnail": "fretboard/fretboard-a6.thumb.png",
    "width_px": 269,
@@ -11169,7 +11148,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "4508ad48069892250879ebbdec13eae3364ec527",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "4508ad4806",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11183,7 +11162,7 @@
   },
   {
    "id": "fretboard/fretboard-a7",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-a7.png",
    "thumbnail": "fretboard/fretboard-a7.thumb.png",
    "width_px": 220,
@@ -11192,7 +11171,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "7bd14a58b12962070ed0fc77259fae1ea56c181d",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "7bd14a58b1",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11206,7 +11185,7 @@
   },
   {
    "id": "fretboard/fretboard-b3",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b3.png",
    "thumbnail": "fretboard/fretboard-b3.thumb.png",
    "width_px": 181,
@@ -11215,7 +11194,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "2de8f46fd1235eed057e9a8b8b5309b234e39345",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "2de8f46fd1",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11229,7 +11208,7 @@
   },
   {
    "id": "fretboard/fretboard-b4",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b4.png",
    "thumbnail": "fretboard/fretboard-b4.thumb.png",
    "width_px": 179,
@@ -11238,7 +11217,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "133ffcd58453c848604cfe5d1d087f94bb01ccca",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "133ffcd584",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11252,7 +11231,7 @@
   },
   {
    "id": "fretboard/fretboard-b5",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b5.png",
    "thumbnail": "fretboard/fretboard-b5.thumb.png",
    "width_px": 179,
@@ -11261,7 +11240,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "9ab2f83480be4b7d2e4c17cefb802d5119e465e4",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "9ab2f83480",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11275,7 +11254,7 @@
   },
   {
    "id": "fretboard/fretboard-b6",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b6.png",
    "thumbnail": "fretboard/fretboard-b6.thumb.png",
    "width_px": 182,
@@ -11284,7 +11263,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "90301e3e5c1193b470f97659d759cbffc983d602",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "90301e3e5c",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11298,7 +11277,7 @@
   },
   {
    "id": "fretboard/fretboard-b7",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b7.png",
    "thumbnail": "fretboard/fretboard-b7.thumb.png",
    "width_px": 183,
@@ -11307,7 +11286,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "e82877b4163ff5961c996a96fcf11a474689b565",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "e82877b416",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11321,7 +11300,7 @@
   },
   {
    "id": "fretboard/fretboard-b8",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b8.png",
    "thumbnail": "fretboard/fretboard-b8.thumb.png",
    "width_px": 182,
@@ -11330,7 +11309,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "bb0173b47dc530a9b1720721b867f5fe2dd1a8a6",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "bb0173b47d",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11344,7 +11323,7 @@
   },
   {
    "id": "fretboard/fretboard-b9",
-   "category": "fretboard",
+   "category": "binding",
    "file": "fretboard/fretboard-b9.png",
    "thumbnail": "fretboard/fretboard-b9.thumb.png",
    "width_px": 181,
@@ -11353,7 +11332,7 @@
    "ppi": 48,
    "source": "gear-recovery-2026-08-30",
    "source_sha1": "e8a264304ccd147b480f6f89ca0715ee9e86a9f7",
-   "slot": "fretboard",
+   "slot": "binding",
    "anchors": {},
    "group": "e8a264304c",
    "added_at": "2026-09-01T10:17:56+00:00",
@@ -11366,516 +11345,386 @@
    "style_rep": false
   },
   {
-   "id": "neck/neck-gothic-1",
-   "category": "neck",
-   "file": "neck/neck-gothic-1.png",
-   "thumbnail": "neck/neck-gothic-1.thumb.png",
-   "width_px": 172,
-   "height_px": 1300,
-   "longest_in": 27.08,
+   "id": "knob/knob-gold-dome",
+   "category": "knob",
+   "file": "knob/knob-gold-dome.png",
+   "thumbnail": "knob/knob-gold-dome.thumb.png",
+   "width_px": 60,
+   "height_px": 67,
+   "longest_in": 1.4,
    "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "304a0f14cb3e92358ab1ef2c2eb74afe466253ce",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     86,
-     0
-    ],
-    "bottom": [
-     86,
-     1299
-    ]
-   },
-   "group": "304a0f14cb",
-   "added_at": "2026-09-01T10:17:56+00:00",
+   "source": "master-sheet-sprites",
+   "source_sha1": "089dab39decfdfb7d7b489ae5022297be25da65b",
+   "slot": "knob",
+   "anchors": {},
+   "group": "089dab39de",
+   "added_at": "2026-09-01T10:45:22+00:00",
    "avg_rgb": [
-    70,
-    61,
-    53
+    135,
+    104,
+    62
+   ]
+  },
+  {
+   "id": "knob/knob-gold-skull",
+   "category": "knob",
+   "file": "knob/knob-gold-skull.png",
+   "thumbnail": "knob/knob-gold-skull.thumb.png",
+   "width_px": 60,
+   "height_px": 74,
+   "longest_in": 1.54,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "4a70aa129a2bd05687e9e3c7206978f717b460d8",
+   "slot": "knob",
+   "anchors": {},
+   "group": "4a70aa129a",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    153,
+    122,
+    72
+   ]
+  },
+  {
+   "id": "tuner/tuner-gold-1",
+   "category": "tuner",
+   "file": "tuner/tuner-gold-1.png",
+   "thumbnail": "tuner/tuner-gold-1.thumb.png",
+   "width_px": 55,
+   "height_px": 38,
+   "longest_in": 1.15,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "4aa7a2d7eb9ad4715128cabb28ddea35705da012",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "4aa7a2d7eb",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    117,
+    79,
+    59
    ],
-   "style": "st-neck-gothic",
+   "style": "st-tuner-gold",
    "style_rep": true
   },
   {
-   "id": "neck/neck-gothic-11",
-   "category": "neck",
-   "file": "neck/neck-gothic-11.png",
-   "thumbnail": "neck/neck-gothic-11.thumb.png",
-   "width_px": 190,
-   "height_px": 1300,
-   "longest_in": 27.08,
+   "id": "tuner/tuner-gold-2",
+   "category": "tuner",
+   "file": "tuner/tuner-gold-2.png",
+   "thumbnail": "tuner/tuner-gold-2.thumb.png",
+   "width_px": 55,
+   "height_px": 38,
+   "longest_in": 1.15,
    "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "5ce6feddae60c5308bd9e72c4689979c91117b6d",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     95,
-     0
-    ],
-    "bottom": [
-     95,
-     1299
-    ]
-   },
-   "group": "5ce6feddae",
-   "added_at": "2026-09-01T10:17:56+00:00",
+   "source": "master-sheet-sprites",
+   "source_sha1": "806ef4f18029dbc926c79ad013908cf4fb4f5398",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "806ef4f180",
+   "added_at": "2026-09-01T10:45:22+00:00",
    "avg_rgb": [
-    75,
-    49,
-    36
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-2a",
-   "category": "neck",
-   "file": "neck/neck-gothic-2a.png",
-   "thumbnail": "neck/neck-gothic-2a.thumb.png",
-   "width_px": 169,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "1f48d19181b031a6dc5e2009e8991cf0d6c2136f",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     84,
-     0
-    ],
-    "bottom": [
-     84,
-     1299
-    ]
-   },
-   "group": "1f48d19181",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    80,
-    35,
-    43
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-2b",
-   "category": "neck",
-   "file": "neck/neck-gothic-2b.png",
-   "thumbnail": "neck/neck-gothic-2b.thumb.png",
-   "width_px": 171,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "30f6918027184805a6890efc851137c055996985",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     85,
-     0
-    ],
-    "bottom": [
-     85,
-     1299
-    ]
-   },
-   "group": "30f6918027",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    75,
-    64,
-    58
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-3",
-   "category": "neck",
-   "file": "neck/neck-gothic-3.png",
-   "thumbnail": "neck/neck-gothic-3.thumb.png",
-   "width_px": 177,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "780a95920f2fe4ee4f86079f5c5a04fc134eda4b",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     88,
-     0
-    ],
-    "bottom": [
-     88,
-     1299
-    ]
-   },
-   "group": "780a95920f",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    76,
-    55,
+    106,
+    65,
     45
    ],
-   "style": "st-neck-gothic",
+   "style": "st-tuner-gold",
    "style_rep": false
   },
   {
-   "id": "neck/neck-gothic-4",
-   "category": "neck",
-   "file": "neck/neck-gothic-4.png",
-   "thumbnail": "neck/neck-gothic-4.thumb.png",
-   "width_px": 155,
-   "height_px": 1300,
-   "longest_in": 27.08,
+   "id": "tuner/tuner-gold-3",
+   "category": "tuner",
+   "file": "tuner/tuner-gold-3.png",
+   "thumbnail": "tuner/tuner-gold-3.thumb.png",
+   "width_px": 55,
+   "height_px": 38,
+   "longest_in": 1.15,
    "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "ff8c106fa7f61ed732cfdee41e5df3e4292598c3",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     77,
-     0
-    ],
-    "bottom": [
-     77,
-     1299
-    ]
-   },
-   "group": "ff8c106fa7",
-   "added_at": "2026-09-01T10:17:56+00:00",
+   "source": "master-sheet-sprites",
+   "source_sha1": "7d3d024cf70f6519f57024a6cc7c23928f52019b",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "7d3d024cf7",
+   "added_at": "2026-09-01T10:45:22+00:00",
    "avg_rgb": [
-    188,
-    156,
-    120
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-5",
-   "category": "neck",
-   "file": "neck/neck-gothic-5.png",
-   "thumbnail": "neck/neck-gothic-5.thumb.png",
-   "width_px": 164,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "88d823ba3f92146d3d9f432b1bb831569e1af488",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     82,
-     0
-    ],
-    "bottom": [
-     82,
-     1299
-    ]
-   },
-   "group": "88d823ba3f",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
+    109,
     76,
-    39,
     56
    ],
-   "style": "st-neck-gothic",
+   "style": "st-tuner-gold",
    "style_rep": false
   },
   {
-   "id": "neck/neck-gothic-6",
-   "category": "neck",
-   "file": "neck/neck-gothic-6.png",
-   "thumbnail": "neck/neck-gothic-6.thumb.png",
-   "width_px": 153,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "faa65f1f467669954f7b54038a71418f63b8082a",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     76,
-     0
-    ],
-    "bottom": [
-     76,
-     1299
-    ]
-   },
-   "group": "faa65f1f46",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    46,
-    44,
-    43
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-7",
-   "category": "neck",
-   "file": "neck/neck-gothic-7.png",
-   "thumbnail": "neck/neck-gothic-7.thumb.png",
-   "width_px": 183,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "05c534ab19558dd6485fb5b85c393ed379b8258f",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     91,
-     0
-    ],
-    "bottom": [
-     91,
-     1299
-    ]
-   },
-   "group": "05c534ab19",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    92,
-    60,
-    41
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-8",
-   "category": "neck",
-   "file": "neck/neck-gothic-8.png",
-   "thumbnail": "neck/neck-gothic-8.thumb.png",
-   "width_px": 187,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "fdf602c5c3fc39d44156edd9e32c539e40a32790",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     93,
-     0
-    ],
-    "bottom": [
-     93,
-     1299
-    ]
-   },
-   "group": "fdf602c5c3",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    59,
-    50,
-    45
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "neck/neck-gothic-9",
-   "category": "neck",
-   "file": "neck/neck-gothic-9.png",
-   "thumbnail": "neck/neck-gothic-9.thumb.png",
-   "width_px": 197,
-   "height_px": 1300,
-   "longest_in": 27.08,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "3094f9f98af981bc1c71a2c06b392dd8e48ac76e",
-   "slot": "neck",
-   "anchors": {
-    "top": [
-     98,
-     0
-    ],
-    "bottom": [
-     98,
-     1299
-    ]
-   },
-   "group": "3094f9f98a",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    66,
-    39,
-    53
-   ],
-   "style": "st-neck-gothic",
-   "style_rep": false
-  },
-  {
-   "id": "tuner/tuner-crown-4",
+   "id": "tuner/tuner-gold-post",
    "category": "tuner",
-   "file": "tuner/tuner-crown-4.png",
-   "thumbnail": "tuner/tuner-crown-4.thumb.png",
-   "width_px": 70,
-   "height_px": 41,
-   "longest_in": 1.46,
+   "file": "tuner/tuner-gold-post.png",
+   "thumbnail": "tuner/tuner-gold-post.thumb.png",
+   "width_px": 30,
+   "height_px": 24,
+   "longest_in": 0.62,
    "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "fa48ebe428dd04c7614ecd782082e5930162dbd4",
+   "source": "master-sheet-sprites",
+   "source_sha1": "f886ce041945b84d7c19184423e84de2cd45bbc8",
    "slot": "tuner",
    "anchors": {},
-   "group": "fa48ebe428",
-   "added_at": "2026-09-01T10:17:56+00:00",
+   "group": "f886ce0419",
+   "added_at": "2026-09-01T10:45:22+00:00",
    "avg_rgb": [
-    57,
-    57,
-    57
-   ],
-   "style": "st-tuner-crown",
-   "style_rep": true
+    85,
+    74,
+    72
+   ]
   },
   {
-   "id": "tuner/tuner-crown-5",
-   "category": "tuner",
-   "file": "tuner/tuner-crown-5.png",
-   "thumbnail": "tuner/tuner-crown-5.thumb.png",
-   "width_px": 70,
-   "height_px": 55,
-   "longest_in": 1.46,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "f6720c279f77a9286262ff1c413ff7a95ca84e9d",
-   "slot": "tuner",
-   "anchors": {},
-   "group": "f6720c279f",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    57,
-    57,
-    56
-   ],
-   "style": "st-tuner-crown",
-   "style_rep": false
-  },
-  {
-   "id": "tuner/tuner-skullhammer-2",
-   "category": "tuner",
-   "file": "tuner/tuner-skullhammer-2.png",
-   "thumbnail": "tuner/tuner-skullhammer-2.thumb.png",
-   "width_px": 70,
-   "height_px": 144,
-   "longest_in": 3.0,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "1501845e9fa8abeae750f20c4b2a8f51f74b3c25",
-   "slot": "tuner",
-   "anchors": {},
-   "group": "1501845e9f",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    79,
-    79,
-    78
-   ],
-   "style": "st-tuner-skullhammer",
-   "style_rep": true
-  },
-  {
-   "id": "tuner/tuner-skullhammer-3",
-   "category": "tuner",
-   "file": "tuner/tuner-skullhammer-3.png",
-   "thumbnail": "tuner/tuner-skullhammer-3.thumb.png",
-   "width_px": 70,
-   "height_px": 149,
-   "longest_in": 3.1,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "84a46bde1cda6d37c5a2648ba39d310d71ada432",
-   "slot": "tuner",
-   "anchors": {},
-   "group": "84a46bde1c",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    81,
-    81,
-    80
-   ],
-   "style": "st-tuner-skullhammer",
-   "style_rep": false
-  },
-  {
-   "id": "tuner/tuner-skullhammer-4",
-   "category": "tuner",
-   "file": "tuner/tuner-skullhammer-4.png",
-   "thumbnail": "tuner/tuner-skullhammer-4.thumb.png",
-   "width_px": 70,
-   "height_px": 140,
-   "longest_in": 2.92,
-   "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "a466b830348b56600ff009d4b007b445bda46808",
-   "slot": "tuner",
-   "anchors": {},
-   "group": "a466b83034",
-   "added_at": "2026-09-01T10:17:56+00:00",
-   "avg_rgb": [
-    80,
-    80,
-    80
-   ],
-   "style": "st-tuner-skullhammer",
-   "style_rep": false
-  },
-  {
-   "id": "tuner/tuner-skullhammer-5",
-   "category": "tuner",
-   "file": "tuner/tuner-skullhammer-5.png",
-   "thumbnail": "tuner/tuner-skullhammer-5.thumb.png",
-   "width_px": 70,
-   "height_px": 182,
+   "id": "bridge/bridge-hardtail-gold",
+   "category": "bridge",
+   "file": "bridge/bridge-hardtail-gold.png",
+   "thumbnail": "bridge/bridge-hardtail-gold.thumb.png",
+   "width_px": 182,
+   "height_px": 129,
    "longest_in": 3.79,
    "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "07683750442188de5192cf58bc4aba5b962a5b3a",
-   "slot": "tuner",
+   "source": "master-sheet-sprites",
+   "source_sha1": "326ca91f110a1999a4c7863b4cd892a60ee4d54f",
+   "slot": "bridge",
    "anchors": {},
-   "group": "0768375044",
-   "added_at": "2026-09-01T10:17:56+00:00",
+   "group": "326ca91f11",
+   "added_at": "2026-09-01T10:45:22+00:00",
    "avg_rgb": [
-    81,
-    80,
-    79
+    182,
+    153,
+    100
+   ]
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-1",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-1.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-1.thumb.png",
+   "width_px": 175,
+   "height_px": 137,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "1dee3a6899752b02f1b8f2bbf8aa310c72762d80",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "1dee3a6899",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    78,
+    69,
+    66
    ],
-   "style": "st-tuner-skullhammer",
+   "style": "st-skullforge",
+   "style_rep": true
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-2",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-2.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-2.thumb.png",
+   "width_px": 175,
+   "height_px": 132,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "a06f31f27cdbac259d20d6222807c5b474d45a47",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "a06f31f27c",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    68,
+    62,
+    60
+   ],
+   "style": "st-skullforge",
    "style_rep": false
   },
   {
-   "id": "tuner/tuner-skullhammer-6",
-   "category": "tuner",
-   "file": "tuner/tuner-skullhammer-6.png",
-   "thumbnail": "tuner/tuner-skullhammer-6.thumb.png",
-   "width_px": 70,
-   "height_px": 129,
-   "longest_in": 2.69,
+   "id": "pickup_humbucker/pickup-skullforge-3",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-3.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-3.thumb.png",
+   "width_px": 175,
+   "height_px": 128,
+   "longest_in": 3.65,
    "ppi": 48,
-   "source": "gear-recovery-2026-08-30",
-   "source_sha1": "c8194f2f66804a18310ff4411eb4771c9c54e552",
-   "slot": "tuner",
+   "source": "master-sheet-sprites",
+   "source_sha1": "76484a4b06617972a0a5de80215be78536e4b6ca",
+   "slot": "pickup_humbucker",
    "anchors": {},
-   "group": "c8194f2f66",
-   "added_at": "2026-09-01T10:17:56+00:00",
+   "group": "76484a4b06",
+   "added_at": "2026-09-01T10:45:22+00:00",
    "avg_rgb": [
-    79,
-    78,
-    77
+    88,
+    81,
+    83
    ],
-   "style": "st-tuner-skullhammer",
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-4",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-4.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-4.thumb.png",
+   "width_px": 175,
+   "height_px": 136,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "ec0b129bf206dc80fdc3d143f16facbd4f3575dd",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "ec0b129bf2",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    68,
+    64,
+    61
+   ],
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-5",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-5.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-5.thumb.png",
+   "width_px": 175,
+   "height_px": 125,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "5cb6ec18280952d3efad8fcff8e1193ae184196f",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "5cb6ec1828",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    80,
+    73,
+    71
+   ],
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-6",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-6.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-6.thumb.png",
+   "width_px": 175,
+   "height_px": 129,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "f69b8452d26d56654b26d49873d939468af03a7f",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "f69b8452d2",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    65,
+    62,
+    60
+   ],
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-7",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-7.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-7.thumb.png",
+   "width_px": 175,
+   "height_px": 144,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "5aa68c02d64ddb470810207db300f800a1dad842",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "5aa68c02d6",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    71,
+    66,
+    63
+   ],
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-8",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-8.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-8.thumb.png",
+   "width_px": 175,
+   "height_px": 145,
+   "longest_in": 3.65,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "81853e96dd6c1662f95318d16b18feca2f564246",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "81853e96dd",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    78,
+    66,
+    64
+   ],
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-9",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-9.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-9.thumb.png",
+   "width_px": 175,
+   "height_px": 303,
+   "longest_in": 6.31,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "fe17dc89e01da752534fe9280b9b3c4a5e6fdc5f",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "fe17dc89e0",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    57,
+    54,
+    55
+   ],
+   "style": "st-skullforge",
+   "style_rep": false
+  },
+  {
+   "id": "pickup_humbucker/pickup-skullforge-10",
+   "category": "pickup_humbucker",
+   "file": "pickup_humbucker/pickup-skullforge-10.png",
+   "thumbnail": "pickup_humbucker/pickup-skullforge-10.thumb.png",
+   "width_px": 175,
+   "height_px": 303,
+   "longest_in": 6.31,
+   "ppi": 48,
+   "source": "master-sheet-sprites",
+   "source_sha1": "9b980d5140a33be0fa208e182b0e2a029c5d5d71",
+   "slot": "pickup_humbucker",
+   "anchors": {},
+   "group": "9b980d5140",
+   "added_at": "2026-09-01T10:45:22+00:00",
+   "avg_rgb": [
+    53,
+    51,
+    51
+   ],
+   "style": "st-skullforge",
    "style_rep": false
   }
  ]
