@@ -7885,81 +7885,12 @@
    "style_rep": false
   },
   {
-   "id": "pickup_cover/cover-chrome-1",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-chrome-1.png",
-   "thumbnail": "pickup_cover/cover-chrome-1.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "dba069aa563e6f42395e387b55599b891e349d73",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "dba069aa56",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    165,
-    153,
-    134
-   ],
-   "style": "s030",
-   "style_rep": true
-  },
-  {
-   "id": "pickup_cover/cover-chrome-2",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-chrome-2.png",
-   "thumbnail": "pickup_cover/cover-chrome-2.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "e47ef4a588b28dfc4e76bf9901cf0d007608eb4a",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "e47ef4a588",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    157,
-    157,
-    152
-   ],
-   "style": "s030",
-   "style_rep": false
-  },
-  {
-   "id": "pickup_cover/cover-chrome-3",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-chrome-3.png",
-   "thumbnail": "pickup_cover/cover-chrome-3.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "0d47511388da5ab58c61d11993fd5b1c2b9aa23b",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "0d47511388",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    149,
-    149,
-    144
-   ],
-   "style": "s030",
-   "style_rep": false
-  },
-  {
    "id": "pickup_cover/cover-chrome-4",
    "category": "pickup_cover",
    "file": "pickup_cover/cover-chrome-4.png",
    "thumbnail": "pickup_cover/cover-chrome-4.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 130,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -7967,14 +7898,14 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "e937e527c5",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    101,
-    100,
-    98
+    59,
+    58,
+    55
    ],
-   "style": "s030",
-   "style_rep": false
+   "style": "st-cover-chrome",
+   "style_rep": true
   },
   {
    "id": "pickup_cover/cover-chrome-5",
@@ -7982,7 +7913,7 @@
    "file": "pickup_cover/cover-chrome-5.png",
    "thumbnail": "pickup_cover/cover-chrome-5.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 123,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -7990,13 +7921,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "e42aa950b6",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    87,
-    102,
-    84
+    76,
+    92,
+    73
    ],
-   "style": "s030",
+   "style": "st-cover-chrome",
    "style_rep": false
   },
   {
@@ -8004,8 +7935,8 @@
    "category": "pickup_cover",
    "file": "pickup_cover/cover-chrome-6.png",
    "thumbnail": "pickup_cover/cover-chrome-6.thumb.png",
-   "width_px": 172,
-   "height_px": 131,
+   "width_px": 175,
+   "height_px": 93,
    "longest_in": 3.58,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8013,13 +7944,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "4c5d041f23",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    112,
-    62,
-    59
+    117,
+    39,
+    36
    ],
-   "style": "s030",
+   "style": "st-cover-chrome",
    "style_rep": false
   },
   {
@@ -8028,7 +7959,7 @@
    "file": "pickup_cover/cover-chrome-7.png",
    "thumbnail": "pickup_cover/cover-chrome-7.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 92,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8036,13 +7967,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "2db2050518",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    64,
-    86,
-    108
+    18,
+    61,
+    101
    ],
-   "style": "s030",
+   "style": "st-cover-chrome",
    "style_rep": false
   },
   {
@@ -8051,7 +7982,7 @@
    "file": "pickup_cover/cover-chrome-8.png",
    "thumbnail": "pickup_cover/cover-chrome-8.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 89,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8059,82 +7990,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "0aa1b687f0",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    112,
-    87,
-    107
+    105,
+    62,
+    101
    ],
-   "style": "s030",
-   "style_rep": false
-  },
-  {
-   "id": "pickup_cover/cover-color-1",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-color-1.png",
-   "thumbnail": "pickup_cover/cover-color-1.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "25a9dab2624f46e37191414601e05bcd5beb45cc",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "25a9dab262",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    163,
-    152,
-    133
-   ],
-   "style": "s031",
-   "style_rep": true
-  },
-  {
-   "id": "pickup_cover/cover-color-2",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-color-2.png",
-   "thumbnail": "pickup_cover/cover-color-2.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "d0a0744db142feb79ad108d9bd5afea0d5a5cdd5",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "d0a0744db1",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    151,
-    151,
-    148
-   ],
-   "style": "s031",
-   "style_rep": false
-  },
-  {
-   "id": "pickup_cover/cover-color-3",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-color-3.png",
-   "thumbnail": "pickup_cover/cover-color-3.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "aca160c5320ea3135dc0598dc88ba67693afa76b",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "aca160c532",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    146,
-    146,
-    141
-   ],
-   "style": "s031",
+   "style": "st-cover-chrome",
    "style_rep": false
   },
   {
@@ -8142,8 +8004,8 @@
    "category": "pickup_cover",
    "file": "pickup_cover/cover-color-4.png",
    "thumbnail": "pickup_cover/cover-color-4.thumb.png",
-   "width_px": 169,
-   "height_px": 131,
+   "width_px": 175,
+   "height_px": 129,
    "longest_in": 3.52,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8151,14 +8013,14 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "b976716814",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    76,
-    76,
-    74
+    55,
+    54,
+    52
    ],
-   "style": "s031",
-   "style_rep": false
+   "style": "st-cover-color",
+   "style_rep": true
   },
   {
    "id": "pickup_cover/cover-color-5",
@@ -8166,7 +8028,7 @@
    "file": "pickup_cover/cover-color-5.png",
    "thumbnail": "pickup_cover/cover-color-5.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 123,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8174,13 +8036,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "61a830cbb8",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    87,
-    103,
-    85
+    73,
+    91,
+    72
    ],
-   "style": "s031",
+   "style": "st-cover-color",
    "style_rep": false
   },
   {
@@ -8189,7 +8051,7 @@
    "file": "pickup_cover/cover-color-6.png",
    "thumbnail": "pickup_cover/cover-color-6.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 93,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8197,13 +8059,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "305fa5bc4b",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    115,
-    69,
-    67
+    117,
+    38,
+    37
    ],
-   "style": "s031",
+   "style": "st-cover-color",
    "style_rep": false
   },
   {
@@ -8212,7 +8074,7 @@
    "file": "pickup_cover/cover-color-7.png",
    "thumbnail": "pickup_cover/cover-color-7.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 92,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8220,13 +8082,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "4541c72ec6",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    64,
-    87,
-    110
+    17,
+    62,
+    105
    ],
-   "style": "s031",
+   "style": "st-cover-color",
    "style_rep": false
   },
   {
@@ -8235,7 +8097,7 @@
    "file": "pickup_cover/cover-color-8.png",
    "thumbnail": "pickup_cover/cover-color-8.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 90,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8243,13 +8105,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "17976e34d2",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    112,
-    87,
-    108
+    103,
+    60,
+    103
    ],
-   "style": "s031",
+   "style": "st-cover-color",
    "style_rep": false
   },
   {
@@ -8258,7 +8120,7 @@
    "file": "pickup_cover/cover-gold-1.png",
    "thumbnail": "pickup_cover/cover-gold-1.thumb.png",
    "width_px": 175,
-   "height_px": 122,
+   "height_px": 103,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8266,60 +8128,14 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "5e10a3bdd6",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    153,
-    137,
-    109
+    175,
+    149,
+    107
    ],
-   "style": "s032",
+   "style": "st-cover-gold",
    "style_rep": true
-  },
-  {
-   "id": "pickup_cover/cover-gold-2",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-gold-2.png",
-   "thumbnail": "pickup_cover/cover-gold-2.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "70b150ef1a975c3abbc28383beb5dbd127182fbc",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "70b150ef1a",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    151,
-    151,
-    149
-   ],
-   "style": "s032",
-   "style_rep": false
-  },
-  {
-   "id": "pickup_cover/cover-gold-3",
-   "category": "pickup_cover",
-   "file": "pickup_cover/cover-gold-3.png",
-   "thumbnail": "pickup_cover/cover-gold-3.thumb.png",
-   "width_px": 175,
-   "height_px": 131,
-   "longest_in": 3.65,
-   "ppi": 48,
-   "source": "killy-zip-drop-2026-08-30",
-   "source_sha1": "c1ec9fd6f5e327d3e5b288820521cf4678439876",
-   "slot": "pickup_cover",
-   "anchors": {},
-   "group": "c1ec9fd6f5",
-   "added_at": "2026-08-30T18:22:33+00:00",
-   "avg_rgb": [
-    121,
-    121,
-    117
-   ],
-   "style": "s032",
-   "style_rep": false
   },
   {
    "id": "pickup_cover/cover-gold-4",
@@ -8327,7 +8143,7 @@
    "file": "pickup_cover/cover-gold-4.png",
    "thumbnail": "pickup_cover/cover-gold-4.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 123,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8335,13 +8151,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "3721fdfcb3",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    88,
-    87,
-    85
+    57,
+    57,
+    55
    ],
-   "style": "s032",
+   "style": "st-cover-gold",
    "style_rep": false
   },
   {
@@ -8350,7 +8166,7 @@
    "file": "pickup_cover/cover-gold-5.png",
    "thumbnail": "pickup_cover/cover-gold-5.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 101,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8358,13 +8174,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "e06cddeb1c",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    88,
-    102,
-    89
+    44,
+    73,
+    50
    ],
-   "style": "s032",
+   "style": "st-cover-gold",
    "style_rep": false
   },
   {
@@ -8373,7 +8189,7 @@
    "file": "pickup_cover/cover-gold-6.png",
    "thumbnail": "pickup_cover/cover-gold-6.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 105,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8381,13 +8197,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "96b32480fc",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    112,
-    84,
-    81
+    93,
+    34,
+    33
    ],
-   "style": "s032",
+   "style": "st-cover-gold",
    "style_rep": false
   },
   {
@@ -8396,7 +8212,7 @@
    "file": "pickup_cover/cover-gold-7.png",
    "thumbnail": "pickup_cover/cover-gold-7.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 104,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8404,13 +8220,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "751f370cc0",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    77,
-    89,
-    105
+    23,
+    48,
+    82
    ],
-   "style": "s032",
+   "style": "st-cover-gold",
    "style_rep": false
   },
   {
@@ -8419,7 +8235,7 @@
    "file": "pickup_cover/cover-gold-8.png",
    "thumbnail": "pickup_cover/cover-gold-8.thumb.png",
    "width_px": 175,
-   "height_px": 131,
+   "height_px": 104,
    "longest_in": 3.65,
    "ppi": 48,
    "source": "killy-zip-drop-2026-08-30",
@@ -8427,13 +8243,13 @@
    "slot": "pickup_cover",
    "anchors": {},
    "group": "58ed7d592c",
-   "added_at": "2026-08-30T18:22:33+00:00",
+   "added_at": "2026-09-01T10:17:56+00:00",
    "avg_rgb": [
-    112,
-    93,
-    111
+    94,
+    55,
+    98
    ],
-   "style": "s032",
+   "style": "st-cover-gold",
    "style_rep": false
   },
   {
@@ -10707,7 +10523,7 @@
    "category": "body",
    "file": "body/body-dagger2-4-variant.png",
    "thumbnail": "body/body-dagger2-4-variant.thumb.png",
-   "width_px": 483,
+   "width_px": 482,
    "height_px": 720,
    "longest_in": 15.0,
    "ppi": 48,
@@ -11043,7 +10859,7 @@
    "category": "body",
    "file": "body/body-flame2-4-variant.png",
    "thumbnail": "body/body-flame2-4-variant.thumb.png",
-   "width_px": 485,
+   "width_px": 484,
    "height_px": 634,
    "longest_in": 13.21,
    "ppi": 48,
@@ -11204,6 +11020,862 @@
     99
    ],
    "style": "s040",
+   "style_rep": false
+  },
+  {
+   "id": "bridge/bridge-fixed-skulls",
+   "category": "bridge",
+   "file": "bridge/bridge-fixed-skulls.png",
+   "thumbnail": "bridge/bridge-fixed-skulls.thumb.png",
+   "width_px": 300,
+   "height_px": 110,
+   "longest_in": 6.25,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "cef41465699e6994669a3b6881208d7df26682d1",
+   "slot": "bridge",
+   "anchors": {},
+   "group": "cef4146569",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    52,
+    52,
+    53
+   ]
+  },
+  {
+   "id": "fretboard/fretboard-a1",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a1.png",
+   "thumbnail": "fretboard/fretboard-a1.thumb.png",
+   "width_px": 214,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "a657415e43c41d917b7f82f20ba60212e3f20cab",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "a657415e43",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    121,
+    88,
+    69
+   ],
+   "style": "st-fretboard",
+   "style_rep": true
+  },
+  {
+   "id": "fretboard/fretboard-a2",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a2.png",
+   "thumbnail": "fretboard/fretboard-a2.thumb.png",
+   "width_px": 267,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "a6aa18d7659c6819cb957bf0e870ce12a396792e",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "a6aa18d765",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    102,
+    78,
+    100
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-a3",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a3.png",
+   "thumbnail": "fretboard/fretboard-a3.thumb.png",
+   "width_px": 267,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "f28ba1192a3629a18e13114d927e70a8ed1f3ada",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "f28ba1192a",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    83,
+    75,
+    69
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-a4",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a4.png",
+   "thumbnail": "fretboard/fretboard-a4.thumb.png",
+   "width_px": 271,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "80c31f91e307b3901dcded23cf3740c6d5b4f142",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "80c31f91e3",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    69,
+    91,
+    94
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-a5",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a5.png",
+   "thumbnail": "fretboard/fretboard-a5.thumb.png",
+   "width_px": 269,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "6e8b09fa811c78ccf79e3cd47153542ffa011364",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "6e8b09fa81",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    138,
+    99,
+    84
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-a6",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a6.png",
+   "thumbnail": "fretboard/fretboard-a6.thumb.png",
+   "width_px": 269,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "4508ad48069892250879ebbdec13eae3364ec527",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "4508ad4806",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    132,
+    129,
+    84
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-a7",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-a7.png",
+   "thumbnail": "fretboard/fretboard-a7.thumb.png",
+   "width_px": 220,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "7bd14a58b12962070ed0fc77259fae1ea56c181d",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "7bd14a58b1",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    95,
+    51,
+    51
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b3",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b3.png",
+   "thumbnail": "fretboard/fretboard-b3.thumb.png",
+   "width_px": 181,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "2de8f46fd1235eed057e9a8b8b5309b234e39345",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "2de8f46fd1",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    130,
+    100,
+    82
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b4",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b4.png",
+   "thumbnail": "fretboard/fretboard-b4.thumb.png",
+   "width_px": 179,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "133ffcd58453c848604cfe5d1d087f94bb01ccca",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "133ffcd584",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    107,
+    77,
+    105
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b5",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b5.png",
+   "thumbnail": "fretboard/fretboard-b5.thumb.png",
+   "width_px": 179,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "9ab2f83480be4b7d2e4c17cefb802d5119e465e4",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "9ab2f83480",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    79,
+    69,
+    64
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b6",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b6.png",
+   "thumbnail": "fretboard/fretboard-b6.thumb.png",
+   "width_px": 182,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "90301e3e5c1193b470f97659d759cbffc983d602",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "90301e3e5c",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    65,
+    91,
+    95
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b7",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b7.png",
+   "thumbnail": "fretboard/fretboard-b7.thumb.png",
+   "width_px": 183,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "e82877b4163ff5961c996a96fcf11a474689b565",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "e82877b416",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    100,
+    75,
+    95
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b8",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b8.png",
+   "thumbnail": "fretboard/fretboard-b8.thumb.png",
+   "width_px": 182,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "bb0173b47dc530a9b1720721b867f5fe2dd1a8a6",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "bb0173b47d",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    137,
+    135,
+    86
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "fretboard/fretboard-b9",
+   "category": "fretboard",
+   "file": "fretboard/fretboard-b9.png",
+   "thumbnail": "fretboard/fretboard-b9.thumb.png",
+   "width_px": 181,
+   "height_px": 1100,
+   "longest_in": 22.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "e8a264304ccd147b480f6f89ca0715ee9e86a9f7",
+   "slot": "fretboard",
+   "anchors": {},
+   "group": "e8a264304c",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    53,
+    71,
+    102
+   ],
+   "style": "st-fretboard",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-1",
+   "category": "neck",
+   "file": "neck/neck-gothic-1.png",
+   "thumbnail": "neck/neck-gothic-1.thumb.png",
+   "width_px": 172,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "304a0f14cb3e92358ab1ef2c2eb74afe466253ce",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     86,
+     0
+    ],
+    "bottom": [
+     86,
+     1299
+    ]
+   },
+   "group": "304a0f14cb",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    70,
+    61,
+    53
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": true
+  },
+  {
+   "id": "neck/neck-gothic-11",
+   "category": "neck",
+   "file": "neck/neck-gothic-11.png",
+   "thumbnail": "neck/neck-gothic-11.thumb.png",
+   "width_px": 190,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "5ce6feddae60c5308bd9e72c4689979c91117b6d",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     95,
+     0
+    ],
+    "bottom": [
+     95,
+     1299
+    ]
+   },
+   "group": "5ce6feddae",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    75,
+    49,
+    36
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-2a",
+   "category": "neck",
+   "file": "neck/neck-gothic-2a.png",
+   "thumbnail": "neck/neck-gothic-2a.thumb.png",
+   "width_px": 169,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "1f48d19181b031a6dc5e2009e8991cf0d6c2136f",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     84,
+     0
+    ],
+    "bottom": [
+     84,
+     1299
+    ]
+   },
+   "group": "1f48d19181",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    80,
+    35,
+    43
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-2b",
+   "category": "neck",
+   "file": "neck/neck-gothic-2b.png",
+   "thumbnail": "neck/neck-gothic-2b.thumb.png",
+   "width_px": 171,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "30f6918027184805a6890efc851137c055996985",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     85,
+     0
+    ],
+    "bottom": [
+     85,
+     1299
+    ]
+   },
+   "group": "30f6918027",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    75,
+    64,
+    58
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-3",
+   "category": "neck",
+   "file": "neck/neck-gothic-3.png",
+   "thumbnail": "neck/neck-gothic-3.thumb.png",
+   "width_px": 177,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "780a95920f2fe4ee4f86079f5c5a04fc134eda4b",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     88,
+     0
+    ],
+    "bottom": [
+     88,
+     1299
+    ]
+   },
+   "group": "780a95920f",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    76,
+    55,
+    45
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-4",
+   "category": "neck",
+   "file": "neck/neck-gothic-4.png",
+   "thumbnail": "neck/neck-gothic-4.thumb.png",
+   "width_px": 155,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "ff8c106fa7f61ed732cfdee41e5df3e4292598c3",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     77,
+     0
+    ],
+    "bottom": [
+     77,
+     1299
+    ]
+   },
+   "group": "ff8c106fa7",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    188,
+    156,
+    120
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-5",
+   "category": "neck",
+   "file": "neck/neck-gothic-5.png",
+   "thumbnail": "neck/neck-gothic-5.thumb.png",
+   "width_px": 164,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "88d823ba3f92146d3d9f432b1bb831569e1af488",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     82,
+     0
+    ],
+    "bottom": [
+     82,
+     1299
+    ]
+   },
+   "group": "88d823ba3f",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    76,
+    39,
+    56
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-6",
+   "category": "neck",
+   "file": "neck/neck-gothic-6.png",
+   "thumbnail": "neck/neck-gothic-6.thumb.png",
+   "width_px": 153,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "faa65f1f467669954f7b54038a71418f63b8082a",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     76,
+     0
+    ],
+    "bottom": [
+     76,
+     1299
+    ]
+   },
+   "group": "faa65f1f46",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    46,
+    44,
+    43
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-7",
+   "category": "neck",
+   "file": "neck/neck-gothic-7.png",
+   "thumbnail": "neck/neck-gothic-7.thumb.png",
+   "width_px": 183,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "05c534ab19558dd6485fb5b85c393ed379b8258f",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     91,
+     0
+    ],
+    "bottom": [
+     91,
+     1299
+    ]
+   },
+   "group": "05c534ab19",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    92,
+    60,
+    41
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-8",
+   "category": "neck",
+   "file": "neck/neck-gothic-8.png",
+   "thumbnail": "neck/neck-gothic-8.thumb.png",
+   "width_px": 187,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "fdf602c5c3fc39d44156edd9e32c539e40a32790",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     93,
+     0
+    ],
+    "bottom": [
+     93,
+     1299
+    ]
+   },
+   "group": "fdf602c5c3",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    59,
+    50,
+    45
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "neck/neck-gothic-9",
+   "category": "neck",
+   "file": "neck/neck-gothic-9.png",
+   "thumbnail": "neck/neck-gothic-9.thumb.png",
+   "width_px": 197,
+   "height_px": 1300,
+   "longest_in": 27.08,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "3094f9f98af981bc1c71a2c06b392dd8e48ac76e",
+   "slot": "neck",
+   "anchors": {
+    "top": [
+     98,
+     0
+    ],
+    "bottom": [
+     98,
+     1299
+    ]
+   },
+   "group": "3094f9f98a",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    66,
+    39,
+    53
+   ],
+   "style": "st-neck-gothic",
+   "style_rep": false
+  },
+  {
+   "id": "tuner/tuner-crown-4",
+   "category": "tuner",
+   "file": "tuner/tuner-crown-4.png",
+   "thumbnail": "tuner/tuner-crown-4.thumb.png",
+   "width_px": 70,
+   "height_px": 41,
+   "longest_in": 1.46,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "fa48ebe428dd04c7614ecd782082e5930162dbd4",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "fa48ebe428",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    57,
+    57,
+    57
+   ],
+   "style": "st-tuner-crown",
+   "style_rep": true
+  },
+  {
+   "id": "tuner/tuner-crown-5",
+   "category": "tuner",
+   "file": "tuner/tuner-crown-5.png",
+   "thumbnail": "tuner/tuner-crown-5.thumb.png",
+   "width_px": 70,
+   "height_px": 55,
+   "longest_in": 1.46,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "f6720c279f77a9286262ff1c413ff7a95ca84e9d",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "f6720c279f",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    57,
+    57,
+    56
+   ],
+   "style": "st-tuner-crown",
+   "style_rep": false
+  },
+  {
+   "id": "tuner/tuner-skullhammer-2",
+   "category": "tuner",
+   "file": "tuner/tuner-skullhammer-2.png",
+   "thumbnail": "tuner/tuner-skullhammer-2.thumb.png",
+   "width_px": 70,
+   "height_px": 144,
+   "longest_in": 3.0,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "1501845e9fa8abeae750f20c4b2a8f51f74b3c25",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "1501845e9f",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    79,
+    79,
+    78
+   ],
+   "style": "st-tuner-skullhammer",
+   "style_rep": true
+  },
+  {
+   "id": "tuner/tuner-skullhammer-3",
+   "category": "tuner",
+   "file": "tuner/tuner-skullhammer-3.png",
+   "thumbnail": "tuner/tuner-skullhammer-3.thumb.png",
+   "width_px": 70,
+   "height_px": 149,
+   "longest_in": 3.1,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "84a46bde1cda6d37c5a2648ba39d310d71ada432",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "84a46bde1c",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    81,
+    81,
+    80
+   ],
+   "style": "st-tuner-skullhammer",
+   "style_rep": false
+  },
+  {
+   "id": "tuner/tuner-skullhammer-4",
+   "category": "tuner",
+   "file": "tuner/tuner-skullhammer-4.png",
+   "thumbnail": "tuner/tuner-skullhammer-4.thumb.png",
+   "width_px": 70,
+   "height_px": 140,
+   "longest_in": 2.92,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "a466b830348b56600ff009d4b007b445bda46808",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "a466b83034",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    80,
+    80,
+    80
+   ],
+   "style": "st-tuner-skullhammer",
+   "style_rep": false
+  },
+  {
+   "id": "tuner/tuner-skullhammer-5",
+   "category": "tuner",
+   "file": "tuner/tuner-skullhammer-5.png",
+   "thumbnail": "tuner/tuner-skullhammer-5.thumb.png",
+   "width_px": 70,
+   "height_px": 182,
+   "longest_in": 3.79,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "07683750442188de5192cf58bc4aba5b962a5b3a",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "0768375044",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    81,
+    80,
+    79
+   ],
+   "style": "st-tuner-skullhammer",
+   "style_rep": false
+  },
+  {
+   "id": "tuner/tuner-skullhammer-6",
+   "category": "tuner",
+   "file": "tuner/tuner-skullhammer-6.png",
+   "thumbnail": "tuner/tuner-skullhammer-6.thumb.png",
+   "width_px": 70,
+   "height_px": 129,
+   "longest_in": 2.69,
+   "ppi": 48,
+   "source": "gear-recovery-2026-08-30",
+   "source_sha1": "c8194f2f66804a18310ff4411eb4771c9c54e552",
+   "slot": "tuner",
+   "anchors": {},
+   "group": "c8194f2f66",
+   "added_at": "2026-09-01T10:17:56+00:00",
+   "avg_rgb": [
+    79,
+    78,
+    77
+   ],
+   "style": "st-tuner-skullhammer",
    "style_rep": false
   }
  ]
