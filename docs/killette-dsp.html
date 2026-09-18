@@ -77,23 +77,10 @@
   .hero {
     position: relative;
     text-align: center;
-    padding: 60px 8px 40px;
-  }
-  .hero .dsp {
-    font-size: clamp(7rem, 30vw, 22rem);
-    letter-spacing: -.01em;
-    line-height: .8;
-    filter: drop-shadow(0 14px 0 #000) drop-shadow(0 24px 40px rgba(0,0,0,.9));
-    user-select: none;
-  }
-  .hero .killette {
-    position: relative;
-    margin-top: clamp(-5rem, -12vw, -8.5rem);
-    font-size: clamp(3rem, 12vw, 8.5rem);
-    letter-spacing: .02em;
-    text-transform: uppercase;
-    transform: rotate(-5deg);
-    z-index: 2;
+    padding: min(44vw, 560px) 8px 40px;
+    background:
+      linear-gradient(180deg, rgba(7,8,7,0) 45%, rgba(7,8,7,.55) 78%, #070807 97%),
+      url('killette_dsp_studio.jpg') top center / cover no-repeat;
   }
   .hero .tag {
     margin: 40px auto 0;
@@ -235,8 +222,6 @@
 </header>
 
 <div class="hero" id="top">
-  <div class="dsp chrome" aria-hidden="true">DSP</div>
-  <div class="killette venom">Killette</div>
   <p class="tag"><b>Audio code for DSP.</b><br>
      Audio engineering &middot; studio production &middot; DAWs &middot; plug-ins &middot; standalone &middot; web apps</p>
   <div class="cta-row">
