@@ -136,6 +136,13 @@
   }
 
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .grp {
+    font-size: 15px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--green); text-shadow: 0 0 10px rgba(57,255,20,.5);
+    margin: 34px 0 14px; border-left: 4px solid var(--green); padding-left: 12px;
+  }
+  .grp:first-of-type { margin-top: 0; }
+  .status.out { background: linear-gradient(180deg,#f2f4f5,#9aa2a6); color: #101210; }
   .card {
     position: relative;
     background:
@@ -238,36 +245,116 @@
 
   <section id="lineup">
     <h2 class="sec venom">The Lineup</h2>
+    <h3 class="grp">Amps &amp; Tone</h3>
     <div class="cards">
       <div class="card">
-        <h3 class="chrome">Freedom DAW</h3>
-        <p>The full production environment. Record, arrange, mix, master, export — front to back.</p>
+        <h3 class="chrome">Swamp Puppy Complete</h3>
+        <p>Standalone amp + cab simulator. 4-slot IR loader, gate, tone stack, holographic GUI. One exe, no install, low latency.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Swamp Puppy VST</h3>
+        <p>The Swamp Puppy amp as a VST3 &mdash; runs inside REAPER or any DAW.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Cab Forge</h3>
+        <p>Killette cab &amp; IR forge &mdash; sculpt the speaker half of your tone.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Amp Cab Configurator</h3>
+        <p>Standalone amp-and-cab rig builder.</p>
         <span class="status">In the Forge</span>
       </div>
       <div class="card">
+        <h3 class="chrome">Rig Stack</h3>
+        <p>The web rig bench &mdash; stack and audition your whole signal chain in a browser.</p>
+        <span class="status">In the Shop</span>
+      </div>
+    </div>
+    <h3 class="grp">Suites &amp; Plug-ins</h3>
+    <div class="cards">
+      <div class="card">
+        <h3 class="chrome">KDSP Slamcore Pro</h3>
+        <p>25 VST3 plugins: 7 guitar, 6 drums, 6 vocals, 6 utilities. 125 presets, zero dead dials.</p>
+        <span class="status">Final Testing</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Killette Matrix Suite</h3>
+        <p>The Matrix processing suite, v1.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">JSFX Complete Vault</h3>
+        <p>The full Killette JSFX effects arsenal for REAPER &mdash; one drop, everything.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Killette DSP Vault</h3>
+        <p>Ten standalone Killette tools in one vault build.</p>
+        <span class="status">In the Forge</span>
+      </div>
+    </div>
+    <h3 class="grp">Studio &amp; Writing</h3>
+    <div class="cards">
+      <div class="card">
+        <h3 class="chrome">Freedom DAW</h3>
+        <p>The browser DAW. Record, arrange, mix, master, export &mdash; nothing to install.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Smart Drummer 6.0</h3>
+        <p>The auto drummer. Feed it a riff, get a drummer that locks in.</p>
+        <span class="status">In the Forge</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Guitar Tab Generator</h3>
+        <p>Play it, tab it &mdash; v4.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
         <h3 class="chrome">Chord Reader</h3>
-        <p>Play it, see it. Real-time chord detection that names what you're playing as you play it.</p>
+        <p>Real-time chord detection that names what you're playing as you play it.</p>
         <span class="status">In the Forge</span>
       </div>
       <div class="card">
         <h3 class="chrome">Guitar-to-MIDI</h3>
-        <p>Your guitar becomes any instrument. Live translation from strings to MIDI — synths, keys, whatever you load.</p>
+        <p>Your guitar becomes any instrument &mdash; live translation from strings to MIDI.</p>
         <span class="status">In the Forge</span>
       </div>
       <div class="card">
-        <h3 class="chrome">Smart Drummer</h3>
-        <p>The auto drummer. Feed it a riff, get a drummer that locks in — blast beats to half-time grooves.</p>
+        <h3 class="chrome">Killette Studio</h3>
+        <p>The big one: Freedom DAW + Smart Drummer + Matrix Suite + Tab Generator merged into one web studio.</p>
         <span class="status">In the Forge</span>
       </div>
+    </div>
+    <h3 class="grp">Utilities &amp; Ops</h3>
+    <div class="cards">
       <div class="card">
-        <h3 class="chrome">SlamCore SlamSuite</h3>
-        <p>The heavy artillery — Killette's slam-tuned processing suite for tones that hit like a dropped cab.</p>
-        <span class="status">In the Forge</span>
+        <h3 class="chrome">Bad Code Killer</h3>
+        <p>v2.5 &mdash; hunts down and executes bad code.</p>
+        <span class="status out">Out Now</span>
       </div>
       <div class="card">
-        <h3 class="chrome">JSFX Vault</h3>
-        <p>The complete Killette effects vault for REAPER — the whole arsenal in one drop.</p>
-        <span class="status">In the Forge</span>
+        <h3 class="chrome">Curator</h3>
+        <p>v1.2 &mdash; keeps the library clean.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Enforcer</h3>
+        <p>v2.5 &mdash; keeps the rules enforced.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">DAW Sorter</h3>
+        <p>Sorts your sessions so you don't have to.</p>
+        <span class="status out">Out Now</span>
+      </div>
+      <div class="card">
+        <h3 class="chrome">Livestream Kit</h3>
+        <p>The killy-livestream + Owncast-WP kit &mdash; self-hosted streaming, wired to the site.</p>
+        <span class="status out">Out Now</span>
       </div>
     </div>
   </section>
